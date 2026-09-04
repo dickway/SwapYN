@@ -1,0 +1,968 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.face.view.RatingDialog" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog_loginout"
+        android:orientation="vertical"
+        android:paddingBottom="32dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            bindSingleClick="@{()->vm.dismissAllowingStateLoss()}"
+            android:padding="12dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/img_rate_close_w"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/dialogTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/effect_score"
+            tools:visibility="gone"
+            bindVisible="@{!vm.isRating}"
+            android:textAppearance="@style/font_16"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tvHint"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            tools:visibility="gone"
+            bindVisible="@{!vm.isRating}"
+            android:layout_marginBottom="24dp"
+            android:text="@string/rate_the_generated"
+            android:textColor="#B2B2B2"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/starView" />
+
+        <com.face.view.rate.DragStarRatingView
+            android:id="@+id/starView"
+            android:layout_width="wrap_content"
+            tools:visibility="gone"
+            bindVisible="@{!vm.isRating}"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/linSubmit"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            bindSingleClick="@{()->vm.postRate()}"
+            android:id="@+id/linSubmit"
+            android:layout_width="0dp"
+            tools:visibility="visible"
+            bindVisible="@{!vm.isRating}"
+            android:layout_height="44dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/bg_btn_swap"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/txtRate1"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/submit"
+                bindVisible="@{!vm.mLoading}"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/colorWhite"
+                android:indeterminateTintMode="src_in"
+                bindVisible="@{vm.mLoading}" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/dialogTitle2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="60dp"
+            bindVisible="@{vm.isRating}"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/effect_score"
+            android:textAppearance="@style/font_16"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            tools:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tv_score"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="5dp"
+            bindVisible="@{vm.isRating}"
+            tools:visibility="visible"
+            android:textColor="@color/colorWhite"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tvScoreHint" />
+
+        <com.face.view.rate.SlantedStarRatingLayout
+            android:id="@+id/starRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            bindVisible="@{vm.isRating}"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_score"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_score" />
+
+        <TextView
+            android:id="@+id/tvScoreHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="32dp"
+            tools:visibility="visible"
+            bindVisible="@{vm.isRating}"
+            android:text="@string/dialog_rating_hint"
+            android:textColor="#B2B2B2"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/txtRate1" />
+
+
+        <TextView
+            android:id="@+id/txtRate1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="@string/rate_sharezone"
+            android:textAppearance="@style/font_20"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/txtRate2" />
+
+        <TextView
+            android:id="@+id/txtRate2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/rate_complete_task"
+            android:textAppearance="@style/font_12"
+            android:textColor="#B2B2B2"
+            app:layout_constraintBottom_toTopOf="@+id/conRateDaily"
+            tools:textColor="#B2B2B2" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conRateDaily"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/conRateWeekly">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineDaily1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.25" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/daily"
+                android:textAppearance="@style/font_12"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toTopOf="@+id/viewRateDaily1"
+                app:layout_constraintStart_toStartOf="@+id/viewRateDaily1"
+                tools:textColor="#B2B2B2" />
+
+            <View
+                android:id="@+id/viewRateDaily1"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="36dp"
+                android:background="@drawable/bg_line_round1"
+                app:layout_constraintTop_toBottomOf="@+id/linDaily2" />
+
+            <View
+                android:id="@+id/viewRateDailySelect1"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                bindInVisible="@{vm.taskDayNum&lt;1}"
+                android:background="@drawable/bg_line_round2"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                app:layout_constraintEnd_toStartOf="@+id/viewRateDailySelect2"
+                app:layout_constraintStart_toStartOf="@+id/viewRateDaily1"
+                app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+            <View
+                android:id="@+id/viewRateDailySelect2"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:background="@drawable/bg_line_round2"
+                android:translationX="@{vm.isRtl ? 3f : -3f}"
+                bindInVisible="@{vm.taskDayNum&lt;2}"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck1"
+                app:layout_constraintStart_toEndOf="@+id/viewRateDailySelect1"
+                app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+            <View
+                android:id="@+id/viewRateDailySelect3"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:background="@drawable/bg_line_round2"
+                bindInVisible="@{vm.taskDayNum&lt;3}"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                app:layout_constraintEnd_toStartOf="@+id/viewRateDailySelect4"
+                app:layout_constraintStart_toEndOf="@+id/guidelineDaily1"
+                app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+            <View
+                android:id="@+id/viewRateDailySelect4"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:background="@drawable/bg_line_round2"
+                android:translationX="@{vm.isRtl ? 3f : -3f}"
+                bindInVisible="@{vm.taskDayNum&lt;4}"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck2"
+                app:layout_constraintStart_toEndOf="@+id/viewRateDailySelect3"
+                app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+            <View
+                android:id="@+id/viewRateDailySelect5"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:background="@drawable/bg_line_round2"
+                bindInVisible="@{vm.taskDayNum&lt;5}"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                app:layout_constraintEnd_toStartOf="@+id/viewRateDailySelect6"
+                app:layout_constraintStart_toStartOf="@+id/tvRateDailyCheck2"
+                app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+            <View
+                android:id="@+id/viewRateDailySelect6"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:background="@drawable/bg_line_round2"
+                android:translationX="@{vm.isRtl ? 3f : -3f}"
+                bindInVisible="@{vm.taskDayNum&lt;6}"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck3"
+                app:layout_constraintStart_toEndOf="@+id/viewRateDailySelect5"
+                app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+            <LinearLayout
+                android:id="@+id/linDaily1"
+                android:layout_width="48dp"
+                bindAlpha="@{vm.taskDay1==1}"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_signin_rate_round"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineDaily1"
+                app:layout_constraintStart_toStartOf="@+id/guidelineDaily1"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/img_point_hash" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{'+'+String.valueOf(vm.rateInfoBean.pointsDaily1)}"
+                    android:textColor="#FBCB33"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    tools:text="+1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linDaily2"
+                bindAlpha="@{vm.taskDay2==1}"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_signin_rate_round"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/linDaily3"
+                app:layout_constraintStart_toEndOf="@+id/linDaily1"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/img_point_hash" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{'+'+String.valueOf(vm.rateInfoBean.pointsDaily2)}"
+                    android:textColor="#FBCB33"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    tools:text="+1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linDaily3"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                bindAlpha="@{vm.taskDay3==1}"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/bg_signin_rate_round"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/img_point_hash" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{'+'+String.valueOf(vm.rateInfoBean.pointsDaily3)}"
+                    android:textColor="#FBCB33"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    tools:text="+1" />
+            </LinearLayout>
+
+            <TextView
+                bindVisible="@{vm.taskDayNum==1}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@{String.valueOf(vm.ratingBean.dayRating)}"
+                android:textAppearance="@style/font_14"
+                android:textColor="#B2B2B2"
+                app:layout_constraintEnd_toEndOf="@+id/viewRateDailySelect2"
+                app:layout_constraintStart_toStartOf="@+id/viewRateDailySelect1"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck1"
+                tools:textColor="#B2B2B2" />
+            <TextView
+                bindVisible="@{vm.taskDayNum==3}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@{String.valueOf(vm.ratingBean.dayRating)}"
+                android:textAppearance="@style/font_14"
+                android:textColor="#B2B2B2"
+                app:layout_constraintEnd_toEndOf="@+id/viewRateDailySelect4"
+                app:layout_constraintStart_toStartOf="@+id/viewRateDailySelect3"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck2"
+                tools:textColor="#B2B2B2" />
+            <TextView
+                bindVisible="@{vm.taskDayNum==5}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@{String.valueOf(vm.ratingBean.dayRating)}"
+                android:textAppearance="@style/font_14"
+                android:textColor="#B2B2B2"
+                app:layout_constraintEnd_toEndOf="@+id/viewRateDailySelect6"
+                app:layout_constraintStart_toStartOf="@+id/viewRateDailySelect5"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck2"
+                tools:textColor="#B2B2B2" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tvRateDailyCheck1"
+                bindSelected="@{vm.taskDay1==1}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/checkbox_rate"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                app:layout_constraintEnd_toEndOf="@+id/linDaily1"
+                app:layout_constraintStart_toStartOf="@+id/linDaily1"
+                app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+            <TextView
+                android:id="@+id/txtDailyClaimNum1"
+                bindSelected="@{vm.taskDay1==1}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@{String.valueOf(vm.rateInfoBean.rateDailyNum1)}"
+                android:textAppearance="@style/font_16"
+                android:textColor="@color/color_rate"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck1"
+                app:layout_constraintStart_toStartOf="@+id/tvRateDailyCheck1"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck1"
+                tools:textColor="#B2B2B2" />
+
+            <TextView
+                android:id="@+id/txtDailyClaim1"
+                bindSingleClick="@{()->vm.onRating(0)}"
+                bindVisible="@{vm.taskDay1==2}"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_btn_point"
+                android:gravity="center"
+                android:paddingHorizontal="8dp"
+                android:maxWidth="65dp"
+                android:minWidth="55dp"
+                tools:text=">>>>>>"
+                android:maxLines="1"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeMaxTextSize="12sp"
+                android:autoSizeStepGranularity="1sp"
+                android:text="@string/claim"
+                android:textColor="@color/colorBgBlack"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck1"
+                app:layout_constraintStart_toStartOf="@+id/tvRateDailyCheck1"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck1" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tvRateDailyCheck2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bindSelected="@{vm.taskDay2==1}"
+                android:src="@drawable/checkbox_rate"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                app:layout_constraintEnd_toEndOf="@+id/linDaily2"
+                app:layout_constraintStart_toStartOf="@+id/linDaily2"
+                app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+            <TextView
+                android:id="@+id/txtDailyClaimNum2"
+                bindSelected="@{vm.taskDay2==1}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@{String.valueOf(vm.rateInfoBean.rateDailyNum2)}"
+                android:textAppearance="@style/font_16"
+                android:textColor="@color/color_rate"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck2"
+                app:layout_constraintStart_toStartOf="@+id/tvRateDailyCheck2"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck2"
+                tools:textColor="#B2B2B2" />
+
+            <TextView
+                bindVisible="@{vm.taskDay2==2}"
+                bindSingleClick="@{()->vm.onRating(1)}"
+                android:id="@+id/txtDailyClaim2"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_btn_point"
+                android:gravity="center"
+                android:paddingHorizontal="8dp"
+                android:maxWidth="65dp"
+                android:minWidth="55dp"
+                tools:text=">>>>>>"
+                android:maxLines="1"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeMaxTextSize="12sp"
+                android:autoSizeStepGranularity="1sp"
+                android:text="@string/claim"
+                android:textColor="@color/colorBgBlack"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck2"
+                app:layout_constraintStart_toStartOf="@+id/tvRateDailyCheck2"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck2"
+                tools:visibility="invisible" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tvRateDailyCheck3"
+                android:layout_width="wrap_content"
+                bindSelected="@{vm.taskDay3==1}"
+                android:layout_height="wrap_content"
+                android:src="@drawable/checkbox_rate"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                app:layout_constraintEnd_toEndOf="@+id/linDaily3"
+                app:layout_constraintStart_toStartOf="@+id/linDaily3"
+                app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+            <TextView
+                android:id="@+id/txtDailyClaimNum3"
+                bindSelected="@{vm.taskDay3==1}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@{String.valueOf(vm.rateInfoBean.rateDailyNum3)}"
+                android:textAppearance="@style/font_16"
+                android:textColor="@color/color_rate"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck3"
+                app:layout_constraintStart_toStartOf="@+id/tvRateDailyCheck3"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck3"
+                tools:textColor="#B2B2B2" />
+
+            <TextView
+                android:id="@+id/txtDailyClaim3"
+                android:layout_width="wrap_content"
+                bindSingleClick="@{()->vm.onRating(2)}"
+                android:layout_height="28dp"
+                bindVisible="@{vm.taskDay3==2}"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_btn_point"
+                android:gravity="center"
+                android:paddingHorizontal="8dp"
+                android:maxWidth="65dp"
+                android:minWidth="55dp"
+                tools:text=">>>>>>>>>>"
+                android:maxLines="1"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeMaxTextSize="12sp"
+                android:autoSizeStepGranularity="1sp"
+                android:text="@string/claim"
+                android:textColor="@color/colorBgBlack"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck3"
+                app:layout_constraintStart_toStartOf="@+id/tvRateDailyCheck3"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck3"
+                tools:visibility="visible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conRateWeekly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineWeekly1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.25" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/weekly"
+                android:textAppearance="@style/font_12"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toTopOf="@+id/viewRateWeekly1"
+                app:layout_constraintStart_toStartOf="@+id/viewRateWeekly1"
+                tools:textColor="#B2B2B2" />
+
+            <View
+                android:id="@+id/viewRateWeekly1"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="36dp"
+                android:background="@drawable/bg_line_round1"
+                app:layout_constraintTop_toBottomOf="@+id/linWeekly2" />
+
+            <View
+                android:id="@+id/viewRateWeeklySelect1"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:background="@drawable/bg_line_round2"
+                bindInVisible="@{vm.taskWeekNum&lt;1}"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                app:layout_constraintEnd_toStartOf="@+id/viewRateWeeklySelect2"
+                app:layout_constraintStart_toStartOf="@+id/viewRateWeekly1"
+                app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+            <View
+                android:id="@+id/viewRateWeeklySelect2"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:background="@drawable/bg_line_round2"
+                android:translationX="@{vm.isRtl ? 3f : -3f}"
+                bindInVisible="@{vm.taskWeekNum&lt;2}"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck1"
+                app:layout_constraintStart_toEndOf="@+id/viewRateWeeklySelect1"
+                app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+            <View
+                android:id="@+id/viewRateWeeklySelect3"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:background="@drawable/bg_line_round2"
+                bindInVisible="@{vm.taskWeekNum&lt;3}"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                app:layout_constraintEnd_toStartOf="@+id/viewRateWeeklySelect4"
+                app:layout_constraintStart_toEndOf="@+id/guidelineWeekly1"
+                app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+            <View
+                android:id="@+id/viewRateWeeklySelect4"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                bindInVisible="@{vm.taskWeekNum&lt;4}"
+                android:background="@drawable/bg_line_round2"
+                android:translationX="@{vm.isRtl ? 3f : -3f}"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck2"
+                app:layout_constraintStart_toEndOf="@+id/viewRateWeeklySelect3"
+                app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+            <View
+                android:id="@+id/viewRateWeeklySelect5"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:background="@drawable/bg_line_round2"
+                bindInVisible="@{vm.taskWeekNum&lt;5}"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                app:layout_constraintEnd_toStartOf="@+id/viewRateWeeklySelect6"
+                app:layout_constraintStart_toStartOf="@+id/tvRateWeeklyCheck2"
+                app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+            <View
+                android:id="@+id/viewRateWeeklySelect6"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:background="@drawable/bg_line_round2"
+                android:translationX="@{vm.isRtl ? 3f : -3f}"
+                bindInVisible="@{vm.taskWeekNum&lt;6}"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck3"
+                app:layout_constraintStart_toEndOf="@+id/viewRateWeeklySelect5"
+                app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+            <LinearLayout
+                android:id="@+id/linWeekly1"
+                android:layout_width="48dp"
+                bindAlpha="@{vm.taskWeek1==1}"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_signin_rate_round"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineWeekly1"
+                app:layout_constraintStart_toStartOf="@+id/guidelineWeekly1"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/img_point_hash" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{'+'+String.valueOf(vm.rateInfoBean.pointsWeekly1)}"
+                    android:textColor="#FBCB33"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    tools:text="+1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linWeekly2"
+                android:layout_width="48dp"
+                bindAlpha="@{vm.taskWeek2==1}"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_signin_rate_round"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/linWeekly3"
+                app:layout_constraintStart_toEndOf="@+id/linWeekly1"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/img_point_hash" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{'+'+String.valueOf(vm.rateInfoBean.pointsWeekly2)}"
+                    android:textColor="#FBCB33"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    tools:text="+1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linWeekly3"
+                android:layout_width="48dp"
+                bindAlpha="@{vm.taskWeek3==1}"
+                android:layout_height="48dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/bg_signin_rate_round"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/img_point_hash" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{'+'+String.valueOf(vm.rateInfoBean.pointsWeekly3)}"
+                    android:textColor="#FBCB33"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    tools:text="+1" />
+            </LinearLayout>
+
+            <TextView
+                bindVisible="@{vm.taskWeekNum==1}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@{String.valueOf(vm.ratingBean.weekRating)}"
+                android:textAppearance="@style/font_14"
+                android:textColor="#B2B2B2"
+                app:layout_constraintEnd_toEndOf="@+id/viewRateWeeklySelect2"
+                app:layout_constraintStart_toStartOf="@+id/viewRateWeeklySelect1"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck1"
+                tools:textColor="#B2B2B2" />
+            <TextView
+                bindVisible="@{vm.taskWeekNum==3}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@{String.valueOf(vm.ratingBean.weekRating)}"
+                android:textAppearance="@style/font_14"
+                android:textColor="#B2B2B2"
+                app:layout_constraintEnd_toEndOf="@+id/viewRateWeeklySelect4"
+                app:layout_constraintStart_toStartOf="@+id/viewRateWeeklySelect3"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck2"
+                tools:textColor="#B2B2B2" />
+            <TextView
+                bindVisible="@{vm.taskWeekNum==5}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@{String.valueOf(vm.ratingBean.weekRating)}"
+                android:textAppearance="@style/font_14"
+                android:textColor="#B2B2B2"
+                app:layout_constraintEnd_toEndOf="@+id/viewRateWeeklySelect6"
+                app:layout_constraintStart_toStartOf="@+id/viewRateWeeklySelect5"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck2"
+                tools:textColor="#B2B2B2" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tvRateWeeklyCheck1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bindSelected="@{vm.taskWeek1==1}"
+                android:src="@drawable/checkbox_rate"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                app:layout_constraintEnd_toEndOf="@+id/linWeekly1"
+                app:layout_constraintStart_toStartOf="@+id/linWeekly1"
+                app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+            <TextView
+                android:id="@+id/txtWeeklyClaimNum1"
+                bindSelected="@{vm.taskWeek1==1}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@{String.valueOf(vm.rateInfoBean.rateWeeklyNum1)}"
+                android:textAppearance="@style/font_16"
+                android:textColor="@color/color_rate"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck1"
+                app:layout_constraintStart_toStartOf="@+id/tvRateWeeklyCheck1"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck1"
+                tools:textColor="#B2B2B2" />
+
+            <TextView
+                bindVisible="@{vm.taskWeek1==2}"
+                android:id="@+id/txtWeeklyClaim1"
+                bindSingleClick="@{()->vm.onRating(3)}"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_btn_point"
+                android:gravity="center"
+                android:paddingHorizontal="8dp"
+                android:maxWidth="65dp"
+                android:minWidth="55dp"
+                tools:text=">>>>>>"
+                android:maxLines="1"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeMaxTextSize="12sp"
+                android:autoSizeStepGranularity="1sp"
+                android:text="@string/claim"
+                android:textColor="@color/colorBgBlack"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck1"
+                app:layout_constraintStart_toStartOf="@+id/tvRateWeeklyCheck1"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck1"
+                tools:visibility="invisible" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tvRateWeeklyCheck2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bindSelected="@{vm.taskWeek2==1}"
+                android:src="@drawable/checkbox_rate"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                app:layout_constraintEnd_toEndOf="@+id/linWeekly2"
+                app:layout_constraintStart_toStartOf="@+id/linWeekly2"
+                app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+            <TextView
+                android:id="@+id/txtWeeklyClaimNum2"
+                bindSelected="@{vm.taskWeek2==1}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@{String.valueOf(vm.rateInfoBean.rateWeeklyNum2)}"
+                android:textAppearance="@style/font_16"
+                android:textColor="@color/color_rate"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck2"
+                app:layout_constraintStart_toStartOf="@+id/tvRateWeeklyCheck2"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck2"
+                tools:textColor="#B2B2B2" />
+
+            <TextView
+                android:id="@+id/txtWeeklyClaim2"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                bindSingleClick="@{()->vm.onRating(4)}"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_btn_point"
+                android:gravity="center"
+                bindVisible="@{vm.taskWeek2==2}"
+                android:paddingHorizontal="8dp"
+                android:maxWidth="65dp"
+                android:minWidth="55dp"
+                tools:text=">>>>>>"
+                android:maxLines="1"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeMaxTextSize="12sp"
+                android:autoSizeStepGranularity="1sp"
+                android:text="@string/claim"
+                android:textColor="@color/colorBgBlack"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck2"
+                app:layout_constraintStart_toStartOf="@+id/tvRateWeeklyCheck2"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck2"
+                tools:visibility="invisible" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tvRateWeeklyCheck3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/checkbox_rate"
+                bindSelected="@{vm.taskWeek3==1}"
+                app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                app:layout_constraintEnd_toEndOf="@+id/linWeekly3"
+                app:layout_constraintStart_toStartOf="@+id/linWeekly3"
+                app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+
+            <TextView
+                android:id="@+id/txtWeeklyClaimNum3"
+                bindSelected="@{vm.taskWeek3==1}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@{String.valueOf(vm.rateInfoBean.rateWeeklyNum3)}"
+                android:textAppearance="@style/font_16"
+                android:textColor="@color/color_rate"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck3"
+                app:layout_constraintStart_toStartOf="@+id/tvRateWeeklyCheck3"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck3"
+                tools:textColor="#B2B2B2" />
+
+            <TextView
+                android:id="@+id/txtWeeklyClaim3"
+                android:layout_width="wrap_content"
+                bindSingleClick="@{()->vm.onRating(5)}"
+                android:layout_height="28dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_btn_point"
+                android:gravity="center"
+                bindVisible="@{vm.taskWeek3==2}"
+                android:paddingHorizontal="8dp"
+                android:maxWidth="65dp"
+                android:minWidth="55dp"
+                tools:text=">>>>>>"
+                android:maxLines="1"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeMaxTextSize="12sp"
+                android:autoSizeStepGranularity="1sp"
+                android:text="@string/claim"
+                android:textColor="@color/colorBgBlack"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck3"
+                app:layout_constraintStart_toStartOf="@+id/tvRateWeeklyCheck3"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck3"
+                tools:visibility="invisible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/retry"
+            bindSingleClick="@{()->vm.getRatingRewardInfo()}"
+            bindVisible="@{vm.loadFailed}"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_btn1_rounded_corners8"
+            android:gravity="center"
+            android:paddingHorizontal="16dp"
+            android:text="@string/retry"
+            android:textAppearance="@style/font_16"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

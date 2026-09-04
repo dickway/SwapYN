@@ -1,0 +1,62 @@
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+        //noinspection JcenterRepositoryObsolete
+        maven { url "https://jitpack.io" }
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url = uri("https://artifacts.applovin.com/android") }
+        maven { url = uri("https://artifacts.applovin.com/android") }
+        maven { url "https://artifact.bytedance.com/repository/pangle" }
+
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/google' }
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/gradle-plugin' }
+        maven { setUrl("https://raw.githubusercontent.com/lmk26/AabResGuard/mvn-repo") }
+        maven { setUrl("https://raw.githubusercontent.com/lmk26/XmlClassGuard/mvn-repo") }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        //noinspection JcenterRepositoryObsolete
+        maven { url "https://jitpack.io" }
+        maven {
+            allowInsecureProtocol = true
+            url 'http://maven.singular.net/'
+        }
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url = uri("https://artifacts.applovin.com/android") }
+        maven { url = uri("https://artifacts.applovin.com/android") }
+        maven { url "https://artifact.bytedance.com/repository/pangle" }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/google' }
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/gradle-plugin' }
+        maven { setUrl("https://raw.githubusercontent.com/lmk26/AabResGuard/mvn-repo") }
+        maven { setUrl("https://raw.githubusercontent.com/lmk26/XmlClassGuard/mvn-repo") }
+    }
+}
+
+rootProject.name = "Alviora"
+include ':app'
+include ':module:face'
+include ':module:main'
+include ':module:drawboard'
+include ':module:openzoomlib'
+include ':module:architecture'
+include ':module:selector'
+include ':key'
+include ':a'

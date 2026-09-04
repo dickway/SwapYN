@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.SearchActivity" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.SearchViewModel" />
+
+        <variable
+            name="historyLayoutManager"
+            type="androidx.recyclerview.widget.RecyclerView.LayoutManager" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/conZoom"
+        bindAddVerticalPadding="@{true}"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorAppBg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvZoom1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="@+id/tvConter"
+            app:layout_constraintEnd_toStartOf="@+id/tvConter"
+            app:layout_constraintTop_toTopOf="@+id/tvConter"
+            tools:text=">>>" />
+
+        <TextView
+            android:id="@+id/tvConter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" · "
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvZoom2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="@+id/tvConter"
+            app:layout_constraintStart_toEndOf="@+id/tvConter"
+            app:layout_constraintTop_toTopOf="@+id/tvConter"
+            tools:text=">>>" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:tint="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="@+id/tvConter"
+            app:layout_constraintStart_toEndOf="@+id/tvZoom2"
+            app:layout_constraintTop_toTopOf="@+id/tvConter"
+            app:srcCompat="@drawable/ic_arrow_bottom" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_video_player_root"
+    android:layout_width="match_parent"
+    android:background="@color/colorAppBg"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/surface_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+    </FrameLayout>
+
+<!--    <ProgressBar-->
+<!--        android:id="@+id/bottom_progressbar"-->
+<!--        style="?android:attr/progressBarStyleHorizontal"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1.5dp"-->
+<!--        android:visibility="gone"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:max="1"-->
+<!--        android:progressDrawable="@drawable/video_progress" />-->
+
+    <com.flyjingfish.openimagelib.widget.LoadingView
+        android:id="@+id/loading"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="#00000000"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="invisible" />
+
+<!--    <androidx.appcompat.widget.AppCompatImageView-->
+<!--        android:id="@+id/thumbImage"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
+
+    <RelativeLayout
+        android:id="@+id/thumb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/thumbImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+        <TextView
+            android:id="@+id/tvFace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hd_video"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

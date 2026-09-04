@@ -1,0 +1,160 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.view.SwapTabDialog" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+        <variable
+            name="adapterTab"
+            type="com.face.adapter.swap.SwapTabAdapter" />
+
+        <variable
+            name="adapter"
+            type="com.face.adapter.swap.SwapChooseAdapter" />
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog_swapmore"
+        android:orientation="vertical"
+        android:paddingBottom="12dp">
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_swap_rounded_corners"
+            app:layout_constraintBottom_toTopOf="@+id/rlTab"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rlTab"
+            bindAdapter="@{adapterTab}"
+            bindData="@{gvm.swapTabList}"
+            bindVisible="@{gvm.swapTabList.size()>1}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/tvChooseTxt"
+            tools:visibility="visible"
+            tools:listitem="@layout/item_swaptab_item" />
+
+        <TextView
+            android:id="@+id/tvChooseTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingHorizontal="12dp"
+            android:text="@string/swap_choose_face"
+            android:textAppearance="@style/font_18"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/lineAdd"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/lineAdd"
+            bindSingleClick="@{()->handler.onUploadClick()}"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/bg_rounded_swap_add_corners100"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/tvStart"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tint="@color/colorWhite"
+                android:src="@drawable/img_swap_add_m"
+                tools:srcCompat="@tools:sample/avatars" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:maxWidth="64dp"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:text="@string/swap_add_face"
+            android:textAppearance="@style/font_12"
+            android:textColor="#999999"
+            app:layout_constraintEnd_toEndOf="@+id/lineAdd"
+            app:layout_constraintStart_toStartOf="@+id/lineAdd"
+            app:layout_constraintTop_toBottomOf="@+id/lineAdd" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rlChoose"
+            bindAdapter="@{adapter}"
+            bindData="@{gvm.swapSelectList}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toEndOf="@+id/lineAdd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/lineAdd"
+            tools:listitem="@layout/item_swapchoose_item" />
+
+
+        <LinearLayout
+            android:id="@+id/tvStart"
+            bindSingleClick="@{()->handler.onProductionClick()}"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_btn_swap"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/swap_face"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="18dp"
+                bindVisible="@{handler.isHdModel}"
+                android:layout_height="18dp"
+                android:layout_marginStart="6dp"
+                android:src="@drawable/img_icon_hd" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

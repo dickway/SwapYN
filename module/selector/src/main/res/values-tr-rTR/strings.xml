@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ps_camera_roll">Kamera Rulosu</string>
+    <string name="ps_camera_roll_num">%1$s (%2$d)</string>
+    <string name="ps_cancel">İptal</string>
+    <string name="ps_take_picture">Kamera</string>
+    <string name="ps_rule">resim veya video değil</string>
+    <string name="ps_min_video_num">Video Seçimi %1$s Sayı Olamaz</string>
+    <string name="ps_message_max_num">En fazla %1$s resim seç</string>
+    <string name="ps_message_audio_max_num">En fazla %1$s Ses seç</string>
+    <string name="ps_message_video_max_num">En fazla %1$s Video seç</string>
+    <string name="ps_preview">Önizleme</string>
+    <string name="ps_please">Lütfen bekleyin…</string>
+    <string name="ps_done_front_num">%1$d/%2$d Tamam</string>
+    <string name="ps_completed">İleri</string>
+    <string name="ps_done">Tamamla</string>
+    <string name="ps_please_select">Lütfen Seçin</string>
+    <string name="ps_empty_title">Video veya fotoğraf yok\n</string>
+    <string name="ps_empty_audio_title">Ses dosyası yok\n</string>
+    <string name="ps_audio_empty">Telefonunuzdaki ses dosyaları düzgün görüntülenmiyorsa, lütfen uygulamanın \"depolama\" ve \"fotoğraflar ve videolar\" gibi izinlerinin açık olduğundan emin olun.</string>
+    <string name="ps_empty">Telefonunuzdaki fotoğraflar ve videolar düzgün görüntülenmiyorsa, lütfen uygulamanın \"depolama\" ve \"fotoğraflar ve videolar\" gibi izinlerinin açık olduğundan emin olun.</string>
+    <string name="ps_min_img_num">Resimlerin minimum seçimi %1$s\'ten az olamaz</string>
+    <string name="ps_min_audio_num">Ses seçiminin minimumu %1$s\'ten az olamaz</string>
+    <string name="ps_gif_tag">gif</string>
+    <string name="ps_webp_tag">webp</string>
+    <string name="ps_audio">Sistem kayıt izni reddedildi</string>
+    <string name="ps_jurisdiction">Fotoğraf, video veya ses için depolama izni alınamadı.</string>
+    <string name="ps_camera">Sistem kamera izni reddedildi</string>
+    <string name="ps_video_toast">Video Önizlenemiyor</string>
+    <string name="ps_record_video">Video Kaydet</string>
+    <string name="ps_photograph">Fotoğraf Çek</string>
+    <string name="ps_long_chart">Uzun</string>
+    <string name="ps_warning">Medya dosyası yok!</string>
+    <string name="ps_prompt">İpucu</string>
+    <string name="ps_prompt_image_content">Resimleri telefonunuza kaydetmek istiyor musunuz?</string>
+    <string name="ps_prompt_video_content">Videoyu telefonunuza kaydetmek istiyor musunuz?</string>
+    <string name="ps_save_image_error">Resim kaydetme başarısız</string>
+    <string name="ps_save_video_error">Video kaydetme başarısız</string>
+    <string name="ps_save_success">başarıyla kaydedildi</string>
+    <string name="ps_all_audio">Tüm sesler</string>
+    <string name="ps_tape">Kayıt</string>
+    <string name="ps_play_audio">Oynat</string>
+    <string name="ps_stop_audio">Durdur</string>
+    <string name="ps_quit_audio">Çık</string>
+    <string name="ps_pause_audio">Duraklat</string>
+    <string name="ps_error">Resim bozuk</string>
+    <string name="ps_video_error">Video bozuk</string>
+    <string name="ps_audio_error">Ses bozuk</string>
+    <string name="ps_save_audio_error">Ses kaydetme başarısız</string>
+    <string name="ps_prompt_audio_content">Sesi telefona kaydet?</string>
+    <string name="ps_confirm">Onayla</string>
+    <string name="ps_preview_image_num">%1$d/%2$d</string>
+    <string name="ps_not_crop_data">Kırpılmış veri yok</string>
+    <string name="ps_original_image">Orijinal (%1$s)</string>
+    <string name="ps_default_original_image">Orijinal</string>
+    <string name="ps_send">Tamamla</string>
+    <string name="ps_send_num">Tamamla(%1$d/%2$d)</string>
+    <string name="ps_preview_num">Önizleme(%1$d)</string>
+    <string name="ps_select">Seç</string>
+    <string name="ps_data_exception">Albüm verisi alınırken hata…</string>
+    <string name="ps_choose_max_seconds">Sadece %1$ds içinde videolar seçilebilir</string>
+    <string name="ps_choose_min_seconds">%1$ds\'ten kısa video seçilemez</string>
+    <string name="ps_choose_limit_seconds">Sadece %1$ds ile %2$ds arası videolar seçilebilir</string>
+
+    <string name="ps_go_setting">Ayarlara Git</string>
+    <string name="ps_know">Tamam</string>
+    <string name="ps_data_null">Burada veri yok…</string>
+    <string name="ps_editor">Editör</string>
+    <string name="ps_use_camera">Kamera kullanılıyor</string>
+    <string name="ps_use_sound">Kayıt fonksiyonu kullanılıyor</string>
+    <string name="ps_current_week">Bu hafta</string>
+    <string name="ps_current_month">Bu ay</string>
+    <string name="ps_select_max_size">Seçilen dosya %1$s\'den büyük</string>
+    <string name="ps_select_min_size">Seçilen dosya %1$s\'den küçük</string>
+
+    <string name="ps_select_video_max_second">%1$d s\'den uzun video seç</string>
+    <string name="ps_select_video_min_second">%1$d s\'den kısa video seç</string>
+    <string name="ps_select_audio_max_second">%1$d s\'den uzun ses seç</string>
+    <string name="ps_select_audio_min_second">%1$d s\'den kısa ses seç</string>
+    <string name="ps_select_no_support">Desteklenmeyen seçim türü</string>
+
+    <string name="ps_dialog_size_title">Seçilen video çok büyük</string>
+    <string name="ps_dialog_size_content">Seçilen videonun boyutu %1$s MB/s\'yi aşamaz.\n\nŞu an seçilen video: Boyut: %2$s, Süre: %3$s.\nEşdeğer: %4$s MB/s.\n\nVideo çok büyük. Lütfen farklı bir boyut seçin.</string>
+
+</resources>

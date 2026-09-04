@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.a.activity.AMainActivity" />
+
+        <variable
+            name="vm"
+            type="com.a.viewmodel.AMainViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bindAddBottomPadding="@{true}"
+        android:background="@color/colorAmainBg">
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/vLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/vLine"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:background="#0DFFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/bottomNavView"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/exploreView"
+                bindSelected="@{vm.selectIndex==0}"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:scaleType="center"
+                android:layout_height="match_parent"
+                android:src="@drawable/a_bottom_explore" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/pictureView"
+                bindSelected="@{vm.selectIndex==1}"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:scaleType="center"
+                android:layout_height="match_parent"
+                android:src="@drawable/a_bottom_picture" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/meView"
+                bindSelected="@{vm.selectIndex==2}"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:scaleType="center"
+                android:layout_height="match_parent"
+                android:src="@drawable/a_bottom_me" />
+
+        </LinearLayout>
+
+        <!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+        <!--            android:id="@+id/bottomNavView"-->
+        <!--            android:theme="@style/Theme.A.Bottom"-->
+        <!--            bindAddBottomPadding="@{true}"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:background="#111111"-->
+        <!--            android:minHeight="50dp"-->
+        <!--            app:elevation="0dp"-->
+        <!--            app:itemHorizontalTranslationEnabled="true"-->
+        <!--            app:itemPaddingBottom="0dp"-->
+        <!--            app:itemPaddingTop="0dp"-->
+        <!--            app:itemTextAppearanceActive="@style/font_a_bottom_selected"-->
+        <!--            app:itemTextAppearanceInactive="@style/font_a_bottom_normal"-->
+        <!--            app:labelVisibilityMode="unlabeled"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:menu="@menu/menu_amain" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

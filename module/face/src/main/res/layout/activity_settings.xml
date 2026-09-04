@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.SettingActivity" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.SettingViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindAddVerticalPadding="@{true}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAppBg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/screen_margins_width1"
+                android:src="@drawable/img_icon_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorWhite" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="60dp"
+                android:gravity="center"
+                android:text="@string/mine_settings"
+                android:textAppearance="@style/font_18"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clTitle">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    bindSingleClick="@{()->handler.onUpdateClick()}"
+                    android:id="@+id/linUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginHorizontal="12dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/change_password"
+                        android:textAppearance="@style/font_16"
+                        android:textColor="#FFFFFF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:src="@drawable/img_icon_more_w"
+                        app:tint="@color/colorWhite" />
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lineSwitch"
+                    bindVisible="@{gvm.isShowTool != 0&amp;&amp;!vm.isShowDownload}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/linUpdate">
+
+                    <TextView
+                        android:id="@+id/titHide"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_width_app"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="14dp"
+                        android:gravity="start"
+                        android:text="@string/hide_sharezone"
+                        android:textAppearance="@style/font_16"
+                        android:textColor="@color/colorWhite"
+                        app:layout_constraintEnd_toStartOf="@+id/switchView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_width_app"
+                        android:gravity="start"
+                        android:text="@string/description_hide_the_sharezone_module"
+                        android:textAppearance="@style/font_12"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/colorB2"
+                        android:layout_marginBottom="14dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/switchView"
+                        app:layout_constraintTop_toBottomOf="@+id/titHide" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:checked="false"
+                        android:paddingHorizontal="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:theme="@style/scstyle"
+                        app:trackTint="@color/track_color_selector" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lineHdSwitch"
+                    bindVisible="@{gvm.isShowTool != 0&amp;&amp;!vm.isShowDownload}"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/lineSwitch">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_width_app"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@string/default_hd"
+                        android:textAppearance="@style/font_16"
+                        android:textColor="@color/colorWhite"
+                        app:layout_constraintEnd_toStartOf="@+id/switchHdView"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchHdView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:checked="false"
+                        android:paddingHorizontal="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:theme="@style/scstyle"
+                        app:trackTint="@color/track_color_selector" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/lineLanguage"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/lineHdSwitch">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_width_app"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@string/settings_language"
+                        android:textAppearance="@style/font_16"
+                        android:textColor="@color/colorWhite"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvLanguage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="@string/settings_language"
+                        android:textAppearance="@style/font_14"
+                        android:textColor="@color/colorB2"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="@dimen/margin_width_app"
+                        android:src="@drawable/img_icon_more_w"
+                        app:tint="@color/colorWhite" />
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lineOpen"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    bindVisible="@{gvm.isShowTool != 0&amp;&amp;gvm.isVisibleShare()}"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/lineLanguage">
+
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_width_app"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="start"
+                        android:layout_marginTop="14dp"
+                        android:text="@string/default_home_page"
+                        android:textAppearance="@style/font_16"
+                        android:textColor="@color/colorWhite"
+                        app:layout_constraintEnd_toStartOf="@+id/tvOpen"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_width_app"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="start"
+                        android:layout_marginBottom="14dp"
+                        android:text="@string/default_home_after_launch"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/colorB2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tvOpen"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+
+                    <TextView
+                        android:id="@+id/tvOpen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:layout_marginEnd="12dp"
+                        tools:text="ShareZone"
+                        android:textAppearance="@style/font_14"
+                        android:textColor="@color/colorB2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imgNext"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgNext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="@dimen/margin_width_app"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:src="@drawable/img_icon_more_w"
+                        app:tint="@color/colorWhite" />
+                </androidx.constraintlayout.widget.ConstraintLayout>>
+
+                <LinearLayout
+                    android:id="@+id/linDelete"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/lineOpen">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_width_app"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@string/delete_account_lrreversible"
+                        android:textAppearance="@style/font_16"
+                        android:textColor="@color/colorWhite"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="@dimen/margin_width_app"
+                        android:src="@drawable/img_icon_more_w"
+                        app:tint="@color/colorWhite" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvLogin"
+                    bindSingleClick="@{()->handler.onLogout()}"
+                    bindVisible="@{gvm.isLogin()}"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="@dimen/margin_width_app_btn"
+                    android:layout_marginBottom="35dp"
+                    android:background="@drawable/bg_btn1_b1_corners100"
+                    android:gravity="center"
+                    android:text="@string/setting_log_out"
+                    android:textAppearance="@style/font_16"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

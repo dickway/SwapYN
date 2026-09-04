@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.face.bean.AiFaceBean" />
+
+        <variable
+            name="isShow"
+            type="Boolean" />
+
+        <variable
+            name="showShare"
+            type="Boolean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="6dp"
+        android:layout_marginVertical="6dp">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgCover"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/shape_round_8dp"
+            app:strokeColor="@null"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/deleteImg"
+            bindVisible="@{isShow}"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:padding="8dp"
+            android:src="@drawable/img_material_icon_delete"
+            app:layout_constraintEnd_toEndOf="@+id/imgCover"
+            app:layout_constraintTop_toTopOf="@+id/imgCover" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ltState"
+            bindVisible="@{showShare}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@{bean.getIsShareState()?@drawable/bg_64_0c9763_16dp:@drawable/bg_64_black_16dp}"
+            android:gravity="center"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="7dp"
+            tools:background="@drawable/bg_64_black_16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:src="@drawable/img_share_top_share"
+                android:src="@{bean.getIsShareState()?@drawable/img_sharing_icon:@drawable/img_share_top_share}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@{bean.getIsShareState()?@string/reward_sharing:@string/share}"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:text="Share" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

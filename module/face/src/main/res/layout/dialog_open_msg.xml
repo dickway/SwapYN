@@ -1,0 +1,70 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.view.OpenMsgDialog" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog_openmsg"
+        android:orientation="vertical"
+        android:paddingBottom="30dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/openImg"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@drawable/img_msg_rights"
+            app:layout_constraintDimensionRatio="750:264"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/txtOpen1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/dialog_openmsg_enable"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/openImg" />
+
+        <TextView
+            android:id="@+id/txtOpen2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/dialog_openmsg_txt"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorWhite50"
+            app:layout_constraintTop_toBottomOf="@+id/txtOpen1" />
+
+        <TextView
+            bindSingleClick="@{()->handler.onConfirmClick()}"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="68dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_btn1_rounded_corners100"
+            android:gravity="center"
+            android:text="@string/authorized"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@+id/txtOpen2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

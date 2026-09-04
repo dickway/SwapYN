@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.a.activity.tool.AChangeActivity" />
+
+        <variable
+            name="vm"
+            type="com.a.viewmodel.AChangeViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindAddVerticalPadding="@{true}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAmainBg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/backImg"
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:src="@drawable/img_icon_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorWhite" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="85dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:text="Age change"
+                android:textAppearance="@style/font_18"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                bindSingleClick="@{()->handler.onHint()}"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/img_icon_ts"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/initImg"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/img_default_m"
+            app:layout_constraintBottom_toTopOf="@+id/conb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#2B2B2B"
+            android:paddingTop="10dp"
+            android:paddingBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="11dp"
+                android:text="I want to be"
+                android:textAppearance="@style/font_14"
+                android:textColor="#B2B2B2"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/toolAiTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/toolAiTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="11dp"
+                android:text="Age"
+                android:textAppearance="@style/font_12"
+                android:textColor="#B2B2B2"
+                app:layout_constraintBottom_toTopOf="@+id/seekbar_eraser"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:background="@mipmap/img_icon_sjiao"
+                android:gravity="center_horizontal"
+                android:paddingTop="4dp"
+                android:text="10"
+                android:textAppearance="@style/font_15"
+                android:textColor="#212121"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/seekbar_eraser"
+                app:layout_constraintStart_toStartOf="@+id/seekbar_eraser"
+                tools:text="10" />
+
+
+            <TextView
+                android:id="@+id/tvClick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="11dp"
+                android:text="10"
+                android:textAppearance="@style/font_15"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/seekbar_eraser"
+                app:layout_constraintStart_toStartOf="@+id/seekbar_eraser"
+                tools:text="10" />
+
+
+            <TextView
+                android:id="@+id/tv10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:text="10"
+                android:textAppearance="@style/font_16"
+                android:textColor="#B2B2B2"
+                app:layout_constraintBottom_toBottomOf="@+id/seekbar_eraser"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/seekbar_eraser" />
+
+            <TextView
+                android:id="@+id/tv80"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:text="80"
+                android:textAppearance="@style/font_16"
+                android:textColor="#B2B2B2"
+                app:layout_constraintBottom_toBottomOf="@+id/seekbar_eraser"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/seekbar_eraser" />
+
+            <SeekBar
+                android:id="@+id/seekbar_eraser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="34dp"
+                android:layout_marginBottom="30dp"
+                android:max="8"
+                android:maxHeight="4dp"
+                android:min="1"
+                android:minHeight="8dp"
+                android:progress="1"
+                android:progressDrawable="@drawable/a_bg_tool_progress"
+                android:splitTrack="false"
+                android:thumb="@mipmap/a_icon_d"
+                android:thumbOffset="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/linWelcome1"
+                app:layout_constraintEnd_toStartOf="@+id/tv80"
+                app:layout_constraintHorizontal_bias="0.4"
+                app:layout_constraintStart_toEndOf="@+id/tv10"
+                tools:progress="5" />
+
+            <LinearLayout
+                android:id="@+id/linWelcome1"
+                bindSingleClick="@{()->handler.postSend()}"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/a_btn_jb_r100"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Generate"
+                    android:textAppearance="@style/font_16"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/retry"
+            bindSingleClick="@{()->handler.postSend()}"
+            bindVisible="@{vm.loadFailed}"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_btn1_rounded_corners8"
+            android:gravity="center"
+            android:paddingHorizontal="16dp"
+            android:text="Retry"
+            android:textAppearance="@style/font_16"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle"
+            app:layout_constraintVertical_bias="0.45"
+            app:layout_constraintWidth_min="100dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.CameraActivity" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.CameraViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bindAddVerticalPadding="@{true}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@color/colorAppBg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/screen_margins_width1"
+                android:src="@drawable/img_icon_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="#ffffff" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:background="@color/colorAppBg"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle" />
+
+        <androidx.camera.view.PreviewView
+            android:id="@+id/mPreviewView"
+            bindVisible="@{!vm.showPhoto}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/conView"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="240dp"
+            android:layout_height="332dp"
+            android:src="@drawable/bg_camera_corners"
+            app:layout_constraintBottom_toBottomOf="@+id/mPreviewView"
+            app:layout_constraintDimensionRatio="h,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/mPreviewView" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/photoImg"
+            bindVisible="@{vm.showPhoto}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/colorAppBg"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/conView"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAppBg"
+            android:paddingBottom="52dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgShoot"
+                bindSingleClick="@{()->handler.takeFilePhoto()}"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/img_camera_icon_shoot"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <LinearLayout
+                bindSingleClick="@{()->handler.rotatePhoto()}"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="@dimen/margin_width_app"
+                android:background="@drawable/bg_camera_corners100"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="@+id/imgShoot"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgShoot">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/img_camera_icon_change" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="@dimen/margin_width_app"
+                android:background="@drawable/bg_camera_corners100"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="@+id/imgShoot"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgShoot">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/img_camera_icon_img" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                bindVisible="@{vm.showPhoto}"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@color/colorAppBg"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="@+id/imgShoot">
+
+                <TextView
+                    bindSingleClick="@{()->handler.againPhoto()}"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/cancel"
+                    android:textAppearance="@style/font_16"
+                    android:textColor="@color/colorFontWhite"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="28dp"
+                    android:background="#ffffff" />
+
+                <TextView
+                    bindSingleClick="@{()->handler.okPhoto()}"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/confirm"
+                    android:textAppearance="@style/font_16"
+                    android:textColor="@color/colorFontWhite"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

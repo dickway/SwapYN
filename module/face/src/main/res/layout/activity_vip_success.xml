@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.VipSuccessActivity" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        bindAddBottomMargin="@{true}"
+        android:layout_height="match_parent"
+        bindAddBottomPadding="@{true}"
+        bindAddBottomHeight="@{true}"
+        android:background="@color/colorAppBg">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgSuccess"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@mipmap/img_results"
+            app:layout_constraintDimensionRatio="1125:2000"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            app:layout_constraintVertical_bias="0.5"
+            android:layout_height="1dp"/>
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginHorizontal="@dimen/margin_width_app"
+            android:gravity="center"
+            android:text="@string/congratulations"
+            android:textColor="@color/colorWhite"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintBottom_toTopOf="@id/tv2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.62" />
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="26dp"
+            android:gravity="center"
+            android:text="@string/vip_success_txt"
+            android:textAppearance="@style/font_18"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnLaunch" />
+
+        <Button
+            android:id="@+id/btnLaunch"
+            bindSingleClick="@{()->handler.finish()}"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="48dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_btn1_success_corners100"
+            android:stateListAnimator="@null"
+            android:text="@string/complete"
+            android:textAppearance="@style/font_16"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tv2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tvsss"
+            app:layout_constraintVertical_bias="0.5" />
+        <TextView
+            android:id="@+id/tvsss"
+            bindVisible="@{gvm.isShowTool != 0}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@string/join_vip_group"
+            android:textAppearance="@style/font_18"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/txt1" />
+
+        <TextView
+            bindVisible="@{gvm.isShowTool != 0}"
+            android:id="@+id/txt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="@string/you_can"
+            android:textColor="@color/colorB2"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/cgroup" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cgroup"
+            bindVisible="@{gvm.isShowTool != 0}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp"
+            android:paddingTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/whatapp"
+                bindSingleClick="@{()->handler.onWhatapp()}"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@mipmap/img_d_whatsapp"
+                app:layout_constraintEnd_toStartOf="@+id/telegram"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvWhats"
+                bindSingleClick="@{()->handler.onWhatapp()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="WhatsApp"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/whatapp"
+                app:layout_constraintStart_toStartOf="@+id/whatapp"
+                app:layout_constraintTop_toBottomOf="@+id/whatapp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/telegram"
+                bindSingleClick="@{()->handler.onTelegram()}"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@mipmap/img_d_telegram"
+                app:layout_constraintEnd_toStartOf="@+id/discord"
+                app:layout_constraintStart_toEndOf="@+id/whatapp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTelegram"
+                bindSingleClick="@{()->handler.onTelegram()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="Telegram"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/telegram"
+                app:layout_constraintStart_toStartOf="@+id/telegram"
+                app:layout_constraintTop_toBottomOf="@+id/telegram" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/discord"
+                bindSingleClick="@{()->handler.onDiscord()}"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@mipmap/img_d_discord"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/telegram"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDiscord"
+                bindSingleClick="@{()->handler.onDiscord()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="Discord"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/discord"
+                app:layout_constraintStart_toStartOf="@+id/discord"
+                app:layout_constraintTop_toBottomOf="@+id/discord" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

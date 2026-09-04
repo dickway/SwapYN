@@ -1,0 +1,175 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.view.PointDialog" />
+
+        <variable
+            name="isShowCard"
+            type="Boolean" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conMi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_dialog_point"
+            android:paddingBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:paddingHorizontal="20dp"
+                android:text="@string/checkin_success"
+                android:textColor="@color/colorBlack"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/you_get_the_following_rewards"
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintTop_toBottomOf="@+id/title" />
+
+            <LinearLayout
+                android:id="@+id/lin1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/view"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/img_point_hash"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvPoint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text='+1'
+                    android:textColor="@color/colorF4A42A"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="@string/hash_points3"
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="@+id/lin1"
+                app:layout_constraintStart_toStartOf="@+id/lin1"
+                app:layout_constraintTop_toBottomOf="@+id/lin1" />
+
+            <View
+                android:id="@+id/view"
+                bindVisible="@{handler.showCard}"
+                android:layout_width="1dp"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="44dp"
+                android:alpha="0.32"
+                tools:visibility="visible"
+                android:background="@color/colorBlack"
+                app:layout_constraintBottom_toBottomOf="@+id/lin1"
+                app:layout_constraintEnd_toStartOf="@+id/lin2"
+                app:layout_constraintStart_toEndOf="@+id/lin1"
+                app:layout_constraintTop_toTopOf="@+id/lin1" />
+
+            <LinearLayout
+                android:id="@+id/lin2"
+                bindVisible="@{handler.showCard}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                tools:visibility="visible"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/img_checkinre64" />
+
+                <TextView
+                    android:id="@+id/tvCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text='+1'
+                    android:textColor="@color/colorF4A42A"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                bindVisible="@{handler.showCard}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                tools:visibility="visible"
+                android:text="@string/re_signing_card"
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="@+id/lin2"
+                app:layout_constraintStart_toStartOf="@+id/lin2"
+                app:layout_constraintTop_toBottomOf="@+id/lin2" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/qclick"
+            bindSingleClick="@{()->handler.dismissAllowingStateLoss()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="20dp"
+            android:src="@drawable/img_cl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/conMi" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

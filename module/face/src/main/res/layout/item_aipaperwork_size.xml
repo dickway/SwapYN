@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isSelected"
+            type="Boolean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp">
+
+        <View
+            android:id="@+id/viewSize"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_rounded_paperwork_corners4"
+            app:layout_constraintDimensionRatio="W,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgCover"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="15dp"
+            android:src="@mipmap/img_icon_size_w1"
+            android:tint="@color/colorWhite"
+            app:layout_constraintBottom_toTopOf="@+id/tvBl"
+            app:layout_constraintDimensionRatio="W,1:1"
+            app:layout_constraintEnd_toEndOf="@+id/viewSize"
+            app:layout_constraintStart_toStartOf="@+id/viewSize"
+            app:layout_constraintTop_toTopOf="@+id/viewSize"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tvBl"
+            bindSelected="@{isSelected}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="1:1"
+            android:textSize="10sp"
+            android:textColor="@color/color_paperwork_txt2"
+            app:layout_constraintBottom_toBottomOf="@+id/viewSize"
+            app:layout_constraintEnd_toEndOf="@+id/imgCover"
+            app:layout_constraintStart_toStartOf="@+id/imgCover"
+            app:layout_constraintTop_toBottomOf="@+id/imgCover" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conSelect"
+            bindVisible="@{isSelected}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_rounded_item_corners4"
+            app:layout_constraintBottom_toBottomOf="@+id/viewSize"
+            app:layout_constraintEnd_toEndOf="@+id/viewSize"
+            app:layout_constraintStart_toStartOf="@+id/viewSize"
+            app:layout_constraintTop_toTopOf="@+id/viewSize">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_item_select"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvName"
+            bindSelected="@{isSelected}"
+            bindTextBold="@{isSelected}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="22 x 32 mm"
+            android:textAppearance="@style/font_12"
+            android:textColor="@color/color_paperwork_txt"
+            app:layout_constraintEnd_toEndOf="@+id/viewSize"
+            app:layout_constraintStart_toStartOf="@+id/viewSize"
+            app:layout_constraintTop_toBottomOf="@+id/viewSize" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

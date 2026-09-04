@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isSelected"
+            type="Boolean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        bindSelected="@{isSelected}"
+        android:background="@drawable/checkbox_atype"
+        android:layout_height="32dp">
+
+        <TextView
+            bindSelected="@{isSelected}"
+            android:id="@+id/tvType"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:paddingHorizontal="14dp"
+            android:textSize="14sp"
+            bindTextBold="@{isSelected}"
+            android:textColor="@color/color_type"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Picture" />
+        
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

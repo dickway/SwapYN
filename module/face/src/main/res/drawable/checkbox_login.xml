@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/img_login_checkbox_selected_night" android:state_selected="true" />
+    <item android:drawable="@drawable/img_login_checkbox_selected_night" android:state_checked="true" />
+    <item android:drawable="@drawable/img_login_checkbox_normal_night" android:state_checked="false" android:state_selected="false" />
+</selector>

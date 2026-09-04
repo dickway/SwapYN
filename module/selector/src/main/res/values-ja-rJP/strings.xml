@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ps_camera_roll">カメラロール</string>
+    <string name="ps_camera_roll_num">%1$s (%2$d)</string>
+    <string name="ps_cancel">キャンセル</string>
+    <string name="ps_take_picture">カメラ</string>
+    <string name="ps_rule">画像または動画ではありません</string>
+    <string name="ps_min_video_num">動画選択は%1$s個まで</string>
+    <string name="ps_message_max_num">最大%1$s枚の画像を選択</string>
+    <string name="ps_message_audio_max_num">最大%1$s個の音声を選択</string>
+    <string name="ps_message_video_max_num">最大%1$s個の動画を選択</string>
+    <string name="ps_preview">プレビュー</string>
+    <string name="ps_please">後ほど…</string>
+    <string name="ps_done_front_num">%1$d/%2$d 完了</string>
+    <string name="ps_completed">次へ</string>
+    <string name="ps_done">完了</string>
+    <string name="ps_please_select">選択してください</string>
+    <string name="ps_empty_title">写真・動画がありません\n</string>
+    <string name="ps_empty_audio_title">音声ファイルがありません\n</string>
+    <string name="ps_audio_empty">端末の音声が表示されない場合は、「ストレージ」「写真と動画」権限を許可してください。</string>
+    <string name="ps_empty">端末の写真・動画が表示されない場合は、「ストレージ」「写真と動画」権限を許可してください。</string>
+    <string name="ps_min_img_num">画像は最低%1$s枚選択</string>
+    <string name="ps_min_audio_num">音声は最低%1$s個選択</string>
+    <string name="ps_gif_tag">GIF</string>
+    <string name="ps_webp_tag">WebP</string>
+    <string name="ps_audio">録音権限が拒否されました</string>
+    <string name="ps_jurisdiction">ストレージ権限取得失敗</string>
+    <string name="ps_camera">カメラ権限が拒否されました</string>
+    <string name="ps_video_toast">動画プレビュー不可</string>
+    <string name="ps_record_video">動画撮影</string>
+    <string name="ps_photograph">写真撮影</string>
+    <string name="ps_long_chart">長尺</string>
+    <string name="ps_warning">メディアファイルがありません！</string>
+    <string name="ps_prompt">確認</string>
+    <string name="ps_prompt_image_content">画像を端末に保存しますか？</string>
+    <string name="ps_prompt_video_content">動画を端末に保存しますか？</string>
+    <string name="ps_save_image_error">画像保存失敗</string>
+    <string name="ps_save_video_error">動画保存失敗</string>
+    <string name="ps_save_success">保存完了</string>
+    <string name="ps_all_audio">すべての音声</string>
+    <string name="ps_tape">録音</string>
+    <string name="ps_play_audio">再生</string>
+    <string name="ps_stop_audio">停止</string>
+    <string name="ps_quit_audio">終了</string>
+    <string name="ps_pause_audio">一時停止</string>
+    <string name="ps_error">画像が破損しています</string>
+    <string name="ps_video_error">動画が破損しています</string>
+    <string name="ps_audio_error">音声が破損しています</string>
+    <string name="ps_save_audio_error">音声保存失敗</string>
+    <string name="ps_prompt_audio_content">音声を端末に保存しますか？</string>
+    <string name="ps_confirm">確定</string>
+    <string name="ps_preview_image_num">%1$d/%2$d</string>
+    <string name="ps_not_crop_data">トリミングデータなし</string>
+    <string name="ps_original_image">オリジナル (%1$s)</string>
+    <string name="ps_default_original_image">オリジナル</string>
+    <string name="ps_send">完了</string>
+    <string name="ps_send_num">完了(%1$d/%2$d)</string>
+    <string name="ps_preview_num">プレビュー(%1$d)</string>
+    <string name="ps_select">選択</string>
+    <string name="ps_data_exception">アルバムデータ取得異常…</string>
+    <string name="ps_choose_max_seconds">%1$ds以内の動画のみ選択可</string>
+    <string name="ps_choose_min_seconds">%1$ds未満の動画は選択不可</string>
+    <string name="ps_choose_limit_seconds">%1$ds〜%2$dsの動画のみ選択可</string>
+
+    <string name="ps_go_setting">設定へ</string>
+    <string name="ps_know">了解</string>
+    <string name="ps_data_null">データがありません…</string>
+    <string name="ps_editor">編集</string>
+    <string name="ps_use_camera">カメラ使用中</string>
+    <string name="ps_use_sound">録音機能使用中</string>
+    <string name="ps_current_week">今週</string>
+    <string name="ps_current_month">今月</string>
+    <string name="ps_select_max_size">選択ファイルが%1$sを超えています</string>
+    <string name="ps_select_min_size">選択ファイルが%1$s未満です</string>
+
+    <string name="ps_select_video_max_second">%1$d秒以上の動画を選択</string>
+    <string name="ps_select_video_min_second">%1$d秒以下の動画を選択</string>
+    <string name="ps_select_audio_max_second">%1$d秒以上の音声を選択</string>
+    <string name="ps_select_audio_min_second">%1$d秒以下の音声を選択</string>
+    <string name="ps_select_no_support">非対応の選択タイプ</string>
+
+    <string name="ps_dialog_size_title">選択動画が大きすぎます</string>
+    <string name="ps_dialog_size_content">動画サイズは%1$s MB/s以下にしてください。\n\n現在の動画：サイズ %2$s、時間 %3$s。\n換算 %4$s MB/s。\n\n動画が大きすぎます。他のサイズを選択してください。</string>
+
+</resources>

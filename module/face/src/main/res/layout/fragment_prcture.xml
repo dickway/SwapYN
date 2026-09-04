@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="layoutManager"
+            type="androidx.recyclerview.widget.RecyclerView.LayoutManager" />
+
+        <variable
+            name="handler"
+            type="com.face.ui.fragment.PictureFragment" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.fragment.PictureViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindAddTopHeight="@{true}"
+        bindAddTopPadding="@{true}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@color/colorAppBg">
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            bindFinishLoadMore="@{vm.finishLoadMore}"
+            bindLoadMoreListener="@{()->vm.getAiFace()}"
+            bindRefreshListener="@{()->vm.getData()}"
+            bindRefreshing="@{vm.homeRefreshing}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/conTitle"
+            app:layout_goneMarginTop="40dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    bindAdapter="@{vm.pictureListAdapter}"
+                    bindData="@{vm.pictureList}"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:clipToPadding="false"
+                    android:paddingHorizontal="8dp"
+                    android:paddingBottom="48dp"
+                    app:layoutManager="@{layoutManager}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:spanCount="2"
+                    tools:itemCount="12"
+                    tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    tools:listitem="@layout/item_face_item" />
+
+                <TextView
+                    bindSingleClick="@{()->vm.getData()}"
+                    bindVisible="@{vm.loadFailed}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_btn1_rounded_corners8"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp"
+                    android:text="@string/retry"
+                    android:textAppearance="@style/font_16"
+                    android:textColor="@color/colorBlack"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_min="100dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.scwang.smart.refresh.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srlAccentColor="@color/colorWhite50"
+                app:srlDrawableSize="0dp"
+                app:srlTextSizeTitle="16sp" />
+
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+
+        <com.face.view.NoDataView
+            noData="@{vm.isNoData}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/refreshLayout"
+            app:layout_constraintVertical_bias="0.4" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conTitle"
+            bindVisible="@{!vm.showView}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAppBg"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginHorizontal="@dimen/screen_margins_width1"
+                android:gravity="center"
+                android:text="@string/frament_picture_title"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgSearch"
+                bindSingleClick="@{()->handler.onSearchClick()}"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingHorizontal="12dp"
+                android:src="@drawable/img_search"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvTitle" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgPro"
+                bindSingleClick="@{()->handler.onVipClick()}"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingHorizontal="8dp"
+                android:src="@drawable/img_xin_icon_pro"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
+                app:layout_constraintEnd_toStartOf="@+id/imgSearch"
+                app:layout_constraintTop_toTopOf="@+id/tvTitle" />
+
+            <LinearLayout
+                android:id="@+id/typeLine1"
+                bindSingleClick="@{()->handler.onClickType1()}"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="@dimen/screen_margins_width1"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_rounded_corners6"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp"
+                app:layout_constraintEnd_toStartOf="@+id/typeLine2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle">
+
+                <TextView
+                    android:id="@+id/type1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLength="18"
+                    android:maxLines="1"
+                    android:text="@{vm.selectedName1}"
+                    android:textColor="@color/colorWhite"
+                    tools:text="" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    bindSelected="@{vm.isType1}"
+                    android:layout_width="13dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/checkbox_type" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/typeLine2"
+                bindSingleClick="@{()->handler.onClickType2()}"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="@dimen/margin_width_app"
+                android:background="@drawable/bg_rounded_corners6"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/typeLine1"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle">
+
+                <TextView
+                    android:id="@+id/type2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLength="18"
+                    android:maxLines="1"
+                    android:text="@{vm.selectedName2}"
+                    android:textColor="@color/colorWhite" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    bindSelected="@{vm.isType2}"
+                    android:layout_width="13dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/checkbox_type" />
+
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conZoom"
+            bindSingleClick="@{()->handler.showTop()}"
+            bindVisible="@{vm.showView}"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorAppBg"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvZoom1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.selectedName1}"
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="@+id/tvConter"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvConter"
+                app:layout_constraintTop_toTopOf="@+id/tvConter"
+                tools:text=">>>" />
+
+            <TextView
+                android:id="@+id/tvConter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" · "
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvZoom1"
+                app:layout_constraintEnd_toStartOf="@+id/tvZoom2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvZoom2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.selectedName2}"
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="@+id/tvConter"
+                app:layout_constraintStart_toEndOf="@+id/tvConter"
+                app:layout_constraintEnd_toStartOf="@+id/imageView6"
+                app:layout_constraintTop_toTopOf="@+id/tvConter"
+                tools:text=">>>" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:tint="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="@+id/tvConter"
+                app:layout_constraintStart_toEndOf="@+id/tvZoom2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvConter"
+                app:srcCompat="@drawable/ic_arrow_bottom" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

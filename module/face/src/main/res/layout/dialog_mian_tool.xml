@@ -1,0 +1,181 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.view.MainToolDialog" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog_tool"
+        android:orientation="vertical"
+        android:paddingBottom="16dp">
+
+        <View
+            android:layout_width="32dp"
+            android:layout_height="2.5dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_swap_rounded_corners2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dialogTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/dialog_tool_title"
+            android:textAppearance="@style/font_20"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtStep1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_width_app"
+            android:layout_marginTop="12dp"
+            android:text="@string/dialog_tool_step1"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorB2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialogTitle" />
+
+        <TextView
+            android:id="@+id/dialogTxt1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_width_app"
+            android:layout_marginTop="4dp"
+            android:text="@string/dialog_tool_txt1"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtStep1" />
+
+        <TextView
+            android:id="@+id/dialogTxtVideo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_width_app"
+            android:text="@string/dialog_tool_txt2_video"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorB2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialogTxt1" />
+
+        <TextView
+            android:id="@+id/txtStep2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_width_app"
+            android:layout_marginTop="12dp"
+            android:text="@string/dialog_tool_step2"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorB2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialogTxtVideo" />
+
+        <TextView
+            android:id="@+id/dialogTxt2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_width_app"
+            android:layout_marginTop="4dp"
+            android:text="@string/dialog_tool_txt2"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtStep2" />
+
+        <TextView
+            android:id="@+id/txtStep3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_width_app"
+
+            android:layout_marginTop="12dp"
+            android:text="@string/dialog_tool_step3"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorB2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialogTxt2" />
+
+        <TextView
+            android:id="@+id/dialogTxt3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_width_app"
+            android:layout_marginTop="4dp"
+            android:text="@string/dialog_tool_txt3"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtStep3" />
+
+        <TextView
+            android:id="@+id/dialogBtn"
+            bindSingleClick="@{()->handler.onOkClick()}"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="@dimen/margin_width_app_btn"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_rounded_login_btn"
+            android:gravity="center"
+            android:text="@string/complete"
+            android:textAppearance="@style/font_16"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/dialogTxt3" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgCheckbox"
+            bindSelected="@{handler.checked}"
+            bindSingleClick="@{()->handler.onCheckboxClick()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/checkbox_tool"
+            app:layout_constraintEnd_toStartOf="@+id/txtHint"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialogBtn" />
+
+        <TextView
+            android:id="@+id/txtHint"
+            bindSingleClick="@{()->handler.onCheckboxClick()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:paddingVertical="8dp"
+            android:text="@string/dialog_tool_next"
+            android:textAppearance="@style/font_12"
+            android:textColor="@color/colorWhite50"
+            app:layout_constraintBottom_toBottomOf="@+id/imgCheckbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgCheckbox"
+            app:layout_constraintTop_toTopOf="@+id/imgCheckbox" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

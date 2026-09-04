@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.a.viewmodel.ALoginAccountViewModel" />
+
+        <variable
+            name="handler"
+            type="com.a.activity.account.ALoginAccountActivity" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindAddBottomPadding="@{true}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#181818">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            bindAddTopHeight="@{true}"
+            bindAddTopPadding="@{true}"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgFace"
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingHorizontal="20dp"
+                android:src="@mipmap/a_account_icon_clo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:layout_marginTop="32dp"
+            android:text="Log in"
+            android:textColor="#ffffff"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle" />
+        <TextView
+            android:id="@+id/txt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:text="Welcome back! Log In below"
+            android:textColor="#80ffffff"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt1" />
+        <TextView
+            android:id="@+id/txt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="32dp"
+            android:text="Account"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/editAccountLayout"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/a_bg_et"
+            app:layout_constraintTop_toBottomOf="@+id/txt3">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/a_icon_account"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editAccount"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                android:gravity="center_vertical"
+                android:hint="Enter your Account"
+                android:maxLength="20"
+                android:paddingStart="12dp"
+                android:paddingEnd="20dp"
+                android:text="@={vm.account}"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#BCFF08"
+                android:textColorHint="#4DFFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/txt4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="13dp"
+            android:text="Password"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editAccountLayout" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/editPwdLayout"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/a_bg_et"
+            app:layout_constraintTop_toBottomOf="@+id/txt4">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/a_icon_userpwd"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editPwd"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                android:gravity="center_vertical"
+                android:hint="Enter your password"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:paddingStart="12dp"
+                android:paddingEnd="80dp"
+                android:text="@={vm.pwd}"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#BCFF08"
+                android:textColorHint="#4DFFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img2" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgClose"
+                bindSingleClick="@{()->vm.onClearInputClick()}"
+                bindVisible="@{vm.pwd!=null&amp;&amp;vm.pwd.length()>0}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:src="@mipmap/a_icon_account_delete"
+                app:layout_constraintBottom_toBottomOf="@+id/editPwd"
+                app:layout_constraintEnd_toStartOf="@+id/imgShow"
+                app:layout_constraintTop_toTopOf="@+id/editPwd" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgShow"
+                bindSelected='@{vm.passwordVisible}'
+                bindSingleClick="@{()->vm.onPasswordVisible()}"
+                bindVisible="@{vm.pwd!=null&amp;&amp;vm.pwd.length()>0}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:padding="8dp"
+                android:src="@drawable/checkbox_apwd"
+                app:layout_constraintBottom_toBottomOf="@+id/editPwd"
+                app:layout_constraintEnd_toEndOf="@+id/editPwd"
+                app:layout_constraintTop_toTopOf="@+id/editPwd" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgCheckbox"
+            bindSelected="@{handler.checked}"
+            bindSingleClick="@{()->handler.onCheckboxClick()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/checkbox_alogin"
+            app:layout_constraintBottom_toBottomOf="@id/linearLayout"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/linearLayout" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgCheckbox">
+
+            <TextView
+                android:id="@+id/tvWelcome1"
+                bindSingleClick="@{()->handler.onCheckboxClick()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp"
+                android:text="Agree to the"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imgCheckbox" />
+
+            <TextView
+                android:id="@+id/tvPrivacyPolicy"
+                bindSelected="@{vm.enableLogin}"
+                bindSingleClick="@{()->handler.onPolicyClick()}"
+                bindTextUnderLine="@{true}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="5dp"
+                android:text="Privacy Policy"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/login"
+            bindSelected='@{vm.enableLogin}'
+            bindSingleClick="@{()->handler.onSpik()}"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/checkbox_btn_jb"
+            android:gravity="center"
+            android:text="Log in"
+            android:textAppearance="@style/font_16"
+            android:textColor="@color/color_bw"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/editPwdLayout"
+            tools:layout_editor_absoluteX="12dp" />
+
+        <TextView
+            android:id="@+id/txtCreate1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Don’t have an account?"
+            android:textColor="#B2B2B2"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/txtCreate2"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login" />
+
+        <TextView
+            android:id="@+id/txtCreate2"
+            bindSingleClick="@{()->handler.onCreateAccount()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:text="Sign Up"
+            android:textColor="#BCFF08"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtCreate1"
+            app:layout_constraintTop_toBottomOf="@+id/login" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

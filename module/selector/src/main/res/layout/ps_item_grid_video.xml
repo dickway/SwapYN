@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.luck.picture.lib.widget.SquareRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_margin="3dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content">
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivPicture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:shapeAppearanceOverlay="@style/shape_6dp"
+        android:scaleType="centerCrop" />
+
+    <com.luck.picture.lib.widget.MediumBoldTextView
+        android:id="@+id/tvCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="8dp"
+        android:background="@drawable/ps_checkbox_selector"
+        android:gravity="center"
+        android:textColor="@color/ps_color_white"
+        android:textSize="12sp" />
+    <View
+        android:id="@+id/hintView"
+        android:layout_width="match_parent"
+        android:background="#B3000000"
+        android:visibility="gone"
+        android:layout_height="match_parent"/>
+
+    <View
+        android:id="@+id/btnCheck"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentEnd="true"
+        android:background="@color/ps_color_transparent" />
+
+    <TextView
+        android:id="@+id/tv_size"
+        android:text="0MB"
+        android:layout_marginStart="5dp"
+        android:paddingHorizontal="4dp"
+        android:layout_marginTop="5dp"
+        android:background="#80000000"
+        android:gravity="center"
+        android:textSize="11sp"
+        android:textColor="@color/ps_color_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <com.luck.picture.lib.widget.MediumBoldTextView
+        android:id="@+id/tv_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ps_ic_shadow_bg"
+        android:drawableStart="@drawable/ps_ic_video"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true"
+        android:paddingStart="5dp"
+        android:text="00:00"
+        android:textColor="@color/ps_color_white"
+        android:textSize="11sp" />
+
+
+</com.luck.picture.lib.widget.SquareRelativeLayout>

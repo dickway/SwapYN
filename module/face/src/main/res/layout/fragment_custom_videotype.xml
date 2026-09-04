@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.fragment.CustomVideoTypeFragment" />
+
+        <variable
+            name="adapter"
+            type="com.face.adapter.other.CustomAdapter" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.CustomVideoViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorAppBg"
+        android:layout_height="match_parent">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refreshLayout"
+            bindRefreshListener="@{()->vm.getUserAiMedia()}"
+            bindRefreshing="@{vm.homeRefreshing}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clResult"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    bindAdapter="@{adapter}"
+                    bindData="@{vm.customFaceList}"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginHorizontal="6dp"
+                    android:layout_marginTop="4dp"
+                    android:clipToPadding="false"
+                    android:paddingBottom="80dp"
+                    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:spanCount="2"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_custom" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <LinearLayout
+            bindVisible="@{vm.customFaceList.size()&lt;2 &amp;&amp; vm.loadData}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.45"
+            tools:visibility="visible">
+
+            <RelativeLayout
+                bindSingleClick="@{()->handler.onPhotoClick()}"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:background="@drawable/bg_rounded_tool_corners12">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/img_icon_add_m_w"
+                    android:tint="@color/colorWhite" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/custom_add"
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tvAiPoint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/video_aipoint"
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/colorWhite" />
+            <TextView
+                android:id="@+id/tvOriginal"
+                bindTextCenterLine="@{true}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:gravity="center"
+                android:text="@string/video_o"
+                android:textAppearance="@style/font_12"
+                android:textColor="@color/colorB2" />
+            <TextView
+                android:id="@+id/tvBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/balance_alpoints"
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/colorWhite" />
+            <TextView
+                android:id="@+id/tvHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="48dp"
+                android:gravity="center"
+                android:text="@string/face_aipoints"
+                android:textAppearance="@style/font_12"
+                android:textColor="@color/colorB2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linWelcome1"
+            bindSingleClick="@{()->handler.onPhotoClick()}"
+            bindVisible="@{vm.customFaceList.size()>1}"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_rounded_custom_btn"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/img_custom_icon_add" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/add_material"
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/retry"
+            bindSingleClick="@{()->vm.getUserAiMedia()}"
+            bindVisible="@{vm.loadFailed}"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_btn1_rounded_corners8"
+            android:gravity="center"
+            android:paddingHorizontal="16dp"
+            android:text="@string/retry"
+            android:textAppearance="@style/font_16"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.7"
+            app:layout_constraintWidth_min="100dp"
+            tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isTask"
+            type="Boolean" />
+        <variable
+            name="isPlay"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginTop="28dp">
+
+        <View
+            android:id="@+id/imgView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_sound_corners6"
+            app:layout_constraintBottom_toBottomOf="@+id/soundName"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgCover"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="6dp"
+            android:src="@drawable/img_icon_audiofile2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgPlayAnim"
+            bindVisible="@{!isTask}"
+            android:layout_width="24dp"
+            android:layout_height="20dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/play_anim"
+            app:layout_constraintStart_toStartOf="@+id/imgCover"
+            app:layout_constraintTop_toTopOf="@+id/imgCover" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgPlay"
+            bindVisible="@{!isTask&amp;&amp;isPlay}"
+            android:layout_width="24dp"
+            android:layout_height="20dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/img_icon_sound"
+            app:layout_constraintStart_toStartOf="@+id/imgCover"
+            app:layout_constraintTop_toTopOf="@+id/imgCover" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            bindVisible="@{!isTask}"
+            android:layout_width="27dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="-4dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/img_icon_mat"
+            app:layout_constraintBottom_toBottomOf="@+id/imgCover"
+            app:layout_constraintStart_toStartOf="@+id/imgCover" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/soundImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:paddingHorizontal="5dp"
+            android:src="@drawable/img_icon_operate2"
+            android:tint="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="@+id/imgView"
+            app:layout_constraintTop_toTopOf="@+id/soundName" />
+
+        <TextView
+            android:id="@+id/soundName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:maxLines="2"
+            android:paddingBottom="6dp"
+            android:text="adsfasdfasdfasdfasdfasdfasdfasdfasdf"
+            android:textAppearance="@style/font_12"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintEnd_toStartOf="@+id/soundImg"
+            app:layout_constraintStart_toStartOf="@+id/imgView"
+            app:layout_constraintTop_toBottomOf="@+id/imgCover" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

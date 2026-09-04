@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isShow"
+            type="Boolean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="6dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgTarget"
+            android:layout_width="103dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/img_default_m"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/shape_round_6dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            bindVisible="@{isShow}"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="8dp"
+            android:src="@drawable/img_pic_icon_select"
+            app:layout_constraintBottom_toBottomOf="@+id/imgTarget"
+            app:layout_constraintEnd_toEndOf="@+id/imgTarget" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

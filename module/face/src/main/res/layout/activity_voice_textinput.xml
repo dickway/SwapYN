@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.tvoice.VoiceTextInputActivity" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.VoiceTextInputViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        bindAddVerticalPadding="@{true}"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/backImg"
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingStart="20dp"
+                android:paddingEnd="8dp"
+                android:src="@drawable/img_icon_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorWhite" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_marginHorizontal="110dp"
+                android:layout_height="wrap_content"
+                android:text="@string/text_input"
+                android:textAppearance="@style/font_18"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                bindSelected="@{vm.inputNum>0}"
+                bindSingleClick="@{()->handler.dubVoice()}"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginEnd="@dimen/margin_width_app"
+                android:background="@drawable/check_btn"
+                android:gravity="center"
+                android:paddingHorizontal="10dp"
+                android:text="@string/generate"
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/color_btn_video"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="@dimen/margin_width_app"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@null"
+                android:gravity="top|left"
+                android:hint="@string/please_enter"
+                android:maxLength="300"
+                android:scrollHorizontally="false"
+                android:textAppearance="@style/font_16"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorFontHint"
+                app:layout_constraintBottom_toTopOf="@+id/tvNumSize"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.inputNum.toString()}"
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="@+id/tvNumSize"
+                app:layout_constraintEnd_toStartOf="@+id/tvNumSize"
+                app:layout_constraintTop_toTopOf="@+id/tvNumSize"
+                tools:text="0" />
+
+            <TextView
+                android:id="@+id/tvNumSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_width_app"
+                android:layout_marginBottom="12dp"
+                android:text="/300"
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/colorFontHint"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "840936533819",
+    "project_id": "alviora-8f49c",
+    "storage_bucket": "alviora-8f49c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840936533819:android:b92f17147997ab89aed11e",
+        "android_client_info": {
+          "package_name": "com.alviora.generator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "840936533819-bfdatj0sofe6dltjcacrqe1mmb62i0b9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alviora.generator",
+            "certificate_hash": "4ac6b4cf4200ff9105c9f93e3e6402b9594b56c2"
+          }
+        },
+        {
+          "client_id": "840936533819-chpjk7gprdu98dk1pjf24t2bhql3bbv5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoEeZ73qXHXhu8oVLrQOscLcrf64-fgP0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "840936533819-chpjk7gprdu98dk1pjf24t2bhql3bbv5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

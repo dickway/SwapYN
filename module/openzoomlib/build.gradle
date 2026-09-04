@@ -1,0 +1,40 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id "kotlin-kapt"
+    id("com.google.devtools.ksp").version("2.2.0-2.0.2")
+}
+
+android {
+    compileSdk 36
+    namespace 'com.flyjingfish.openimagelib'
+    defaultConfig {
+        minSdk 24
+        targetSdk 36
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+    kotlinOptions {
+        jvmTarget = "21"
+    }
+    buildFeatures {
+        dataBinding true
+    }
+}
+dependencies {
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
+    implementation 'androidx.viewpager2:viewpager2:1.1.0'
+    compileOnly 'com.github.bumptech.glide:glide:4.16.0'
+    compileOnly 'com.github.bumptech.glide:annotations:4.16.0'
+    api 'io.github.FlyJingFish:ShapeImageView:1.5.6'
+    //完整版引入
+//    api 'com.github.CarGuo.GSYVideoPlayer:gsyvideoplayer-java:v10.2.0'
+//    api 'com.github.CarGuo.GSYVideoPlayer:gsyvideoplayer-exo2:v10.2.0'
+    api 'com.github.CarGuo.GSYVideoPlayer:gsyvideoplayer-java:v11.1.0'
+    api('com.github.CarGuo.GSYVideoPlayer:gsyvideoplayer-exo2:v11.1.0') {
+        exclude group: "androidx.media3", module: "media3-datasource-rtmp"
+    }
+}

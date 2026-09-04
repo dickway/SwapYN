@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.txtai.TxtImgActivity" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.TxtImgViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bindAddVerticalPadding="@{true}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/screen_margins_width1"
+                android:src="@drawable/img_icon_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorWhite" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="110dp"
+                android:gravity="center"
+                android:text="@string/txt_ai"
+                android:textAppearance="@style/font_18"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                bindSingleClick="@{()->handler.toRecord()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/margin_width_app"
+                android:src="@drawable/img_tool_record"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="100dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/conE"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_btn_1b_corners20"
+                    app:layout_constraintDimensionRatio="350:180"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/colorTransparent"
+                        android:gravity="top"
+                        android:hint="@string/tv_input"
+                        android:maxLength="800"
+                        android:textColor="@color/colorWhite"
+                        android:textColorHint="@color/colorB2"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@+id/prompt"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/prompt"
+                        bindSingleClick="@{()->handler.randomTxt()}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginBottom="10dp"
+                        android:drawableStart="@drawable/img_icon_prompt"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/prompt"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/colorB2"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        bindSingleClick="@{()->handler.toDelete()}"
+                        android:id="@+id/txtNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="5dp"
+                        android:drawableStart="@drawable/img_icon_cle"
+                        android:text="@{vm.txtNum.toString()}"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/colorWhite"
+                        app:layout_constraintBottom_toBottomOf="@+id/prompt"
+                        app:layout_constraintEnd_toStartOf="@+id/txtMax"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintTop_toTopOf="@+id/prompt"
+                        tools:text="0" />
+
+                    <TextView
+                        bindSingleClick="@{()->handler.toDelete()}"
+                        android:id="@+id/txtMax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="/800"
+                        android:layout_marginEnd="12dp"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/colorB2"
+                        app:layout_constraintBottom_toBottomOf="@+id/prompt"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/prompt" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintTop_toBottomOf="@+id/conE">
+
+                    <TextView
+                        android:id="@+id/txt1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/_18_content"
+                        android:textAppearance="@style/font_18"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/allow_generation"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/colorB2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txt1" />
+
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:switchMinWidth="42dp"
+                        android:checked="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:thumbTint="@color/color_switch2"
+                        app:trackTint="@color/color_switch"
+                        tools:checked="false" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <TextView
+                    android:id="@+id/tVstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_width_app"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/picture_style"
+                    android:textAppearance="@style/font_18"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/con18" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/conStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_width_app"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tVstyle">
+
+                    <LinearLayout
+                        android:id="@+id/linCasual"
+                        bindSingleClick="@{()->handler.onStyle(1)}"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:background="@drawable/bg_rounded_paperwork_corners4"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="88dp"
+                            android:layout_height="88dp"
+                            android:src="@drawable/img_realistic"
+                            app:shapeAppearanceOverlay="@style/shape_round_24dp"
+                            app:strokeColor="@null" />
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        bindVisible='@{vm.postStyle=="1"}'
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/bg_rounded_item_corners3"
+                        app:layout_constraintBottom_toBottomOf="@+id/linCasual"
+                        app:layout_constraintEnd_toEndOf="@+id/linCasual"
+                        app:layout_constraintStart_toStartOf="@+id/linCasual"
+                        app:layout_constraintTop_toTopOf="@+id/linCasual">
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        bindSelected='@{vm.postStyle=="1"}'
+                        bindTextBold='@{vm.postStyle=="1"}'
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/realistic"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/color_paperwork_txt3"
+                        app:layout_constraintEnd_toEndOf="@+id/linCasual"
+                        app:layout_constraintStart_toStartOf="@+id/linCasual"
+                        app:layout_constraintTop_toBottomOf="@+id/linCasual" />
+
+                    <LinearLayout
+                        android:id="@+id/linBusiness"
+                        bindSingleClick="@{()->handler.onStyle(2)}"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:layout_marginStart="24dp"
+                        android:background="@drawable/bg_rounded_paperwork_corners4"
+                        android:gravity="center"
+                        app:layout_constraintStart_toEndOf="@+id/linCasual"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="88dp"
+                            android:layout_height="88dp"
+                            android:src="@drawable/img_comic"
+                            app:shapeAppearanceOverlay="@style/shape_round_24dp"
+                            app:strokeColor="@null" />
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        bindVisible='@{vm.postStyle=="0"}'
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/bg_rounded_item_corners3"
+                        app:layout_constraintBottom_toBottomOf="@+id/linBusiness"
+                        app:layout_constraintEnd_toEndOf="@+id/linBusiness"
+                        app:layout_constraintStart_toStartOf="@+id/linBusiness"
+                        app:layout_constraintTop_toTopOf="@+id/linBusiness">
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        bindSelected='@{vm.postStyle=="0"}'
+                        bindTextBold='@{vm.postStyle=="0"}'
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/comic"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/color_paperwork_txt3"
+                        app:layout_constraintEnd_toEndOf="@+id/linBusiness"
+                        app:layout_constraintStart_toStartOf="@+id/linBusiness"
+                        app:layout_constraintTop_toBottomOf="@+id/linBusiness" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <TextView
+                    android:id="@+id/tvSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_width_app"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/aspect_ratios"
+                    android:textAppearance="@style/font_16"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/conStyle" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    bindAdapter="@{vm.sizeAdapter}"
+                    bindData="@{vm.sizeList}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSize"
+                    tools:itemCount="6"
+                    tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_txtimg_size" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+        <LinearLayout
+            android:id="@+id/tv1"
+            bindSelected='@{vm.txtNum!=0&amp;&amp;vm.postStyle!=""&amp;&amp;vm.postSize!=""}'
+            bindSingleClick="@{()->handler.postSend()}"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/check_btn"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_icon_generate"
+                app:tint="@color/color_btn_video"
+                android:layout_marginEnd="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/generate"
+                android:gravity="center"
+                android:textAppearance="@style/font_16"
+                android:textColor="@color/color_btn_video"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

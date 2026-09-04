@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.FeedbackActivity" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.FeedbackViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        onTouchListener="@{com.zzkj.structure.util.KeyboardUtil.onClickBlankHideKeyboardListener}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bindAddVerticalPadding="@{true}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:background="@color/colorWhite10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="12dp"
+                android:src="@drawable/img_icon_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorWhite" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="60dp"
+                android:gravity="center"
+                android:text="@string/mine_feedback"
+                android:textAppearance="@style/font_18"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/conMsg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgMsg"
+                    bindSingleClick="@{()->handler.onMsgClick()}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:padding="4dp"
+                    android:src="@drawable/img_feedback_msg"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/colorWhite" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    bindVisible="@{gvm.hasNewFeedbackMsg}"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@color/colorBgFF4848"
+                    app:layout_constraintEnd_toEndOf="@id/imgMsg"
+                    app:layout_constraintTop_toTopOf="@id/imgMsg"
+                    app:shapeAppearanceOverlay="@style/shape_circle" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_email"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_rounded_b5_corners8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@color/colorTransparent"
+                android:hint="@string/feedback_email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="16dp"
+                android:paddingEnd="8dp"
+                android:text="@={vm.email}"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorWhite50"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgClose"
+                bindSingleClick="@{()->vm.onClearInputClick()}"
+                bindVisible="@{vm.email!=null&amp;&amp;vm.email.length()>0}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:padding="8dp"
+                android:src="@drawable/img_icon_close" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_feedback"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_margin="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_rounded_b5_corners8"
+            android:gravity="top"
+            android:hint="@string/feedback_question"
+            android:maxLength="500"
+            android:padding="16dp"
+            android:text="@={vm.content}"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite50"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ly_email" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_rounded_b5_corners8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_feedback">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgFile"
+                bindSingleClick="@{()->handler.onFileClick()}"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/img_faceback_icon_add"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/shape_round_4dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgDelete"
+                bindSingleClick="@{()->vm.deleteFile()}"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:padding="2dp"
+                android:src="@drawable/img_feedback_delete"
+                app:layout_constraintBottom_toTopOf="@id/imgFile"
+                app:layout_constraintEnd_toEndOf="@id/imgFile"
+                app:layout_constraintStart_toEndOf="@id/imgFile"
+                app:layout_constraintTop_toTopOf="@id/imgFile" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:src="@drawable/img_feedback_play"
+                app:layout_constraintBottom_toBottomOf="@id/imgFile"
+                app:layout_constraintEnd_toEndOf="@id/imgFile"
+                app:layout_constraintStart_toStartOf="@id/imgFile"
+                app:layout_constraintTop_toTopOf="@id/imgFile" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/feedback_upload_txt"
+                android:textAppearance="@style/font_11"
+                android:textColor="@color/colorWhite50"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgFile" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            bindSingleClick="@{()->handler.onConfirmClick()}"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_btn_feedback"
+            android:enabled="@{vm.enableFeedBack}"
+            android:gravity="center"
+            android:text="@string/confirm"
+            android:textColor="@color/color_btn"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

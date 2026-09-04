@@ -1,0 +1,60 @@
+<resources>
+
+    <string name="dialog_apri_title" translatable="false">Privacy Protection</string>
+    <string name="dialog_apri_ok" translatable="false">Agree</string>
+    <string name="dialog_apri_qixiao" translatable="false">Cancel</string>
+    <string name="dialog_apri_content" translatable="false">We do not collect or share your user information. All uploaded data is only used for your personal functionality and bug analysis. Please read and agree to the following agreement: \nPrivacy Policy</string>
+    <string name="dialog_apri_content_click" translatable="false">Privacy Policy</string>
+    <string name="dialog_adu_title" translatable="false">Warning! Final Confirmation to Delete Account?</string>
+    <string name="dialog_adu_txt" translatable="false">Your account is about to be deleted. Please confirm that you have canceled all subscriptions and that you are certain about deleting this account. Once confirmed, the app will return to the login screen, and all your account information will be immediately deleted.</string>
+    <string name="dialog_areturn"  translatable="false">Return</string>
+    <string name="delete_auser_txt1" translatable="false">Once deleted, the account cannot be recovered.</string>
+    <string name="delete_auser_txt2" translatable="false">If you have an active subscription, please go to \"Payments &amp; subscriptions -> Subscriptions\" and cancel it manually.</string>
+    <string name="delete_auser_txt_click" translatable="false">Payments &amp; subscriptions -> Subscriptions</string>
+    <string name="deleteuser_atxt2_ok" translatable="false">Please make a final confirmation that the account you are about to delete cannot be recovered, and that all subscriptions have been canceled.</string>
+    <string name="asuccess" translatable="false">Success</string>
+    <string name="afail" translatable="false">Failure</string>
+    <string name="dialog_aads_title1" translatable="false">New Users Get %s Free Trials</string>
+    <string name="dialog_aads_title2" translatable="false">Confirm Generation?</string>
+    <string name="dialog_aads_context1" translatable="false">%s Trials Left, Unlock More by Watching an Ad, or Remove Limits by Becoming a VIP Now</string>
+    <string name="dialog_aads_context2" translatable="false">Non-VIPs get %s daily chances to generate by watching an ad, or remove limits by becoming a VIP now</string>
+    <string name="dialog_aexperience1" translatable="false">Now used up</string>
+    <string name="dialog_aexperience_txt1" translatable="false">%s free trials will be available tomorrow, or become a VIP now to remove generation limits.</string>
+    <string name="dialog_aads_vip_context" translatable="false">VIPs get %s generation chances daily. Once used up, wait until 0 AM to reset, or continue by watching an ad.</string>
+    <string name="dialog_aads_vip_title"  translatable="false">Unlock Generate</string>
+    <string name="avip_txt6" translatable="false">After the trial ends, you will be automatically subscribed at a discounted price of %s. You can cancel your subscription at any time.</string>
+    <string name="avip_txt7" translatable="false">Auto renewal by %s. You can cancel your subscription at any time by going to \'Google Play -> Payments &amp; Subscriptions\'.</string>
+    <string name="avip_txt8" translatable="false">The trial period is %s days. After the trial ends, your subscription will automatically renew to an annual subscription at %s. If you do not wish to renew after the trial ends, please make sure to cancel your subscription before the end of the trial period (before the %srd day) to avoid unintended renewal. You can cancel your subscription at any time by going to \"Google Play -> Payments &amp; Subscriptions\".</string>
+    <string name="avip_txt9" translatable="false">you will be automatically subscribed at a discounted price of %s. You can cancel your subscription at any time.</string>
+    <string name="avip_txt_atuo" translatable="false">Payment will be charged to your Google Wallet upon confirmation of subscription.Your subscription automatically renews unless you cancel the subscription 24 hours before the end of the current period.Your account will be charged for renewal at the price listed within 24 hours prior to the end of the current period.You can view the status of subscription and cancel the subscription at any time in the google account settings,and the cancellation will be effective since next subscription period and no refund for the current billing cycle.</string>
+    <string name="successfully_paid" translatable="false">Successfully paid %s</string>
+    <plurals name="apaperwork_start_viphint" translatable="false">
+        <item quantity="one">This VIP-exclusive feature consumes significant computational power, so after using it %s time per day, watching ads will be required to continue generating.</item>
+        <item quantity="other">This VIP-exclusive feature consumes significant computational power, so after using it %s times per day, watching ads will be required to continue generating.</item>
+    </plurals>
+    <plurals name="achange_phint"  translatable="false">
+        <item quantity="one">This VIP-exclusive feature consumes significant computational power, so after using it %s time per day, watching ads will be required to continue generating.</item>
+        <item quantity="other">This VIP-exclusive feature consumes significant computational power, so after using it %s times per day, watching ads will be required to continue generating.</item>
+    </plurals>
+
+    <string name="a_dialog_tool_title" translatable="false">Custom picture change face</string>
+    <string name="a_dialog_tool_next" translatable="false">No prompt next time</string>
+    <string name="a_dialog_tool_step1" translatable="false">Step 1:</string>
+    <string name="a_dialog_tool_step2" translatable="false">Step 2:</string>
+    <string name="a_dialog_tool_step3" translatable="false">Step 3:</string>
+    <string name="a_dialog_tool_txt1" translatable="false">The user selects or uploads the image template</string>
+    <string name="a_dialog_tool_txt2" translatable="false">System analysis shows that the face can be replaced</string>
+    <string name="a_dialog_tool_txt3" translatable="false">Select or upload the face you want to replace</string>
+    <string name="a_dialog_tool_title_video" translatable="false">Custom video face swap</string>
+    <string name="a_dialog_tool_txt1_video" translatable="false">User selects video</string>
+    <string name="a_dialog_tool_txt2_video" translatable="false">(Video requirements: within 30min, size within 1GB, need to have a face)</string>
+    <string name="a_complete" translatable="false">Complete</string>
+    <string name="a_mian_video_face" translatable="false">Video</string>
+    <string name="a_mian_picture_face" translatable="false">Picture</string>
+    <string name="a_target_video" translatable="false">Video</string>
+    <string name="a_custom_face_swap"  translatable="false">Custom face swap</string>
+    <string name="a_you_can_upload_any_video_pic_to_swap" translatable="false">You can upload any video/pic to swap</string>
+    <string name="no_data" translatable="false">Nothing here yet</string>
+
+
+</resources>

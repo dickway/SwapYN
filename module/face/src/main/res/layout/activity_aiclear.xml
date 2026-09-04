@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.tclear.ClearAiActivity" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.ClearAiViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bindAddVerticalPadding="@{true}"
+        android:background="@color/colorAppBg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/backImg"
+                bindSingleClick="@{()->handler.eixtActivity()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingStart="@dimen/margin_width_app"
+                android:paddingEnd="8dp"
+                android:src="@drawable/img_icon_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorWhite" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="85dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:text="@string/aiclear_title"
+                android:textAppearance="@style/font_18"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/editTxt"
+                bindSelected="@{vm.postUrl.length()>0}"
+                bindSingleClick="@{()->handler.uptadaImg()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:text="@string/save"
+                android:textAppearance="@style/font_16"
+                android:textColor="@color/color_custom_eidt"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.king.drawboard.view.DBV
+            android:id="@+id/drawBoardView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/colorAppBg"
+            android:src="@drawable/img_default_m"
+            app:layout_constraintBottom_toTopOf="@+id/conb"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/initImg"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/drawBoardView"
+            app:layout_constraintBottom_toBottomOf="@+id/drawBoardView"
+            app:layout_constraintStart_toStartOf="@+id/drawBoardView"
+            app:layout_constraintTop_toTopOf="@+id/drawBoardView" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_tool_bg"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgUp"
+                android:layout_width="wrap_content"
+                bindSelected="@{vm.showUp}"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_width_app"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/checkbox_tool_up"
+                app:layout_constraintBottom_toTopOf="@+id/toolAiTxt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgNext"
+                bindSelected="@{vm.showNext}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_width_app"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/checkbox_tool_next"
+                app:layout_constraintBottom_toTopOf="@+id/toolAiTxt"
+                app:layout_constraintStart_toEndOf="@+id/imgUp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgOriginal"
+                bindSelected="@{vm.showOriginacl}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/margin_width_app"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/checkbox_tool_original"
+                app:layout_constraintBottom_toTopOf="@+id/toolAiTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_width_app"
+                android:text="@{vm.seekbarNum.toString()}"
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/colorWhite50"
+                app:layout_constraintBottom_toBottomOf="@+id/toolAiTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/toolAiTxt" />
+
+            <TextView
+                android:id="@+id/toolAiTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_width_app"
+                android:layout_marginBottom="14dp"
+                android:text="@string/thickness"
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toTopOf="@+id/seekbar_eraser"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <SeekBar
+                android:id="@+id/seekbar_eraser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginBottom="22dp"
+                android:max="100"
+                android:splitTrack="false"
+                android:min="1"
+                android:maxHeight="4dp"
+                android:minHeight="4dp"
+                android:progress="@{vm.seekbarNum}"
+                android:progressDrawable="@drawable/bg_tool_progress"
+                android:thumb="@drawable/img_icon_tool_thickness"
+                android:thumbOffset="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/linWelcome1" />
+
+            <LinearLayout
+                android:id="@+id/linWelcome1"
+                bindSelected="@{vm.showSave}"
+                bindSingleClick="@{()->handler.saveBitmap()}"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="@dimen/margin_width_app"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/check_btn"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    bindSelected="@{gvm.videoFaceList.size()>1}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/start_eliminating"
+                    android:textAppearance="@style/font_14"
+                    android:textColor="@color/color_btn_video"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/retry"
+            bindSingleClick="@{()->handler.saveBitmap()}"
+            bindVisible="@{vm.loadFailed}"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_btn1_rounded_corners8"
+            android:gravity="center"
+            android:paddingHorizontal="16dp"
+            android:text="@string/retry"
+            android:textAppearance="@style/font_16"
+            app:layout_constraintVertical_bias="0.65"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle"
+            app:layout_constraintWidth_min="100dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:id="@+id/loadingView"
+            bindVisible="@{vm.loading}"
+            android:layout_height="match_parent"
+            android:background="#E6000000"
+            tools:visibility="gone">
+
+            <TextView
+                android:id="@+id/checkingNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="0%"
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toTopOf="@+id/progress"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginHorizontal="47dp"
+                android:layout_marginTop="4dp"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/bg_production_progress"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textAppearance="@style/font_16"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/progress" />
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginHorizontal="@dimen/margin_width_app"
+                android:text="@string/aiclear_hint"
+                android:textAppearance="@style/font_14"
+                android:textColor="#999999"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtTime" />
+
+            <com.face.ad.BannerAdView
+                android:id="@+id/adView"
+                bindVisible="@{gvm.enableAdAndNotVip}"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_insetEdge="bottom" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

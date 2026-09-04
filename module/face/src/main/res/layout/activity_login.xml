@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.InitViewModel" />
+
+        <variable
+            name="handler"
+            type="com.face.ui.LoginActivity" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindAddBottomPadding="@{true}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAppBg">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgFace"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_pho"
+            app:layout_constraintDimensionRatio="75:100"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@drawable/bg_login_view"
+            app:layout_constraintBottom_toBottomOf="@+id/imgFace" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            bindAddTopMargin="@{true}"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                bindSingleClick="@{()->handler.onLoginAccount()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="20dp"
+                android:text="@string/log_in_login"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorTransparent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/loginLogo"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="@dimen/margin_width_app"
+                android:layout_marginBottom="24dp"
+                android:src="@mipmap/img_logo_activate"
+                app:layout_constraintBottom_toTopOf="@+id/tvLogin2"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvLogin3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="-2dp"
+                android:text="@string/app_ai_name"
+                android:textColor="@color/colorWhite"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/loginLogo"
+                app:layout_constraintStart_toEndOf="@+id/loginLogo" />
+
+            <TextView
+                android:id="@+id/tvLogin2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_width_app"
+                android:layout_marginBottom="24dp"
+                android:gravity="start"
+                android:lineSpacingMultiplier='1.3'
+                android:text="@string/login_text_people"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/linWelcome1" />
+
+
+            <LinearLayout
+                android:id="@+id/linWelcome1"
+                bindSingleClick="@{()->handler.onGoogleClick()}"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginHorizontal="@dimen/margin_width_app"
+                android:background="@drawable/bg_rounded_login_btn"
+                android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@+id/txtSkip">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/img_icon_google" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/login_btn"
+                    android:textAppearance="@style/font_15"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtSkip"
+                android:background="@drawable/bg_btn_line50_corners100"
+                bindSingleClick="@{()->handler.onSpik()}"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:layout_marginHorizontal="@dimen/margin_width_app"
+                android:text="@string/no_registration_login"
+                android:textAppearance="@style/font_15"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toTopOf="@+id/imgCheckbox"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgCheckbox"
+                bindSelected="@{handler.checked}"
+                bindSingleClick="@{()->handler.onCheckboxClick()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:src="@drawable/checkbox_login"
+                app:layout_constraintBottom_toBottomOf="@id/linearLayout"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/linearLayout" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imgCheckbox">
+
+                <TextView
+                    android:id="@+id/tvWelcome1"
+                    bindSingleClick="@{()->handler.onCheckboxClick()}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="14dp"
+                    android:text="@string/logon_agree1"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imgCheckbox" />
+
+                <TextView
+                    android:id="@+id/tvPrivacyPolicy"
+                    bindSingleClick="@{()->handler.onPolicyClick()}"
+                    bindTextUnderLine="@{true}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="3dp"
+                    android:paddingVertical="14dp"
+                    android:text="@string/logon_agree2"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

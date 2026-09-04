@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isSelected"
+            type="Boolean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgCover"
+            android:layout_width="35dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="@dimen/margin_width_app"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/img_icon_audiofile2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:gravity="center"
+            android:text="asdfasdfasdf"
+            android:textAppearance="@style/font_15"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintBottom_toTopOf="@+id/tvTime"
+            app:layout_constraintStart_toEndOf="@+id/imgCover"
+            app:layout_constraintTop_toTopOf="@+id/imgCover" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:gravity="center"
+            android:text="00:00"
+            android:textAppearance="@style/font_12"
+            android:textColor="@color/colorWhite50"
+            app:layout_constraintBottom_toBottomOf="@+id/imgCover"
+            app:layout_constraintStart_toEndOf="@+id/imgCover"
+            app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgPlay"
+            bindSelected="@{isSelected}"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="12dp"
+            android:src="@drawable/checkbox_play"
+            app:layout_constraintBottom_toBottomOf="@+id/imgCover"
+            app:layout_constraintEnd_toStartOf="@+id/imgOperate"
+            app:layout_constraintTop_toTopOf="@+id/imgCover"/>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgOperate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_width_app"
+            android:src="@drawable/img_icon_operate2"
+            app:layout_constraintBottom_toBottomOf="@+id/imgCover"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgCover"
+            app:tint="@color/colorWhite" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/colorWhite10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/imgCover" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

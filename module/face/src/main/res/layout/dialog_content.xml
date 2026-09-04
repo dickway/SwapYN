@@ -1,0 +1,89 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.view.BaseContentDialog" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rounded_w_corners24"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/are_you"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="@string/pro_hint"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorWhite50" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="27dp"
+            android:background= "@color/colorWhite20" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                bindTextBold="@{!handler.isOkBold}"
+                android:id="@+id/txtCancel"
+                bindSingleClick="@{()->handler.onCanceClick()}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="48dp"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:text="Interrupt"
+                android:textColor="@color/colorFont6"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:background= "@color/colorWhite20" />
+
+            <TextView
+                bindTextBold="@{handler.isOkBold}"
+                android:id="@+id/txtOk"
+                bindSingleClick="@{()->handler.onOkData()}"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/view_detail"
+                android:textColor="@color/colorFont6"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

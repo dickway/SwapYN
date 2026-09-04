@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isSelected"
+            type="Boolean" />
+
+        <variable
+            name="isAdd"
+            type="Boolean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="6dp">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgCover"
+            bindVisible="@{!isAdd}"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="centerCrop"
+            android:background="#1AFFFFFF"
+            app:layout_constraintDimensionRatio="W,1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/shape_circle"
+            app:strokeColor="@null"
+            tools:srcCompat="#1AFFFFFF" />
+
+        <View
+            android:id="@+id/conSelect"
+            bindVisible="@{isSelected&amp;&amp;!isAdd}"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/a_bg_f6_swap_r100"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgCover" />
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/addImg"
+            bindVisible="@{isAdd}"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@mipmap/a_icon_quxiao"
+            android:background="#1AFFFFFF"
+            android:scaleType="center"
+            app:layout_constraintDimensionRatio="W,1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/shape_circle"
+            tools:visibility="visible" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

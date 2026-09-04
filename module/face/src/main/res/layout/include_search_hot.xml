@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.SearchActivity" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.SearchViewModel" />
+
+        <variable
+            name="historyLayoutManager"
+            type="androidx.recyclerview.widget.RecyclerView.LayoutManager" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:fillViewport="true"
+            android:paddingBottom="@dimen/ad_height"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clHistory"
+                    bindVisible="@{vm.searchHistories!=null&amp;&amp;vm.searchHistories.size()>0}"
+                    onTouchListener="@{com.zzkj.structure.util.KeyboardUtil.onClickBlankHideKeyboardListener"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/screen_margins_width1"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/search_history_search"
+                        android:textAppearance="@style/font_18"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/imgClearHistory"
+                        bindSingleClick="@{()->handler.onClearHistoryClick()}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="8dp"
+                        android:textSize="12sp"
+                        android:text="Clear All"
+                        android:textColor="@color/colorWhite"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvHistory"
+                        bindAdapter="@{vm.historyAdapter}"
+                        bindData="@{vm.searchHistories}"
+                        onTouchListener="@{com.zzkj.structure.util.KeyboardUtil.onClickBlankHideKeyboardListener}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="14dp"
+                        app:layoutManager="@{historyLayoutManager}"
+                        app:layout_constrainedHeight="true"
+                        app:layout_constraintBottom_toTopOf="@id/clExpand"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView2"
+                        tools:itemCount="4"
+                        tools:listitem="@layout/item_search_history" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clExpand"
+                        bindSingleClick="@{()->vm.onExpandHistoryClick()}"
+                        bindVisible="@{vm.showHistoryExpand}"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rvHistory"
+                        tools:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@{vm.expandHistoryTitle}"
+                            android:textAppearance="@style/font_12"
+                            android:textColor="@color/colorWhite"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imageView6"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintHorizontal_chainStyle="packed"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imageView6"
+                            bindImgDrawable="@{vm.expandHistory?@drawable/ic_arrow_up:@drawable/ic_arrow_bottom}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:tint="@color/colorWhite"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/textView6"
+                            app:layout_constraintTop_toTopOf="@+id/textView6"
+                            app:srcCompat="@drawable/ic_arrow_bottom" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clHot"
+                    android:layout_width="0dp"
+                    bindVisible="@{vm.showHot}"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clHistory"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/tvHot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/screen_margins_width1"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/search_popular_search"
+                        android:textAppearance="@style/font_16"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/linHotChange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:gravity="center"
+                        bindSingleClick="@{()->vm.refreshSearchHotsIfNeed()}"
+                        android:paddingVertical="8dp"
+                        android:paddingHorizontal="@dimen/margin_width_app"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvHot"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvHot">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgRefreshHot"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:tint="@color/colorWhite"
+                            app:srcCompat="@drawable/img_icon_change" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/search_change"
+                            android:layout_marginStart="8dp"
+                            android:textAppearance="@style/font_12"
+                            android:textColor="@color/colorWhite"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </LinearLayout>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvHot"
+                        bindAdapter="@{vm.hotAdapter}"
+                        onTouchListener="@{com.zzkj.structure.util.KeyboardUtil.onClickBlankHideKeyboardListener}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:clipToPadding="false"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/margin_width_app"
+                        app:spanCount="2"
+                        tools:itemCount="12"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvHot"
+                        app:layout_constraintVertical_bias="0"
+                        tools:listitem="@layout/item_search_hot"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

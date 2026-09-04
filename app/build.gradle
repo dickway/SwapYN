@@ -1,0 +1,156 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id "kotlin-kapt"
+    id("com.google.devtools.ksp").version("2.2.0-2.0.2")
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    // https://github.com/bytedance/AabResGuard/blob/develop/wiki/zh-cn/README.md
+    id "com.bytedance.android.aabResGuard"
+//    // https://github.com/liujingxing/XmlClassGuard
+    id "xml-class-guard"
+}
+
+android {
+    namespace 'com.alviora.generator'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.alviora.generator"
+
+        minSdk 24
+        targetSdk 36
+
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi-v7a", 'arm64-v8a'
+            moduleName "app"
+        }
+    }
+
+//Google上架语言资源需要设置为false
+    bundle {
+        language {
+            enableSplit = false
+        }
+        density {
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('alviora.jks')
+            storePassword 'YTGJTZsaaHQ7'
+            keyAlias 'alviora'
+            keyPassword 'YTGJTZsaaHQ7'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            firebaseCrashlytics {
+                nativeSymbolUploadEnabled false
+                mappingFileUploadEnabled false
+            }
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            firebaseCrashlytics {
+                mappingFileUploadEnabled false
+                nativeSymbolUploadEnabled false
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+
+    kotlinOptions {
+        jvmTarget = "21"
+    }
+
+    buildFeatures {
+        dataBinding = true
+        buildConfig = true
+    }
+}
+
+
+dependencies {
+    implementation project(':module:main')
+}
+
+
+aabResGuard {
+    // 用于增量混淆的 mapping 文件
+//    mappingFile = file("mapping.txt").toPath()
+    // 白名单规则
+    whiteList = [
+            "*.R.string.default_web_client_id",
+            "*.R.string.project_id",
+            "*.R.string.*android*",
+            "*.R.string.*gcm*",
+            "*.R.string.*fcm*",
+            "*.R.string.*google*",
+
+            "*mbridge*",
+
+            "*.R.string.*crashlytics*",
+            "*.R.bool.*crashlytics*",
+            // https://www.pangleglobal.com/integration/integrate-pangle-sdk-for-android
+            "*.tt_*",
+            "*.bigo_*",
+            "*.im_*",
+
+            // tradplus
+            "*.R.string.tp_*",
+            "*.R.drawable.tp_*",
+            "*.R.layout.tp_*",
+            "*.R.id.tp_*",
+    ]
+    // 混淆后的文件名称，必须以 `.aab` 结尾
+    obfuscatedBundleFileName = "duplicated-app.aab"
+    // 是否允许去除重复资源
+    mergeDuplicatedRes = false
+    // 是否允许过滤文件
+    enableFilterFiles = true
+    // 文件过滤规则
+    filterList = [
+            "BUNDLE-METADATA/**/proguard.map"
+    ]
+    // 过滤文案
+    enableFilterStrings = false
+//    unusedStringPath = file("unused.txt").toPath() // 过滤文案列表路径 默认在mapping同目录查找
+    // 保留语言
+    languageWhiteList = ["en","es","fr","sv","de","zh","ar","fa","it","iw","ja","ko","ku","pt","tr"]
+}
+
+//以下均为非必须
+xmlClassGuard {
+    /*
+     * 是否查找约束布局的constraint_referenced_ids属性的值，并添加到AabResGuard的白名单中，
+     * 是的话，要求你在XmlClassGuard前依赖AabResGuard插件，默认false
+     */
+    findAabConstraintReferencedIds = true
+    //用于增量混淆的 mapping 文件
+//    mappingFile = file("xml-class-mapping.txt")
+    //更改manifest文件的package属性，即包名
+//    packageChange = ["com.ljx.example": "ab.cd"]
+    //移动目录
+//    moveDir = ["com.ljx.example": "ef.gh"]
+}

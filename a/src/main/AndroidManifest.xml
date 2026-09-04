@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:label="a"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:theme="@style/AppTheme.A"
+        tools:replace="android:theme"
+        android:supportsRtl="true">
+
+        <activity
+            android:name="com.a.activity.AMainActivity"
+            android:launchMode="singleTask"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.a.activity.ALoginActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.a.activity.ASettingActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.a.activity.ADeleteUserActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.AMoreActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.account.ALoginAccountActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.account.ACreateAccountActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.account.AUpdateAccountActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ASwapActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.AVipActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.AVipSuccessActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.AUploadFaceActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ACameraActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.a.activity.ACollectActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.a.activity.AGenerateActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.a.activity.ABrowsingActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.AMyFaceAllActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.AProductionActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ACompletionActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ASearchActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.tool.AClearStartActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.tool.AClearAiActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.AToolHistoryActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.AToolCompletionActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.AToolTaskHistoryActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.tool.APaperworkStartActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.tool.APaperworkActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.AToolGeneratingActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.tool.ACartoonStartActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.tool.ACartoonActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.tool.ARemovalStartActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.tool.ARemovalActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.tool.AChangeStartActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.tool.AChangeActivity"
+            android:screenOrientation="portrait" />
+
+    </application>
+
+</manifest>

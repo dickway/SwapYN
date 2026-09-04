@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isSelected"
+            type="Boolean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            bindInVisible="@{!isSelected}"
+            android:tint="@color/colorWhite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvType"
+            app:layout_constraintBottom_toBottomOf="@+id/tvType"
+            android:src="@drawable/img_type_icon_select" />
+
+        <TextView
+            android:id="@+id/tvType"
+            bindTextBold="@{isSelected}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:gravity="center_vertical"
+            android:paddingVertical="12dp"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintStart_toEndOf="@+id/img"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Picture" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

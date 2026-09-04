@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/explore"
+        android:icon="@drawable/ic_bottom_explore"
+        android:title="@string/mian_explore" />
+    <item
+        android:id="@+id/template"
+        android:icon="@drawable/ic_bottom_template"
+        android:title="@string/mian_template" />
+    <item
+        android:id="@+id/tool"
+        android:icon="@drawable/ic_bottom_tool"
+        android:title="@string/frament_tool_title" />
+    <item
+        android:id="@+id/shareZone"
+        android:icon="@drawable/ic_bottom_share"
+        android:title="@string/fragment_tool_share" />
+    <item
+        android:id="@+id/me"
+        android:icon="@drawable/ic_bottom_me"
+        android:title="@string/frament_me_title" />
+
+</menu>

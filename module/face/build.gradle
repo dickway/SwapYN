@@ -1,0 +1,191 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id "kotlin-kapt"
+    id("com.google.devtools.ksp").version("2.2.0-2.0.2")
+}
+
+android {
+    namespace 'com.face'
+    compileSdk 36
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 36
+
+        /**
+         * 在模块中默认没有BuildConfig.VERSION_CODE了
+         */
+        buildConfigField "String", "VERSION_NAME", "\"$rootProject.ext.versionName\""
+        buildConfigField "int", "VERSION_CODE", "$rootProject.ext.versionCode"
+
+        ksp {
+            arg('room.schemaLocation', "$projectDir/schemas")
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+
+    kotlinOptions {
+        jvmTarget = "21"
+    }
+
+    buildTypes {
+        release {
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+        debug {
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        dataBinding = true
+        buildConfig = true
+    }
+
+}
+
+dependencies {
+
+    api project(':key')
+    api project(':module:architecture')
+    api project(':module:selector')
+    api project(':module:openzoomlib')
+    implementation project(':module:drawboard')
+
+//    https://github.com/tanersener/ffmpeg-kit/wiki/Android
+    implementation(files('libs/ffmpeg-kit.aar'))
+    implementation 'com.arthenica:smart-exception-java:0.1.1'
+
+//  https://docs.opencv.org/4.9.0/d5/df8/tutorial_dev_with_OCV_on_Android.html
+//  implementation 'org.opencv:opencv:4.9.0'
+
+//    https://support.singular.net/hc/en-us/articles/360037581952-Android-SDK-Integration-Guide
+//    implementation 'com.singular.sdk:singular_sdk:12.6.1'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+
+    ksp 'com.squareup.moshi:moshi-kotlin-codegen:1.15.2'
+//    api 'com.google.firebase:firebase-auth-ktx'
+
+//  https://github.com/mmin18/RealtimeBlurView
+//    implementation 'com.github.mmin18:realtimeblurview:1.2.1'
+//  https://github.com/youth5201314/banner
+    api 'io.github.youth5201314:banner:2.2.3'
+    api 'com.google.android.flexbox:flexbox:3.0.0'
+    ksp 'androidx.room:room-compiler:2.7.2'
+
+    // The following line is optional, as the core library is included indirectly by camera-camera2
+    implementation 'androidx.camera:camera-core:1.4.1'
+    implementation 'androidx.camera:camera-camera2:1.4.1'
+    // If you want to additionally use the CameraX View class
+    implementation 'androidx.camera:camera-view:1.4.1'
+    // If you want to additionally use the CameraX Lifecycle library
+    implementation 'androidx.camera:camera-lifecycle:1.4.1'
+//    // If you want to additionally use the CameraX VideoCapture library
+//    implementation("androidx.camera:camera-video:${camerax_version}")
+//    // If you want to additionally add CameraX ML Kit Vision Integration
+//    implementation("androidx.camera:camera-mlkit-vision:${camerax_version}")
+//    // If you want to additionally use the CameraX Extensions library
+//    implementation("androidx.camera:camera-extensions:${camerax_version}")
+
+    /*
+    * https://firebase.google.com/docs/android/setup#analytics-enabled
+    * https://firebase.google.com/support/release-notes/android
+    */
+    api platform('com.google.firebase:firebase-bom:33.7.0')
+    // https://firebase.google.com/docs/auth/android/google-signin?hl=zh&authuser=0
+    api 'com.google.firebase:firebase-auth-ktx'
+    // 要指定版本
+    api 'com.google.android.gms:play-services-auth:21.3.0'
+    // https://firebase.google.com/docs/analytics/get-started?platform=android
+    api 'com.google.firebase:firebase-analytics-ktx'
+    // https://firebase.google.com/docs/perf-mon/get-started-android
+//    api 'com.google.firebase:firebase-perf-ktx'
+    // https://firebase.google.com/docs/crashlytics/get-started?platform=android
+    api 'com.google.firebase:firebase-crashlytics-ktx'
+    api 'com.google.firebase:firebase-crashlytics-ndk'
+    // https://firebase.google.com/docs/cloud-messaging/android/client?authuser=0#kotlin+ktx
+    api 'com.google.firebase:firebase-messaging-ktx'
+
+    /**
+     * https://developer.android.google.cn/google/play/billing/integrate
+     * https://developer.android.google.cn/google/play/billing/release-notes
+     */
+    api "com.android.billingclient:billing:9.1.0"
+    api "com.android.billingclient:billing-ktx:9.1.0"
+
+    api "androidx.paging:paging-runtime-ktx:3.5.0"
+
+
+//    implementation 'com.facebook.android:facebook-applinks:[4,5)'
+    implementation 'com.facebook.android:facebook-android-sdk:18.3.0'
+
+// webpdecoder
+    api "com.github.zjupure:webpdecoder:2.7.4.16.0"
+// glide 4.10.0+
+    api "com.github.bumptech.glide:glide:4.16.0"
+    annotationProcessor "com.github.bumptech.glide:compiler:4.16.0"
+    /**
+     * google 安装归因
+     */
+    implementation 'com.android.installreferrer:installreferrer:2.2'
+    api 'com.google.android.gms:play-services-ads-identifier:18.3.0'
+
+//    https://github.com/LuckSiege/PictureSelector/tree/master 图片视频选择
+//    implementation 'io.github.lucksiege:pictureselector:v3.11.2'
+
+//    https://github.com/FlyJingFish/OpenImage
+//    api 'io.github.FlyJingFish.OpenImage:OpenImageFullLib:2.4.2'
+//    implementation 'io.github.FlyJingFish.OpenImage:OpenImageFullLib:2.2.1'//图片模式+视频
+//    api 'io.github.FlyJingFish.OpenImage:OpenImageGlideLib:2.3.6'//图片模式
+//    implementation 'io.github.FlyJingFish.OpenImage:OpenImageCoilLib:2.3.6'//图片模式
+//    https://github.com/AnJoiner/FFmpegCommand/blob/master/README-CN.md
+    // 部分常用编解码-体积较小,比上面引入减少大约6M
+//      implementation 'com.github.AnJoiner:FFmpegCommand:1.3.2-lite'
+    // 全部编解码-体积较大
+//    implementation 'com.github.AnJoiner:FFmpegCommand:1.3.2'
+    implementation 'com.github.iknow4:android-utils-sdk:1.1.2'
+
+    //    https://github.com/CarGuo/GSYVideoPlayer
+    api 'com.github.CarGuo.GSYVideoPlayer:gsyvideoplayer-java:v11.1.0'
+    api('com.github.CarGuo.GSYVideoPlayer:gsyvideoplayer-exo2:v11.1.0') {
+        exclude group: "androidx.media3", module: "media3-datasource-rtmp"
+    }
+
+
+//    api 'io.github.carguo:gsyvideoplayer-java:11.1.0'
+//    api 'io.github.carguo:gsyvideoplayer-exo2:11.1.0'
+
+    /**
+     * applovin
+     * https://dash.applovin.com/documentation/mediation/android/getting-started/integration
+     * https://github.com/AppLovin/AppLovin-MAX-SDK-Android
+     */
+    implementation 'com.applovin:applovin-sdk:13.6.3'
+    // https://support.inmobi.com/monetize/sdk-documentation/android-guidelines/changelogs-android/java
+    implementation 'com.applovin.mediation:inmobi-adapter:11.4.0.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    // https://docs.unity3d.com/Packages/com.unity.ads@4.4/changelog/CHANGELOG.html
+    implementation 'com.applovin.mediation:unityads-adapter:4.19.0.0'
+    // https://developers.facebook.com/docs/audience-network/setting-up/platform-setup/android/changelog/
+    implementation 'com.applovin.mediation:facebook-adapter:6.21.0.0'
+    implementation("com.applovin.mediation:bigoads-adapter:5.10.1.0")
+    //admob的广告
+    implementation 'com.applovin.mediation:google-adapter:25.4.0.0'
+    //pangle的广告
+    implementation 'com.applovin.mediation:bytedance-adapter:8.1.0.5.0'
+
+
+
+}

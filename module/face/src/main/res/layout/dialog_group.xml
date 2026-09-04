@@ -1,0 +1,126 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.view.GroupDialog" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog_group"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="32dp"
+            android:layout_height="2.5dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:background="#B2B2B2"
+            app:shapeAppearanceOverlay="@style/shape_round_2dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:text="@string/join_vip_group"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/whatapp"
+                bindSingleClick="@{()->handler.onWhatapp()}"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@mipmap/img_d_whatsapp"
+                app:layout_constraintEnd_toStartOf="@+id/telegram"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvWhatapp"
+                bindSingleClick="@{()->handler.onWhatapp()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="WhatsApp"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/whatapp"
+                app:layout_constraintStart_toStartOf="@+id/whatapp"
+                app:layout_constraintTop_toBottomOf="@+id/whatapp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/telegram"
+                bindSingleClick="@{()->handler.onTelegram()}"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@mipmap/img_d_telegram"
+                app:layout_constraintEnd_toStartOf="@+id/discord"
+                app:layout_constraintStart_toEndOf="@+id/whatapp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTelegram"
+                bindSingleClick="@{()->handler.onTelegram()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="Telegram"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/telegram"
+                app:layout_constraintStart_toStartOf="@+id/telegram"
+                app:layout_constraintTop_toBottomOf="@+id/telegram" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/discord"
+                bindSingleClick="@{()->handler.onDiscord()}"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@mipmap/img_d_discord"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/telegram"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDiscord"
+                bindSingleClick="@{()->handler.onDiscord()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="Discord"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/discord"
+                app:layout_constraintStart_toStartOf="@+id/discord"
+                app:layout_constraintTop_toBottomOf="@+id/discord" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</layout>

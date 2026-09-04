@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isSelected"
+            type="Boolean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgCover"
+            android:layout_width="78dp"
+            android:layout_height="48dp"
+            android:background="#FF0000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/shape_round_16dp"
+            app:strokeColor="@null" />
+
+        <TextView
+            android:id="@+id/tvName"
+            bindSelected="@{isSelected}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="White"
+            android:textAppearance="@style/font_12"
+            android:textColor="@color/color_0b"
+            app:layout_constraintBottom_toBottomOf="@+id/imgCover"
+            app:layout_constraintEnd_toEndOf="@+id/imgCover"
+            app:layout_constraintStart_toStartOf="@+id/imgCover"
+            app:layout_constraintTop_toTopOf="@+id/imgCover" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conSelect"
+            bindVisible="@{isSelected}"
+            android:layout_width="78dp"
+            android:layout_height="48dp"
+            android:padding="2dp"
+            android:background="@drawable/a_bg_c4_r12"
+            app:layout_constraintEnd_toEndOf="@+id/imgCover"
+            app:layout_constraintBottom_toBottomOf="@+id/imgCover"
+            app:layout_constraintStart_toStartOf="@+id/imgCover"
+            app:layout_constraintTop_toTopOf="@+id/imgCover">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="0.5dp"
+                android:visibility="gone"
+                android:background="@drawable/a_bg_00_r12"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

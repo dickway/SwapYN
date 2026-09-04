@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorTransparent"
+        android:paddingBottom="48dp">
+
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="14dp"
+            android:background="@color/colorTransparent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/type1"
+            android:layout_width="0dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="@dimen/screen_margins_width1"
+            android:layout_marginEnd="4dp"
+            android:background="@color/color2B"
+            android:maxLength="18"
+            android:maxLines="1"
+            app:layout_constraintEnd_toStartOf="@+id/type2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/type2"
+            android:layout_width="0dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="@dimen/screen_margins_width1"
+            android:background="@color/color2B"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/type1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color2B"
+            android:clipToPadding="false"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="16dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:spanCount="2"
+            tools:itemCount="12"
+            tools:listitem="@layout/item_type_item" />
+
+        <View
+            android:id="@+id/viewBottom"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:alpha="0.4"
+            android:background="@color/colorAppBg"
+            app:layout_constraintTop_toBottomOf="@+id/recyView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

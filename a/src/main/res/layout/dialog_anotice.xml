@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.a.dialog.ANoticeDialog" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/a_bg_dialog"
+        android:paddingBottom="12dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="Title1"
+                android:textColor="@color/colorAwhite"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:lineSpacingExtra="1dp"
+            android:text="content"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTop" />
+
+
+        <TextView
+            android:id="@+id/btnConfirm"
+            bindSingleClick="@{()->handler.onConfirmClick()}"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/a_btn_jb_r100"
+            android:gravity="center"
+            android:text="Link Now"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_goneMarginEnd="12dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/imgCheckbox"
+            app:layout_constraintEnd_toStartOf="@+id/btnCancel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvContent"
+            tools:visibility="visible" />
+
+
+        <TextView
+            android:id="@+id/btnCancel"
+            bindSingleClick="@{()->handler.onCancelClick()}"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="24dp"
+            app:layout_goneMarginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/a_btn_jb2_r100"
+            android:gravity="center"
+            android:text="Disagree"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/imgCheckbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnConfirm"
+            app:layout_constraintTop_toBottomOf="@+id/tvContent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgCheckbox"
+            bindSelected="@{handler.checked}"
+            bindSingleClick="@{()->handler.onCheckboxClick()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/checkbox_tool"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txtHint"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txtHint"
+            bindSingleClick="@{()->handler.onCheckboxClick()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:paddingVertical="8dp"
+            android:text="Got it. It won't be shown again."
+            android:textAppearance="@style/font_12"
+            android:textColor="@color/colorWhite50"
+            app:layout_constraintBottom_toBottomOf="@+id/imgCheckbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgCheckbox"
+            app:layout_constraintTop_toTopOf="@+id/imgCheckbox" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

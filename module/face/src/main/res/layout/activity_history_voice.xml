@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.tvoice.VoiceHistoryActivity" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.VoiceHistoryViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        bindAddVerticalPadding="@{true}"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/backImg"
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingStart="@dimen/margin_width_app"
+                android:paddingEnd="8dp"
+                android:src="@drawable/img_icon_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorWhite" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="60dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="@string/mine_generation_recrds"
+                android:textAppearance="@style/font_18"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refreshLayout"
+            bindRefreshListener="@{()->vm.getUserRecordPage()}"
+            bindRefreshing="@{vm.homeRefreshing}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottomView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clResult"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    bindAdapter="@{vm.historyAdapter}"
+                    bindData="@{vm.historyList}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:spanCount="1"
+                    tools:itemCount="12"
+                    tools:listitem="@layout/item_voice_history" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottomView"
+            bindVisible="@{!vm.isColse}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color1D"
+            android:paddingBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgCover"
+                android:layout_width="35dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="@dimen/margin_width_app"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/img_icon_audiofile2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:gravity="center"
+                android:text="asdfasdfasdf"
+                android:textAppearance="@style/font_15"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toTopOf="@+id/tvTime"
+                app:layout_constraintStart_toEndOf="@+id/imgCover"
+                app:layout_constraintTop_toTopOf="@+id/imgCover" />
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:gravity="center"
+                android:text="00:00"
+                android:textAppearance="@style/font_12"
+                android:textColor="@color/colorWhite50"
+                app:layout_constraintBottom_toBottomOf="@+id/imgCover"
+                app:layout_constraintStart_toEndOf="@+id/imgCover"
+                app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgPlay"
+                bindSelected="@{!vm.isPlay}"
+                bindSingleClick="@{()->handler.playOr()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:src="@drawable/checkbox_voice"
+                app:layout_constraintBottom_toBottomOf="@+id/imgCover"
+                app:layout_constraintEnd_toStartOf="@+id/imgClose"
+                app:layout_constraintTop_toTopOf="@+id/imgCover"
+                app:tint="@color/colorWhite" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgClose"
+                bindSingleClick="@{()->handler.colseView()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_width_app"
+                android:src="@drawable/img_icon_close_w"
+                app:layout_constraintBottom_toBottomOf="@+id/imgCover"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgCover"
+                app:tint="@color/colorWhite" />
+
+
+            <ProgressBar
+                android:id="@+id/progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="18dp"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/bg_voice_progress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgCover" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.face.view.NoDataView
+            noData="@{vm.isNoData}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/clTitle"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <TextView
+            bindVisible="@{vm.loadFailed}"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_btn1_rounded_corners8"
+            android:gravity="center"
+            android:paddingHorizontal="16dp"
+            android:text="@string/retry"
+            android:textAppearance="@style/font_16"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_min="100dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

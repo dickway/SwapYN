@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.thug.HugActivity" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.HugViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindAddVerticalPadding="@{true}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/screen_margins_width1"
+                android:src="@drawable/img_icon_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorWhite" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="110dp"
+                android:gravity="center"
+                android:text="@string/txt_start_hug1"
+                android:textAppearance="@style/font_18"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                bindSingleClick="@{()->handler.toRecord()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/margin_width_app"
+                android:src="@drawable/img_tool_record"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/lin1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="12dp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <TextView
+                        bindSelected="@{vm.isSingular}"
+                        bindSingleClick="@{()->handler.onStyle(true)}"
+                        bindTextBold="@{vm.isSingular}"
+                        android:layout_width="114dp"
+                        android:lineSpacingExtra="-3dp"
+                        android:paddingHorizontal="8dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/check_hug"
+                        android:gravity="center"
+                        android:text="@string/collage"
+                        android:textColor="@color/color_hug"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        bindSelected="@{!vm.isSingular}"
+                        bindSingleClick="@{()->handler.onStyle(false)}"
+                        bindTextBold="@{!vm.isSingular}"
+                        android:layout_width="114dp"
+                        android:lineSpacingExtra="-3dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="12dp"
+                        android:paddingHorizontal="8dp"
+                        android:background="@drawable/check_hug"
+                        android:gravity="center"
+                        android:text="@string/collage2"
+                        android:textColor="@color/color_hug"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card1"
+                    bindSingleClick="@{()->handler.selectorPhoto(1)}"
+                    bindVisible="@{!vm.isSingular}"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:maxWidth="200dp"
+                    app:cardBackgroundColor="#1B1B1B"
+                    app:cardCornerRadius="24dp"
+                    app:layout_constraintDimensionRatio="3:4"
+                    app:layout_constraintEnd_toStartOf="@+id/card2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lin1">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img1"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/icon_upload"
+                            app:layout_constraintBottom_toTopOf="@+id/txt1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <TextView
+                            android:id="@+id/txt1"
+                            bindInVisible="@{vm.img1.length()>0}"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/check_hug"
+                            android:gravity="center"
+                            android:text="@string/upload_clear"
+                            android:textColor="@color/colorB2"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/img1" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgChoose1"
+                            bindSingleClick="@{()->handler.selectorPhoto(1)}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgRhug1"
+                            bindSingleClick="@{()->handler.selectorPhoto(1)}"
+                            bindVisible="@{vm.img1.length()>0}"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_marginEnd="12dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/icon_r_hug"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card2"
+                    bindSingleClick="@{()->handler.selectorPhoto(2)}"
+                    bindVisible="@{!vm.isSingular}"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:maxWidth="200dp"
+                    app:cardBackgroundColor="#1B1B1B"
+                    app:cardCornerRadius="24dp"
+                    app:layout_constraintDimensionRatio="3:4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/card1"
+                    app:layout_constraintTop_toBottomOf="@+id/lin1">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/linImg2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img2"
+                            bindInVisible="@{vm.img2.length()>0}"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/icon_upload"
+                            app:layout_constraintBottom_toTopOf="@+id/txt2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <TextView
+                            android:id="@+id/txt2"
+                            bindInVisible="@{vm.img2.length()>0}"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/check_hug"
+                            android:gravity="center"
+                            android:text="@string/upload_clear"
+                            android:textColor="@color/colorB2"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/img2" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgChoose2"
+                            bindSingleClick="@{()->handler.selectorPhoto(2)}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgRhug2"
+                            bindSingleClick="@{()->handler.selectorPhoto(2)}"
+                            bindVisible="@{vm.img2.length()>0}"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_marginEnd="12dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/icon_r_hug"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardSingle"
+                    bindSingleClick="@{()->handler.selectorPhoto(3)}"
+                    bindVisible="@{vm.isSingular}"
+                    android:layout_width="350dp"
+                    android:layout_height="226dp"
+                    android:layout_marginTop="12dp"
+                    app:cardBackgroundColor="#1B1B1B"
+                    app:cardCornerRadius="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lin1"
+                    tools:visibility="gone">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toStartOf="@+id/linImg2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lin1">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img3"
+                            bindInVisible="@{vm.img3.length()>0}"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/icon_upload"
+                            app:layout_constraintBottom_toTopOf="@+id/txt3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <TextView
+                            android:id="@+id/txt3"
+                            bindInVisible="@{vm.img3.length()>0}"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/check_hug"
+                            android:gravity="center"
+                            android:text="@string/upload_clear2"
+                            android:textColor="@color/colorB2"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/img3" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgChoose3"
+                            bindSingleClick="@{()->handler.selectorPhoto(3)}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgRhug3"
+                            bindSingleClick="@{()->handler.selectorPhoto(3)}"
+                            bindVisible="@{vm.img3.length()>0}"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_marginEnd="12dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/icon_r_hug"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/tv1"
+            bindSelected='@{vm.isChoose}'
+            bindSingleClick="@{()->handler.postSend()}"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/check_btn"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="@string/generate"
+            android:textAppearance="@style/font_16"
+            android:textColor="@color/color_btn_video"
+            android:textStyle="bold"
+            app:drawableTint="@color/color_btn_video"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="-10dp"
+            android:background="@drawable/bg_b_corners100"
+            android:gravity="center"
+            android:paddingHorizontal="7dp"
+            app:layout_constraintEnd_toEndOf="@+id/tv1"
+            app:layout_constraintStart_toStartOf="@+id/tv1"
+            app:layout_constraintTop_toTopOf="@+id/tv1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:src="@drawable/img_icon_hash32" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@{vm.hugPinot}"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv1">
+
+            <TextView
+                android:id="@+id/tvBalance2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/balance"
+                android:textColor="@color/colorWhite"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text='@{": "+gvm.userInfo.tflops}'
+                android:textColor="@color/colorWhite"
+                android:textSize="10sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text=" AIPoint"
+                android:textColor="@color/colorWhite"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+<!--        <View-->
+<!--            bindVisible="@{!vm.isChoose}"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="90dp"-->
+<!--            android:background="#4D000000"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

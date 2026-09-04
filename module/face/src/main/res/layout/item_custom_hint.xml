@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvhint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxWidth="280dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/remaining_upload_quota"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorB2"
+            app:constraint_referenced_ids="tvhint,tvNum"
+            app:layout_constraintEnd_toStartOf="@+id/tvNum"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="5"
+            android:paddingHorizontal="3dp"
+            android:textAppearance="@style/font_18"
+            android:textColor="#FF3434"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tvhint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvhint"
+            app:layout_constraintTop_toTopOf="@+id/tvhint" />
+
+        <TextView
+            android:id="@+id/tvBuy"
+            bindTextUnderLine="@{true}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/img_vip_more_w"
+            android:drawablePadding="6dp"
+            android:drawableTint="#3EA6FF"
+            android:gravity="center"
+            android:paddingVertical="4dp"
+            android:text="@string/buy_more_quota"
+            android:textAppearance="@style/font_16"
+            android:textColor="#3EA6FF"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvhint" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

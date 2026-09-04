@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--页面背景可以是图片或颜色-->
+    <attr name="openImage.background" format="reference|color" />
+    <!--页面切换方向-->
+    <attr name="openImage.viewPager.orientation" format="enum">
+        <enum name="horizontal" value="0" />
+        <enum name="vertical" value="1" />
+    </attr>
+    <!--以下指示器相关距离设置-->
+    <attr name="openImage.indicator.marginStart" format="dimension" />
+    <attr name="openImage.indicator.marginEnd" format="dimension" />
+    <attr name="openImage.indicator.marginTop" format="dimension" />
+    <attr name="openImage.indicator.marginBottom" format="dimension" />
+    <attr name="openImage.indicator.marginLeft" format="dimension" />
+    <attr name="openImage.indicator.marginRight" format="dimension" />
+    <!--指示器在页面的位置-->
+    <attr name="openImage.indicator.gravity" format="flags">
+        <flag name="top" value="0x30" />
+        <flag name="bottom" value="0x50" />
+        <flag name="left" value="0x03" />
+        <flag name="right" value="0x05" />
+        <flag name="center_vertical" value="0x10" />
+        <flag name="center_horizontal" value="0x01" />
+        <flag name="center" value="0x11" />
+        <flag name="start" value="0x00800003" />
+        <flag name="end" value="0x00800005" />
+    </attr>
+    <!--指示器文字或图片-->
+    <attr name="openImage.indicator.type" format="enum">
+        <enum name="text" value="0" />
+        <enum name="image" value="1" />
+        <enum name="none" value="2" />
+    </attr>
+    <!--如果指示器是文本可以设置例如(%1$d/%2$d) &ndash;&gt; (1/10)-->
+    <attr name="openImage.indicator.textFormat" format="reference|string" />
+    <!--文本指示器颜色-->
+    <attr name="openImage.indicator.textColor" format="reference|color" />
+    <!--文本大小-->
+    <attr name="openImage.indicator.textSize" format="dimension" />
+    <!--图片指示器资源-->
+    <attr name="openImage.indicator.imageRes" format="reference|color" />
+    <!--图片指示器每个之间的间隔-->
+    <attr name="openImage.indicator.image.interval" format="dimension" />
+    <!--图片指示器排列方向-->
+    <attr name="openImage.indicator.image.orientation" format="enum">
+        <enum name="horizontal" value="0" />
+        <enum name="vertical" value="1" />
+    </attr>
+    <!--页面状态栏字体颜色-->
+    <attr name="openImage.statusBar.fontStyle" format="enum">
+        <enum name="light" value="1" />
+        <enum name="dark" value="2" />
+        <enum name="full_screen" value="3" />
+    </attr>
+    <!--卡片之间的距离-->
+    <attr name="openImage.viewPager.pageMargin" format="dimension" />
+    <!--触摸关闭方向-->
+    <attr name="openImage.touchClose.orientation" format="enum">
+        <enum name="horizontal" value="0" />
+        <enum name="vertical" value="1" />
+    </attr>
+    <!--触摸时指示器是否隐藏-->
+    <attr name="openImage.indicator.touchingHide" format="boolean" />
+    <!--下载时是否显示 Toast 的总开关-->
+    <attr name="openImage.download.toast" format="boolean" />
+    <!--下载开始时 Toast 的文案，文案为空时不显示-->
+    <attr name="openImage.download.startToast" format="reference|string" />
+    <!--下载结束时 Toast 的文案，文案为空时不显示-->
+    <attr name="openImage.download.successToast" format="reference|string" />
+    <!--下载失败时 Toast 的文案，文案为空时不显示-->
+    <attr name="openImage.download.errorToast" format="reference|string" />
+    <!--请求读取外部存储权限失败时的文案，文案为空时不显示-->
+    <attr name="openImage.requestWriteExternalStoragePermissionsFail" format="reference|string" />
+</resources>

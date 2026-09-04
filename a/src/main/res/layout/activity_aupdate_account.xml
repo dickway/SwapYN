@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.a.viewmodel.AUpdateAccountViewModel" />
+
+        <variable
+            name="handler"
+            type="com.a.activity.account.AUpdateAccountActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindAddVerticalPadding="@{true}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAmainBg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgFace"
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingHorizontal="10dp"
+                android:src="@mipmap/a_icon_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Change Password"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/editAccountLayout"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/a_bg_et1"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle">
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editAccount"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                android:gravity="center_vertical"
+                android:hint="Old password"
+                android:maxLength="20"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@={vm.account}"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#F6346F"
+                android:textColorHint="#52FFFFFF"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/editPwdLayout"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/a_bg_et2"
+            app:layout_constraintTop_toBottomOf="@+id/editAccountLayout">
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editPwd"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                android:gravity="center_vertical"
+                android:hint="Create new password"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:paddingStart="16dp"
+                android:paddingEnd="80dp"
+                android:text="@={vm.pwd}"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#F6346F"
+                android:textColorHint="#52FFFFFF"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgClose"
+                bindSingleClick="@{()->vm.onClearInputClick()}"
+                bindVisible="@{vm.pwd!=null&amp;&amp;vm.pwd.length()>0}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:src="@mipmap/a_icon_account_delete"
+                app:layout_constraintBottom_toBottomOf="@+id/editPwd"
+                app:layout_constraintEnd_toStartOf="@+id/imgShow"
+                app:layout_constraintTop_toTopOf="@+id/editPwd" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgShow"
+                bindSelected='@{vm.passwordVisible}'
+                bindSingleClick="@{()->vm.onPasswordVisible()}"
+                bindVisible="@{vm.pwd!=null&amp;&amp;vm.pwd.length()>0}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="14dp"
+                android:paddingVertical="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:src="@drawable/checkbox_apwd"
+                app:layout_constraintBottom_toBottomOf="@+id/editPwd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/editPwd" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/editPwdLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/a_bg_et3"
+            app:layout_constraintTop_toBottomOf="@+id/editPwdLayout">
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editPwd2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                android:gravity="center_vertical"
+                android:hint="Confirm new password"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:paddingStart="16dp"
+                android:paddingEnd="80dp"
+                android:text="@={vm.pwd2}"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#F6346F"
+                android:textColorHint="#52FFFFFF"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgClose2"
+                bindSingleClick="@{()->vm.onClearInputClick2()}"
+                bindVisible="@{vm.pwd2!=null&amp;&amp;vm.pwd2.length()>0}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:src="@mipmap/a_icon_account_delete"
+                app:layout_constraintBottom_toBottomOf="@+id/editPwd2"
+                app:layout_constraintEnd_toStartOf="@+id/imgShow2"
+                app:layout_constraintTop_toTopOf="@+id/editPwd2" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgShow2"
+                bindSelected='@{vm.passwordVisible2}'
+                bindSingleClick="@{()->vm.onPasswordVisible2()}"
+                bindVisible="@{vm.pwd2!=null&amp;&amp;vm.pwd2.length()>0}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="14dp"
+                android:paddingVertical="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:src="@drawable/checkbox_apwd"
+                app:layout_constraintBottom_toBottomOf="@+id/editPwd2"
+                app:layout_constraintEnd_toEndOf="@+id/editPwd2"
+                app:layout_constraintTop_toTopOf="@+id/editPwd2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="26dp"
+            android:background="#393939"
+            app:layout_constraintTop_toBottomOf="@+id/editAccountLayout" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="26dp"
+            android:background="#393939"
+            app:layout_constraintBottom_toBottomOf="@+id/editPwdLayout" />
+
+        <TextView
+            android:id="@+id/txtHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="26dp"
+            android:layout_marginTop="5dp"
+            android:text="Your password must be 6–20 characters and contain both letters and numbers."
+            android:textColor="#5E5E5E"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPwdLayout2" />
+
+
+        <TextView
+            android:id="@+id/login"
+            bindSelected='@{vm.enableLogin}'
+            bindSingleClick="@{()->handler.onUpdate()}"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/checkbox_btn_jb"
+            android:gravity="center"
+            android:text="Continue"
+            android:textAppearance="@style/font_16"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/txtHint" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

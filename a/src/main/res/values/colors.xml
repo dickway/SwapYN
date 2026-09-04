@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorAmainBg">#101010</color>
+    <color name="colorAtransparent">#00000000</color>
+
+    <color name="colorAblack">#FF000000</color>
+    <color name="colorAwhite">#FFFFFFFF</color>
+
+    <color name="colorBgC4FA47">#FFFFFF</color>
+    <color name="colorBgFF3434">#FF3434</color>
+    <color name="colorAb2">#B2B2B2</color>
+
+</resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginHorizontal="6dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgTool"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:maxHeight="100dp"
+            app:shapeAppearanceOverlay="@style/shape_round_16dp"
+            android:background="@drawable/bg_tool_type_item1"
+            app:layout_constraintDimensionRatio="170:96"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/img_icon_new"
+            app:layout_constraintEnd_toEndOf="@+id/imgTool"
+            app:layout_constraintTop_toTopOf="@+id/imgTool"/>
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="12dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:maxWidth="110dp"
+            android:lineSpacingExtra="-5dp"
+            android:text="@string/txt_ai"
+            tools:text=">>>>>>>>>>>>>\n>>>>>>>>s>>>>ssss"
+            android:textAppearance="@style/font_15"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintStart_toStartOf="@+id/imgTool"
+            app:layout_constraintTop_toTopOf="@+id/imgTool" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorBg1" format="color" />
+    <attr name="colorBg2" format="color" />
+    <attr name="colorBg10" format="color" />
+    <attr name="colorBg20" format="color" />
+    <attr name="colorBg30" format="color" />
+    <attr name="colorBg50" format="color" />
+    <attr name="colorBg80" format="color"/>
+    <attr name="colorImg" format="color" />
+    <attr name="colorText" format="color" />
+    <attr name="colorText1" format="color" />
+    <attr name="colorText2" format="color" />
+    <attr name="colorText10" format="color" />
+    <attr name="colorText50" format="color" />
+    <attr name="colorSettingBtn" format="color" />
+    <attr name="colorDialogBg" format="color" />
+    <attr name="colorGaussian" format="color" />
+    <attr name="colorLine" format="color" />
+    <attr name="color2B_B2" format="color" />
+    <attr name="color3f_E5" format="color" />
+    <attr name="colorB2_2B" format="color" />
+    <attr name="colorVip1" format="color" />
+    <attr name="colorVip2" format="color" />
+    <attr name="colorVip3" format="color" />
+    <attr name="colorShare" format="color" />
+    <attr name="colorShareBg" format="color" />
+    <attr name="colorTool" format="color" />
+    <attr name="colorToolBg" format="color" />
+
+    <attr name="voiceBg" format="color" />
+    <declare-styleable name="VoiceWaveView">
+        <attr name="lineSpace" format="dimension"/>
+        <attr name="lineWidth" format="dimension"/>
+        <attr name="duration" format="integer"/>
+
+        <attr name="waveMode" format="enum">
+            <enum name="up_down" value="0"/>
+            <enum name="left_right" value="1"/>
+        </attr>
+
+        <attr name="lineType" format="enum">
+            <enum name="bar_chart" value="0"/>
+            <enum name="line_graph" value="1"/>
+        </attr>
+
+        <attr name="lineColor" format="color"/>
+        <attr name="android:gravity"/>
+    </declare-styleable>
+
+    <declare-styleable name="WheelView">
+        <attr name="wheelCyclic" format="boolean"/>
+        <attr name="wheelEntries" format="reference"/>
+        <attr name="wheelItemCount" format="integer"/>
+        <attr name="wheelItemWidth" format="dimension"/>
+        <attr name="wheelItemHeight" format="dimension"/>
+        <attr name="wheelTextSize" format="dimension"/>
+        <attr name="wheelTextColor" format="color"/>
+        <attr name="wheelSelectedTextColor" format="color"/>
+        <attr name="wheelDividerColor" format="color"/>
+        <attr name="wheelHighlightColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="Wheel3DView">
+        <attr name="wheelToward" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="left" value="-1"/>
+            <enum name="right" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>

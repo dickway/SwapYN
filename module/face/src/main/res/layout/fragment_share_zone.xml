@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.share.ShareZoneFragment" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.fragment.ShareZoneModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindAddTopHeight="@{true}"
+        bindAddTopPadding="@{true}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAppBg"
+        tools:context=".ui.share.ShareZoneFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitle"
+                bindSingleClick="@{()->handler.onShareTips2()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:drawableEnd="@drawable/img_share_quest"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="@string/fragment_tool_share"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                bindSingleClick="@{()->handler.onShareTips1()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/bg_rounded_custom_btn"
+                android:drawableStart="@drawable/img_share_top_share"
+                android:drawablePadding="4dp"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="5dp"
+                android:text="@string/share"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/colorAppBg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/conType">
+
+            <com.scwang.smart.refresh.layout.SmartRefreshLayout
+                android:id="@+id/refreshLayout"
+                bindFinishLoadMore="@{vm.finishLoadMore}"
+                bindLoadMoreListener="@{()->vm.getShareLoad()}"
+                bindNoMoreData="@{vm.isNoMoreData()}"
+                bindRefreshListener="@{()->vm.getShareRefresh()}"
+                bindRefreshing="@{vm.isLoading}"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        bindAdapter="@{vm.shareZoneAdapter}"
+                        bindData="@{vm.shareZeList}"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:clipToPadding="false"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="6dp"
+                        android:paddingBottom="36dp"
+                        app:layoutManager="@{handler.layoutManager}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:spanCount="2"
+                        tools:itemCount="12"
+                        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        tools:listitem="@layout/item_share_zone" />
+
+                    <com.face.view.NoDataView
+                        noData="@{vm.isNoData}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.4" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.scwang.smart.refresh.footer.ClassicsFooter
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srlAccentColor="@color/colorWhite50"
+                    app:srlDrawableSize="0dp"
+                    app:srlTextSizeTitle="16sp" />
+
+            </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAppBg"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle">
+
+            <LinearLayout
+                android:id="@+id/typeLine1"
+                bindSingleClick="@{()->handler.onClickType1()}"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="@dimen/screen_margins_width1"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_rounded_corners6"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp"
+                app:layout_constraintEnd_toStartOf="@+id/typeLine2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/type1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLength="18"
+                    android:maxLines="1"
+                    android:text="@{vm.selectedName1}"
+                    android:textColor="@color/colorWhite" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    bindSelected="@{vm.isType1}"
+                    android:layout_width="13dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/checkbox_type"  />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/typeLine2"
+                bindSingleClick="@{()->handler.onClickType2()}"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="@dimen/margin_width_app"
+                android:background="@drawable/bg_rounded_corners6"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/typeLine1"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/type2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLength="18"
+                    android:maxLines="1"
+                    android:text="@{vm.selectedName2}"
+                    android:textColor="@color/colorWhite" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    bindSelected="@{vm.isType2}"
+                    android:layout_width="13dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/checkbox_type"  />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgPro"
+                bindVisible="@{!gvm.isVip()}"
+                android:layout_width="30dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="-8dp"
+                android:src="@drawable/img_swap_pro_m"
+                app:layout_constraintEnd_toEndOf="@+id/typeLine2"
+                app:layout_constraintTop_toTopOf="@+id/typeLine2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

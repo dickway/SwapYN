@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginVertical="4dp"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgCover"
+            android:layout_width="match_parent"
+            android:layout_height="242dp"
+            android:scaleType="centerCrop"
+            app:strokeColor="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/shape_round_8dp"
+            tools:srcCompat="@tools:sample/avatars" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgPro"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:strokeColor="@null"
+            android:layout_margin="8dp"
+            android:src="@drawable/img_swap_pro_m"
+            app:layout_constraintEnd_toStartOf="@+id/imgDelete"
+            app:layout_constraintTop_toTopOf="@+id/imgCover" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgVideo"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:src="@drawable/img_share_video_icon"
+            app:layout_constraintEnd_toStartOf="@+id/imgPro"
+            app:layout_constraintTop_toTopOf="@+id/imgCover" />
+        <TextView
+            android:id="@+id/tvNum"
+            android:visibility="gone"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_margin="6dp"
+            android:gravity="center"
+            android:text="4"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/bg_num_rounded_corners100"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgDelete"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:src="@drawable/img_task_delete_m"
+            app:layout_constraintEnd_toEndOf="@+id/imgCover"
+            app:layout_constraintTop_toTopOf="@+id/imgCover" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgMsg"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:visibility="gone"
+            android:layout_margin="5dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/bg_btn1_rounded_corners100" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgSate"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="5dp"
+            android:visibility="gone"
+            android:background="@drawable/img_mine_failure_m"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isSelected"
+            type="Boolean" />
+
+        <variable
+            name="isShow"
+            type="Boolean" />
+
+        <variable
+            name="bean"
+            type="com.face.bean.VipSchemeBean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindSelected="@{isSelected}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:checked="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            bindSelected="@{isSelected}"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginHorizontal="@dimen/margin_width_app"
+            android:layout_marginTop="10dp"
+            android:animateLayoutChanges="false"
+            android:background="@drawable/checkbox_vip_item"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:checked="true">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgSelect"
+                bindSelected="@{isSelected}"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="12dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/checkbox_vip_item2" />
+
+            <TextView
+                android:id="@+id/tvTitleSelect"
+                bindSelected="@{isSelected}"
+                bindTextBold="@{isSelected}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:gravity="center"
+                android:textAppearance="@style/font_16"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgSelect"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Weekly" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tvHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:visibility="gone"
+                android:gravity="center"
+                android:src="@drawable/img_icon_lifetime"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTitleSelect"
+                app:layout_constraintStart_toEndOf="@+id/tvTitleSelect"
+                app:layout_constraintTop_toTopOf="@+id/tvTitleSelect" />
+
+
+            <TextView
+                android:id="@+id/tvUnitSelect"
+                bindSelected="@{isSelected}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{bean.showCode}"
+                android:textColor="@color/color_vip_scheme2"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tvPriceSelect"
+                app:layout_constraintEnd_toStartOf="@+id/tvPriceSelect"
+                tools:text="$" />
+
+            <TextView
+                android:id="@+id/tvPriceSelect"
+                bindSelected="@{isSelected}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/color_vip_scheme2"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="1.92555533" />
+
+            <TextView
+                android:id="@+id/tvHintPoint1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:gravity="end|center_vertical"
+                android:paddingStart="4dp"
+                android:text="@string/cumulative_gift"
+                android:textColor="#FFCB80"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvHintPoint2"
+                app:layout_constraintEnd_toStartOf="@+id/tvHintPoint2"
+                app:layout_constraintTop_toTopOf="@+id/tvHintPoint2" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tvHintPoint2"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:src="@drawable/img_point_hash"
+                app:layout_constraintTop_toBottomOf="@+id/imgSelect"
+                app:layout_constraintEnd_toStartOf="@+id/tvHintPoint" />
+
+
+            <TextView
+                android:id="@+id/tvHintPoint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:gravity="center"
+                android:text="@string/cumulative"
+                android:textColor="#FFCB80"
+                android:textStyle="bold"
+                android:textSize="10sp"
+                app:layout_constraintTop_toTopOf="@+id/tvHintPoint2"
+                app:layout_constraintBottom_toBottomOf="@+id/tvHintPoint2"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            bindVisible="@{isShow}"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginEnd="24dp"
+            android:paddingHorizontal="12dp"
+            android:background="@drawable/bg_vip_item_hot"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:background="@drawable/img_icon_mostpopular"
+                android:layout_marginEnd="2dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vip_most_popular"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

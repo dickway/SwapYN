@@ -1,0 +1,73 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.view.DisclaimerDialog" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog_loginout"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/swap_disclaimer"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDis"
+            android:scrollbars="vertical"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_width_app"
+            android:gravity="start"
+            style="@android:style/Holo.ButtonBar.AlertDialog"
+            android:textIsSelectable="true"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorWhite50" />
+
+        <TextView
+            bindSingleClick="@{()->handler.onConfirmClick()}"
+            android:layout_width="match_parent"
+            android:textIsSelectable="true"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_btn1_rounded_corners100"
+            android:gravity="center"
+            android:text="@string/confirm"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            bindSingleClick="@{()->handler.dismissAllowingStateLoss()}"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="34dp"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/colorWhite50"
+            android:textSize="14sp"
+            android:visibility="gone" />
+    </LinearLayout>
+</layout>

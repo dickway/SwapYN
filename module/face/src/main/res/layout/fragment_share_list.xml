@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.share.frg.ShareListFragment" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.fragment.ShareListModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.share.frg.ShareListFragment">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            bindSingleClick="@{()->handler.onShowPoints()}"
+            android:id="@+id/tvTips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:paddingBottom="4dp"
+            android:paddingHorizontal="12dp"
+            android:drawableEnd="@drawable/img_share_gift_tips"
+            android:drawablePadding="5dp"
+            android:text="@string/reward_share_tips"
+            android:textColor="@color/colorB2"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            bindFinishLoadMore="@{vm.isLoading}"
+            bindLoadMoreListener="@{()->vm.getShareData(false,1)}"
+            bindNoMoreData="@{vm.isNoMoreData()}"
+            bindRefreshListener="@{()->vm.getShareData(true,1)}"
+            bindRefreshing="@{vm.isLoading}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTips">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    bindAdapter="@{handler.shareMeAdapter}"
+                    bindData="@{vm.shareZeList}"
+                    android:layout_width="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_height="0dp"
+                    android:paddingTop="4dp"
+                    android:clipToPadding="false"
+                    android:paddingHorizontal="6dp"
+                    android:paddingBottom="20dp"
+                    android:orientation="vertical"
+                    app:layoutManager="@{handler.layoutManager}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:spanCount="2"
+                    tools:itemCount="12"
+                    tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    tools:listitem="@layout/item_face_item" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.scwang.smart.refresh.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srlAccentColor="@color/colorWhite50"
+                app:srlDrawableSize="0dp"
+                app:srlTextSizeTitle="16sp" />
+
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTips"
+            android:layout_width="wrap_content"
+            bindVisible="@{vm.isFirstShow}"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="@string/reward_share_first"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text2"
+                bindSingleClick="@{()->handler.onShareFirst()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/bg_rounded_white_22d"
+                android:gravity="center"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="10dp"
+                android:text="@string/reward_share_template"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text1" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

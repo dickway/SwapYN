@@ -1,0 +1,220 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.view.HDModePiontDialog" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog_loginout"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
+        <View
+            android:layout_width="32dp"
+            android:layout_height="2.5dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_swap_rounded_corners2" />
+
+
+        <TextView
+            android:id="@+id/tvTitle1"
+            bindTextUnderLine="@{true}"
+            bindSingleClick="@{()->handler.onVipClick()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="17dp"
+            android:drawablePadding="4dp"
+            android:text="@string/become_lifetime_vip"
+            android:textColor="#FFD244"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:drawableEndCompat="@drawable/img_icon_hd_jt" />
+        <TextView
+            android:id="@+id/tvTitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="17dp"
+            android:drawablePadding="4dp"
+            android:text="@string/lifetime_vip"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:text="@string/hd_mode_vip"
+            android:textColor="@color/colorB2"
+            android:textSize="14sp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/standardMode"
+            android:layout_width="match_parent"
+            bindSingleClick="@{()->handler.onConfirmClick(false)}"
+            android:layout_marginTop="24dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@drawable/bg_rounded_btn_corners16">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgg1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/img_icon_hd_g"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_swap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintVertical_chainStyle="packed"
+                android:text="@string/swap_face"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_type"
+                app:layout_constraintStart_toEndOf="@+id/imgg1"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/standard_mode"
+                android:textColor="#B2B2B2"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_swap"
+                app:layout_constraintTop_toBottomOf="@+id/tv_swap" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgPiont1"
+                android:layout_width="18dp"
+                android:layout_marginEnd="5dp"
+                android:layout_height="18dp"
+                android:src="@drawable/img_icon_hash32"
+                app:layout_constraintBottom_toBottomOf="@+id/tvPrice1"
+                app:layout_constraintEnd_toStartOf="@+id/tvPrice1"
+                app:layout_constraintTop_toTopOf="@+id/tvPrice1" />
+            <TextView
+                android:id="@+id/tvPrice1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24"
+                android:layout_marginEnd="16dp"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/HDMode"
+            bindSingleClick="@{()->handler.onConfirmClick(true)}"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="8dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgg2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/img_icon_hd_g"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_swap2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintVertical_chainStyle="packed"
+                android:text="@string/swap_face"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_type2"
+                app:layout_constraintStart_toEndOf="@+id/imgg2"
+                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imghd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/img_icon_hd"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_swap2"
+                app:layout_constraintStart_toEndOf="@+id/tv_swap2"
+                app:layout_constraintTop_toTopOf="@+id/tv_swap2" />
+            <TextView
+                android:id="@+id/tv_type2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hd_mode"
+                android:textColor="#B2B2B2"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_swap2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_swap2" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgPiont2"
+                android:layout_width="18dp"
+                android:layout_marginEnd="5dp"
+                android:layout_height="18dp"
+                android:src="@drawable/img_icon_hash32"
+                app:layout_constraintBottom_toBottomOf="@+id/tvPrice2"
+                app:layout_constraintEnd_toStartOf="@+id/tvPrice2"
+                app:layout_constraintTop_toTopOf="@+id/tvPrice2" />
+            <TextView
+                android:id="@+id/tvPrice2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24"
+                android:layout_marginEnd="16dp"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/tvPrice3"
+                bindTextCenterLine="@{true}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="34"
+                android:textColor="#ffffff"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="@+id/tvPrice2"
+                app:layout_constraintEnd_toEndOf="@+id/tvPrice2"
+                app:layout_constraintTop_toBottomOf="@+id/tvPrice2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+</layout>

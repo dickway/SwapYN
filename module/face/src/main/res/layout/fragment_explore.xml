@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.fragment.ExploreFragment" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.fragment.ExploreViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            bindAddTopHeight="@{true}"
+            bindAddTopPadding="@{true}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAppBg">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAppBg"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsingToolbarLayout"
+                    bindDisallowConsumeInsert="@{true}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:contentScrim="@color/colorTransparent"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:scrimAnimationDuration="200"
+                    app:scrimVisibleHeightTrigger="0dp"
+                    app:toolbarId="@id/clTitle">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@color/colorAppBg"
+                        app:layout_collapseMode="parallax"
+                        app:layout_collapseParallaxMultiplier="0.5"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/tvTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="28dp"
+                            android:layout_marginHorizontal="12dp"
+                            android:src="@drawable/img_txt_logo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgSearch"
+                            bindSingleClick="@{()->handler.onSearchClick()}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="12dp"
+                            android:src="@drawable/img_search"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgMore"
+                            bindSingleClick="@{()->handler.onFeedback()}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingHorizontal="10dp"
+                            android:src="@drawable/icon_qd"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imgSearch"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                           android:id="@+id/imgSign"
+                            bindVisible="@{!gvm.isTodayChecked}"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/img_icon_hash_home"
+                            app:layout_constraintEnd_toEndOf="@id/imgMore"
+                            app:layout_constraintTop_toTopOf="@id/imgMore" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgPro"
+                            bindSingleClick="@{()->handler.onVipClick()}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingHorizontal="10dp"
+                            android:src="@drawable/img_xin_icon_pro"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imgMore"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    app:layout_collapseMode="pin"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tabIndicator="@drawable/bg_tool_indicator"
+                    app:tabIndicatorAnimationMode="elastic"
+                    app:tabIndicatorColor="@color/colorTransparent"
+                    app:tabIndicatorFullWidth="false"
+                    app:tabIndicatorGravity="bottom"
+                    app:tabIndicatorHeight="3dp"
+                    app:tabMaxWidth="0dp"
+                    app:tabMinWidth="40dp"
+                    app:tabMode="fixed"
+                    app:tabRippleColor="@null"
+                    app:tabSelectedTextColor="@color/colorWhite"
+                    app:tabTextAppearance="@style/searchTab"
+                    app:tabTextColor="@color/colorB2" />
+
+                <View
+                    android:id="@+id/views1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorWhite20" />
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+                    tools:listitem="@layout/fragment_explore1" />
+            </androidx.core.widget.NestedScrollView>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <LinearLayout
+            android:id="@+id/customLin"
+            bindSingleClick="@{()->handler.onCustom()}"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginBottom="8.5dp"
+            android:background="@drawable/bg_btn_explore_corners100"
+            android:gravity="center"
+            android:paddingHorizontal="26dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/img_ex_custom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imgMore"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:text="@string/custom"
+                android:textAppearance="@style/font_16"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:animateLayoutChanges="true">-->
+
+    <!--        <com.scwang.smart.refresh.layout.SmartRefreshLayout-->
+    <!--            android:id="@+id/refreshLayout"-->
+    <!--            bindAddTopHeight="@{true}"-->
+    <!--            bindAddTopPadding="@{true}"-->
+    <!--            bindFinishLoadMore="@{vm.finishLoadMore}"-->
+    <!--            bindLoadMoreListener="@{()->vm.getAiFace()}"-->
+    <!--            bindRefreshAnimationOnly="@{true}"-->
+    <!--            bindRefreshListener="@{()->vm.getData()}"-->
+    <!--            bindRefreshing="@{vm.homeRefreshing}"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="0dp"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent"-->
+    <!--            app:srlHeaderInsetStart="80dp">-->
+
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent">-->
+
+
+    <!--                <androidx.recyclerview.widget.RecyclerView-->
+    <!--                    android:id="@+id/recyclerView"-->
+    <!--                    bindAdapter="@{vm.exploreListAdapter}"-->
+    <!--                    bindAddBottomHeight="@{true}"-->
+    <!--                    bindAddBottomPadding="@{true}"-->
+    <!--                    bindData="@{vm.explores}"-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="0dp"-->
+    <!--                    android:background="@color/colorBlack"-->
+    <!--                    android:clipToPadding="false"-->
+    <!--                    android:paddingHorizontal="6dp"-->
+    <!--                    android:paddingTop="48dp"-->
+    <!--                    android:paddingBottom="48dp"-->
+    <!--                    app:layoutManager="@{layoutManager}"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent"-->
+    <!--                    app:layout_constraintVertical_bias="0.0"-->
+    <!--                    tools:layout_editor_absoluteX="0dp" />-->
+
+    <!--                <TextView-->
+    <!--                    bindSingleClick="@{()->vm.getData()}"-->
+    <!--                    bindVisible="@{vm.loadFailed}"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="40dp"-->
+    <!--                    android:background="@drawable/bg_btn1_rounded_corners8"-->
+    <!--                    android:gravity="center"-->
+    <!--                    android:paddingHorizontal="16dp"-->
+    <!--                    android:text="@string/retry"-->
+    <!--                    android:textAppearance="@style/font_16"-->
+    <!--                    android:textColor="@color/colorBlack"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent"-->
+    <!--                    app:layout_constraintWidth_min="100dp" />-->
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--            <com.scwang.smart.refresh.footer.ClassicsFooter-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                app:srlAccentColor="@color/colorWhite50"-->
+    <!--                app:srlDrawableSize="0dp"-->
+    <!--                app:srlTextSizeTitle="16sp" />-->
+    <!--        </com.scwang.smart.refresh.layout.SmartRefreshLayout>-->
+
+
+    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--            android:id="@+id/conTitle"-->
+    <!--            bindAddTopHeight="@{true}"-->
+    <!--            bindAddTopPadding="@{true}"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="48dp"-->
+    <!--            android:background="@color/colorBlack"-->
+    <!--            app:layout_constraintTop_toTopOf="parent">-->
+
+    <!--            <androidx.appcompat.widget.AppCompatImageView-->
+    <!--                android:id="@+id/tvTitle"-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="28dp"-->
+    <!--                android:layout_marginHorizontal="12dp"-->
+    <!--                android:background="@drawable/img_txt_logo"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintDimensionRatio="315:84"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!--            <androidx.appcompat.widget.AppCompatImageView-->
+    <!--                android:id="@+id/imgSearch"-->
+    <!--                bindSingleClick="@{()->handler.onSearchClick()}"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:paddingHorizontal="12dp"-->
+    <!--                android:src="@drawable/img_search"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <androidx.appcompat.widget.AppCompatImageView-->
+    <!--                android:id="@+id/imgMore"-->
+    <!--                bindSingleClick="@{()->handler.onMore()}"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:paddingHorizontal="12dp"-->
+    <!--                android:src="@drawable/img_icon_operations"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintEnd_toStartOf="@+id/imgSearch"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <androidx.appcompat.widget.AppCompatImageView-->
+    <!--                bindVisible="@{gvm.hasNewFeedbackMsg}"-->
+    <!--                android:layout_width="9dp"-->
+    <!--                android:layout_height="9dp"-->
+    <!--                android:layout_marginTop="6dp"-->
+    <!--                android:layout_marginEnd="8dp"-->
+    <!--                android:background="@drawable/bg_mine_history_msg"-->
+    <!--                app:layout_constraintEnd_toEndOf="@id/imgMore"-->
+    <!--                app:layout_constraintTop_toTopOf="@id/imgMore" />-->
+
+    <!--            <androidx.appcompat.widget.AppCompatImageView-->
+    <!--                android:id="@+id/imgPro"-->
+    <!--                bindSingleClick="@{()->handler.onVipClick()}"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:paddingHorizontal="12dp"-->
+    <!--                android:src="@drawable/img_xin_icon_pro"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintEnd_toStartOf="@+id/imgMore"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--        <LinearLayout-->
+    <!--            android:id="@+id/customLin"-->
+    <!--            bindSingleClick="@{()->handler.onCustom()}"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="48dp"-->
+    <!--            android:visibility="gone"-->
+    <!--            android:paddingHorizontal="26dp"-->
+    <!--            android:layout_marginBottom="8.5dp"-->
+    <!--            android:gravity="center"-->
+    <!--            android:background="@drawable/bg_btn_explore_corners100"-->
+    <!--            app:layout_constraintBottom_toBottomOf="@+id/refreshLayout"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent">-->
+    <!--            <androidx.appcompat.widget.AppCompatImageView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:src="@drawable/img_ex_custom"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintEnd_toStartOf="@+id/imgMore"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+    <!--            <TextView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="@string/custom"-->
+    <!--                android:layout_marginStart="8dp"-->
+    <!--                android:layout_gravity="center_vertical"-->
+    <!--                android:textStyle="bold"-->
+    <!--                android:textAppearance="@style/font_16"-->
+    <!--                android:textColor="@color/colorWhite" />-->
+
+    <!--        </LinearLayout>-->
+
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+</layout>

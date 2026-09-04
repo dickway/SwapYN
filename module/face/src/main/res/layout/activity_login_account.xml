@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.LoginAccountViewModel" />
+
+        <variable
+            name="handler"
+            type="com.face.ui.accountlogin.LoginAccountActivity" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindAddVerticalPadding="@{true}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0F0F0F">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgFace"
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingHorizontal="14dp"
+                android:src="@drawable/img_icon_close_w"
+                android:tint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="32dp"
+            android:paddingVertical="14dp"
+            android:text="@string/log_in_2"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle" />
+
+        <TextView
+            android:id="@+id/txtCreate1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="-10dp"
+            android:text="@string/welcome_back_log"
+            android:textColor="#80FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt1" />
+
+        <TextView
+            android:id="@+id/txtA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/don_t_have_an_account"
+            android:textColor="#B2B2B2"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/txtCreate2"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login" />
+
+        <TextView
+            android:id="@+id/txtCreate2"
+            bindSingleClick="@{()->handler.onCreateAccount()}"
+            bindTextUnderLine="@{true}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/sign_up"
+            android:textColor="#FF3434"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/txtA"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtA"
+            app:layout_constraintTop_toTopOf="@+id/txtA" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/editAccountLayout"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_account_corners24"
+            app:layout_constraintTop_toBottomOf="@+id/txtCreate1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/img_icon_new_account"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editAccount"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:background="@null"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                android:gravity="center_vertical"
+                android:hint="@string/account"
+                android:maxLength="20"
+                android:textStyle="bold"
+                android:paddingHorizontal="12dp"
+                android:text="@={vm.account}"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#FF3434"
+                android:textColorHint="#5E5E5E"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img1"
+                app:layout_constraintTop_toBottomOf="@+id/txtCreate1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/editPwdLayout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_account_corners24"
+        app:layout_constraintTop_toBottomOf="@+id/editAccountLayout">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/img_icon_new_password"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editPwd"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@null"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+            android:gravity="center_vertical"
+            android:hint="@string/password"
+            android:textStyle="bold"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:paddingStart="12dp"
+            android:paddingEnd="80dp"
+            android:text="@={vm.pwd}"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FF3434"
+            android:textColorHint="#5E5E5E"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img2"
+            app:layout_constraintTop_toBottomOf="@+id/editAccount" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgClose"
+            bindSingleClick="@{()->vm.onClearInputClick()}"
+            bindVisible="@{vm.pwd!=null&amp;&amp;vm.pwd.length()>0}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:padding="8dp"
+            android:src="@drawable/img_account_delete"
+            app:layout_constraintBottom_toBottomOf="@+id/editPwd"
+            app:layout_constraintEnd_toStartOf="@+id/imgShow"
+            app:layout_constraintTop_toTopOf="@+id/editPwd" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgShow"
+            bindSelected='@{vm.passwordVisible}'
+            bindSingleClick="@{()->vm.onPasswordVisible()}"
+            bindVisible="@{vm.pwd!=null&amp;&amp;vm.pwd.length()>0}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:padding="8dp"
+            android:src="@drawable/checkbox_pwd"
+            app:layout_constraintBottom_toBottomOf="@+id/editPwd"
+            app:layout_constraintEnd_toEndOf="@+id/editPwd"
+            app:layout_constraintTop_toTopOf="@+id/editPwd" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/login"
+            bindSelected='@{vm.enableLogin}'
+            bindSingleClick="@{()->handler.onSpik()}"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_rounded_btn_s"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textAppearance="@style/font_16"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/editPwdLayout" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgCheckbox"
+            bindSelected="@{handler.checked}"
+            bindSingleClick="@{()->handler.onCheckboxClick()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="10dp"
+            android:src="@drawable/checkbox_homepage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/imgCheckbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgCheckbox"
+            app:layout_constraintTop_toTopOf="@+id/imgCheckbox">
+
+            <TextView
+                android:id="@+id/tvWelcome1"
+                bindSingleClick="@{()->handler.onCheckboxClick()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="14dp"
+                android:text="@string/logon_agree1"
+                android:textColor="#B2B2B2"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imgCheckbox" />
+
+            <TextView
+                android:id="@+id/tvPrivacyPolicy"
+                bindSingleClick="@{()->handler.onPolicyClick()}"
+                bindTextUnderLine="@{true}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="3dp"
+                android:paddingVertical="14dp"
+                android:text="@string/logon_agree2"
+                android:textColor="#B2B2B2"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

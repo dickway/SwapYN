@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false"
+    android:visible="true">
+
+    <item
+        android:drawable="@drawable/click01"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click02"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click03"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click04"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click05"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click06"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click07"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click08"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click09"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click10"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click11"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click12"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click13"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click14"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click15"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click16"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click17"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click18"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click19"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click20"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click21"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click22"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click23"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click24"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click25"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click26"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click27"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click28"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click29"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click30"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click31"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click32"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click33"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click34"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click35"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click36"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click37"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click38"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click39"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/click40"
+        android:duration="50" />
+</animation-list>

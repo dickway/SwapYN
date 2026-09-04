@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--CircularProgressView-->
+    <declare-styleable name="CircularProgressView">
+        <attr name="cpvBackWidth" format="dimension" />    <!--背景圆环宽度-->
+        <attr name="cpvBackColor" format="color" />        <!--背景圆环颜色-->
+        <attr name="cpvProgressWidth" format="dimension" />    <!--进度圆环宽度-->
+        <attr name="cpvProgressColor" format="color" />        <!--进度圆环颜色-->
+<!--        <attr name="progStartColor" format="color" />   &lt;!&ndash;进度圆环开始颜色&ndash;&gt;-->
+<!--        <attr name="progFirstColor" format="color" />   &lt;!&ndash;进度圆环结束颜色&ndash;&gt;-->
+        <attr name="cpvProgress" format="integer" />       <!--圆环进度-->
+    </declare-styleable>
+</resources>

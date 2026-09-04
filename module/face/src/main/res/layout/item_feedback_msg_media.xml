@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.face.bean.FeedbackMsgBean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="4dp"
+        android:orientation="vertical"
+        android:paddingVertical="8dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="8dp">
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="@style/font_11"
+            android:textColor="@color/colorFontHint"
+            tools:text="01/26/2023" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMedia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgMedia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxWidth="260dp"
+                app:strokeColor="@null"
+                android:maxHeight="200dp"
+                android:background="@color/colorBlack"
+                android:minWidth="200dp"
+                android:minHeight="200dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/shape_round_8dp" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_feedback_play"
+                app:layout_constraintBottom_toBottomOf="@id/imgMedia"
+                app:layout_constraintEnd_toEndOf="@id/imgMedia"
+                app:layout_constraintStart_toStartOf="@id/imgMedia"
+                app:layout_constraintTop_toTopOf="@id/imgMedia" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>

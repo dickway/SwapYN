@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.SearchActivity" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.SearchViewModel" />
+
+        <variable
+            name="historyLayoutManager"
+            type="androidx.recyclerview.widget.RecyclerView.LayoutManager" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindAddVerticalPadding="@{true}"
+        onTouchListener="@{com.zzkj.structure.util.KeyboardUtil.onClickBlankHideKeyboardListener}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.key.ui.VipFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgBack"
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/screen_margins_width1"
+                android:src="@drawable/img_icon_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorWhite" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="@dimen/screen_margins_width1"
+                android:background="@null"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:hint="@string/search_videos_or_pictures"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingStart="8dp"
+                android:paddingEnd="44dp"
+                android:text="@={vm.input}"
+                android:textAppearance="@style/font_14"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorWhite50"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgBack"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgClose"
+                bindSingleClick="@{()->handler.onClearInputClick()}"
+                bindVisible="@{vm.input!=null&amp;&amp;vm.input.length()>0}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:padding="8dp"
+                android:src="@drawable/img_icon_close"
+                app:layout_constraintBottom_toBottomOf="@id/edit"
+                app:layout_constraintEnd_toEndOf="@id/edit"
+                app:layout_constraintTop_toTopOf="@id/edit"
+                app:tint="@color/colorWhite" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            android:id="@+id/includeHot"
+            layout="@layout/include_search_hot"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:gvm="@{gvm}"
+            app:handler="@{handler}"
+            app:historyLayoutManager="@{historyLayoutManager}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clTitle"
+            app:vm="@{vm}" />
+
+        <include
+            android:id="@+id/includeResult"
+            layout="@layout/include_search_result"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clTitle" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

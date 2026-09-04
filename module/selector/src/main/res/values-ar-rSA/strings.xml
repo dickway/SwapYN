@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ps_camera_roll">ألبوم الكاميرا</string>
+    <string name="ps_camera_roll_num">%1$s (%2$d)</string>
+    <string name="ps_cancel">إلغاء</string>
+    <string name="ps_take_picture">كاميرا</string>
+    <string name="ps_rule">ليس صورة أو فيديو</string>
+    <string name="ps_min_video_num">اختيار الفيديو لا يقل عن %1$s</string>
+    <string name="ps_message_max_num">اختر حتى %1$s صور</string>
+    <string name="ps_message_audio_max_num">اختر حتى %1$s صوتيات</string>
+    <string name="ps_message_video_max_num">اختر حتى %1$s فيديوهات</string>
+    <string name="ps_preview">معاينة</string>
+    <string name="ps_please">انتظر قليلاً…</string>
+    <string name="ps_done_front_num">%1$d/%2$d تم</string>
+    <string name="ps_completed">التالي</string>
+    <string name="ps_done">تم</string>
+    <string name="ps_please_select">اختر</string>
+    <string name="ps_empty_title">لا توجد صور أو فيديوهات\n</string>
+    <string name="ps_empty_audio_title">لا توجد ملفات صوتية\n</string>
+    <string name="ps_audio_empty">إذا لم تظهر الصوتيات، فعّل أذونات "التخزين" و"الصور والفيديو".</string>
+    <string name="ps_empty">إذا لم تظهر الصور والفيديوهات، فعّل أذونات "التخزين" و"الصور والفيديو".</string>
+    <string name="ps_min_img_num">الحد الأدنى للصور %1$s</string>
+    <string name="ps_min_audio_num">الحد الأدنى للصوتيات %1$s</string>
+    <string name="ps_gif_tag">GIF</string>
+    <string name="ps_webp_tag">WebP</string>
+    <string name="ps_audio">رفض إذن التسجيل</string>
+    <string name="ps_jurisdiction">فشل الحصول على إذن التخزين</string>
+    <string name="ps_camera">رفض إذن الكاميرا</string>
+    <string name="ps_video_toast">لا يمكن معاينة الفيديو</string>
+    <string name="ps_record_video">تسجيل فيديو</string>
+    <string name="ps_photograph">التقاط صورة</string>
+    <string name="ps_long_chart">طويل</string>
+    <string name="ps_warning">لا توجد ملفات وسائط!</string>
+    <string name="ps_prompt">تأكيد</string>
+    <string name="ps_prompt_image_content">حفظ الصورة على الجهاز؟</string>
+    <string name="ps_prompt_video_content">حفظ الفيديو على الجهاز؟</string>
+    <string name="ps_save_image_error">فشل حفظ الصورة</string>
+    <string name="ps_save_video_error">فشل حفظ الفيديو</string>
+    <string name="ps_save_success">تم الحفظ</string>
+    <string name="ps_all_audio">كل الصوتيات</string>
+    <string name="ps_tape">تسجيل</string>
+    <string name="ps_play_audio">تشغيل</string>
+    <string name="ps_stop_audio">إيقاف</string>
+    <string name="ps_quit_audio">خروج</string>
+    <string name="ps_pause_audio">إيقاف مؤقت</string>
+    <string name="ps_error">الصورة تالفة</string>
+    <string name="ps_video_error">الفيديو تالف</string>
+    <string name="ps_audio_error">الصوت تالف</string>
+    <string name="ps_save_audio_error">فشل حفظ الصوت</string>
+    <string name="ps_prompt_audio_content">حفظ الصوت على الجهاز؟</string>
+    <string name="ps_confirm">تأكيد</string>
+    <string name="ps_preview_image_num">%1$d/%2$d</string>
+    <string name="ps_not_crop_data">لا توجد بيانات قص</string>
+    <string name="ps_original_image">أصلي (%1$s)</string>
+    <string name="ps_default_original_image">أصلي</string>
+    <string name="ps_send">تم</string>
+    <string name="ps_send_num">تم (%1$d/%2$d)</string>
+    <string name="ps_preview_num">معاينة (%1$d)</string>
+    <string name="ps_select">اختر</string>
+    <string name="ps_data_exception">خطأ في بيانات الألبوم…</string>
+    <string name="ps_choose_max_seconds">اختر فيديو أقل من %1$ds</string>
+    <string name="ps_choose_min_seconds">لا تختار أقل من %1$ds</string>
+    <string name="ps_choose_limit_seconds">اختر بين %1$ds و %2$ds</string>
+
+    <string name="ps_go_setting">الإعدادات</string>
+    <string name="ps_know">حسنًا</string>
+    <string name="ps_data_null">لا توجد بيانات…</string>
+    <string name="ps_editor">محرر</string>
+    <string name="ps_use_camera">استخدام الكاميرا</string>
+    <string name="ps_use_sound">استخدام التسجيل</string>
+    <string name="ps_current_week">هذا الأسبوع</string>
+    <string name="ps_current_month">هذا الشهر</string>
+    <string name="ps_select_max_size">الملف أكبر من %1$s</string>
+    <string name="ps_select_min_size">الملف أصغر من %1$s</string>
+
+    <string name="ps_select_video_max_second">اختر فيديو أكثر من %1$d ث</string>
+    <string name="ps_select_video_min_second">اختر فيديو أقل من %1$d ث</string>
+    <string name="ps_select_audio_max_second">اختر صوت أكثر من %1$d ث</string>
+    <string name="ps_select_audio_min_second">اختر صوت أقل من %1$d ث</string>
+    <string name="ps_select_no_support">نوع غير مدعوم</string>
+
+    <string name="ps_dialog_size_title">الفيديو كبير جدًا</string>
+    <string name="ps_dialog_size_content">يجب ألا يتجاوز %1$s ميغابايت/ث.\n\nالحالي: حجم %2$s، مدة %3$s.\nمعادل %4$s ميغابايت/ث.\n\nكبير جدًا، اختر غيره.</string>
+
+</resources>

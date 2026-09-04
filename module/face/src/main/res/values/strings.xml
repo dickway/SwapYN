@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="compress">Compressing</string>
+
+    <string name="retry">Retry</string>
+    <string name="video_hint">The video is less than 2 seconds</string>
+
+    <string name="frament_explore_banner">Daily Picks</string>
+    <string name="frament_explore_liketitle">Guess what you like</string>
+    <string name="frament_video_title">Video</string>
+    <string name="frament_picture_title">Picture</string>
+
+    <string name="version_hint">latest version</string>
+
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="success">Success</string>
+    <string name="collect_success">Collected successfully</string>
+    <string name="fail">Failure</string>
+    <string name="nodata">No data</string>
+    <string name="not_empty">Can not be empty</string>
+
+    <string name="check">Check the request interruption</string>
+    <string name="upload_failed">upload failed</string>
+
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="first_txt">The first one is not removable</string>
+
+
+    <string name="vip_time">Permanent</string>
+    <string name="vip_time1">Membership has expired</string>
+    <string name="vip_time2">Expire date:</string>
+
+
+    <string name="language_en">English</string>
+    <string name="language_zh">简体中文</string>
+    <string name="language_zhtw">繁體中文</string>
+    <string name="language_es">Español</string>
+    <string name="language_de">Deutsch</string>
+    <string name="language_fr">Français</string>
+    <string name="language_sv">Svenska</string>
+    <string name="language_ar">العربية</string>
+    <string name="language_ja">日本語</string>
+    <string name="language_ko">한국어</string>
+    <string name="language_tr">Türkçe</string>
+    <string name="language_fa">فارسی</string>
+    <string name="language_iw">עברית</string>
+    <string name="language_ku">Kurdî</string>
+    <string name="language_ptbr">Português (Brasil)</string>
+    <string name="language_pt">Português (Portugal)</string>
+    <string name="language_it" translatable="false">Italiano</string>
+
+
+    <string name="vip_to">Subscribe to become the VIP</string>
+    <string name="upgrade_to_pro">Become VIP</string>
+
+    <string name="see_all">More</string>
+    <string name="hot_txt">Hot</string>
+    <string name="logon_agree1">I agree to %s\'s</string>
+    <string name="logon_agree2">Privacy Policy</string>
+    <string name="login_text_people">TRANSFORM FACES\nEFFORTLESSLY\nTHE LATEST IN AI\nTECHNOLOGY, EASILY ADD\nFUN EFFECTS TO YOUR\nPHOTOS AND VIDEOS</string>
+    <string name="vip_buy_the_pro_version">Go Pro Privileges</string>
+    <string name="vip_txta1">VIP members can download images without watermarks</string>
+    <string name="vip_txt1">VIP members can download images or videos without watermarks</string>
+    <string name="vip_txt2">VIP members can use all templates</string>
+    <string name="vip_txt3">VIP members will be prioritized for high-quality servers to generate results</string>
+    <string name="vip_txt4">You can customize the video face swap template</string>
+    <string name="vip_txt5">Automatic renewal agreement</string>
+
+    <string name="vip_txt_atuo">The accumulated \'AIPoints\' refer to the total compute points that VIP users need to claim in \'Me -> AIPoints\'.\nPayment will be charged to your Google Wallet upon confirmation of subscription.Your subscription automatically renews unless you cancel the subscription 24 hours before the end of the current period.Your account will be charged for renewal at the price listed within 24 hours prior to the end of the current period.You can view the status of subscription and cancel the subscription at any time in the google account settings,and the cancellation will be effective since next subscription period and no refund for the current billing cycle.</string>
+    <string name="vip_txt_atuo1">The \“Cumulative AIPoints\” refer to the total number of AIPoints that VIP users need to claim in \"Me -> AIPoints\". After confirming the subscription, the payment will be deducted from your Google wallet. You can view the subscription status and cancel it at any time through your Google account. Cancellation will take effect from the next billing cycle, and no refund will be provided for the current billing cycle.</string>
+
+    <string name="vip_terms">Subscription Terms:</string>
+
+
+    <string name="vip_continue">Continue</string>
+    <string name="vip_most_popular">Trial</string>
+    <string name="vip_txt_hint">You are not yet a member</string>
+    <string name="vip_txt_date">Expire date:</string>
+
+    <string name="search_videos_or_pictures_a">Search pictures…</string>
+    <string name="search_videos_or_pictures">Search videos or pictures…</string>
+    <string name="search_history_search">Search History</string>
+    <string name="search_popular_search">Popular Search</string>
+    <string name="search_change">Change</string>
+
+    <string name="mine_title">Mine</string>
+    <string name="mine_vip_all_templates3">No watermark</string>
+    <string name="mine_collect">Collect</string>
+    <string name="mine_generation_history">Generation history</string>
+    <string name="mine_generation_recrds">Generate records</string>
+
+    <string name="mine_my_face">My face</string>
+    <string name="mine_my_share">Share, Get VIP</string>
+    <string name="mine_my_share2">Share</string>
+
+    <string name="mine_settings">Settings</string>
+    <string name="mine_feedback">Feedback</string>
+    <string name="mine_pro_member">Pro member</string>
+    <string name="history_txt">Historical data will only be saved for 7 days, please save or download in time</string>
+    <string name="settings_topic_switching">Topic switching</string>
+    <string name="settings_language">Language</string>
+    <string name="setting_log_out">Log out</string>
+    <string name="logout_txt">Do you want to log out of the current account?</string>
+    <string name="myface_editor">Editor</string>
+    <string name="myface_without_cover">Face without cover, no glasses, no hat, try to face</string>
+    <string name="myface_click_add_face">Click Add Face</string>
+    <string name="myface_drop_sort">Drag-and-drop sort after long press</string>
+    <string name="myface_select_all">Select all</string>
+    <string name="myface_delete">Delete</string>
+    <string name="myface_remove_face">Remove face</string>
+    <string name="myface_remove_task">Remove Task</string>
+    <string name="myface_remove_txt">Are you sure you want to remove \nface</string>
+    <string name="myface_remove_task_txt">Are you sure you want to remove \ntask</string>
+    <string name="confirm">Confirm</string>
+    <string name="confirm_ter">Confirm Termination</string>
+    <string name="cancel">Cancel</string>
+    <string name="complete">Complete</string>
+    <string name="network_txt">Network abnormality, please check the network and try again</string>
+
+    <string name="feedback_email">Email</string>
+    <string name="feedback_question">Please enter the question you want to feedback</string>
+    <string name="feedback_upload_txt">Upload image or video (no larger than 10MB)</string>
+    <string name="feedback_history">History</string>
+    <string name="feedback_details">Details</string>
+    <string name="feedback_finished">Finished</string>
+    <string name="feedback_add_a_comment">Add a comment…</string>
+    <string name="feedback_post">post</string>
+    <string name="picture_face">Picture Face</string>
+    <string name="swapface_title">Swap</string>
+
+    <string name="swap_start_production">Start production</string>
+    <string name="swap_disclaimer">Disclaimer</string>
+    <string name="swap_choose_face">Select face</string>
+    <string name="production_title">In production…</string>
+    <string name="production_swapping_face">Swapping face…</string>
+    <string name="production_the_production">The production process requires AI and automatic calculation, which takes time, please wait patiently</string>
+    <string name="production_the_production2">Pro Generation will produce more realistic works based on the template you choose and the style of the template</string>
+    <string name="production_expected_time">Expected time</string>
+    <string name="production_msg">Enable notification rights, we will send you a message when the generation is complete</string>
+    <string name="production_msg1">We will send you a message once the generation is complete.</string>
+
+    <string name="production_wait">Already waiting</string>
+    <string name="production_wait_while">Please wait while building…</string>
+
+    <string name="completion_title">Result</string>
+    <string name="completion_collect">Collect</string>
+    <string name="completion_download">Download</string>
+    <string name="completion_txt">You can view "Build history" in "My"."Generate History", will only keep photos/videos for the last 7 days, after which it will be cleared if you like to remember favorites</string>
+    <string name="completion_four_txt">Click to see a larger image and download it</string>
+    <string name="completion_four_template">Template</string>
+    <string name="swap_add_face">Add face</string>
+    <string name="production_turn_on">Turn on</string>
+    <string name="dialog_openmsg_enable">Enable APP notification rights</string>
+    <string name="dialog_openmsg_txt">After opening, we will notify you through the APP \nnotification</string>
+    <string name="authorized">Authorized</string>
+    <string name="status_title">Status</string>
+    <string name="status_production_failure">Generation Failed</string>
+    <string name="status_txt">Sorry, the generation failed. There is usually a small probability of such errors during the face-swapping process. You can click the \"Retry\" button to try again.</string>
+    <string name="upload_title">Select Face</string>
+    <string name="upload_photo_example">Photo example</string>
+    <string name="upload_check_failure">Check failure !</string>
+    <string name="upload_he_is">He/She is</string>
+    <string name="mian_explore">Explore</string>
+    <string name="mian_template">Templates</string>
+    <string name="mian_video_face">Video</string>
+    <string name="mian_picture_face">Picture</string>
+    <string name="dialog_exit">Are you sure you want to exit APP?</string>
+    <string name="default_notification_channel_id" translatable="false">100</string>
+    <string name="dialog_experience1">Daily Trials Used Up</string>
+    <string name="dialog_experience_txt1">%s free trials will be available tomorrow, or become a VIP now to remove generation limits.</string>
+    <string name="dialog_experience_ok">Become VIP</string>
+    <string name="vip_pro_member">Pro Member</string>
+    <string name="vip_watermarks">Watermarks</string>
+    <string name="vip_templates">Templates</string>
+    <string name="faster_generation">Faster generation</string>
+    <string name="customize_template">Customize template</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="vip_success_txt">Congratulations on becoming our VIP member! We will provide you with enhanced services.</string>
+    <string name="vip_txt6">After the trial ends, you will be automatically subscribed at a discounted price of %s. You can cancel your subscription at any time.</string>
+    <string name="vip_txt8">The trial period is %s days. After the trial ends, your subscription will automatically renew to an annual subscription at %s. If you do not wish to renew after the trial ends, please make sure to cancel your subscription before the end of the trial period (before the %s day) to avoid unintended renewal. You can cancel your subscription at any time by going to \"Google Play -> Payments &amp; Subscriptions\".Once canceled, you won\'t be charged again, and your VIP access will remain valid until the end of the current paid period.</string>
+    <string name="vip_txt9">you will be automatically subscribed at a discounted price of %s. You can cancel your subscription at any time.</string>
+
+    <string name="vip_txt7">Auto renewal by %s. You can cancel your subscription at any time by going to \'Google Play -> Payments &amp; Subscriptions\'.Once canceled, you won\'t be charged again, and your VIP access will remain valid until the end of the current paid period.</string>
+    <string name="dialog_ads_title1">New Users Get %s Free Trials</string>
+    <string name="dialog_ads_title2">Confirm Generation?</string>
+    <string name="dialog_ads_context1">%s Trials Left, Unlock More by Watching an Ad, or Remove Limits by Becoming a VIP Now</string>
+    <string name="dialog_ads_context2">Non-VIPs get %s daily chances to generate by watching an ad, or remove limits by becoming a VIP now</string>
+    <string name="dialog_ads_watch">Watch Ad</string>
+    <string name="dialog_ads_vip_title">VIP Daily Generation Limit Reached</string>
+    <string name="dialog_ads_vip_context">VIPs get %s generation chances daily. Once used up, wait until 0 AM to reset, or continue by watching an ad.</string>
+    <string name="dialog_ads_vip_context2">VIPs have %s generation attempts per day (now used up). You need to wait until midnight to unlock more or use AIPoints to generate.</string>
+
+    <string name="share">Share</string>
+    <string name="version_update">update</string>
+    <string name="version_txt">A new software version is available for download</string>
+    <string name="version_title">Updates Available</string>
+    <string name="dialog_scroll_up">Scroll up to see more</string>
+    <string name="upload_full">Please take or select a full \nface photo</string>
+    <string name="swap_face">Swap Face</string>
+    <string name="dialog_cancel_title">Confirm to stop task?</string>
+    <string name="dialog_cancel_hint">If you terminate the generation, this task will be stopped.</string>
+
+    <string name="frament_tool_title">AI Tools</string>
+    <string name="frament_tool_to">Try now</string>
+    <string name="frament_tool_pic_txt1">Custom Picture face swap</string>
+    <string name="frament_tool_pic_txt2">Replace the face in the picture</string>
+    <string name="frament_tool_video_txt1">Custom Video face swap</string>
+    <string name="frament_tool_video_txt2">Replace the face in the video</string>
+    <string name="frament_tool_cutsom_t1">Replace the face in the video</string>
+    <string name="frament_tool_cutsom_t2">Replace the face in the Picture</string>
+
+    <string name="dialog_tool_title">Custom picture change face</string>
+    <string name="dialog_tool_next">No prompt next time</string>
+    <string name="dialog_tool_step1">Step 1:</string>
+    <string name="dialog_tool_step2">Step 2:</string>
+    <string name="dialog_tool_step3">Step 3:</string>
+    <string name="dialog_tool_txt1">The user selects or uploads the image template</string>
+    <string name="dialog_tool_txt2">System analysis shows that the face can be replaced</string>
+    <string name="dialog_tool_txt3">Select or upload the face you want to replace</string>
+    <string name="dialog_tool_title_video">Custom video face swap</string>
+    <string name="dialog_tool_txt1_video">Users upload video footage</string>
+    <string name="dialog_tool_txt2_video">(Video requirements: within 30min, size within 1GB, need to have a face)</string>
+    <string name="custom_material">Select template</string>
+    <string name="custom_voice">Select sound</string>
+    <string name="custom_title">Custom picture change face</string>
+    <string name="custom_title2">Custom video face swap</string>
+    <string name="custom_add">Click add template</string>
+    <string name="custom_add2">Click add template</string>
+    <string name="custom_hit">You can only save up to 50 custom images.</string>
+    <string name="custom_hit2">You can only keep up to 50 custom videos.</string>
+
+    <string name="add_material">Add template</string>
+
+    <string name="post_face_analysis">In face analysis…</string>
+    <string name="picpost_title">Uploading picture…</string>
+    <string name="picpost_title1">Image template analysis…</string>
+    <string name="picpost_uploading">Uploading…</string>
+    <string name="picpost_hit">Custom template will take a while, please be\npatient</string>
+    <string name="dialog_post_title">Whether to interrupt template analysis</string>
+    <string name="dialog_post_content">After the interruption, the custom template will stop uploading</string>
+    <string name="dialog_post_interrupt">Interrupt</string>
+    <string name="dialog_delete_title">Remove template</string>
+    <string name="dialog_delete_content">Are you sure you want to remove template</string>
+
+    <string name="clips_title">Edit custom videos</string>
+    <string name="video_shoot_tip">Drag the arrow to select video publishing</string>
+    <string name="clips_next">Next</string>
+    <string name="target_title">Upload faces in videos</string>
+    <string name="target_hint">Please crop the face you want to replace in the video and\nupload it</string>
+    <string name="target_txt1">Selected faces</string>
+    <string name="target_txt2">(The maximum is 3 target faces, preferably frontal)</string>
+    <string name="target_video">Video</string>
+    <string name="target_update">Upload</string>
+    <string name="target_pic_btn">Face extraction</string>
+
+    <string name="target_look">Video playback</string>
+    <string name="target_pic">Target portrait intercept</string>
+    <string name="target_pic_hint">Find the screenshot of the target you want to replace</string>
+    <string name="target_extraction">Face extraction</string>
+    <string name="target_optional_face">Optional face</string>
+    <string name="target_optional_txt">( You can also choose %s faces )</string>
+    <string name="target_wait_txt">AI target extraction please wait…</string>
+    <string name="postvideo_title">Custom video upload</string>
+
+    <string name="upload_hint">AI is analysing take a while, please be patient</string>
+    <string name="dialog_failed">Mission failed</string>
+    <string name="cancel_hint">Hint</string>
+    <string name="cancel_content">Whether to cancel facial image upload</string>
+
+    <string name="trimmed_done">Video cropping completed！</string>
+    <string name="trimming">Processing video</string>
+    <string name="login_btn">Log in with Google</string>
+
+    <string name="frament_me_title">Me</string>
+    <string name="mine_user_privacy_policy">User Privacy Policy</string>
+    <string name="try_again">Try again</string>
+
+    <string name="dialog_notice">Notice</string>
+    <string name="clear_facial">Clear facial</string>
+    <string name="lateral_face">Lateral face</string>
+    <string name="face_covered">Face covered</string>
+    <string name="too_vague">Too vague</string>
+    <string name="path_error">Failed to read the file, please regenerate</string>
+    <string name="string_error">Audio extraction error, please retry</string>
+
+    <string name="open_camera">Failed to acquire camera</string>
+    <string name="permissions_camera">Failed to obtain camera permissions, please turn on camera permissions</string>
+    <string name="permissions_storage">Failed to obtain photo and video storage permissions</string>
+    <string name="permissions_voice">Failed to obtain microphone permission</string>
+    <string name="number_of_invited">Number of Invited</string>
+    <string name="vip_days_earned">VIP Days Earned</string>
+    <string name="function_description">Function Description</string>
+    <string name="share_context">When a new user registers through your invitation link, you will receive %s-day VIP.(Requires a real new phone and a new user, cheaters will be invalid. VIP credits usually take up to 5 minutes, please be patient.)</string>
+    <string name="invitation_link">Invitation Link</string>
+
+    <string name="copy_s">Copy successful</string>
+    <string name="log_in">Log in to %s using your Google account</string>
+    <string name="log_ac">Account login</string>
+    <string name="share_txt">An interesting and useful AI tool. Click the URL or copy it into your browser to download:</string>
+    <string name="no_registration_login">No Registration Login</string>
+    <string name="link_google_account">Link Google Account</string>
+    <string name="choose_a_package">Subscribe to become the VIP</string>
+
+    <string name="vip_day">/Day</string>
+    <string name="vip_week">/Week</string>
+    <string name="vip_month">/Month</string>
+    <string name="vip_quarter">/Quarter</string>
+    <string name="vip_year">/Year</string>
+    <string name="eliminate_picture_clutter">AI Image Removal</string>
+    <string name="clear_away_clutter">Easily remove clutter with just one tap</string>
+    <string name="dialog_discard_title">discard photo</string>
+    <string name="dialog_discard_context">The current changes will not be saved</string>
+    <string name="dialog_discard">Discard</string>
+
+    <string name="clear_expected_time">Expect to wait</string>
+    <string name="clear_already_time">Already waited</string>
+    <string name="aiclear_hint">Generating, please wait…</string>
+    <string name="start_eliminating">Start eliminating</string>
+    <string name="start_generation">Generating started</string>
+    <string name="thickness">Thickness</string>
+    <string name="aiclear_title">Eliminate picture clutter</string>
+    <string name="remove_record">Remove record</string>
+    <string name="remove_record_content">Are you sure you want to delete this record?</string>
+    <string name="remove_record_content1">Are you sure you want to delete your browsing history?</string>
+    <string name="modify_name">Edit name</string>
+    <string name="save_to_album">Save to album</string>
+    <string name="material_voice_hint">Be sure to choose a recording file or video with vocal duration longer than 7 seconds. No noise from multiple people or background noise.</string>
+    <string name="upload_sound">Upload sound</string>
+    <string name="recording_files">Recording files</string>
+    <string name="video_file">Video file</string>
+    <string name="record_your_sound">Record your sound</string>
+    <string name="read_the_text">Read the text and record your voice</string>
+    <string name="edit_sound">Edit sound</string>
+    <string name="uploading_analysis">Uploading analysis…</string>
+    <string name="please_wait">Please wait</string>
+    <string name="default_name_can_be_modified_but_cannot_be_empty">Default name, can be modified, but cannot be empty</string>
+    <string name="tone_generation_failed">Tone generation failed</string>
+    <string name="tone_generation_failed2">Text-to-speech generation failed</string>
+    <string name="generate_results">Generate results</string>
+    <string name="countdown_10s">Countdown: %ss</string>
+    <string name="ai_sound">AI sound extraction…</string>
+    <string name="please_wait_patiently">Please wait patiently</string>
+    <string name="only_one">Only one AI voice extraction can be processed at a time</string>
+    <string name="view_detail">View detail</string>
+    <string name="exit_and_wait">Exit and Wait</string>
+    <string name="interrupt">Interrupt</string>
+    <string name="are_you">Are you sure you want to interrupt the AI voice extraction?</string>
+    <string name="are_you2">Terminate generation</string>
+    <string name="pro_hint">The process will take some time, please be patient. If you need to interrupt, you can click the interrupt button below.</string>
+    <string name="pro_hint2">Are you sure you want to terminate the build?</string>
+    <string name="english_timbre">English timbre</string>
+    <string name="chinese_timbre">Chinese timbre</string>
+    <string name="text_input">Text input</string>
+    <string name="generate">Generate</string>
+    <string name="enter_voice">Please enter English</string>
+    <string name="please_enter">Please enter the text you want to read aloud(%s)</string>
+    <string name="please_wait_while_generating">Please wait while generating</string>
+    <string name="expect_to_wait_50_seconds">Expect to wait 50 seconds</string>
+    <string name="generating">Generating…</string>
+    <string name="generating2">Generating</string>
+    <string name="record">Record</string>
+    <string name="btn_record">Go to View</string>
+    <string name="ai_eliminates_redundant_content">AI eliminates redundant content</string>
+    <string name="features">Features</string>
+    <string name="read_the_following_aloud">Read the following aloud</string>
+    <string name="start_recording">Start recording</string>
+    <string name="recording_duration_no_more_than_10s">Recording duration: 10s</string>
+    <string name="end_recording">End recording</string>
+    <string name="rerecord">rerecord</string>
+    <string name="next">Next</string>
+    <string name="ai_reading_aloud">AI reading aloud</string>
+    <string name="sound_cloning">sound cloning</string>
+    <string name="ai_reading">AI reading</string>
+    <string name="use_your_voice_to_have_ai_read_the_text">Use your voice to have AI read the text</string>
+
+    <string name="old_photo_restoration">Old photo restoration</string>
+    <string name="help_you_restore">Help you restore old photos</string>
+    <string name="generate_cartoon_style">Generate cartoon style from photo</string>
+    <string name="image_to_cartoon">Image to cartoon</string>
+    <string name="one_click_background_removal">Background removal</string>
+    <string name="smart_select_the_image_you_want_to_cut_out">Smart select the image you want to cut</string>
+    <string name="start">Start</string>
+    <string name="choose_a_style">Choose a style</string>
+    <string name="start_extraction">Start Extraction</string>
+    <string name="aicutout_dialog_title">Do you want to start extracting?</string>
+    <string name="aicutout_dialog_content">Extraction may take time, please be patient</string>
+    <string name="ok">OK</string>
+    <string name="build_failure">Build Failure</string>
+    <string name="start_conversion">Start Conversion</string>
+    <string name="replace_picture">Replace picture</string>
+    <string name="draw_a_box_around">Draw a box around the subject in the image, and we\'ll extract it for you.</string>
+    <string name="start_repair">Start repair</string>
+    <string name="id_photo_generation">ID photo generation</string>
+    <string name="from_an_image">Generate Common ID Photo</string>
+    <string name="paperwork_start_txt">Generate common ID photos based on your photos</string>
+    <!--    <string name="paperwork_start_viphint">This VIP-exclusive feature consumes significant computational power, so after using it %s times per day, watching ads will be required to continue generating.</string>-->
+
+    <plurals name="paperwork_start_viphint">
+        <item quantity="one">This VIP-exclusive feature consumes significant computational power, so after using it %s time per day, watching ads will be required to continue generating.</item>
+        <item quantity="other">This VIP-exclusive feature consumes significant computational power, so after using it %s times per day, watching ads will be required to continue generating.</item>
+    </plurals>
+    <string name="dialog_paper_ads">Exceeded the limit, watch the ad to continue</string>
+    <string name="dialog_paper_ads_txt">Generate after the rewarded ad is played</string>
+    <string name="dialog_paper_only">There is already a task being generated</string>
+    <string name="dialog_paper_only_txt">Only one task can be performed at a time</string>
+    <string name="select_an_avatar">Select an Avatar</string>
+    <string name="dress_style">Dress Style</string>
+    <string name="casual">Casual</string>
+    <string name="business">Formal</string>
+    <string name="id_photo_background">ID photo background</string>
+    <string name="id_photo_size">ID photo size</string>
+    <string name="telegram_group">Telegram group</string>
+    <string name="telegram_group_info">app not found</string>
+    <string name="google_info">Google Play app not found</string>
+    <string name="delete_account_lrreversible">Delete Account (lrreversible)</string>
+    <string name="no_subscription">No subscription available,confirm deletion</string>
+    <string name="cancellation_instructions">Cancellation Notice</string>
+    <string name="delete_user_txt1">Once deleted, the account cannot be recovered.\n\nThe VIP and AIPoints under the account will be cleared together.</string>
+    <string name="delete_user_txt2">If you have an active subscription, please go to \"Payments &amp; subscriptions -> Subscriptions\" and cancel it manually.Deleting the account won\'t cancel your Google charges; you need to unsubscribe yourself.</string>
+    <string name="delete_user_txt_click">Payments &amp; subscriptions -> Subscriptions</string>
+    <string name="delete_dialog_title">Account Deletion Pending</string>
+    <string name="delete_dialog_txt">Your account is about to be deleted. Please confirm that you have canceled any active subscriptions.</string>
+    <string name="delete_dialog_canceled">Subscription Canceled</string>
+    <string name="deleteuser_account">Account</string>
+    <string name="deleteuser_txt2_ok">Please make a final confirmation that the account you are about to delete cannot be recovered, and that all subscriptions have been canceled.</string>
+    <string name="confirm_delete">Confirm Delete</string>
+    <string name="dialog_return">Return</string>
+    <string name="hd_video">HD video loading…</string>
+    <string name="dialog_du_title">Warning! Final Confirmation to Delete Account?</string>
+    <string name="dialog_du_txt">Your account is about to be deleted. Please confirm that you have canceled all subscriptions and that you are certain about deleting this account. Once confirmed, the app will return to the login screen, and all your account information will be immediately deleted.Clicking "Final Confirm Delete" will permanently delete the account, with no recovery possible.</string>
+    <string name="dialog_du_delete">Final Confirm Delete</string>
+
+    <string name="ad_load_fail">Ad load failed, try later.</string>
+
+    <string name="hash_points">AIPoints</string>
+    <string name="hash_points2">AIPoints:</string>
+    <string name="hash_points3">AIPoints</string>
+    <string name="hash_points_title">My AIPoints</string>
+    <string name="re_ap">Recharge AIPoints</string>
+    <string name="buy_hash_points">Buy AIPoints</string>
+    <string name="get_hashrate">Get AIPoints</string>
+    <string name="watch">Watch</string>
+    <string name="points_video">Maximum per hour (%s/%s)</string>
+    <string name="browsing_history">Browsing History</string>
+    <string name="points_ads_title">Need to see an incentive ad</string>
+    <string name="points_ads_context">After watching the ad, you will get AIPoints</string>
+    <string name="ads_num">Exceeded current view count</string>
+    <string name="free_hash_points_every_day">Free AIPoints every day</string>
+    <string name="viplv7">Weekly VIP</string>
+    <string name="viplv30">Monthly VIP</string>
+    <string name="viplv365">Yearly VIP</string>
+    <string name="viplv">Become VIP</string>
+    <string name="become">Buy Vip</string>
+    <string name="receive">Receive</string>
+    <string name="undone">Undone</string>
+    <string name="get">Get</string>
+    <string name="done">Done</string>
+    <string name="watch_success">Watch Success</string>
+    <string name="checkin_success">Check-in Success</string>
+    <string name="receive_success">Received successfully</string>
+
+    <string name="check_in_reward">Check-in reward</string>
+    <string name="get_hash_points_every_day">Get AIPoints every day</string>
+    <string name="cumulative_check_in_rewards">Cumulative check-in rewards</string>
+    <string name="in_a_single_calendar_month">In a single calendar month</string>
+    <string name="you_get_the_following_rewards">You have received</string>
+    <string name="re_signing_card">Make-up card</string>
+    <string name="check_in_for_3_days">Check-in for 3 days</string>
+    <string name="check_in_for_7_days">Check-in for 7 days</string>
+    <string name="check_in_for_14_days">Check-in for 14 days</string>
+    <string name="check_in_for_30_days">Check-in for 27 days</string>
+    <string name="computing_points3">Get 1 AIPoints</string>
+    <string name="computing_points7">Get 1 make-up card and 3 AIPoints</string>
+    <string name="computing_points14">Get 2 make-up cards  and 6 AIPoints</string>
+    <string name="computing_points30">Get 15 AIPoints</string>
+    <string name="check_in_reminder">Check-in reminder</string>
+    <string name="re_signing_card2">Make-up card:</string>
+    <string name="make_up_ncheck_in">Make-up\nCheck-in</string>
+    <string name="dialog_usmu_title">Confirm Using a Make-up Check-in?</string>
+    <string name="dialog_usmu_con">It can help you make up for 1 missed check-in day in the current month. Once used, the make-up check-in count cannot be restored.</string>
+    <string name="card_error">No make-up card</string>
+    <string name="need_reminding">Need reminding</string>
+    <string name="cumulative">+%s</string>
+    <string name="cumulative_gift">After becoming VIP, Cumulative AIPoints </string>
+    <string name="cumulative_gift7">After becoming Weekly VIP, Cumulative AIPoints </string>
+    <string name="cumulative_gift30">After becoming Monthly VIP, Cumulative AIPoints </string>
+    <string name="cumulative_gift365">After becoming Annual VIP, Cumulative AIPoints </string>
+    <string name="cumulative_gift2">Cumulative AIPoints </string>
+    <string name="top_now">Recharge Now</string>
+    <string name="purchase_success">Purchase Success</string>
+    <string name="no_ads">No Ads</string>
+    <string name="consume_point">Spend %s AIPoints</string>
+    <string name="watch_the_ad_videos">Watch the ad videos</string>
+    <string name="custom">Custom</string>
+    <string name="custom_face_swap">Custom face swap</string>
+    <string name="you_can_upload_any_video_pic_to_swap">You can upload any video/pic to swap</string>
+    <string name="dialog_hint_title">Cannot Link Google Account</string>
+    <string name="dialog_hint_content">This Google account is already registered and cannot be linked again. You can log in with this account or switch to another account to link.</string>
+    <string name="dialog_hint_ok">OK, got it</string>
+    <string name="dialog_red_title">Link or Log in</string>
+    <string name="dialog_red_ok">Link Now</string>
+    <string name="dialog_red_qx">Skip, buy as guest</string>
+    <string name="dialog_red_content">Please link or log in to your Google account before purchasing a membership to avoid losing VIP access.</string>
+
+    <string name="completion_cutosm_txt1">Want More Excitement? Click Here to </string>
+    <string name="completion_cutosm_txt2">Custom templates!</string>
+    <string name="change">Re-exchange</string>
+    <string name="aipoints">AIPoints</string>
+    <string name="guess_you_like">Guess You Like</string>
+    <string name="dialog_aipoints">Not Enough AIPoints</string>
+    <string name="dialog_context">Join as a VIP and Enjoy Unlimited Download Privileges</string>
+    <string name="dialog_btn1">Unlock Unlimited Downloads Now</string>
+    <string name="dialog_btn2">Get AIPoints</string>
+    <string name="dialog_aip_red_title">Confirm download of this content?</string>
+    <string name="dialog_aip_red_content">This will cost %s AIPoints</string>
+    <string name="speed_up">Speed Up</string>
+    <string name="generate_about_60_faster">Generate about 60+% faster</string>
+    <string name="speed_up_generation">Speed up generation</string>
+    <string name="thank_you_for_using">Thank you for using</string>
+    <string name="can_you_please">Can you please give us a 5-star review?</string>
+    <string name="go_to_praise">Go to praise</string>
+    <string name="feedback_question1">Feedback question</string>
+
+    <string name="dialog_pri_title">Privacy Protection</string>
+    <string name="dialog_pri_ok">Agree</string>
+    <string name="dialog_pri_qixiao">Disagree</string>
+    <string name="dialog_pri_content">We do not collect or share your user information. All uploaded data is only used for your personal functionality and bug analysis. Please read and agree to the following agreement: 《Privacy Policy》</string>
+    <string name="dialog_pri_content_click">《Privacy Policy》</string>
+
+
+    <string name="post_voide_error">The video file is too large, please choose a smaller one (T-T)</string>
+    <string name="post_voide_error2">This video codec is not supported</string>
+
+
+    <string name="extracting_faces">Extract Face</string>
+    <string name="extracting_faces1">Submit and save template</string>
+    <string name="you_can_only">You can extract up to three images only</string>
+    <string name="screenshot">Screenshot (%s/3)</string>
+    <string name="selected_face">Select Face (%s/3)</string>
+    <string name="dialog_frame_title">Select the character screenshot in the video you want to replace.</string>
+    <string name="note">Note: </string>
+    <string name="dialog_frame_con1">(1) You can select up to three images only.</string>
+    <string name="dialog_frame_con2">(2) Make sure the image includes the target face to replace, preferably the front view.</string>
+    <string name="click_to_capture">Click to capture the selected image</string>
+    <string name="video_aipoint">Task cost: %s AIPoint</string>
+    <string name="video_o">Original Price: %s AIPoints</string>
+    <string name="balance_alpoints">Balance: %s AlPoints</string>
+    <string name="balance">Balance</string>
+    <string name="face_aipoints">(Tip: AIPoints will only be charged when the face swap task starts. If the face swap fails, your AIPoints will be automatically refunded. Please don\’t worry.)</string>
+    <string name="noaipoints">Click the \'Recharge\' button to enter the recharge page</string>
+    <string name="recharge">Recharge</string>
+    <string name="select_the_target">Select target face</string>
+    <string name="report">Report</string>
+    <string name="why_are_you_reporting_this">Why are you reporting this?</string>
+    <string name="feel_report_content">Feel free to report this content if you think it\'sinappropriate.</string>
+    <string name="submit">Submit</string>
+    <string name="block_this_content">Block this content, and you wil no longer see it after blocking</string>
+    <string name="report1">Nudity or sexual</string>
+    <string name="report2">Illegal child porn</string>
+    <string name="report3">Violence scene</string>
+    <string name="report4">Political issue</string>
+    <string name="report5">Alleged Copyright Infringement</string>
+    <string name="report_s">Report successful, thank you for your feedback.</string>
+
+    <string name="frament_tool1">Tools</string>
+    <string name="frament_tool2">FunZone</string>
+    <string name="age_change">Change Age</string>
+    <string name="different_ages">Change Age, Age Magic</string>
+    <string name="pic_live">Picture to Video/GIF</string>
+    <string name="make_your">Bring Your Still Photos to Life</string>
+    <string name="i_want_to_become">I want to become</string>
+    <string name="age">Age</string>
+
+    <string name="frament_explore1">Explore</string>
+    <string name="frament_explore2">Recent content</string>
+
+    <string name="upload_noface">No usable face found in the image.</string>
+    <string name="up_target_faces">Up to 3 target faces, preferably positive faces</string>
+    <string name="you_re_subscribed">You\'re Subscribed</string>
+    <string name="you_ve_already_subscribed_to_this_item">You\'ve already subscribed to this item.</string>
+
+    <string name="txt_ai">Text to Image</string>
+    <string name="txt_video">Custom VideoFace Swap</string>
+    <string name="txt_photo">Custom PhotoFcae Swap</string>
+    <string name="txt_img_hint">Bring your ideas to life—generate powerful images with just a few words, instantly</string>
+    <string name="picture_style">Picture style</string>
+    <string name="realistic">Realistic</string>
+    <string name="comic">Comic</string>
+    <string name="aspect_ratios">Aspect Ratios</string>
+    <string name="prompt">Prompt</string>
+    <string name="tv_input">Enter keywords…</string>
+    <string name="again">Again</string>
+    <string name="bring_your_ideas_to_life">Bring your ideas to life</string>
+    <string name="join_vip_group">Join VIP group</string>
+    <string name="you_can">You can also join the group later in \"Me\"</string>
+
+    <string name="title_offer">Abandon the offer</string>
+    <string name="title_offer_content">Are you sure you want to abandon this offer?</string>
+    <string name="title_offer_ok">Think about it</string>
+    <string name="title_offer_c">Give up</string>
+    <string name="privacy_protected">Privacy protected</string>
+    <string name="avatars_or_works">Avatars or works for functionality only,never stored or shared</string>
+    <string name="_18_content">18+ Content</string>
+    <string name="allow_generation">Allow generation of 18+ content</string>
+
+
+    <plurals name="points_been">
+        <item quantity="zero">(%s day checked in)</item>
+        <item quantity="one">(%s day checked in)</item>
+        <item quantity="other">(%s days checked in)</item>
+    </plurals>
+
+    <string-array name="default_array">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+    </string-array>
+
+    <!--共享模块文字-->
+    <string name="fragment_tool_share">ShareZone</string>
+    <string name="share_tips_txt">All content is voluntarily shared by users. The app will never share private templates without user permission. You can also hide this section in \“Me-Settings\”.</string>
+    <string name="reward_rules">Reward Rules</string>
+    <string name="reward_content">When others use your shared videos/pictures,you earn AIPoints</string>
+    <string name="reward_sharing">Sharing</string>
+    <string name="reward_templates">Templates</string>
+    <string name="reward_share_tips">Earn AIPoints when others use your template.</string>
+    <string name="reward_share_first">Share your first template</string>
+    <string name="reward_share_template">Share template</string>
+    <string name="share_item_time">times</string>
+    <string name="share_stop_sharing">Stop sharing?</string>
+    <string name="share_stop_sharing_content">After you stop sharing, your template will disappear from the "Sharing Interface"</string>
+    <string name="sharing_content">Sharing will make this template public. You are solely responsible for any privacy or legal risks.</string>
+    <string name="share_confirm_share">Confirm Share</string>
+    <string name="share_points_history">AIPoints History</string>
+
+
+    <string name="purchase_aipoints">Purchase AIPoints</string>
+    <string name="ad_free_deduction_livead">Ad-free deduction-LiveAD</string>
+    <string name="ad_free_deduction_agead">Ad-free deduction-AgeAD</string>
+    <string name="watch_ads_to_get_rewards">Watch ads to get rewards</string>
+    <string name="check_in_reward_share">Check-in reward</string>
+    <string name="use_template">Use template</string>
+    <string name="shared_template_reward">Shared template reward</string>
+    <string name="download_template">Download template</string>
+    <string name="add_aipoints_via_backend">Add AIPoints via backend</string>
+    <string name="ad_free_deduction_swapfacead">Ad-free deduction-SwapFaceAD</string>
+    <string name="ad_free_deduction_paperworkad">Ad-free deduction-PaperworkAD</string>
+    <string name="use_task">Generation failed</string>
+    <string name="cancel_task">User canceled generation</string>
+    <string name="update_s">Custom template uploaded successfully</string>
+    <string name="share_now">You can now choose to share this template</string>
+
+    <string name="share_default">Latest</string>
+    <string name="share_popular">Popular</string>
+    <string name="want_to_explore">Want to explore more ShareZone templates?</string>
+    <string name="get_vip">Get VIP</string>
+
+    <string name="get_select">Please select a face</string>
+    <string name="description_hide_the_sharezone_module">Description: Hide the ShareZone module?</string>
+    <string name="hide_sharezone">Hide ShareZone</string>
+    <string name="exchange_gift">Exchange Your AIPoints for Gifts</string>
+    <string name="amazon_gift_card">Redeem Gifts</string>
+    <string name="cash_btn">Redeem</string>
+    <string name="for_cash">AIPoints for Gifts</string>
+    <string name="cash_txt1">1. We only guarantee that the Amazon gift card code is valid and unused at the time it is sent. Please redeem it as soon as possible.</string>
+    <string name="cash_txt2">2. We are not responsible for issues related to usage, incorrect redemption, or unauthorized use by others</string>
+    <string name="cash_txt3">3. Amazon US Gift Card: Don’t redeem outside US. Cross-region redemption unusable. No liability.</string>
+    <string name="cash_aipoints">%s AIPoints - Redeem</string>
+    <string name="cash_aipoints2">Join Membership!</string>
+    <string name="cash_aipoints3">Out of Stock</string>
+    <string name="cash_aipoints4">Out of stock, please wait</string>
+
+    <string name="stock">Stock:</string>
+    <string name="stock2">(Restocking…)</string>
+    <string name="note_dialog">Note</string>
+    <string name="note_cash_dialog">This will deduct %s AIPoints. Confirm redemption?</string>
+    <string name="cash_e">Insufficient AIPoints</string>
+    <string name="now_view">View Now</string>
+    <string name="redemption_successful">Redemption Successful</string>
+    <string name="amazon_gift">Amazon Gift Card code has been saved to \"Records\"</string>
+    <string name="redemption_result">Redemption results</string>
+    <string name="amazon_50">Amazon $50 Gift Card (US only)</string>
+
+    <string name="cumulative_gift3">Instant AIPoints </string>
+    <string name="lifetime_vip_benefits">Lifetime VIP Benefits</string>
+    <string name="viplife1">Enjoy all regular VIP privileges</string>
+    <string name="viplife2">Can enjoy a discounted price for Swap Face HD</string>
+    <string name="viplife3">Shortest queue time among all user levels.  Your tasks are prioritized during AI generation</string>
+    <string name="viplife4">Instantly receive %s AIPoints, plus continue earning 4 AIPoints per day through daily check-in (same as annual VIP)</string>
+    <string name="benefits_guide">Benefits Guide</string>
+    <string name="time">Redemption Time</string>
+    <string name="deduct_aipoints">Deduct AIPoints</string>
+    <string name="copy_s1">Card number copied</string>
+    <string name="copy_s2">Password copied</string>
+
+    <string name="gift_points">Redeem Gift</string>
+    <string name="lifetime_points">Buy Lifetime VIP</string>
+    <string name="exchange_points">Redeem Gift-VIP</string>
+
+
+    <string name="txt_home_ai">Text \nto Image</string>
+    <string name="txt_home_video">Custom Video \nFace Swap</string>
+    <string name="txt_home_photo">Custom Photo \nFcae Swap</string>
+    <string name="txt_home_hug">One-Click \nHug</string>
+    <string name="txt_home_kiss">One-Click \nKiss</string>
+    <string name="txt_home_outfit">One-Click \nOutfit Change</string>
+    <string name="one_click_outfit_change">One-Click Outfit Change</string>
+    <string name="txt_start_hug1">One-Click Hug</string>
+    <string name="one_click_kiss">One-Click Kiss</string>
+    <string name="keep_browsing">Running in Background</string>
+    <string name="collage">2 individual photos</string>
+    <string name="collage2">Group photo</string>
+
+    <string name="txt_start_hug2">No matter the distance, intimacy is within reach</string>
+    <string name="upload_clear">Upload a clear front-facing photo of one person</string>
+    <string name="upload_clear2">Upload a clear front-facing photo of two people</string>
+    <string name="hug_hint">Please select an image</string>
+    <string name="hint_spent">This feature is still experimental. If generation fails, AIPoints will not be refunded.</string>
+    <string name="one_click_closer">One click closer, a heartbeat that never fades</string>
+    <string name="no_dress_code">Wear anything you like</string>
+    <string name="upload_of_clothing">Upload a clear clothing photo</string>
+
+    <string name="txt_img2kiss">Spend AIPoints-One-Click Kiss</string>
+    <string name="txt_change_clothes">Spend AIPoints-One-Click Outfit Change</string>
+    <string name="txt_img2hug">Spend AIPoints-One-Click Hug</string>
+    <string name="txt_rating">Template Rating</string>
+    <string name="got_it">Got it</string>
+    <string name="balance_num">Balance: %s</string>
+    <string name="only_price">VIP Only</string>
+
+    <string name="dialog_sz_title">Become VIP, All Templates</string>
+    <string name="dialog_sz_content">VIP can use all templates</string>
+    <string name="dialog_sz_ok">Become VIP</string>
+    <string name="dialog_sz_cancal">Cancel</string>
+
+    <string name="hint_privacy">Please read and agree to the Privacy Policy</string>
+
+    <string name="share_all">All</string>
+    <string name="share_1min">1min</string>
+    <string name="share_3min">3mins</string>
+    <string name="share_5min">5mins</string>
+    <string name="share_picture">Picture</string>
+    <string name="longer_processing_time">Longer Processing Time</string>
+    <string name="swap_face_hd">Swap Face HD takes longer than Swap Face. Please wait patiently.</string>
+    <string name="ok_start">OK, Start</string>
+    <string name="default_hd">Default HD Video Face Swap</string>
+    <string name="become_lifetime_vip">Become Lifetime VIP</string>
+    <string name="hd_mode_content1">HD Mode Lifetime VIP Only %s AIPoints</string>
+    <string name="hd_mode_content2">HD Mode Lifetime VIP Only Free</string>
+    <string name="standard_mode">Standard Mode</string>
+    <string name="hd_mode">HD Mode</string>
+    <string name="hd_mode_vip">HD mode saved you %s AIPoints.\nWarning: Swap Face HD takes longer than Swap Face.</string>
+    <string name="lifetime_vip">Lifetime VIP Exclusive Savings</string>
+    <string name="default_home_page">Default Home Page</string>
+    <string name="default_home_after_launch">Default Home After Launch</string>
+    <string name="homepage_content">Change in \"Me-Settings-Default Home Page\"</string>
+    <string name="save_exit">Save and Exit App</string>
+    <string name="mine_become_a_pro_member">VIP BENEFITS</string>
+    <string name="mine_vip_continue">More Benefits</string>
+    <string name="mine_vip_all_templates1">Exclusive VIP Templates</string>
+    <string name="mine_vip_all_templates4">Unlimited Downloads</string>
+    <string name="bonus_aipoints">Bonus AIPoints</string>
+    <string name="exclusive_aipoints_discounts">Exclusive AIPoints Discounts</string>
+    <string name="access_to_hidden_features">Access to Hidden Features</string>
+    <string name="rating">Rating</string>
+    <string name="effect_score">Effect Score</string>
+    <string name="dialog_rating_hint">This score is the average satisfaction rating from users for this generated result</string>
+    <string name="rate_sharezone">Rate ShareZone Generated Results</string>
+    <string name="rate_complete_task">Complete tasks cumulatively to claim corresponding AIPoints</string>
+    <string name="claim">Claim</string>
+    <string name="daily">Daily</string>
+    <string name="weekly">Weekly</string>
+    <string name="rate">Rate</string>
+    <string name="rate_the_generated">Rate the generated result to earn AIPoints rewards</string>
+    <string name="rated">Rated</string>
+    <string name="receive_msg">Receive AIPoints +%s</string>
+    <string name="cut_failed_retry">Cutting failed, please try again.</string>
+
+    <string name="spicy_moves">Spicy moves</string>
+    <string name="spicy_moves_hint">Give the photo some spicy moves</string>
+    <string name="upload_a_photo">Upload a photo</string>
+
+    <string name="log_in_with_password">Log in with Password</string>
+    <string name="no_account">No Account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="account">Account</string>
+    <string name="password">Password</string>
+    <string name="log_in_login">Log In</string>
+    <string name="create_your_account">Create your account</string>
+    <string name="have_an_account">Have an account?</string>
+    <string name="login">Login</string>
+    <string name="confirm_password">Confirm Password</string>
+     <string name="change_password">Change Password</string>
+    <string name="old_password">Old password</string>
+    <string name="retype_new">Retype New</string>
+    <string name="confirm_new_password">Confirm new password</string>
+
+    <string name="letters_and_numbers_only">Letters and numbers only, 6–20 characters maximum.</string>
+    <string name="log_in_2">Log in</string>
+    <string name="don_t_have_an_account">Don’t have an account?</string>
+    <string name="welcome_back_log">Welcome back! Log In below</string>
+    <string name="check_pwd">Invalid username or password</string>
+    <string name="current">Current</string>
+    <string name="str_new">New</string>
+    <string name="create_new_password">Create new password</string>
+
+    <string name="share_1min_update">1min/pic</string>
+    <string name="new_ai_play">New · AI Play</string>
+    <string name="enjoy_pleasurable_moments_with_her">Enjoy pleasurable moments with her</string>
+    <string name="ai_player">AI Player</string>
+    <string name="play_with_her">Play with her</string>
+    <string name="play_while_you_wait">Play While You Wait</string>
+    <string name="task_failed">Task Failed</string>
+    <string name="something_went">Something went wrong with your task. You can request a refund and try again.</string>
+    <string name="request_a_refund">Request a refund</string>
+    <string name="refunded">Refunded:</string>
+    <string name="play_c">Completed</string>
+    <string name="play_error">Oops, Error</string>
+    <string name="warn_title">Do not upload child pornography content</string>
+    <string name="warn_content">Do not upload any content related to child pornography or child abuse, otherwise your account may be permanently banned.</string>
+    <string name="login_notice">Account Disabled</string>
+    <string name="login_notice_content">Your account has been disabled because you repeatedly shared child pornography or child violence material, violating the platform rules.</string>
+    <string name="buy_quota">Buy Quota</string>
+    <string name="extra_slots">Extra slots for %s custom videos</string>
+    <string name="quota">Quota</string>
+    <string name="remaining_upload_quota">Remaining upload quota:</string>
+    <string name="buy_more_quota">Buy more quota</string>
+    <string name="buy_now">Buy Now</string>
+</resources>

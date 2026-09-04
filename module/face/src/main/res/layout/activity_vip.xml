@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.VipActivity" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.VipViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindAddBottomPadding="@{true}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@mipmap/img_vip_bj"
+            android:clipToPadding="false"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@color/colorTransparent"
+                    android:orientation="horizontal"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgVip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="66dp"
+                    android:src="@drawable/img_vip_page"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvVipPro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="@string/mine_become_a_pro_member"
+                    android:textAppearance="@style/font_20"
+                    android:textColor="#FFDE7B"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgVip" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgGou1"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/img_g_page"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvVipPro" />
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:gravity="start"
+                    android:text="@string/mine_vip_all_templates1"
+                    android:textAppearance="@style/font_14"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="@+id/guideline_center"
+                    app:layout_constraintStart_toEndOf="@+id/imgGou1"
+                    app:layout_constraintTop_toTopOf="@+id/imgGou1" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgGou2"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/img_g_page"
+                    app:layout_constraintStart_toStartOf="@+id/guideline_center"
+                    app:layout_constraintTop_toBottomOf="@+id/tvVipPro" />
+
+                <TextView
+                    android:id="@+id/tv2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:gravity="start"
+                    android:text="@string/faster_generation"
+                    android:textAppearance="@style/font_14"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgGou2"
+                    app:layout_constraintTop_toTopOf="@+id/imgGou2" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgGou3"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/img_g_page"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv1" />
+
+                <TextView
+                    android:id="@+id/tv3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:gravity="start"
+                    android:text="@string/mine_vip_all_templates3"
+                    android:textAppearance="@style/font_14"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="@+id/guideline_center"
+                    app:layout_constraintStart_toEndOf="@+id/imgGou3"
+                    app:layout_constraintTop_toTopOf="@+id/imgGou3" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgGou4"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/img_g_page"
+                    app:layout_constraintStart_toStartOf="@+id/guideline_center"
+                    app:layout_constraintTop_toBottomOf="@+id/tv2" />
+
+                <TextView
+                    android:id="@+id/tv4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:gravity="start"
+                    android:text="@string/mine_vip_all_templates4"
+                    android:textAppearance="@style/font_14"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgGou4"
+                    app:layout_constraintTop_toTopOf="@+id/imgGou4" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgGou5"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/img_g_page"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv3" />
+
+                <TextView
+                    android:id="@+id/tv5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:gravity="start"
+                    android:text="@string/bonus_aipoints"
+                    android:textAppearance="@style/font_14"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="@+id/guideline_center"
+                    app:layout_constraintStart_toEndOf="@+id/imgGou5"
+                    app:layout_constraintTop_toTopOf="@+id/imgGou5" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgGou6"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/img_g_page"
+                    app:layout_constraintStart_toStartOf="@+id/guideline_center"
+                    app:layout_constraintTop_toBottomOf="@+id/tv4" />
+
+                <TextView
+                    android:id="@+id/tv6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:gravity="start"
+                    android:text="@string/exclusive_aipoints_discounts"
+                    android:textAppearance="@style/font_14"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgGou6"
+                    app:layout_constraintTop_toTopOf="@+id/imgGou6" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgGou7"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/img_g_page"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv5" />
+
+                <TextView
+                    android:id="@+id/tvGou7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:gravity="start"
+                    android:text="@string/access_to_hidden_features"
+                    android:textAppearance="@style/font_14"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="@+id/guideline_center"
+                    app:layout_constraintStart_toEndOf="@+id/imgGou7"
+                    app:layout_constraintTop_toTopOf="@+id/imgGou7" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    bindAdapter="@{vm.vipSchemeAdapter}"
+                    bindData="@{vm.schemes}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvGou7"
+                    tools:itemCount="3"
+                    tools:layoutManager="LinearLayoutManager"
+                    tools:listitem="@layout/item_vip_scheme"
+                    tools:orientation="vertical" />
+
+                <TextView
+                    android:id="@+id/atuoText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lineSpacingExtra="-1dp"
+                    android:paddingHorizontal="@dimen/margin_width_app"
+                    android:paddingVertical="4dp"
+                    android:text="@string/vip_txt7"
+                    android:textColor="@color/colorB2"
+                    android:textSize="10sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+                    tools:visibility="visible" />
+
+
+                <Button
+                    android:id="@+id/btnLaunch2"
+                    bindSingleClick="@{()->handler.onLaunchPayClick()}"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="@dimen/margin_width_app"
+                    android:layout_marginEnd="@dimen/margin_width_app"
+                    android:background="@drawable/bg_btn_launch_pay"
+                    android:stateListAnimator="@null"
+                    android:text="@string/vip_to"
+                    android:textAppearance="@style/font_16"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/atuoText2"
+                    tools:visibility="visible" />
+
+                <LinearLayout
+                    android:id="@+id/line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnLaunch2">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/vip_terms"
+                        android:textAppearance="@style/font_14"
+                        android:textColor="@color/colorB2" />
+
+                    <TextView
+                        android:id="@+id/atuoView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/vip_txt_atuo1"
+                        android:textAppearance="@style/font_14"
+                        android:textColor="@color/colorB2" />
+
+                    <TextView
+                        bindSingleClick="@{()->handler.onAutoSubClick()}"
+                        bindTextUnderLine="@{true}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingVertical="12dp"
+                        android:text="@string/vip_txt5"
+                        android:textAppearance="@style/font_14"
+                        android:textColor="@color/colorB2" />
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            bindAddTopHeight="@{true}"
+            bindAddTopPadding="@{true}"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                bindSingleClick="@{()->handler.onBack()}"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="@dimen/margin_width_app"
+                android:src="@drawable/img_icon_vip_close"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,140 @@
+package com.a.activity.tool
+
+import android.graphics.Color
+import android.media.MediaPlayer
+import android.os.Bundle
+import android.os.CountDownTimer
+import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import com.a.R
+import com.a.activity.AToolHistoryActivity
+import com.a.activity.AVipActivity
+import com.luck.picture.lib.basic.PictureSelector
+import com.luck.picture.lib.config.SelectMimeType
+import com.luck.picture.lib.config.SelectModeConfig
+import com.luck.picture.lib.entity.LocalMedia
+import com.luck.picture.lib.interfaces.OnResultCallbackListener
+import com.luck.picture.lib.language.LanguageConfig
+import com.face.util.GVM
+import com.a.BR
+import com.a.databinding.ActivityAtoolStartremovalBinding
+import com.face.key.AiTaskType
+import com.face.util.GlideEngine
+import com.face.util.SPUtils
+import com.face.viewmodel.activity.NullViewModel
+import com.face.ui.BaseBindingActivity
+import com.zzkj.structure.base.DataBindingArguments
+import com.zzkj.structure.util.SPbaseUtils
+import com.zzkj.structure.util.ktx.openActivity
+import com.zzkj.structure.util.toast
+
+class ARemovalStartActivity : BaseBindingActivity<ActivityAtoolStartremovalBinding, NullViewModel>(
+    R.layout.activity_atool_startremoval,
+    NullViewModel::class.java
+) {
+    override fun init(savedInstanceState: Bundle?) {
+
+        mBinding?.apply {
+            videoView.setVideoPath("android.resource://$packageName/${com.key.R.raw.tool1}")
+            videoView.seekTo(10)
+            videoView.setOnPreparedListener { mp ->
+                mp.isLooping = true
+                mp.start()
+                mp.setOnInfoListener { mp, what, extra ->
+                    if (what == MediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START) {
+                        videoView.setBackgroundColor(Color.TRANSPARENT)
+                        imgView.visibility = View.INVISIBLE
+                    }
+                    true
+                }
+            }
+        }
+    }
+
+    fun toRecord() {
+        GVM.INSTANT.payPage.value = "AHome_tool_background_record"
+        if (!GVM.INSTANT.isVip.value && !SPUtils.toolUse) {
+            openActivity<AVipActivity>()
+            return
+        }
+        openActivity<AToolHistoryActivity> {
+            putString("aiTaskType", AiTaskType.RMBG)
+        }
+    }
+
+    fun selectorPhoto() {
+        GVM.INSTANT.payPage.value = "AHome_tool_background"
+        if (!GVM.INSTANT.isVip.value&& !SPUtils.toolUse) {
+            openActivity<AVipActivity>()
+            return
+        }
+        SPUtils.isMaterial = false
+        val language = when (SPbaseUtils.spLanguage) {
+            "zh" -> LanguageConfig.CHINESE
+            "es" -> LanguageConfig.SPANISH
+            "de" -> LanguageConfig.GERMANY
+            "fr" -> LanguageConfig.FRANCE
+            "sv" -> LanguageConfig.SV
+            else -> LanguageConfig.ENGLISH
+        }
+        PictureSelector.create(this)
+            .openGallery(SelectMimeType.ofImage())
+            .setLanguage(language)
+            .isDisplayCamera(false)
+            .isInfo(false)
+            .isGif(false)
+            .isWebp(false)
+            .setMaxSelectNum(1)
+            .setSelectionMode(SelectModeConfig.SINGLE)
+            .setImageEngine(GlideEngine.createGlideEngine())
+            .forResult(object : OnResultCallbackListener<LocalMedia?> {
+                override fun onResult(result: ArrayList<LocalMedia?>,frament: Fragment) {
+                    if (result.isNotEmpty()) {
+                        result[0]?.apply {
+                            if (availablePath.isNotEmpty()) {
+                                frament.openActivity<ARemovalActivity> {
+                                    putString("img_url", sandboxPath ?: availablePath)
+                                }
+                            } else {
+                                toast("Image loading failed, please choose another image")
+                            }
+                        }
+                    } else {
+                        toast("Image loading failed, please choose another image")
+                    }
+                }
+
+                override fun onCancel() {
+
+                }
+
+                override fun onCamera() {
+
+                }
+
+                override fun onHint(hoACT: FragmentActivity) {
+
+                }
+            })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mBinding?.imgView?.visibility = View.VISIBLE
+        object : CountDownTimer(300, 100) {
+            override fun onTick(millisUntilFinished: Long) {
+            }
+
+            override fun onFinish() {
+                mBinding?.imgView?.visibility = View.INVISIBLE
+            }
+        }.start()
+    }
+
+    override fun getDataBindingArguments(): DataBindingArguments? {
+        return DataBindingArguments(BR.handler, this)
+            .addArgument(BR.vm, mModel)
+            .addArgument(BR.gvm, GVM.INSTANT)
+    }
+}

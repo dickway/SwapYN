@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAppBg">#0F0F0F</color>
+
+
+    <color name="colorE5">#E5E5E5</color>
+    <color name="colorB2">#B2B2B2</color>
+    <color name="colorB5">#B5B5B5</color>
+    <color name="color5E">#5E5E5E</color>
+    <color name="colorF2">#F2F2F2</color>
+    <color name="color26">#262626</color>
+    <color name="color3F">#3F3F3F</color>
+    <color name="color8E">#8E8E8E</color>
+    <color name="colorF8">#F8F8F8</color>
+    <color name="color1A">#1A1A1A</color>
+    <color name="color1D">#1D1D1D</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhite5">#0DFFFFFF</color>
+    <color name="colorWhite10">#1AFFFFFF</color>
+    <color name="colorWhite20">#33FFFFFF</color>
+    <color name="colorWhite30">#4DFFFFFF</color>
+    <color name="colorWhite40">#66FFFFFF</color>
+    <color name="colorWhite50">#80FFFFFF</color>
+    <color name="colorWhite60">#99FFFFFF</color>
+    <color name="colorWhite70">#B3FFFFFF</color>
+    <color name="colorWhite80">#CCFFFFFF</color>
+    <color name="color2B">#2B2B2B</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorBlack5">#0D000000</color>
+    <color name="colorBlack10">#1A000000</color>
+    <color name="colorBlack30">#4D000000</color>
+    <color name="colorBlack50">#80000000</color>
+    <color name="colorBlack80">#CC000000</color>
+    <color name="colorBlack60">#99000000</color>
+    <color name="colorShare1">#939393</color>
+    <color name="colorShare2">#787878</color>
+    <color name="colorShareBg1">#262626</color>
+    <color name="colorShareBg2">#F2F2F2</color>
+
+    <color name="colorRed">#FF0000</color>
+    <color name="color00F9AD">#00F9AD</color>
+    <color name="color11FFEE">#11FFEE</color>
+
+    <color name="colorImg">#000000</color>
+
+    <color name="colorSmartRefresh">#FF4600</color>
+    <color name="colorTransparent">#00000000</color>
+
+    <color name="colorBgWhite">#FFFFFF</color>
+    <color name="colorBgWhite40">#66FFFFFF</color>
+    <color name="colorBgBlack">#000000</color>
+    <color name="colorBgBlack5">#0D000000</color>
+    <color name="colorBgBlack10">#1A000000</color>
+    <color name="colorBgBlack32">#52000000</color>
+    <color name="colorBgBlack50">#80000000</color>
+    <color name="colorBgBlack70">#B3000000</color>
+    <color name="colorBgBlack80">#CC000000</color>
+    <color name="colorBgHistory1">#0000EDFF</color>
+    <color name="colorBgHistory2">#9900EDFF</color>
+
+
+    <color name="colorLine">#000000</color>
+    <color name="colorLine1">#323232</color>
+    <color name="colorBLine16">#29000000</color>
+    <color name="colorWLine16">#29ffffff</color>
+    <color name="colorLine10">#1A000000</color>
+    <color name="colorLine5">#0D000000</color>
+
+
+    <color name="colorGaussian1">#9fff</color>
+    <color name="colorGaussian2">#9000</color>
+
+    <color name="colorFontHint">#8E8E8E</color>
+    <color name="colorFontBlack">#000000</color>
+    <color name="colorFontWhite">#ffffff</color>
+
+    <color name="colorFont2">#80000000</color>
+
+
+    <color name="colorBgVip1">#F3DE9F</color>
+    <color name="colorBgVip2">#FFD45A</color>
+
+    <color name="colorBgFF3434">#FF3434</color>
+    <color name="colorBgFFD244">#FFD244</color>
+    <color name="colorBgFFD274">#FFD274</color>
+    <color name="colorBgFFE9AA">#FFE9AA</color>
+
+    <color name="colorBgFFCB80">#FFCB80</color>
+    <color name="colorBgFFE38B20">#33FFE38B</color>
+    <color name="colorBgFFE38B">#FFE38B</color>
+    <color name="colorBgFFB30020">#33FFB300</color>
+    <color name="colorBgFFB300">#FFB300</color>
+    <color name="colorBgB86800">#B86800</color>
+    <color name="colorBg633A00">#633A00</color>
+
+    <color name="colorBgFF376F">#FF376F</color>
+    <color name="colorBgFFF1D5">#FFFFF1D5</color>
+    <color name="colorBgFF4848">#FF4848</color>
+
+    <color name="colorF4A42A">#FFCB80</color>
+    <color name="colorFont3">#802E00</color>
+    <color name="colorFont4">#FF4444</color>
+    <color name="colorFont5">#FFFF376F</color>
+    <color name="colorFont6">#3EA6FF</color>
+    <color name="colorFont8">#00C983</color>
+    <color name="colorFontFF5447">#FF5447</color>
+    <color name="colorFont6A3800">#6A3800</color>
+    <color name="colorFontFF9BB7">#FF9BB7</color>
+    <color name="colorFont9AB4CA">#9AB4CA</color>
+    <color name="shadow_color">#33FFFFFF</color>
+
+    <color name="wheel_text_color">#727272</color>
+    <color name="wheel_selected_text_color">#ffffff</color>
+    <color name="wheel_highlight_color">#00000000</color>
+    <color name="wheel_divider_color">#00000000</color>
+    <color name="colorFont402700">#402700</color>
+</resources>

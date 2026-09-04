@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.a.activity.ADeleteUserActivity" />
+
+        <variable
+            name="vm"
+            type="com.a.viewmodel.ADeleteuserViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bindAddVerticalPadding="@{true}"
+        android:background="@color/colorAmainBg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="10dp"
+                android:src="@mipmap/a_icon_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="60dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="Delete Account (lrreversible)"
+                android:textAppearance="@style/font_16"
+                android:textColor="#EEF3FD"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clTitle">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="40dp"
+                    android:gravity="center"
+                    android:text="Cancellation Notice"
+                    android:textColor="#EEF3FD"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv2"
+                    android:layout_width="0dp"
+                    bindVisible="@{!vm.isNext}"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:text="@string/delete_auser_txt1"
+                    android:textColor="#FF4646"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv1" />
+                <TextView
+                    android:id="@+id/tvAccount"
+                    android:layout_width="0dp"
+                    bindVisible="@{vm.isNext}"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:text="George.jiajie@gmail.com"
+                    android:textColor="#EEF3FD"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv1" />
+
+                <TextView
+                    android:id="@+id/tv3"
+                    android:layout_width="0dp"
+                    bindVisible="@{!vm.isNext}"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center"
+                    android:text="@string/delete_auser_txt2"
+                    android:textColor="#EEF3FD"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv2" />
+                <TextView
+                    android:id="@+id/tvHint"
+                    android:layout_width="0dp"
+                    bindVisible="@{vm.isNext}"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center"
+                    android:text="@string/deleteuser_atxt2_ok"
+                    android:textColor="#b2b2b2"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAccount" />
+
+
+                <TextView
+                    bindVisible="@{vm.isDisable}"
+                    android:id="@+id/tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:text="10s"
+                    android:textAppearance="@style/font_14"
+                    android:textColor="#EEF3FD"
+                    app:layout_constraintBottom_toTopOf="@+id/tvPost"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvPost"
+                    bindInVisible="@{vm.isNext}"
+                    bindEnabled="@{!vm.isDisable}"
+                    bindSelected="@{!vm.isDisable}"
+                    bindSingleClick="@{()->handler.postDelete1()}"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/checkbox_btn_jb"
+                    android:gravity="center"
+                    android:text="No subscription, confirm deletion"
+                    android:textSize="16sp"
+                    android:textColor="@color/color_bw"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+                <TextView
+                    tools:visibility="gone"
+                    bindVisible="@{vm.isNext}"
+                    bindEnabled="@{!vm.isDisable}"
+                    bindSelected="@{!vm.isDisable}"
+                    bindSingleClick="@{()->handler.postDelete2()}"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/checkbox_btn_jb"
+                    android:gravity="center"
+                    android:text="Confirm Delete"
+                    android:textSize="16sp"
+                    android:textColor="@color/color_bw"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

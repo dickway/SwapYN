@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.DeleteUserActivity" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.DeleteuserViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bindAddVerticalPadding="@{true}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/screen_margins_width1"
+                android:src="@drawable/img_icon_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorWhite" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="60dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_account_lrreversible"
+                android:textAppearance="@style/font_18"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clTitle">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="40dp"
+                    android:gravity="center"
+                    android:text="@string/cancellation_instructions"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv2"
+                    android:layout_width="0dp"
+                    bindVisible="@{!vm.isNext}"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:text="@string/delete_user_txt1"
+                    android:textColor="@color/colorRed"
+                    android:textSize="16sp"
+                    tools:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv1" />
+                <TextView
+                    android:id="@+id/tvAccount"
+                    android:layout_width="0dp"
+                    bindVisible="@{vm.isNext}"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:text="George.jiajie@gmail.com"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv1" />
+
+                <TextView
+                    android:id="@+id/tv3"
+                    android:layout_width="0dp"
+                    bindVisible="@{!vm.isNext}"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center"
+                    tools:visibility="gone"
+                    android:text="@string/delete_user_txt2"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv2" />
+                <TextView
+                    android:id="@+id/tvHint"
+                    android:layout_width="0dp"
+                    bindVisible="@{vm.isNext}"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center"
+                    android:text="@string/deleteuser_txt2_ok"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAccount" />
+
+
+                <TextView
+                    bindVisible="@{vm.isDisable}"
+                    android:id="@+id/tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:text="10s"
+                    android:textAppearance="@style/font_16"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintBottom_toTopOf="@+id/tvPost"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvPost"
+                    bindInVisible="@{vm.isNext}"
+                    bindEnabled="@{!vm.isDisable}"
+                    bindSelected="@{!vm.isDisable}"
+                    bindSingleClick="@{()->handler.postDelete1()}"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="@dimen/margin_width_app_btn"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/check_btn"
+                    android:gravity="center"
+                    android:text="@string/no_subscription"
+                    android:textAppearance="@style/font_14"
+                    android:textColor="@color/color_btn_video"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+                <TextView
+                    bindVisible="@{vm.isNext}"
+                    bindEnabled="@{!vm.isDisable}"
+                    bindSelected="@{!vm.isDisable}"
+                    bindSingleClick="@{()->handler.postDelete2()}"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/check_btn"
+                    android:gravity="center"
+                    android:text="@string/confirm_delete"
+                    android:textAppearance="@style/font_14"
+                    android:textColor="@color/color_btn_video"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

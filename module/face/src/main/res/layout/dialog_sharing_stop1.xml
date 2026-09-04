@@ -1,0 +1,39 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.view.sharez.SharingStop1Dialog" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        bindSingleClick="@{()->handler.onConfirmClick()}"
+        android:background="@drawable/bg_rounded_2b_top_16d"
+        android:orientation="vertical">
+            
+        <View
+            android:layout_width="50dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_w_corners_30"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="40dp"
+            android:drawablePadding="20dp"
+            android:drawableStart="@drawable/img_stop_sharing"
+            android:text="@string/share_stop_sharing"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+</layout>

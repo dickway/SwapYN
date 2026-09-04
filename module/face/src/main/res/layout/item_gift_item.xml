@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginHorizontal="6dp">
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:background="@drawable/bg_gift_corners8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginHorizontal="25dp"
+            app:layout_constraintEnd_toEndOf="@id/view1"
+            app:layout_constraintStart_toStartOf="@id/view1"
+            app:layout_constraintTop_toTopOf="@+id/view1" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/bg_btn_1b_corners8"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingBottom="11dp"
+            android:paddingHorizontal="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/view1"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minLines="2"
+                android:gravity="center_vertical"
+                app:layout_constraintVertical_chainStyle="packed"
+                android:textColor="@color/colorWhite"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgPoint1"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/img_point_hash"
+                app:layout_constraintStart_toStartOf="@+id/tvName"
+                app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+
+            <TextView
+                android:id="@+id/tvPointZ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4dp"
+                android:text="0"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imgPoint1"
+                app:layout_constraintStart_toEndOf="@+id/imgPoint1"
+                app:layout_constraintTop_toTopOf="@+id/imgPoint1" />
+
+            <TextView
+                android:id="@+id/btnGift"
+                android:layout_width="60dp"
+                android:layout_height="22dp"
+                android:background="@drawable/bg_btn_point"
+                android:gravity="center"
+                android:text="@string/cash_btn"
+                android:textColor="@color/colorBlack"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgPoint1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgPoint1"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

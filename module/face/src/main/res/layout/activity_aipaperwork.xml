@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.paperwork.PaperworkAiActivity" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.PaperworkAiViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bindAddVerticalPadding="@{true}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/screen_margins_width1"
+                android:src="@drawable/img_icon_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorWhite" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="110dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="@string/id_photo_generation"
+                android:textAppearance="@style/font_18"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatImageView
+                bindSingleClick="@{()->handler.onHint()}"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginEnd="@dimen/margin_width_app"
+                android:src="@drawable/img_icon_ts"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="100dp">
+
+                <TextView
+                    android:id="@+id/tvChooseTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_width_app"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/select_an_avatar"
+                    android:textAppearance="@style/font_16"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/lineAdd"
+                    bindSingleClick="@{()->handler.onUploadClick()}"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:layout_marginStart="@dimen/margin_width_app"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_rounded_paperwork_corners4"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvChooseTxt">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imgAdd"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_icon_add_m_s" />
+                </LinearLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rlChoose"
+                    bindAdapter="@{vm.userAdapter}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintStart_toEndOf="@+id/lineAdd"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/lineAdd"
+                    tools:listitem="@layout/item_aipaperwork_face" />
+
+                <TextView
+                    android:id="@+id/tVstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_width_app"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/dress_style"
+                    android:textAppearance="@style/font_16"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lineAdd" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/conStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_width_app"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tVstyle">
+
+                    <LinearLayout
+                        android:id="@+id/linCasual"
+                        bindSingleClick="@{()->handler.onStyle(1)}"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
+                        android:background="@drawable/bg_rounded_paperwork_corners4"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            bindSelected="@{vm.style==1}"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/checkbox_paperwork_casual" />
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        bindVisible="@{vm.style==1}"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/bg_rounded_item_corners4"
+                        app:layout_constraintBottom_toBottomOf="@+id/linCasual"
+                        app:layout_constraintEnd_toEndOf="@+id/linCasual"
+                        app:layout_constraintStart_toStartOf="@+id/linCasual"
+                        app:layout_constraintTop_toTopOf="@+id/linCasual">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/img_item_select"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        bindSelected="@{vm.style==1}"
+                        bindTextBold="@{vm.style==1}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/casual"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/color_paperwork_txt"
+                        app:layout_constraintEnd_toEndOf="@+id/linCasual"
+                        app:layout_constraintStart_toStartOf="@+id/linCasual"
+                        app:layout_constraintTop_toBottomOf="@+id/linCasual" />
+
+                    <LinearLayout
+                        android:id="@+id/linBusiness"
+                        bindSingleClick="@{()->handler.onStyle(2)}"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
+                        android:layout_marginStart="@dimen/margin_width_app"
+                        android:background="@drawable/bg_rounded_paperwork_corners4"
+                        android:gravity="center"
+                        app:layout_constraintStart_toEndOf="@+id/linCasual"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            bindSelected="@{vm.style==2}"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/checkbox_paperwork_business" />
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        bindVisible="@{vm.style==2}"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/bg_rounded_item_corners4"
+                        app:layout_constraintBottom_toBottomOf="@+id/linBusiness"
+                        app:layout_constraintEnd_toEndOf="@+id/linBusiness"
+                        app:layout_constraintStart_toStartOf="@+id/linBusiness"
+                        app:layout_constraintTop_toTopOf="@+id/linBusiness">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/img_item_select"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        bindSelected="@{vm.style==2}"
+                        bindTextBold="@{vm.style==2}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/business"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/color_paperwork_txt"
+                        app:layout_constraintEnd_toEndOf="@+id/linBusiness"
+                        app:layout_constraintStart_toStartOf="@+id/linBusiness"
+                        app:layout_constraintTop_toBottomOf="@+id/linBusiness" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tVbackground"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_width_app"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/id_photo_background"
+                    android:textAppearance="@style/font_16"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/conStyle" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvBackground"
+                    bindAdapter="@{vm.colorAdapter}"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="@dimen/margin_width_app"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tVbackground"
+                    tools:listitem="@layout/item_aipaperwork_background" />
+
+                <TextView
+                    android:id="@+id/tvSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_width_app"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/id_photo_size"
+                    android:textAppearance="@style/font_16"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvBackground" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    bindAdapter="@{vm.sizeAdapter}"
+                    bindData="@{vm.sizeList}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="2dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSize"
+                    app:spanCount="4"
+                    tools:itemCount="6"
+                    tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    tools:listitem="@layout/item_aipaperwork_size" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/tv1"
+            bindEnabled='@{vm.postImgUrl!=""&amp;&amp;vm.postStyle!=""&amp;&amp;vm.postColor!=""&amp;&amp;vm.postSize!=""}'
+            bindSelected='@{vm.postImgUrl!=""&amp;&amp;vm.postStyle!=""&amp;&amp;vm.postColor!=""&amp;&amp;vm.postSize!=""}'
+            bindSingleClick="@{()->handler.postSend()}"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/check_btn"
+            android:gravity="center"
+            android:text="@string/start"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/color_btn_video"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/retry"
+            bindSingleClick="@{()->vm.getUserPics()}"
+            bindVisible="@{vm.loadFailed}"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_btn1_rounded_corners8"
+            android:gravity="center"
+            android:paddingHorizontal="16dp"
+            android:text="@string/retry"
+            android:textAppearance="@style/font_16"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle"
+            app:layout_constraintWidth_min="100dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

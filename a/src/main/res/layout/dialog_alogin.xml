@@ -1,0 +1,138 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.a.dialog.ALoginDialog" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/a_bg_dialog2"
+        android:orientation="vertical"
+        android:paddingBottom="8dp">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="28dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/a_bg_30_r100"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="3dp"/>
+
+        <TextView
+            android:id="@+id/txtTilt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="58dp"
+            android:layout_marginTop="17dp"
+            android:gravity="center"
+            android:text="Welcome back"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/txtDes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="43dp"
+            android:gravity="center"
+            android:text="Log in to Alviora using your google account"
+            android:textColor="#B2B2B2"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@+id/txtTilt" />
+
+
+        <LinearLayout
+            android:id="@+id/txtBtn"
+            bindSingleClick="@{()->handler.onGoogleClick()}"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="48dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/a_btn_r100"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/txtDes">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@mipmap/a_icon_google_w2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="Log in with google"
+                android:textStyle="bold"
+                android:textAppearance="@style/font_16"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgCheckbox"
+            bindSelected="@{handler.checked}"
+            bindSingleClick="@{()->handler.onCheckboxClick()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/checkbox_alogin"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtBtn" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/imgCheckbox"
+            app:layout_constraintStart_toEndOf="@id/imgCheckbox"
+            app:layout_constraintTop_toTopOf="@+id/imgCheckbox">
+
+            <TextView
+                android:id="@+id/tvWelcome1"
+                bindSingleClick="@{()->handler.onCheckboxClick()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Agree to the"
+                android:textColor="#B2B2B2"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imgCheckbox" />
+
+            <TextView
+                android:id="@+id/tvPrivacyPolicy"
+                bindSingleClick="@{()->handler.onPolicyClick()}"
+                bindTextUnderLine="@{true}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="3dp"
+                android:paddingVertical="8dp"
+                android:text="Privacy Policy"
+                android:textColor="#B2B2B2"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

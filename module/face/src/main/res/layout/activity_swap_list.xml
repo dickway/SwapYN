@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.SwapFaceListActivity" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.SwapListViewModel" />
+
+        <variable
+            name="adapterTab"
+            type="com.face.adapter.swap.SwapTabAdapter" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindAddVerticalPadding="@{true}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAppBg">
+
+        <!--        <androidx.appcompat.widget.AppCompatImageView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:src="@drawable/img_swap_default_m"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <com.face.view.NoScrollViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorTransparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rlTab"
+            bindAdapter="@{adapterTab}"
+            bindData="@{gvm.swapTabList}"
+            bindVisible="@{!vm.isBlurView}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="126dp"
+            android:layout_marginBottom="21dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/margin_width_app"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="@+id/viewPager"
+            app:layout_constraintEnd_toEndOf="@+id/tvStart2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_goneMarginEnd="165dp"
+            tools:listitem="@layout/item_swaptab_item" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tvConStart"
+            android:layout_width="160dp"
+            bindVisible="@{vm.isVideo&amp;&amp;!vm.isBlurView}"
+            android:layout_height="48dp"
+            android:layout_marginEnd="@dimen/margin_width_app"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/bg_btn_swap"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="visible">
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="38dp"
+                android:background="#4D000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                bindSingleClick="@{()->handler.onHdSelect()}"
+                android:layout_width="38dp"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:src="@drawable/img_hd_icon_set"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <LinearLayout
+                bindSingleClick="@{()->handler.onProductionClick(0)}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="39dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxWidth="88dp"
+                    android:lineSpacingExtra="-4dp"
+                    android:text="@string/swap_face"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="18dp"
+                    bindVisible="@{vm.isHdModel}"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/img_icon_hd" />
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            bindVisible="@{vm.usePinot>0&amp;&amp;!vm.isBlurView&amp;&amp;vm.isVideo}"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="-10dp"
+            android:background="@drawable/bg_b_corners100"
+            android:gravity="center"
+            android:paddingHorizontal="7dp"
+            app:layout_constraintEnd_toEndOf="@+id/tvConStart"
+            app:layout_constraintStart_toStartOf="@+id/tvConStart"
+            app:layout_constraintTop_toTopOf="@+id/tvConStart">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:src="@drawable/img_icon_hash32" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@{vm.usePinot.toString()}"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:text="10" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvBalance2"
+            bindVisible="@{vm.usePinot>0&amp;&amp;!vm.isBlurView&amp;&amp;vm.isVideo}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Balance: 0 AIPoint"
+            android:textColor="@color/colorWhite"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvConStart"
+            app:layout_constraintStart_toStartOf="@+id/tvConStart"
+            app:layout_constraintTop_toBottomOf="@+id/tvConStart" />
+
+        <TextView
+            android:id="@+id/tvStart2"
+            bindSingleClick="@{()->handler.onProductionClick(0)}"
+            bindVisible="@{!vm.isBlurView&amp;&amp;!vm.isVideo}"
+            android:layout_width="131dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="@dimen/margin_width_app"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/bg_btn_swap"
+            android:gravity="center"
+            android:lineSpacingExtra="-4dp"
+            android:text="@string/swap_face"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="gone" />
+
+        <LinearLayout
+            bindVisible="@{vm.usePinot>0&amp;&amp;!vm.isBlurView&amp;&amp;!vm.isVideo}"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="-10dp"
+            android:background="@drawable/bg_b_corners100"
+            android:gravity="center"
+            android:paddingHorizontal="7dp"
+            app:layout_constraintEnd_toEndOf="@+id/tvStart2"
+            app:layout_constraintStart_toStartOf="@+id/tvStart2"
+            app:layout_constraintTop_toTopOf="@+id/tvStart2">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:src="@drawable/img_icon_hash32" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@{vm.usePinot.toString()}"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvBalance"
+            bindVisible="@{vm.usePinot>0&amp;&amp;!vm.isBlurView&amp;&amp;!vm.isVideo}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Balance: 0 AIPoint"
+            android:textColor="@color/colorWhite"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvStart2"
+            app:layout_constraintStart_toStartOf="@+id/tvStart2"
+            app:layout_constraintTop_toBottomOf="@+id/tvStart2" />
+
+        <TextView
+            android:id="@+id/tvDownload"
+            bindSingleClick="@{()->handler.download()}"
+            bindVisible="@{vm.isShowDownload}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_rounded_btn_n"
+            android:gravity="center"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="6dp"
+            android:text="@string/completion_download"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/retry"
+            bindSingleClick="@{()->vm.retryDate()}"
+            bindVisible="@{vm.loadFailed}"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_btn1_rounded_corners8"
+            android:gravity="center"
+            android:paddingHorizontal="16dp"
+            android:text="@string/retry"
+            android:textAppearance="@style/font_16"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle"
+            app:layout_constraintWidth_min="100dp" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgBack"
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/screen_margins_width1"
+                android:src="@drawable/img_swap_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorWhite" />
+
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                bindVisible="@{!vm.isSingle}"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="36dp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imgMore"
+                app:layout_constraintStart_toEndOf="@+id/imgBack"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tabBackground="@color/colorTransparent"
+                app:tabGravity="center"
+                app:tabIndicator="@drawable/bg_swap_indicator"
+                app:tabIndicatorAnimationMode="elastic"
+                app:tabIndicatorColor="@color/colorWhite"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorGravity="bottom"
+                app:tabMaxWidth="0dp"
+                app:tabMode="fixed"
+                app:tabRippleColor="@color/colorTransparent"
+                app:tabSelectedTextColor="@color/colorWhite"
+                app:tabTextAppearance="@style/font_20"
+                app:tabTextColor="@color/colorWhite70" />
+
+            <TextView
+                bindVisible="@{vm.isSingle}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Swap"
+                android:textAppearance="@style/font_20"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgMore"
+                bindSingleClick="@{()->handler.onMore()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/margin_width_app"
+                android:src="@drawable/img_icon_operations"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                bindVisible="@{gvm.hasNewFeedbackMsg}"
+                android:layout_width="9dp"
+                android:layout_height="9dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mine_history_msg"
+                app:layout_constraintEnd_toEndOf="@id/imgMore"
+                app:layout_constraintTop_toTopOf="@id/imgMore" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

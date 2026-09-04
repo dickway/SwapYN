@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.fragment.ToolFragment1" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.fragment.ToolViewModel" />
+
+        <variable
+            name="layoutManager"
+            type="androidx.recyclerview.widget.RecyclerView.LayoutManager" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorAppBg"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:descendantFocusability="blocksDescendants"
+                android:layout_height="match_parent">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/pictureView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="20dp"
+                    bindSingleClick='@{()->handler.onHint("image")}'
+                    android:background="@drawable/bg_tool_corners6"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imgCP"
+                        bindSingleClick='@{()->handler.onHint("image")}'
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@drawable/img_tool_bj"
+                        app:layout_constraintDimensionRatio="75:36"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearanceOverlay="@style/shape_tool" />
+
+                    <TextView
+                        android:id="@+id/toolPicTxt1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:text="@string/frament_tool_pic_txt1"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+
+                        app:layout_constraintBottom_toTopOf="@+id/toolTxt"
+                        app:layout_constraintEnd_toStartOf="@+id/btnImg"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgCP"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/toolTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="@string/frament_tool_pic_txt2"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/colorB5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/toolPicTxt1" />
+
+                    <TextView
+                        android:id="@+id/btnImg"
+                        bindSingleClick='@{()->handler.onHint("image")}'
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/bg_rounded_w_corners100"
+                        android:drawableEnd="@drawable/img_icon_more_w"
+                        android:drawablePadding="5dp"
+                        android:drawableTint="@color/colorWhite"
+                        android:gravity="center"
+                        android:minWidth="84dp"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/frament_tool_to"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgCP" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/videoView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    bindSingleClick='@{()->handler.onHint("video")}'
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_tool_corners6"
+                    app:layout_constraintTop_toBottomOf="@+id/pictureView">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imgV"
+                        bindSingleClick='@{()->handler.onHint("video")}'
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@drawable/img_tool_video"
+                        app:layout_constraintDimensionRatio="75:36"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearanceOverlay="@style/shape_tool" />
+
+                    <TextView
+                        android:id="@+id/toolVideoTxt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:text="@string/frament_tool_video_txt1"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/tooltxt2"
+                        app:layout_constraintEnd_toStartOf="@+id/btn2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgV"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/tooltxt2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="@string/frament_tool_video_txt2"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/colorB5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/toolVideoTxt" />
+
+                    <TextView
+                        android:id="@+id/btn2"
+                        bindSingleClick='@{()->handler.onHint("video")}'
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/bg_rounded_w_corners100"
+                        android:drawableEnd="@drawable/img_icon_more_w"
+                        android:drawablePadding="5dp"
+                        android:drawableTint="@color/colorWhite"
+                        android:gravity="center"
+                        android:minWidth="84dp"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/frament_tool_to"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgV" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clearView"
+                    android:layout_width="match_parent"
+                    bindSingleClick='@{()->handler.onAiClear()}'
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_tool_corners6"
+                    app:layout_constraintTop_toBottomOf="@+id/videoView">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardView"
+                        bindSingleClick='@{()->handler.onAiClear()}'
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:cardBackgroundColor="@color/colorTransparent"
+                        app:cardCornerRadius="6dp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintDimensionRatio="75:36"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <VideoView
+                            android:id="@+id/videoClear"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgClare"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@mipmap/img_img_tool_bj31" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/toolClearTxt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:text="@string/eliminate_picture_clutter"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/tooltxt3"
+                        app:layout_constraintEnd_toStartOf="@+id/btn3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cardView"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/tooltxt3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:text="@string/clear_away_clutter"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/colorB5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/toolClearTxt" />
+
+                    <TextView
+                        android:id="@+id/btn3"
+                        bindSingleClick='@{()->handler.onAiClear()}'
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/bg_rounded_w_corners100"
+                        android:drawableEnd="@drawable/img_icon_more_w"
+                        android:drawablePadding="5dp"
+                        android:drawableTint="@color/colorWhite"
+                        android:gravity="center"
+                        android:minWidth="84dp"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/frament_tool_to"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/restorationView"
+                    android:layout_width="match_parent"
+                    bindVisible="@{gvm.isShowTool!=0}"
+                    tools:visibility="gone"
+                    bindSingleClick='@{()->handler.onRestoration()}'
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_tool_corners6"
+                    app:layout_constraintTop_toBottomOf="@+id/clearView">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imgRestoration"
+                        bindSingleClick='@{()->handler.onRestoration()}'
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@drawable/img_tool_restoration"
+                        app:layout_constraintDimensionRatio="75:36"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearanceOverlay="@style/shape_tool" />
+
+                    <TextView
+                        android:id="@+id/toolRestorationTxt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:text="@string/old_photo_restoration"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/toolRestoration"
+                        app:layout_constraintEnd_toStartOf="@+id/btn4"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgRestoration"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/toolRestoration"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:text="@string/help_you_restore"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/colorB5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn4"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/toolRestorationTxt" />
+
+                    <TextView
+                        android:id="@+id/btn4"
+                        bindSingleClick='@{()->handler.onRestoration()}'
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/bg_rounded_w_corners100"
+                        android:drawableEnd="@drawable/img_icon_more_w"
+                        android:drawablePadding="5dp"
+                        android:drawableTint="@color/colorWhite"
+                        android:gravity="center"
+                        android:minWidth="84dp"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/frament_tool_to"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgRestoration" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clarityView"
+                    android:layout_width="match_parent"
+                    bindSingleClick='@{()->handler.onStyle()}'
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_tool_corners6"
+                    app:layout_constraintTop_toBottomOf="@+id/restorationView">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imgClarity"
+                        bindSingleClick='@{()->handler.onStyle()}'
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@drawable/img_clarity"
+                        app:layout_constraintDimensionRatio="75:36"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearanceOverlay="@style/shape_tool" />
+
+                    <TextView
+                        android:id="@+id/toolClarityTxt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:text="@string/image_to_cartoon"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/toolClarity"
+                        app:layout_constraintEnd_toStartOf="@+id/btn5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgClarity"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/toolClarity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:text="@string/generate_cartoon_style"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/colorB5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/toolClarityTxt" />
+
+                    <TextView
+                        android:id="@+id/btn5"
+                        bindSingleClick='@{()->handler.onStyle()}'
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/bg_rounded_w_corners100"
+                        android:drawableEnd="@drawable/img_icon_more_w"
+                        android:drawablePadding="5dp"
+                        android:drawableTint="@color/colorWhite"
+                        android:gravity="center"
+                        android:minWidth="84dp"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/frament_tool_to"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgClarity" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cutoutView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    bindSingleClick='@{()->handler.onCutout()}'
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_tool_corners6"
+                    app:layout_constraintTop_toBottomOf="@+id/clarityView">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imgCutout"
+                        bindSingleClick='@{()->handler.onCutout()}'
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@drawable/img_cutout"
+                        app:layout_constraintDimensionRatio="75:36"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearanceOverlay="@style/shape_tool" />
+
+                    <TextView
+                        android:id="@+id/toolCutoutTxt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:text="@string/one_click_background_removal"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/toolCutout"
+                        app:layout_constraintEnd_toStartOf="@+id/btn6"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgCutout"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/toolCutout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:text="@string/smart_select_the_image_you_want_to_cut_out"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/colorB5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn6"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/toolCutoutTxt" />
+
+                    <TextView
+                        android:id="@+id/btn6"
+                        bindSingleClick='@{()->handler.onCutout()}'
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/bg_rounded_w_corners100"
+                        android:drawableEnd="@drawable/img_icon_more_w"
+                        android:drawablePadding="5dp"
+                        android:drawableTint="@color/colorWhite"
+                        android:gravity="center"
+                        android:minWidth="84dp"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/frament_tool_to"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgCutout" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/paperworkView"
+                    android:layout_width="match_parent"
+                    bindSingleClick='@{()->handler.onPaperwork()}'
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_tool_corners6"
+                    app:layout_constraintTop_toBottomOf="@+id/cutoutView">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imgPaperwork"
+                        bindSingleClick='@{()->handler.onPaperwork()}'
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@drawable/img_tool_paperwork"
+                        app:layout_constraintDimensionRatio="75:36"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearanceOverlay="@style/shape_tool" />
+
+                    <TextView
+                        android:id="@+id/toolPaperworkTxt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:text="@string/id_photo_generation"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/toolPaperwork"
+                        app:layout_constraintEnd_toStartOf="@+id/btn7"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgPaperwork"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/toolPaperwork"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:text="@string/from_an_image"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/colorB5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn7"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/toolPaperworkTxt" />
+
+                    <TextView
+                        android:id="@+id/btn7"
+                        bindSingleClick='@{()->handler.onPaperwork()}'
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/bg_rounded_w_corners100"
+                        android:drawableEnd="@drawable/img_icon_more_w"
+                        android:drawablePadding="5dp"
+                        android:drawableTint="@color/colorWhite"
+                        android:gravity="center"
+                        android:minWidth="84dp"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/frament_tool_to"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgPaperwork" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/toolTitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_width_app"
+                    android:layout_marginTop="40dp"
+                    android:text="Voice tool"
+                    bindVisible="@{gvm.isShowTool!=0&amp;&amp;vm.isShowVoice()}"
+                    tools:visibility="gone"
+                    android:textAppearance="@style/font_20"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/paperworkView" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/voiceView"
+                    bindVisible="@{gvm.isShowTool!=0&amp;&amp;vm.isShowVoice()}"
+                    tools:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_width_app"
+                    bindSingleClick='@{()->handler.onAiVoice()}'
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_tool_corners6"
+                    app:layout_constraintTop_toBottomOf="@+id/toolTitle2">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imgVoice"
+                        bindSingleClick='@{()->handler.onAiVoice()}'
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@drawable/img_tool_bj3"
+                        app:layout_constraintDimensionRatio="75:36"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearanceOverlay="@style/shape_tool" />
+
+                    <TextView
+                        android:id="@+id/toolVoiceTxt1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:text="@string/ai_reading_aloud"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/tvVoice"
+                        app:layout_constraintEnd_toStartOf="@+id/btn8"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgVoice"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/tvVoice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:text="@string/sound_cloning"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="@color/colorB5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn8"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/toolVoiceTxt1" />
+
+                    <TextView
+                        android:id="@+id/btn8"
+                        bindSingleClick='@{()->handler.onAiVoice()}'
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/bg_rounded_w_corners100"
+                        android:drawableEnd="@drawable/img_icon_more_w"
+                        android:drawablePadding="5dp"
+                        android:drawableTint="@color/colorWhite"
+                        android:gravity="center"
+                        android:minWidth="84dp"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/frament_tool_to"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgVoice" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/voiceView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

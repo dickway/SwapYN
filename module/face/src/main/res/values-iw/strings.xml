@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="compress">דוחס</string>
+    <string name="retry">נסה שוב</string>
+    <string name="frament_explore_banner">בחירות יומיות</string>
+    <string name="frament_explore_liketitle">נחש מה אתה אוהב</string>
+    <string name="frament_video_title">וידאו</string>
+    <string name="frament_picture_title">תמונה</string>
+    <string name="share_picture">תמונה</string>
+    <string name="version_hint">גרסה אחרונה</string>
+    <string name="video_hint">הווידאו קצר מ-2 שניות</string>
+    <string name="upload_failed">העלאה נכשלה</string>
+    <string name="edit">ערוך</string>
+    <string name="success">הצלחה</string>
+    <string name="collect_success">נאסף בהצלחה</string>
+    <string name="fail">כישלון</string>
+
+    <string name="save">שמור</string>
+    <string name="nodata">אין נתונים</string>
+    <string name="check">בדוק הפרעה בבקשה</string>
+    <string name="today">היום</string>
+    <string name="yesterday">אתמול</string>
+    <string name="first_txt">הראשון לא ניתן להסרה</string>
+
+    <string name="vip_time">קבוע</string>
+    <string name="vip_time1">החברות פגה</string>
+    <string name="vip_time2">תאריך תפוגה:</string>
+
+    <string name="language_en">English</string>
+    <string name="language_zh">简体中文</string>
+    <string name="language_zhtw">繁體中文</string>
+    <string name="language_es">Español</string>
+    <string name="language_de">Deutsch</string>
+    <string name="language_fr">Français</string>
+    <string name="language_sv">Svenska</string>
+    <string name="language_ar">العربية</string>
+    <string name="language_ja">日本語</string>
+    <string name="language_ko">한국어</string>
+    <string name="language_tr">Türkçe</string>
+    <string name="language_fa">فارسی</string>
+    <string name="language_iw">עברית</string>
+    <string name="language_ku">Kurdî</string>
+    <string name="language_ptbr">Português (Brasil)</string>
+    <string name="language_pt">Português (Portugal)</string>
+
+    <string name="see_all">עוד</string>
+    <string name="hot_txt">חם</string>
+
+    <string name="logon_agree1">אני מסכים ל-%s</string>
+    <string name="logon_agree2">מדיניות פרטיות</string>
+    <string name="login_text_people">החלף פנים\nבקלות\nטכנולוגיית AI חדישה, הוסף אפקטים כיפיים לתמונות ולסרטונים שלך</string>
+
+    <string name="vip_buy_the_pro_version">הטבות VIP</string>
+    <string name="vip_txta1">חברי VIP יכולים להוריד תמונות ללא סימן מים</string>
+    <string name="vip_txt1">חברי VIP יכולים להוריד תמונות או וידאו ללא סימן מים</string>
+    <string name="vip_txt2">חברי VIP יכולים להשתמש בכל התבניות</string>
+    <string name="vip_txt3">חברי VIP מקבלים עדיפות בשרתים איכותיים ליצירת תוצאות</string>
+    <string name="vip_txt4">ניתן להתאים תבנית החלפת פנים בווידאו</string>
+    <string name="vip_txt5">הסכם חידוש אוטומטי</string>
+    <string name="vip_continue">המשך</string>
+    <string name="vip_most_popular">ניסיון</string>
+    <string name="vip_txt_hint">עדיין לא חבר</string>
+    <string name="vip_txt_date">תאריך תפוגה:</string>
+
+    <string name="vip_to">הירשם כ-VIP</string>
+
+    <string name="upgrade_to_pro">הפוך ל-VIP</string>
+
+    <string name="search_videos_or_pictures_a">חפש תמונות…</string>
+    <string name="search_videos_or_pictures">חפש וידאו או תמונות…</string>
+    <string name="search_history_search">היסטוריית חיפוש</string>
+    <string name="search_popular_search">חיפוש פופולרי</string>
+    <string name="search_change">שנה</string>
+
+    <string name="mine_title">שלי</string>
+    <string name="mine_vip_all_templates3">ללא סימן מים</string>
+    <string name="mine_user_privacy_policy">מדיניות פרטיות משתמש</string>
+    <string name="mine_collect">אסוף</string>
+    <string name="mine_generation_history">היסטוריית יצירה</string>
+    <string name="mine_my_face">הפנים שלי</string>
+    <string name="mine_my_share">שתף, קבל VIP</string>
+    <string name="mine_my_share2">שתף</string>
+    <string name="share">שתף</string>
+    <string name="mine_settings">הגדרות</string>
+    <string name="mine_feedback">משוב</string>
+    <string name="mine_pro_member">חבר VIP</string>
+    <string name="history_txt">נתונים היסטוריים נשמרים 7 ימים בלבד, שמור או הורד בזמן</string>
+    <string name="settings_topic_switching">החלפת נושא</string>
+    <string name="settings_language">שפה</string>
+    <string name="setting_log_out">התנתק</string>
+    <string name="logout_txt">האם להתנתק מהחשבון הנוכחי?</string>
+    <string name="myface_editor">עורך</string>
+    <string name="myface_without_cover">פנים ללא כיסוי, ללא משקפיים, ללא כובע, נסה מול המצלמה</string>
+    <string name="myface_click_add_face">לחץ להוספת פנים</string>
+    <string name="myface_drop_sort">גרור לסידור לאחר לחיצה ארוכה</string>
+    <string name="myface_select_all">בחר הכל</string>
+    <string name="myface_delete">מחק</string>
+    <string name="myface_remove_face">הסר פנים</string>
+    <string name="myface_remove_task">הסר משימה</string>
+    <string name="myface_remove_txt">האם להסיר פנים?</string>
+    <string name="myface_remove_task_txt">האם להסיר משימה?</string>
+    <string name="confirm">אשר</string>
+    <string name="confirm_ter">אשר סיום</string>
+    <string name="cancel">בטל</string>
+    <string name="complete">הושלם</string>
+
+    <string name="feedback_email">דוא\"ל</string>
+    <string name="feedback_question">הזן את השאלה למשוב</string>
+    <string name="feedback_upload_txt">העלה תמונה או וידאו (עד 10MB)</string>
+    <string name="feedback_history">היסטוריה</string>
+    <string name="feedback_details">פרטים</string>
+    <string name="feedback_finished">הושלם</string>
+    <string name="feedback_add_a_comment">הוסף הערה…</string>
+    <string name="feedback_post">פרסם</string>
+    <string name="picture_face">פני תמונה</string>
+    <string name="swapface_title">החלף</string>
+
+    <string name="swap_start_production">התחל יצירה</string>
+    <string name="swap_disclaimer">כתב ויתור</string>
+    <string name="swap_choose_face">בחר פנים</string>
+    <string name="production_title">בייצור…</string>
+    <string name="production_swapping_face">מחליף פנים…</string>
+    <string name="production_the_production">תהליך היצירה דורש AI וחישוב אוטומטי, זמן המתנה, סבלנות</string>
+    <string name="production_the_production2">יצירת VIP מייצרת עבודות ריאליסטיות יותר לפי התבנית</string>
+    <string name="production_expected_time">זמן צפוי</string>
+    <string name="production_msg">הפעל הרשאות התראות, נשלח הודעה כשיסתיים</string>
+    <string name="production_msg1">נשלח הודעה כשיסתיים.</string>
+
+    <string name="production_wait">ממתין</string>
+    <string name="production_wait_while">המתן בבנייה…</string>
+
+    <string name="custom_material">בחר תבנית</string>
+    <string name="custom_voice">בחר קול</string>
+    <string name="completion_title">תוצאה</string>
+    <string name="completion_collect">אסוף</string>
+    <string name="completion_download">הורד</string>
+    <string name="completion_txt">צפה ב\"היסטוריית בנייה\" ב\"שלי\", נשמר 7 ימים בלבד</string>
+    <string name="completion_four_txt">לחץ להגדלה והורדה</string>
+    <string name="completion_four_template">תבנית</string>
+    <string name="swap_add_face">הוסף פנים</string>
+    <string name="production_turn_on">הפעל</string>
+    <string name="dialog_openmsg_enable">הפעל הרשאות התראות אפליקציה</string>
+    <string name="dialog_openmsg_txt">לאחר הפעלה, נודיע דרך התראות\n</string>
+    <string name="authorized">מורשה</string>
+    <string name="status_title">סטטוס</string>
+    <string name="status_production_failure">יצירה נכשלה</string>
+    <string name="status_txt">סליחה, יצירה נכשלה. בדרך כלל סיכוי קטן לכשל בהחלפת פנים. לחץ \"נסה שוב\".</string>
+    <string name="upload_title">בחר פנים</string>
+    <string name="upload_photo_example">דוגמת תמונה</string>
+    <string name="upload_check_failure">בדיקה נכשלה!</string>
+    <string name="upload_he_is">הוא/היא</string>
+    <string name="mian_explore">גלה</string>
+    <string name="mian_template">תבניות</string>
+    <string name="mian_video_face">וידאו</string>
+    <string name="mian_picture_face">תמונה</string>
+    <string name="dialog_exit">לצאת מהאפליקציה?</string>
+    <string name="dialog_experience1">ניסיונות יומיים אזלו</string>
+    <string name="dialog_experience_txt1">%s ניסיונות חינם מחר, או הפוך ל-VIP להסרת מגבלות.</string>
+    <string name="dialog_experience_ok">הפוך ל-VIP</string>
+    <string name="vip_pro_member">חבר VIP</string>
+    <string name="vip_watermarks">סימני מים</string>
+    <string name="vip_templates">תבניות</string>
+    <string name="faster_generation">יצירה מהירה יותר</string>
+    <string name="customize_template">התאם תבנית</string>
+    <string name="congratulations">מזל טוב!</string>
+    <string name="vip_success_txt">מזל טוב על הצטרפות כחבר VIP! נספק שירותים משופרים.</string>
+    <string name="vip_txt6">לאחר סיום הניסיון, תירשם אוטומטית במחיר מוזל %s. ניתן לבטל בכל עת.</string>
+    <string name="vip_txt7">חידוש אוטומטי ע\"י %s. ניתן לבטל ב\'Google Play -> תשלומים ומנויים\'. לאחר ביטול, ללא חיוב נוסף, גישה עד סוף התקופה.</string>
+    <string name="vip_txt8">תקופת ניסיון %s ימים. לאחר מכן, חידוש שנתי אוטומטי ב-%s. בטל לפני יום %s למניעת חידוש. בטל ב\"Google Play -> תשלומים ומנויים\". לאחר ביטול, ללא חיוב, גישה עד סוף התקופה.</string>
+    <string name="vip_txt9">תירשם אוטומטית במחיר מוזל %s. ניתן לבטל בכל עת.</string>
+    <string name="vip_txt_atuo">\'AIPoints מצטברים\' הם נקודות חישוב שמשתמשי VIP צריכים לאסוף ב\'שלי -> AIPoints\'.\nתשלום ייגבה מארנק Google עם אישור. חידוש אוטומטי אלא אם בוטל 24 שעות לפני סיום. חיוב חידוש 24 שעות לפני סיום. ניתן לבטל בהגדרות חשבון Google, תקף מהתקופה הבאה, ללא החזר.</string>
+    <string name="vip_txt_atuo1">\"AIPoints מצטברים\" הם סך AIPoints שמשתמשי VIP צריכים לאסוף ב\"שלי -> AIPoints\". תשלום מארנק Google עם אישור. ניתן לבטל בהגדרות Google, תקף מהתקופה הבאה, ללא החזר.</string>
+
+    <string name="vip_terms">תנאי מנוי:</string>
+    <string name="dialog_ads_title1">משתמשים חדשים מקבלים %s ניסיונות חינם</string>
+    <string name="dialog_ads_title2">לאשר יצירה?</string>
+    <string name="dialog_ads_context1">%s ניסיונות נותרו, צפה בפרסומת לפתיחת עוד, או הפוך ל-VIP להסרת מגבלות</string>
+    <string name="dialog_ads_context2">לא-VIP מקבלים %s הזדמנויות יומיות בפרסומת, או הפוך ל-VIP להסרת מגבלות</string>
+
+    <string name="dialog_ads_watch">צפה בפרסומת</string>
+    <string name="dialog_ads_vip_title">מגבלת יצירה יומית של VIP הושגה</string>
+    <string name="dialog_ads_vip_context">VIP מקבלים %s הזדמנויות יצירה יומיות. המתן עד חצות לאיפוס, או המשך בפרסומת.</string>
+    <string name="dialog_ads_vip_context2">VIP מקבלים %s ניסיונות יצירה יומיים (אזלו). המתן עד חצות או השתמש ב-AIPoints.</string>
+
+    <string name="version_update">עדכן</string>
+    <string name="version_txt">גרסת תוכנה חדשה זמינה להורדה</string>
+    <string name="version_title">עדכונים זמינים</string>
+    <string name="dialog_scroll_up">גלול למעלה לעוד</string>
+    <string name="upload_full">צלם או בחר תמונת פנים מלאה\n</string>
+    <string name="swap_face">החלף פנים</string>
+    <string name="dialog_cancel_title">לאשר עצירת משימה?</string>
+    <string name="dialog_cancel_hint">עצירת יצירה תעצור משימה זו.</string>
+
+    <string name="frament_tool_title">כלי AI</string>
+    <string name="frament_tool_to">נסה עכשיו</string>
+    <string name="frament_tool_pic_txt1">החלפת פנים בתמונה מותאמת</string>
+    <string name="frament_tool_pic_txt2">החלף פנים בתמונה</string>
+
+    <string name="frament_tool_cutsom_t1">החלף פנים בווידאו</string>
+    <string name="frament_tool_cutsom_t2">החלף פנים בתמונה</string>
+
+    <string name="frament_tool_video_txt1">החלפת פנים בווידאו מותאם</string>
+    <string name="frament_tool_video_txt2">החלף פנים בווידאו</string>
+    <string name="network_txt">חריגה ברשת, בדוק ובדוק שוב</string>
+
+    <string name="dialog_tool_title">החלפת פנים בתמונה מותאמת</string>
+    <string name="dialog_tool_next">אל תציג בפעם הבאה</string>
+    <string name="dialog_tool_step1">שלב 1:</string>
+    <string name="dialog_tool_step2">שלב 2:</string>
+    <string name="dialog_tool_step3">שלב 3:</string>
+    <string name="dialog_tool_txt1">משתמש בוחר או מעלה תבנית תמונה</string>
+    <string name="dialog_tool_txt2">מערכת מנתחת פנים להחלפה</string>
+    <string name="dialog_tool_txt3">בחר או העלה פנים להחלפה</string>
+    <string name="dialog_tool_title_video">החלפת פנים בווידאו מותאם</string>
+    <string name="dialog_tool_txt1_video">משתמש בוחר וידאו</string>
+    <string name="dialog_tool_txt2_video">(דרישות: עד 30 דק\', עד 1GB, חייב פנים)</string>
+
+    <string name="custom_title">החלפת פנים בתמונה מותאמת</string>
+    <string name="custom_title2">החלפת פנים בווידאו מותאם</string>
+    <string name="custom_add">לחץ להוספת תבנית</string>
+    <string name="custom_add2">לחץ להוספת תבנית</string>
+    <string name="custom_hit">עד 50 תמונות מותאמות.</string>
+    <string name="custom_hit2">עד 50 וידאו מותאמים.</string>
+    <string name="add_material">הוסף תבנית</string>
+
+    <string name="post_face_analysis">מנתח פנים…</string>
+    <string name="picpost_title">מעלה תמונה…</string>
+    <string name="picpost_title1">מנתח תבנית תמונה…</string>
+    <string name="picpost_uploading">מעלה…</string>
+    <string name="picpost_hit">תבנית מותאמת לוקחת זמן, סבלנות\n</string>
+    <string name="dialog_post_title">לעצור ניתוח תבנית?</string>
+    <string name="dialog_post_content">עצירה תעצור העלאת תבנית מותאמת</string>
+    <string name="dialog_post_interrupt">עצור</string>
+
+    <string name="dialog_delete_title">הסר תבנית</string>
+    <string name="dialog_delete_content">להסיר תבנית?</string>
+
+    <string name="clips_title">ערוך וידאו מותאם</string>
+    <string name="video_shoot_tip">גרור חץ לבחירת פרסום וידאו</string>
+    <string name="clips_next">הבא</string>
+    <string name="target_title">העלה פנים בווידאו</string>
+    <string name="target_hint">גזור והעלה פנים להחלפה בווידאו\n</string>
+    <string name="target_txt1">פנים נבחרים</string>
+    <string name="target_txt2">(מקסימום 3 פנים, רצוי קדמיים)</string>
+    <string name="target_video">וידאו</string>
+    <string name="target_update">העלה</string>
+    <string name="target_pic_btn">חלץ פנים</string>
+
+    <string name="target_look">ניגון וידאו</string>
+    <string name="target_pic">חתך דיוקן מטרה</string>
+    <string name="target_pic_hint">מצא צילום מטרה להחלפה</string>
+    <string name="target_extraction">חלץ פנים</string>
+    <string name="target_optional_face">פנים אופציונליים</string>
+    <string name="target_optional_txt">(ניתן לבחור %s פנים)</string>
+    <string name="target_wait_txt">חילוץ מטרה AI, המתן…</string>
+    <string name="postvideo_title">העלאת וידאו מותאם</string>
+    <string name="mine_generation_recrds">רשומות יצירה</string>
+    <string name="upload_hint">AI מנתח, לוקח זמן, סבלנות</string>
+    <string name="dialog_failed">משימה נכשלה</string>
+    <string name="cancel_hint">רמז</string>
+    <string name="cancel_content">לבטל העלאת תמונת פנים?</string>
+
+    <string name="trimmed_done">גזירת וידאו הושלמה!</string>
+    <string name="trimming">מעבד וידאו…</string>
+
+    <string name="login_btn">התחבר עם Google</string>
+    <string name="frament_me_title">אני</string>
+    <string name="try_again">נסה שוב</string>
+
+    <string name="dialog_notice">הודעה</string>
+    <string name="clear_facial">נקה פנים</string>
+    <string name="lateral_face">פנים צדדיות</string>
+    <string name="face_covered">פנים מכוסות</string>
+    <string name="too_vague">מעורפל מדי</string>
+    <string name="string_error">שגיאת חילוץ אודיו, נסה שוב</string>
+    <string name="path_error">קריאת קובץ נכשלה, צור שוב</string>
+
+    <string name="open_camera">קבלת מצלמה נכשלה</string>
+    <string name="permissions_camera">הרשאות מצלמה נכשלו, הפעל הרשאות</string>
+    <string name="permissions_storage">הרשאות אחסון נכשלו</string>
+    <string name="permissions_voice">הרשאת מיקרופון נכשלה</string>
+    <string name="number_of_invited">מספר מוזמנים</string>
+    <string name="vip_days_earned">ימי VIP שהושגו</string>
+    <string name="function_description">תיאור פונקציה</string>
+    <string name="share_context">כשמשתמש חדש נרשם דרך קישור ההזמנה שלך, תקבל %s ימי VIP.(טלפון ומשתמש חדש אמיתי, רמאים לא תקפים. זיכויי VIP עד 5 דקות, סבלנות.)</string>
+    <string name="invitation_link">קישור הזמנה</string>
+
+    <string name="copy_s">הועתק בהצלחה</string>
+    <string name="log_in">התחבר ל-%s עם חשבון Google</string>
+    <string name="log_ac">כניסה לחשבון</string>
+    <string name="share_txt">כלי AI מעניין ומועיל. לחץ על URL או העתק לדפדפן להורדה:</string>
+    <string name="no_registration_login">כניסה ללא רישום</string>
+    <string name="link_google_account">קשר חשבון Google</string>
+    <string name="choose_a_package">הירשם כ-VIP</string>
+
+    <string name="vip_day">/יום</string>
+    <string name="vip_week">/שבוע</string>
+    <string name="vip_month">/חודש</string>
+    <string name="vip_quarter">/רבעון</string>
+    <string name="vip_year">/שנה</string>
+    <string name="eliminate_picture_clutter">הסרת AI מתמונה</string>
+    <string name="clear_away_clutter">הסר עומס בלחיצה אחת</string>
+    <string name="dialog_discard_title">זרוק תמונה</string>
+    <string name="dialog_discard_context">שינויים לא ישמרו</string>
+    <string name="dialog_discard">זרוק</string>
+
+    <string name="clear_expected_time">צפי המתנה</string>
+    <string name="clear_already_time">כבר ממתין</string>
+    <string name="aiclear_hint">מייצר, המתן…</string>
+    <string name="start_eliminating">התחל הסרה</string>
+    <string name="start_generation">יצירה התחילה</string>
+    <string name="thickness">עובי</string>
+    <string name="aiclear_title">הסר עומס מתמונה</string>
+    <string name="not_empty">לא יכול להיות ריק</string>
+    <string name="remove_record">הסר רשומה</string>
+    <string name="remove_record_content">להסיר רשומה זו?</string>
+    <string name="remove_record_content1">להסיר היסטוריית גלישה?</string>
+    <string name="modify_name">ערוך שם</string>
+    <string name="save_to_album">שמור לאלבום</string>
+    <string name="material_voice_hint">בחר קובץ הקלטה או וידאו עם קול מעל 7 שניות. ללא רעש מאנשים או רקע.</string>
+    <string name="upload_sound">העלה קול</string>
+    <string name="recording_files">קבצי הקלטה</string>
+    <string name="video_file">קובץ וידאו</string>
+    <string name="record_your_sound">הקלט קולך</string>
+    <string name="read_the_text">קרא את הטקסט והקלט קול</string>
+    <string name="edit_sound">ערוך קול</string>
+    <string name="uploading_analysis">מעלה ניתוח…</string>
+    <string name="please_wait">המתן</string>
+    <string name="default_name_can_be_modified_but_cannot_be_empty">שם ברירת מחדל, ניתן לשנות, לא ריק</string>
+    <string name="tone_generation_failed">יצירת גוון נכשלה</string>
+    <string name="tone_generation_failed2">יצירת טקסט לקול נכשלה</string>
+    <string name="generate_results">צור תוצאות</string>
+    <string name="countdown_10s">ספירה לאחור: %sש</string>
+    <string name="ai_sound">חילוץ קול AI…</string>
+    <string name="please_wait_patiently">המתן בסבלנות</string>
+    <string name="only_one">רק חילוץ קול AI אחד בכל פעם</string>
+    <string name="view_detail">צפה בפרטים</string>
+    <string name="exit_and_wait">צא והמתן</string>
+    <string name="interrupt">עצור</string>
+    <string name="are_you">לעצור חילוץ קול AI?</string>
+    <string name="are_you2">סיים יצירה</string>
+    <string name="pro_hint">תהליך לוקח זמן, סבלנות. לעצור - לחץ עצור למטה.</string>
+    <string name="pro_hint2">לסיים בנייה?</string>
+    <string name="english_timbre">גוון אנגלית</string>
+    <string name="chinese_timbre">גוון סינית</string>
+    <string name="text_input">קלט טקסט</string>
+    <string name="generate">צור</string>
+    <string name="enter_voice">הזן אנגלית</string>
+    <string name="please_enter">הזן טקסט לקריאה(%s)</string>
+    <string name="please_wait_while_generating">המתן ביצירה</string>
+    <string name="expect_to_wait_50_seconds">צפי המתנה 50 שניות</string>
+    <string name="generating">מייצר…</string>
+    <string name="generating2">יוצר</string>
+    <string name="record">הקלט</string>
+    <string name="btn_record">לצפייה</string>
+    <string name="ai_eliminates_redundant_content">AI מסיר תוכן מיותר</string>
+    <string name="features">תכונות</string>
+    <string name="read_the_following_aloud">קרא בקול את הבא</string>
+    <string name="start_recording">התחל הקלטה</string>
+    <string name="recording_duration_no_more_than_10s">משך הקלטה: עד 10 שניות</string>
+    <string name="end_recording">סיים הקלטה</string>
+    <string name="rerecord">הקלט מחדש</string>
+    <string name="next">הבא</string>
+    <string name="ai_reading_aloud">AI קורא בקול</string>
+    <string name="sound_cloning">שיבוט קול</string>
+    <string name="ai_reading">קריאת AI</string>
+    <string name="use_your_voice_to_have_ai_read_the_text">השתמש בקולך כדי ש-AI יקרא טקסט</string>
+
+    <string name="old_photo_restoration">שחזור תמונה ישנה</string>
+    <string name="help_you_restore">עזור לשחזר תמונות ישנות</string>
+    <string name="generate_cartoon_style">צור סגנון קריקטורה מתמונה</string>
+    <string name="image_to_cartoon">תמונה לקריקטורה</string>
+    <string name="one_click_background_removal">הסרת רקע</string>
+    <string name="smart_select_the_image_you_want_to_cut_out">בחר חכם תמונה לגזירה</string>
+    <string name="start">התחל</string>
+    <string name="choose_a_style">בחר סגנון</string>
+    <string name="start_extraction">התחל חילוץ</string>
+    <string name="aicutout_dialog_title">להתחיל חילוץ?</string>
+    <string name="aicutout_dialog_content">חילוץ לוקח זמן, סבלנות</string>
+    <string name="ok">אישור</string>
+    <string name="build_failure">בנייה נכשלה</string>
+    <string name="start_conversion">התחל המרה</string>
+    <string name="replace_picture">החלף תמונה</string>
+    <string name="draw_a_box_around">שרטט תיבה סביב הנושא, נחלץ עבורך.</string>
+    <string name="start_repair">התחל תיקון</string>
+
+    <string name="id_photo_generation">יצירת תמונת תעודה</string>
+    <string name="from_an_image">צור תמונת תעודה נפוצה</string>
+    <string name="paperwork_start_txt">צור תמונות תעודה נפוצות מתמונותיך</string>
+    <plurals name="paperwork_start_viphint">
+    <item quantity="one">
+        תכונה בלעדית ל-VIP צורכת כוח חישוב רב, לאחר שימוש %d פעם ביום, צפייה בפרסומת להמשך.
+    </item>
+        <item quantity="two">
+        תכונה בלעדית ל-VIP צורכת כוח חישוב רב, לאחר שימוש %d פעמים ביום, צפייה בפרסומת להמשך.
+    </item>
+        <item quantity="other">
+        תכונה בלעדית ל-VIP צורכת כוח חישוב רב, לאחר שימוש %d פעמים ביום, צפייה בפרסומת להמשך.
+    </item>
+    </plurals>
+
+    <string name="dialog_paper_ads">חרגת ממגבלה, צפה בפרסומת להמשך</string>
+    <string name="dialog_paper_ads_txt">צור לאחר פרסומת מתוגמלת</string>
+    <string name="dialog_paper_only">משימה כבר מיוצרת</string>
+    <string name="dialog_paper_only_txt">רק משימה אחת בכל פעם</string>
+    <string name="select_an_avatar">בחר אווטאר</string>
+    <string name="dress_style">סגנון לבוש</string>
+    <string name="casual">קז\'ואל</string>
+    <string name="business">פורמלי</string>
+    <string name="id_photo_background">רקע תמונת תעודה</string>
+    <string name="id_photo_size">גודל תמונת תעודה</string>
+    <string name="telegram_group">קבוצת טלגרם</string>
+    <string name="telegram_group_info">אפליקציה לא נמצאה</string>
+    <string name="google_info">אפליקציית Google Play לא נמצאה</string>
+    <string name="delete_account_lrreversible">מחק חשבון (בלתי הפיך)</string>
+    <string name="no_subscription">אין מנוי, אשר מחיקה</string>
+    <string name="cancellation_instructions">הודעת ביטול</string>
+    <string name="delete_user_txt1">לאחר מחיקה, חשבון לא ניתן לשחזור.\nVIP ו-AIPoints יימחקו.</string>
+    <string name="delete_user_txt2">אם יש מנוי פעיל, בטל ידנית ב\"תשלומים ומנויים -> מנויים\". מחיקת חשבון לא מבטלת חיובי Google.</string>
+    <string name="delete_user_txt_click">תשלומים ומנויים -> מנויים</string>
+    <string name="delete_dialog_title">מחיקת חשבון ממתינה</string>
+    <string name="delete_dialog_txt">חשבונך עומד להימחק. אשר ביטול מנויים פעילים.</string>
+    <string name="delete_dialog_canceled">מנוי בוטל</string>
+    <string name="deleteuser_account">חשבון</string>
+    <string name="deleteuser_txt2_ok">אשר סופית: חשבון לא ניתן לשחזור, כל מנויים בוטלו.</string>
+    <string name="confirm_delete">אשר מחיקה</string>
+    <string name="dialog_return">חזור</string>
+    <string name="hd_video">טעינת וידאו HD…</string>
+    <string name="dialog_du_title">אזהרה! אישור סופי למחיקת חשבון?</string>
+    <string name="dialog_du_txt">חשבונך עומד להימחק. אשר ביטול כל מנויים וודאות מחיקה. לאחר אישור, חזרה למסך כניסה, כל מידע נמחק מיד. לחיצה על \"אישור סופי\" מוחקת לצמיתות.</string>
+    <string name="dialog_du_delete">אישור סופי למחיקה</string>
+    <string name="ad_load_fail">טעינת פרסומת נכשלה, נסה מאוחר יותר.</string>
+
+    <string name="hash_points">AIPoints</string>
+    <string name="hash_points2">AIPoints:</string>
+    <string name="hash_points3">AIPoints</string>
+    <string name="hash_points_title">AIPoints שלי</string>
+    <string name="re_ap">טען AIPoints</string>
+    <string name="buy_hash_points">קנה AIPoints</string>
+    <string name="get_hashrate">קבל AIPoints</string>
+    <string name="watch">צפה</string>
+    <string name="points_video">מקסימום לשעה (%s/%s)</string>
+    <string name="browsing_history">היסטוריית גלישה</string>
+    <string name="points_ads_title">צריך פרסומת תמריצים</string>
+    <string name="points_ads_context">לאחר צפייה, קבל AIPoints</string>
+    <string name="ads_num">חרגת ממספר צפיות</string>
+    <string name="free_hash_points_every_day">AIPoints חינם יומי</string>
+    <string name="viplv7">VIP שבועי</string>
+    <string name="viplv30">VIP חודשי</string>
+    <string name="viplv365">VIP שנתי</string>
+    <string name="viplv">הפוך ל-VIP</string>
+    <string name="become">קנה VIP</string>
+    <string name="receive">קבל</string>
+    <string name="undone">לא בוצע</string>
+    <string name="get">קבל</string>
+    <string name="done">בוצע</string>
+    <string name="watch_success">צפייה הצליחה</string>
+    <string name="checkin_success">צ\'ק-אין הצליח</string>
+    <string name="receive_success">קיבל בהצלחה</string>
+
+    <string name="check_in_reward">תגמול צ\'ק-אין</string>
+    <string name="get_hash_points_every_day">קבל AIPoints יומי</string>
+    <string name="cumulative_check_in_rewards">תגמולים מצטברים</string>
+    <string name="in_a_single_calendar_month">בחודש לוח אחד</string>
+    <string name="you_get_the_following_rewards">קיבלת</string>
+    <string name="re_signing_card">כרטיס תיקון</string>
+    <string name="check_in_for_3_days">צ\'ק-אין 3 ימים</string>
+    <string name="check_in_for_7_days">צ\'ק-אין 7 ימים</string>
+    <string name="check_in_for_14_days">צ\'ק-אין 14 ימים</string>
+    <string name="check_in_for_30_days">צ\'ק-אין 27 ימים</string>
+    <string name="computing_points3">קבל 1 AIPoints</string>
+    <string name="computing_points7">קבל כרטיס תיקון ו-3 AIPoints</string>
+    <string name="computing_points14">קבל 2 כרטיסי תיקון ו-6 AIPoints</string>
+    <string name="computing_points30">קבל 15 AIPoints</string>
+    <string name="check_in_reminder">תזכורת צ\'ק-אין</string>
+    <string name="re_signing_card2">כרטיס תיקון:</string>
+    <string name="make_up_ncheck_in">תיקון\nצ\'ק-אין</string>
+    <string name="dialog_usmu_title">לאשר שימוש בכרטיס תיקון?</string>
+    <string name="dialog_usmu_con">מתקן יום צ\'ק-אין חסר בחודש. לאחר שימוש, לא ניתן לשחזר.</string>
+    <string name="card_error">אין כרטיס תיקון</string>
+    <string name="need_reminding">צריך תזכורת</string>
+    <string name="cumulative">+%s</string>
+    <string name="cumulative_gift">לאחר VIP, AIPoints מצטברים </string>
+    <string name="cumulative_gift7">לאחר VIP שבועי, AIPoints מצטברים </string>
+    <string name="cumulative_gift30">לאחר VIP חודשי, AIPoints מצטברים </string>
+    <string name="cumulative_gift365">לאחר VIP שנתי, AIPoints מצטברים </string>
+    <string name="cumulative_gift2">AIPoints מצטברים </string>
+    <string name="top_now">טען עכשיו</string>
+    <string name="purchase_success">רכישה הצליחה</string>
+    <string name="no_ads">ללא פרסומות</string>
+    <string name="consume_point">הוצא %s AIPoints</string>
+    <string name="watch_the_ad_videos">צפה בווידאו פרסומי</string>
+    <string name="custom">מותאם</string>
+    <string name="custom_face_swap">החלפת פנים מותאמת</string>
+    <string name="you_can_upload_any_video_pic_to_swap">העלה כל וידאו/תמונה להחלפה</string>
+    <string name="dialog_hint_title">לא ניתן לקשר חשבון Google</string>
+    <string name="dialog_hint_content">חשבון Google זה רשום, לא ניתן לקשר שוב. התחבר או שנה חשבון.</string>
+    <string name="dialog_hint_ok">אישור, הבנתי</string>
+    <string name="dialog_red_title">קשר או התחבר</string>
+    <string name="dialog_red_ok">קשר עכשיו</string>
+    <string name="dialog_red_qx">דלג, קנה כאורח</string>
+    <string name="dialog_red_content">קשר או התחבר לפני רכישת חברות למניעת אובדן VIP.</string>
+    <string name="completion_cutosm_txt1">רוצה עוד ריגוש? לחץ </string>
+    <string name="completion_cutosm_txt2">לתבניות מותאמות!</string>
+    <string name="change">החלף שוב</string>
+    <string name="aipoints">AIPoints</string>
+    <string name="guess_you_like">נחש מה תאהב</string>
+    <string name="dialog_aipoints">AIPoints לא מספיקים</string>
+    <string name="dialog_context">הצטרף כ-VIP והורד ללא הגבלה</string>
+    <string name="dialog_btn1">פתח הורדות ללא הגבלה</string>
+    <string name="dialog_btn2">קבל AIPoints</string>
+    <string name="dialog_aip_red_title">לאשר הורדת תוכן?</string>
+    <string name="dialog_aip_red_content">יעלה %s AIPoints</string>
+
+    <string name="speed_up">האץ</string>
+    <string name="generate_about_60_faster">צור 60%+ מהר יותר</string>
+    <string name="speed_up_generation">האץ יצירה</string>
+    <string name="thank_you_for_using">תודה על השימוש</string>
+    <string name="can_you_please">תן 5 כוכבים?</string>
+    <string name="go_to_praise">לדירוג</string>
+    <string name="feedback_question1">שאלת משוב</string>
+
+    <string name="post_voide_error">קובץ וידאו גדול מדי, בחר קטן יותר (T-T)</string>
+    <string name="post_voide_error2">קודק וידאו לא נתמך</string>
+
+    <string name="dialog_pri_title">הגנת פרטיות</string>
+    <string name="dialog_pri_ok">מסכים</string>
+    <string name="dialog_pri_qixiao">לא מסכים</string>
+    <string name="dialog_pri_content">איננו אוספים או משתפים מידע. נתונים מועלים לפונקציונליות ובאגים בלבד. קרא והסכם: 《מדיניות פרטיות》</string>
+    <string name="dialog_pri_content_click">《מדיניות פרטיות》</string>
+
+    <string name="extracting_faces">חולץ פנים</string>
+    <string name="extracting_faces1">שלח ושמור תבנית</string>
+    <string name="you_can_only">עד 3 תמונות בלבד</string>
+    <string name="screenshot">צילום מסך (%s/3)</string>
+    <string name="selected_face">פנים נבחרים (%s/3)</string>
+    <string name="dialog_frame_title">בחר צילום דמות בווידאו להחלפה.</string>
+    <string name="note">הערה: </string>
+    <string name="dialog_frame_con1">(1) עד 3 תמונות.</string>
+    <string name="dialog_frame_con2">(2) ודא פנים מטרה, רצוי קדמיים.</string>
+    <string name="click_to_capture">לחץ לצילום</string>
+    <string name="video_aipoint">עלות משימה: %s AIPoint</string>
+    <string name="video_o">מחיר מקורי: %s AIPoints</string>
+    <string name="balance_alpoints">יתרה: %s AlPoints</string>
+    <string name="balance">יתרה</string>
+    <string name="face_aipoints">(טיפ: AIPoints נגבים רק בהתחלת משימה. כשל - החזר אוטומטי.)</string>
+    <string name="noaipoints">לחץ \'טעינה\' לעמוד טעינה</string>
+    <string name="recharge">טעינה</string>
+    <string name="select_the_target">בחר פנים מטרה</string>
+
+    <string name="report">דווח</string>
+    <string name="why_are_you_reporting_this">למה מדווחים?</string>
+    <string name="feel_report_content">דווח אם תוכן לא הולם.</string>
+    <string name="submit">שלח</string>
+    <string name="block_this_content">חסום תוכן, לא תראה יותר</string>
+    <string name="report1">עירום או מיני</string>
+    <string name="report2">פורנו ילדים לא חוקי</string>
+    <string name="report3">סצנת אלימות</string>
+    <string name="report4">נושא פוליטי</string>
+    <string name="report5">הפרת זכויות יוצרים</string>
+    <string name="report_s">דיווח הצליח, תודה.</string>
+
+    <string name="frament_tool1">כלים</string>
+    <string name="frament_tool2">אזור כיף</string>
+    <string name="age_change">שנה גיל</string>
+    <string name="different_ages">שנה גיל, קסם גיל</string>
+    <string name="pic_live">תמונה לווידאו/GIF</string>
+    <string name="make_your">החייה תמונות סטטיות</string>
+    <string name="i_want_to_become">אני רוצה להיות</string>
+    <string name="age">גיל</string>
+
+    <string name="frament_explore1">גלה</string>
+    <string name="frament_explore2">תוכן אחרון</string>
+    <string name="you_re_subscribed">נרשמת</string>
+    <string name="you_ve_already_subscribed_to_this_item">כבר נרשמת לפריט זה.</string>
+
+    <string name="txt_ai">טקסט לתמונה</string>
+    <string name="txt_video">החלפת פנים בווידאו מותאם</string>
+    <string name="txt_photo">החלפת פנים בתמונה מותאמת</string>
+    <string name="txt_img_hint">החייה רעיונות - צור תמונות חזקות במילים, מיד</string>
+    <string name="picture_style">סגנון תמונה</string>
+    <string name="realistic">ריאליסטי</string>
+    <string name="comic">קומיקס</string>
+    <string name="aspect_ratios">יחסי גובה-רוחב</string>
+    <string name="prompt">פרומפט</string>
+    <string name="tv_input">הזן מילות מפתח…</string>
+    <string name="again">שוב</string>
+    <string name="bring_your_ideas_to_life">החייה רעיונות</string>
+    <string name="join_vip_group">הצטרף לקבוצת VIP</string>
+    <string name="you_can">הצטרף מאוחר יותר ב\"שלי\"</string>
+
+    <string name="title_offer">ויתור על הצעה</string>
+    <string name="title_offer_content">לוותר על הצעה זו?</string>
+    <string name="title_offer_ok">חשבון</string>
+    <string name="title_offer_c">ויתור</string>
+    <string name="privacy_protected">פרטיות מוגנת</string>
+    <string name="avatars_or_works">אווטארים או עבודות לפונקציונליות בלבד, לא מאוחסנים או משותפים</string>
+
+    <string name="_18_content">תוכן 18+</string>
+    <string name="allow_generation">אפשר יצירת תוכן 18+</string>
+    <string name="upload_noface">לא נמצאו פנים שמישות בתמונה.</string>
+    <string name="up_target_faces">עד 3 פנים מטרה, רצוי קדמיים</string>
+
+    <plurals name="points_been">
+        <item quantity="zero">(%s יום צ\'ק-אין)</item>
+        <item quantity="one">(%s יום צ\'ק-אין)</item>
+        <item quantity="two">(%s יומיים צ\'ק-אין)</item>
+        <item quantity="other">(%s ימי צ\'ק-אין)</item>
+    </plurals>
+
+    <!--מודול שיתוף-->
+    <string name="fragment_tool_share">אזור שיתוף</string>
+    <string name="share_tips_txt">כל תוכן משותף מרצון. אפליקציה לא משתפת תבניות פרטיות ללא רשות. ניתן להסתיר ב\"שלי-הגדרות\".</string>
+    <string name="reward_rules">חוקי תגמול</string>
+    <string name="reward_content">כאשר אחרים משתמשים בסרטונים/תמונות ששיתפת, אתה מרוויח AIPoints</string>
+    <string name="reward_sharing">שיתוף</string>
+    <string name="reward_templates">תבניות</string>
+    <string name="reward_share_tips">קבל AIPoints כשאחרים משתמשים בתבניתך.</string>
+    <string name="reward_share_first">שתף תבנית ראשונה</string>
+    <string name="reward_share_template">שתף תבנית</string>
+    <string name="share_item_time">פעמים</string>
+    <string name="share_stop_sharing">עצור שיתוף?</string>
+    <string name="share_stop_sharing_content">לאחר עצירה, תבנית נעלמת מממשק שיתוף</string>
+    <string name="sharing_content">שיתוף הופך תבנית לציבורית. אחריותך על סיכוני פרטיות/חוק.</string>
+    <string name="share_confirm_share">אשר שיתוף</string>
+    <string name="share_points_history">היסטוריית AIPoints</string>
+
+    <string name="purchase_aipoints">קנה AIPoints</string>
+    <string name="ad_free_deduction_livead">ניכוי ללא פרסומת-LiveAD</string>
+    <string name="ad_free_deduction_agead">ניכוי ללא פרסומת-AgeAD</string>
+    <string name="watch_ads_to_get_rewards">צפה בפרסומות לתגמולים</string>
+    <string name="check_in_reward_share">תגמול צ\'ק-אין</string>
+    <string name="use_template">שימוש בתבנית</string>
+    <string name="shared_template_reward">תגמול תבנית משותפת</string>
+    <string name="download_template">הורד תבנית</string>
+    <string name="add_aipoints_via_backend">הוסף AIPoints מבק-אנד</string>
+    <string name="ad_free_deduction_swapfacead">ניכוי ללא פרסומת-AD</string>
+    <string name="ad_free_deduction_paperworkad">ניכוי ללא פרסומת-AD</string>
+    <string name="use_task">יצירה נכשלה</string>
+    <string name="cancel_task">משתמש ביטל יצירה</string>
+
+    <string name="update_s">תבנית מותאמת הועלתה בהצלחה</string>
+    <string name="share_now">עכשיו ניתן לשתף תבנית זו</string>
+
+    <string name="share_default">חדש ביותר</string>
+    <string name="share_popular">פופולרי</string>
+    <string name="want_to_explore">רוצה עוד תבניות אזור שיתוף?</string>
+    <string name="get_vip">קבל VIP</string>
+
+    <string name="get_select">בחר פנים</string>
+
+    <string name="description_hide_the_sharezone_module">תיאור: להסתיר מודול אזור שיתוף?</string>
+    <string name="hide_sharezone">הסתר אזור שיתוף</string>
+    <string name="exchange_gift">החלף AIPoints במתנות</string>
+    <string name="amazon_gift_card">גאול מתנות</string>
+    <string name="cash_btn">גאול</string>
+    <string name="for_cash">AIPoints למתנות</string>
+    <string name="cash_txt1">1. אנו מבטיחים קוד כרטיס אמזון תקף ולא בשימוש בעת שליחה. גאול מיד.</string>
+    <string name="cash_txt2">2. לא אחראים על שימוש, גאולה שגויה או שימוש לא מורשה.</string>
+    <string name="cash_txt3">3. כרטיס אמזון ארה\"ב: אל תגאול מחוץ לארה\"ב. גאולה בין-אזורית לא שמישה. ללא אחריות.</string>
+    <string name="cash_aipoints">%s AIPoints - גאול</string>
+    <string name="cash_aipoints2">הצטרף לחברות!</string>
+    <string name="cash_aipoints3">אזל המלאי</string>
+    <string name="cash_aipoints4">אזל, המתן</string>
+
+    <string name="stock">מלאי:</string>
+    <string name="stock2">(מילוי…)</string>
+    <string name="note_dialog">הערה</string>
+    <string name="note_cash_dialog">ינכה %s AIPoints. לאשר גאולה?</string>
+    <string name="cash_e">AIPoints לא מספיקים</string>
+    <string name="now_view">צפה עכשיו</string>
+    <string name="redemption_successful">גאולה הצליחה</string>
+    <string name="amazon_gift">קוד כרטיס אמזון נשמר ב\"רשומות\"</string>
+    <string name="redemption_result">תוצאות גאולה</string>
+    <string name="amazon_50">כרטיס אמזון $50 (ארה\"ב בלבד)</string>
+    <string name="cumulative_gift3">AIPoints מידיים </string>
+    <string name="lifetime_vip_benefits">הטבות VIP לכל החיים</string>
+    <string name="viplife1">הנות כל הטבות VIP רגילות</string>
+    <string name="viplife2">מחיר מוזל ל-Swap Face HD</string>
+    <string name="viplife3">זמן תור קצר ביותר. משימותיך בראש סדר עדיפויות</string>
+    <string name="viplife4">קבל מיד %s AIPoints + 4 AIPoints יומי בצ\'ק-אין (כמו VIP שנתי)</string>
+    <string name="benefits_guide">מדריך הטבות</string>
+    <string name="time">זמן גאולה</string>
+    <string name="deduct_aipoints">ניכוי AIPoints</string>
+    <string name="copy_s1">מספר כרטיס הועתק</string>
+    <string name="copy_s2">סיסמה הועתקה</string>
+    <string name="gift_points">גאול מתנה</string>
+    <string name="lifetime_points">קנה VIP לכל החיים</string>
+    <string name="exchange_points">גאול מתנה-VIP</string>
+
+    <string name="txt_home_ai">טקסט \nלתמונה</string>
+    <string name="txt_home_video">החלפת פנים \nבווידאו מותאם</string>
+    <string name="txt_home_photo">החלפת פנים \nבתמונה מותאמת</string>
+    <string name="txt_home_hug">חיבוק \nבקליק</string>
+    <string name="txt_home_kiss">נשיקה \nבקליק</string>
+    <string name="txt_home_outfit">שינוי תלבושת \nבקליק</string>
+    <string name="one_click_outfit_change">שינוי תלבושת בקליק</string>
+    <string name="txt_start_hug1">חיבוק בקליק</string>
+    <string name="one_click_kiss">נשיקה בקליק</string>
+    <string name="keep_browsing">רץ ברקע</string>
+    <string name="collage">2 תמונות נפרדות</string>
+    <string name="collage2">תמונת קבוצה</string>
+    <string name="txt_start_hug2">מרחק לא משנה, אינטימיות בהישג יד</string>
+    <string name="upload_clear">העלה תמונת פנים קדמית ברורה של אדם אחד</string>
+    <string name="upload_clear2">העלה תמונת פנים קדמית ברורה של שני אנשים</string>
+    <string name="hug_hint">בחר תמונה</string>
+    <string name="hint_spent">תכונה ניסיונית. כשל - ללא החזר AIPoints.</string>
+    <string name="one_click_closer">קליק אחד קרוב יותר, דופק שלא דוהה</string>
+    <string name="no_dress_code">לבש מה שתרצה</string>
+    <string name="upload_of_clothing">העלה תמונת לבוש ברורה</string>
+
+    <string name="txt_img2kiss">הוצא AIPoints-נשיקה בקליק</string>
+    <string name="txt_change_clothes">הוצא AIPoints-שינוי תלבושת בקליק</string>
+    <string name="txt_img2hug">הוצא AIPoints-חיבוק בקליק</string>
+    <string name="txt_rating">דירוג תבנית</string>
+    <string name="got_it">הבנתי</string>
+    <string name="balance_num">יתרה: %s</string>
+    <string name="only_price">VIP בלבד</string>
+
+    <string name="dialog_sz_title"> היי VIP, כל התבניות</string>
+    <string name="dialog_sz_content">VIP משתמש בכל תבנית</string>
+    <string name="dialog_sz_ok">היי VIP</string>
+    <string name="dialog_sz_cancal">ביטול</string>
+
+    <string name="hint_privacy">אנא קרא והסכם עם מדיניות הפרטיות.</string>
+    <string name="share_all">הכול</string>
+    <string name="share_1min">דקה 1</string>
+    <string name="share_3min">3 דקות</string>
+    <string name="share_5min">5 דקות</string>
+
+    <!-- values-iw/strings.xml -->
+    <string name="longer_processing_time">זמן עיבוד ארוך יותר</string>
+    <string name="swap_face_hd">החלפת פנים HD לוקחת יותר זמן מהחלפה רגילה. אנא המתן בסבלנות.</string>
+    <string name="ok_start">אישור, התחל</string>
+    <string name="default_hd">החלפת פנים וידאו HD ברירת מחדל</string>
+    <string name="become_lifetime_vip">הפוך ל-VIP לכל החיים</string>
+    <string name="hd_mode_content1">מצב HD רק ל-VIP לכל החיים %s AIPoints</string>
+    <string name="hd_mode_content2">מצב HD רק ל-VIP לכל החיים חינם</string>
+    <string name="standard_mode">מצב סטנדרטי</string>
+    <string name="hd_mode">מצב HD</string>
+    <string name="hd_mode_vip">מצב HD חסך לך %s AIPoints.\nאזהרה: החלפת פנים HD לוקחת יותר זמן.</string>
+    <string name="lifetime_vip">חיסכון בלעדי ל-VIP לכל החיים</string>
+    <!-- values-iw/strings.xml -->
+    <string name="default_home_page">דף הבית ברירת מחדל</string>
+    <string name="default_home_after_launch">דף הבית לאחר ההפעלה</string>
+    <string name="homepage_content">שנה ב\"אני - הגדרות - דף הבית ברירת מחדל\"</string>
+    <string name="save_exit">שמור וצא מהאפליקציה</string>
+    <string name="mine_become_a_pro_member">הטבות VIP</string>
+    <string name="mine_vip_continue">הטבות נוספות</string>
+    <string name="mine_vip_all_templates1">תבניות VIP בלעדיות</string>
+    <string name="mine_vip_all_templates4">הורדות ללא הגבלה</string>
+    <string name="bonus_aipoints">בונוס AIPoints</string>
+    <string name="exclusive_aipoints_discounts">הנחות בלעדיות על AIPoints</string>
+    <string name="access_to_hidden_features">גישה לתכונות נסתרות</string>
+    <string name="rating">דירוג</string>
+    <string name="effect_score">ציון אפקט</string>
+    <string name="dialog_rating_hint">דירוג זה הוא ממוצע שביעות הרצון של המשתמשים מתוצאה זו</string>
+    <string name="rate_sharezone">דרג תוצאות שנוצרו ב-ShareZone</string>
+    <string name="rate_complete_task">השלם משימות מצטברות כדי לקבל AIPoints מתאימים</string>
+    <string name="claim">קבל</string>
+    <string name="daily">יומי</string>
+    <string name="weekly">שבועי</string>
+    <string name="rate">דרג</string>
+    <string name="rate_the_generated">דרג את התוצאה שנוצרה כדי לקבל תגמולי AIPoints</string>
+    <string name="rated">מדורג</string>
+    <string name="receive_msg">קבל AIPoints +%s</string>
+    <string name="cut_failed_retry">גזירה נכשלה, נסה שוב</string>
+    <string name="spicy_moves">תנועות חריפות</string>
+    <string name="spicy_moves_hint">תן לתמונה כמה תנועות חריפות</string>
+    <string name="upload_a_photo">העלה תמונה</string>
+
+    <string name="log_in_with_password">התחבר עם סיסמה</string>
+    <string name="no_account">אין חשבון?</string>
+    <string name="sign_up">הרשמה</string>
+    <string name="account">חשבון</string>
+    <string name="password">סיסמה</string>
+    <string name="log_in_login">התחבר</string>
+    <string name="create_your_account">צור את החשבון שלך</string>
+    <string name="have_an_account">יש לך חשבון?</string>
+    <string name="login">התחברות</string>
+    <string name="confirm_password">אישור סיסמה</string>
+    <string name="change_password">שנה סיסמה</string>
+    <string name="old_password">סיסמה ישנה</string>
+    <string name="retype_new">הקלד שוב חדשה</string>
+    <string name="confirm_new_password">אשר סיסמה חדשה</string>
+    <string name="log_in_2">התחבר</string>
+
+
+    <string name="letters_and_numbers_only">אותיות ומספרים בלבד, 6–20 תווים לכל היותר.</string>
+    <string name="don_t_have_an_account">אין לך חשבון?</string>
+    <string name="welcome_back_log">ברוך שובך! התחבר למטה</string>
+    <string name="check_pwd">שם משתמש או סיסמה לא חוקיים</string>
+    <string name="current">נוכחי</string>
+    <string name="str_new">חדש</string>
+    <string name="create_new_password">צור סיסמה חדשה</string>
+
+    <string name="share_1min_update">1 דק/pic</string>
+
+    <string name="new_ai_play">חדש · AI Play</string>
+    <string name="enjoy_pleasurable_moments_with_her">תהנה מרגעים נעימים איתה</string>
+    <string name="ai_player">שחקן AI</string>
+    <string name="play_with_her">שחק איתה</string>
+    <string name="play_while_you_wait">שחק בזמן ההמתנה</string>
+    <string name="task_failed">המשימה נכשלה</string>
+    <string name="something_went">משהו השתבש במשימה שלך. תוכל לבקש החזר ולנסות שוב.</string>
+    <string name="request_a_refund">בקש החזר</string>
+    <string name="refunded">הוחזר:</string>
+    <string name="play_c">הושלם</string>
+    <string name="play_error">אופס, שגיאה</string>
+    <string name="warn_title">נא לא להעלות תוכן פורנוגרפי של ילדים</string>
+    <string name="warn_content">אל תעלה כל תוכן הקשור לפורנוגרפיה של ילדים או להתעללות בילדים, אחרת החשבון שלך עלול להיות מושבת לצמיתות.</string>
+    <string name="login_notice">החשבון הושבת</string>
+    <string name="login_notice_content">החשבון שלך הושבת מכיוון ששיתפת באופן חוזר תוכן פורנוגרפי של ילדים או חומרי אלימות כלפי ילדים, בניגוד לכללי הפלטפורמה.</string>
+    <string name="buy_quota">קנה מכסה</string>
+    <string name="extra_slots">מקומות נוספים עבור %s סרטונים מותאמים אישית</string>
+    <string name="quota">מכסה</string>
+    <string name="remaining_upload_quota">מכסת העלאה שנותרה:</string>
+    <string name="buy_more_quota">קנה עוד מכסה</string>
+    <string name="buy_now">קנה עכשיו</string>
+
+</resources>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ps_camera_roll">Rullino foto</string>
+    <string name="ps_camera_roll_num">%1$s (%2$d)</string>
+    <string name="ps_cancel">Annulla</string>
+    <string name="ps_take_picture">Fotocamera</string>
+    <string name="ps_rule">non sono foto o video</string>
+    <string name="ps_min_video_num">La selezione video non può %1$s numeri</string>
+    <string name="ps_message_max_num">Seleziona fino a %1$s immagini</string>
+    <string name="ps_message_audio_max_num">Seleziona fino a %1$s audio</string>
+    <string name="ps_message_video_max_num">Seleziona fino a %1$s video</string>
+    <string name="ps_preview">Anteprima</string>
+    <string name="ps_please">Attendi…</string>
+    <string name="ps_done_front_num">%1$d/%2$d OK</string>
+    <string name="ps_completed">Avanti</string>
+    <string name="ps_done">Completato</string>
+    <string name="ps_please_select">Seleziona</string>
+    <string name="ps_empty_title">Nessuna foto o video\n</string>
+    <string name="ps_empty_audio_title">Nessun file audio\n</string>
+    <string name="ps_audio_empty">Se i file audio sul tuo telefono non vengono visualizzati correttamente, assicurati che l\'app abbia i permessi per \"archiviazione\" e \"foto e video\" abilitati.</string>
+    <string name="ps_empty">Se foto e video sul tuo telefono non vengono visualizzati correttamente, assicurati che l\'app abbia i permessi come \"archiviazione\" e \"foto e video\" abilitati.</string>
+    <string name="ps_min_img_num">La selezione minima di immagini non può essere inferiore a %1$s</string>
+    <string name="ps_min_audio_num">La selezione minima di audio non può essere inferiore a %1$s</string>
+    <string name="ps_gif_tag">gif</string>
+    <string name="ps_webp_tag">webp</string>
+    <string name="ps_audio">Accesso al permesso di registrazione del sistema negato</string>
+    <string name="ps_jurisdiction">Impossibile ottenere il permesso di archiviazione per foto, video o audio.</string>
+    <string name="ps_camera">Permesso fotocamera di sistema negato</string>
+    <string name="ps_video_toast">Il video non può essere visualizzato in anteprima</string>
+    <string name="ps_record_video">Registra video</string>
+    <string name="ps_photograph">Scatta foto</string>
+    <string name="ps_long_chart">Lungo</string>
+    <string name="ps_warning">Nessun file multimediale!</string>
+    <string name="ps_prompt">Promemoria</string>
+    <string name="ps_prompt_image_content">Vuoi salvare le immagini sul telefono?</string>
+    <string name="ps_prompt_video_content">Vuoi salvare il video sul telefono?</string>
+    <string name="ps_save_image_error">Salvataggio immagine fallito</string>
+    <string name="ps_save_video_error">Salvataggio video fallito</string>
+    <string name="ps_save_success">salvato con successo</string>
+    <string name="ps_all_audio">Tutti gli audio</string>
+    <string name="ps_tape">Registrazione</string>
+    <string name="ps_play_audio">Riproduci</string>
+    <string name="ps_stop_audio">Ferma</string>
+    <string name="ps_quit_audio">Esci</string>
+    <string name="ps_pause_audio">Pausa</string>
+    <string name="ps_error">L\'immagine è corrotta</string>
+    <string name="ps_video_error">Il video è corrotto</string>
+    <string name="ps_audio_error">L\'audio è corrotto</string>
+    <string name="ps_save_audio_error">Salvataggio audio fallito</string>
+    <string name="ps_prompt_audio_content">Salvare l\'audio sul telefono？</string>
+    <string name="ps_confirm">Conferma</string>
+    <string name="ps_preview_image_num">%1$d/%2$d</string>
+    <string name="ps_not_crop_data">Nessun dato ritagliato</string>
+    <string name="ps_original_image">Originale (%1$s)</string>
+    <string name="ps_default_original_image">Originale</string>
+    <string name="ps_send">Completato</string>
+    <string name="ps_send_num">Completato (%1$d/%2$d)</string>
+    <string name="ps_preview_num">Anteprima (%1$d)</string>
+    <string name="ps_select">Seleziona</string>
+    <string name="ps_data_exception">Eccezione nel recupero dei dati dell\'album…</string>
+    <string name="ps_choose_max_seconds">Puoi selezionare solo video entro %1$ds</string>
+    <string name="ps_choose_min_seconds">Non puoi selezionare video inferiori a %1$ds</string>
+    <string name="ps_choose_limit_seconds">È possibile selezionare solo video da %1$ds a %2$ds</string>
+
+    <string name="ps_go_setting">Vai alle impostazioni</string>
+    <string name="ps_know">OK</string>
+    <string name="ps_data_null">Non ci sono dati qui…</string>
+    <string name="ps_editor">Editor</string>
+    <string name="ps_use_camera">Utilizzo fotocamera</string>
+    <string name="ps_use_sound">Utilizzo funzione registrazione</string>
+    <string name="ps_current_week">Questa settimana</string>
+    <string name="ps_current_month">Questo mese</string>
+    <string name="ps_select_max_size">Il file selezionato è più grande di %1$s</string>
+    <string name="ps_select_min_size">Il file selezionato è più piccolo di %1$s</string>
+
+    <string name="ps_select_video_max_second">Seleziona video di durata superiore a %1$d s</string>
+    <string name="ps_select_video_min_second">Seleziona video di durata inferiore a %1$d s</string>
+    <string name="ps_select_audio_max_second">Seleziona audio di durata superiore a %1$d s</string>
+    <string name="ps_select_audio_min_second">Seleziona audio di durata inferiore a %1$d s</string>
+    <string name="ps_select_no_support">Tipo di selezione non supportato</string>
+
+    <string name="ps_dialog_size_title">Il video selezionato è troppo grande</string>
+    <string name="ps_dialog_size_content">La dimensione del video selezionato non può superare %1$s MB/s.\n\nVideo attualmente selezionato: Dimensione: %2$s, Durata: %3$s.\nEquivalente a %4$s MB/s.\n\nIl video è troppo grande. Selezionane uno di dimensioni diverse.</string>
+
+</resources>

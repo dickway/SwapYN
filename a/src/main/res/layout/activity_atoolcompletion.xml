@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.a.activity.AToolCompletionActivity" />
+
+        <variable
+            name="vm"
+            type="com.a.viewmodel.AToolCompletionViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindAddVerticalPadding="@{true}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAmainBg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/backImg"
+                bindSingleClick="@{()->handler.finish()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:src="@mipmap/a_icon_back3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorWhite" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgReport"
+                bindSingleClick="@{()->handler.onReport()}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:paddingHorizontal="8dp"
+                android:src="@mipmap/a_icon_report"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTitle">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgCompletion"
+                bindSingleClick="@{()->handler.toPicture()}"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="20dp"
+                android:src="@drawable/img_default_m"
+                app:layout_constraintBottom_toTopOf="@+id/btnVipD"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/shape_round_16dp"
+                app:strokeColor="@null" />
+
+            <com.face.view.DraLeftBtn
+                android:id="@+id/btnDelete"
+                bindSingleClick="@{()->handler.onDelete()}"
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/a_bg_b2_r100"
+                android:drawableLeft="@mipmap/a_icon_delete2"
+                android:drawablePadding="4dp"
+                android:gravity="center_vertical"
+                android:text="Delete"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:visibility="visible" />
+
+            <com.face.view.DraLeftBtn
+                android:id="@+id/btnVipD"
+                bindSingleClick="@{()->handler.onPointDownload()}"
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/a_btn_jb_r100"
+                android:drawableLeft="@mipmap/a_icon_download"
+                android:drawablePadding="4dp"
+                android:gravity="center_vertical"
+                android:text="Save"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:visibility="visible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="-10dp"
+                android:background="@mipmap/a_icon_completion_vip"
+                app:layout_constraintEnd_toEndOf="@+id/btnVipD"
+                app:layout_constraintTop_toTopOf="@+id/btnVipD" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

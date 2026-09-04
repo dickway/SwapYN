@@ -1,0 +1,39 @@
+plugins {
+	id "com.android.library"
+}
+
+android {
+	compileSdk 36
+	namespace 'com.king.drawboard'
+
+	defaultConfig {
+		minSdk = 24
+		targetSdk = 36
+	}
+
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_21
+		targetCompatibility JavaVersion.VERSION_21
+	}
+
+	buildTypes {
+		release {
+			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+			consumerProguardFiles 'proguard-rules.pro'
+		}
+		debug {
+			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+			consumerProguardFiles 'proguard-rules.pro'
+		}
+	}
+
+	lint {
+		abortOnError false
+		warning 'InvalidPackage'
+	}
+
+}
+
+dependencies {
+	implementation 'androidx.appcompat:appcompat:1.7.1'
+}

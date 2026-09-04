@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.face.bean.FeedbackBean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="4dp"
+        android:orientation="vertical"
+        android:paddingVertical="8dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="8dp">
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="@style/font_11"
+            android:textColor="@color/colorWhite50"
+            tools:text="01/26/2023" />
+
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_feedback_msg_peer"
+            android:maxWidth="260dp"
+            android:padding="12dp"
+            android:textAppearance="@style/font_14"
+            android:textColor="@color/colorWhite"
+            android:textIsSelectable="true"
+            tools:text="Movieapp220@EmailcomMovieapp220@EmailcomMovieapp220@Emailcom" />
+    </LinearLayout>
+</layout>

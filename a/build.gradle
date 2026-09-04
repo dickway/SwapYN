@@ -1,0 +1,54 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id "kotlin-kapt"
+    id("com.google.devtools.ksp").version("2.2.0-2.0.2")
+}
+
+android {
+    namespace 'com.a'
+    compileSdk 36
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 36
+
+        /**
+         * 在模块中默认没有BuildConfig.VERSION_CODE了
+         */
+        buildConfigField "String", "VERSION_NAME", "\"$rootProject.ext.versionName\""
+        buildConfigField "int", "VERSION_CODE", "$rootProject.ext.versionCode"
+
+        ksp {
+            arg('room.schemaLocation', "$projectDir/schemas")
+        }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+
+    kotlinOptions {
+        jvmTarget = "21"
+    }
+
+    buildFeatures {
+        dataBinding = true
+        buildConfig = true
+    }
+}
+
+dependencies {
+
+    implementation project(':module:face')
+    implementation project(':module:architecture')
+    implementation project(':module:drawboard')
+    implementation 'androidx.camera:camera-core:1.4.1'
+    implementation 'androidx.camera:camera-camera2:1.4.1'
+    implementation 'androidx.camera:camera-view:1.4.1'
+    implementation 'androidx.camera:camera-lifecycle:1.4.1'
+}

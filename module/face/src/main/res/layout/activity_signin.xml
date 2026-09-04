@@ -1,0 +1,2077 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.face.ui.SigninActivity" />
+
+        <variable
+            name="vm"
+            type="com.face.viewmodel.activity.SigninViewModel" />
+
+        <variable
+            name="gvm"
+            type="com.face.util.GVM" />
+
+    </data>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        bindAddBottomHeight="@{true}"
+        bindAddBottomPadding="@{true}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                bindDisallowConsumeInsert="@{true}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contentScrim="@color/colorTransparent"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:scrimAnimationDuration="200"
+                app:scrimVisibleHeightTrigger="0dp"
+                app:toolbarId="@id/clTitle">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.5">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgPointBg"
+                        android:layout_width="match_parent"
+                        android:layout_height="213dp"
+                        android:src="@drawable/bg_point_view"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgPoint1"
+                        bindAddTopHeight="@{true}"
+                        bindAddTopPadding="@{true}"
+                        bindSingleClick="@{()->handler.onBuyAct()}"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="@dimen/margin_width_app"
+                        android:layout_marginTop="64dp"
+                        android:src="@drawable/img_point_hash"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvPointZ"
+                        bindAddTopHeight="@{true}"
+                        bindAddTopPadding="@{true}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:text="@string/hash_points3"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgPoint1"
+                        app:layout_constraintStart_toEndOf="@+id/imgPoint1"
+                        app:layout_constraintTop_toTopOf="@+id/imgPoint1" />
+
+                    <TextView
+                        android:id="@+id/tvPoint"
+                        bindSingleClick="@{()->handler.onBuyAct()}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text='@{gvm.userInfo.tflops+""}'
+                        android:textColor="@color/colorWhite"
+                        android:textSize="40sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/imgPoint1"
+                        app:layout_constraintTop_toBottomOf="@+id/imgPoint1"
+                        tools:text="123456" />
+
+
+                    <TextView
+                        android:id="@+id/tvBug"
+                        bindSingleClick="@{()->handler.onBuyAct()}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="28dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/bg_btn_point"
+                        android:gravity="center"
+                        android:paddingHorizontal="10dp"
+                        android:text="@string/buy_hash_points"
+                        android:textColor="#000000"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvPoint"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvPoint" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clTitle"
+                    bindAddTopHeight="@{true}"
+                    bindAddTopPadding="@{true}"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    app:layout_collapseMode="pin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        bindSingleClick="@{()->handler.finish()}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="@dimen/screen_margins_width1"
+                        android:src="@drawable/img_icon_back"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/colorWhite" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hash_points"
+                        android:textAppearance="@style/font_18"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        bindSingleClick="@{()->handler.onHist()}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="@dimen/screen_margins_width1"
+                        android:src="@drawable/img_share_record"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/colorWhite" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAppBg"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="20dp">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    bindVisible="@{vm.loadFinish}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="20dp"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/txtPonit2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_width_app"
+                        android:layout_marginTop="40dp"
+                        android:text="@string/get_hashrate"
+                        android:textAppearance="@style/font_20"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clayVideo"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintTop_toBottomOf="@+id/txtPonit2">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgPointVideo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_width_app"
+                            android:src="@drawable/img_point_videos"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtTimes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/watch_the_ad_videos"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/tvHintVideo"
+                            app:layout_constraintStart_toEndOf="@+id/imgPointVideo"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <TextView
+                            android:id="@+id/tvHintVideo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/points_video"
+                            android:textAppearance="@style/font_12"
+                            android:textColor="#B2B2B2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imgPointVideo"
+                            app:layout_constraintTop_toBottomOf="@+id/txtTimes"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            android:id="@+id/tvAddPoint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textColor="@color/colorF4A42A"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/txtTimes"
+                            app:layout_constraintStart_toEndOf="@+id/txtTimes"
+                            app:layout_constraintTop_toTopOf="@+id/txtTimes"
+                            tools:text="+1" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/img_point_hash"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvAddPoint"
+                            app:layout_constraintStart_toEndOf="@+id/tvAddPoint"
+                            app:layout_constraintTop_toTopOf="@+id/tvAddPoint" />
+
+                        <TextView
+                            android:id="@+id/txtWatch"
+                            bindSingleClick="@{()->handler.onAdsPoint()}"
+                            android:layout_width="60dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="@dimen/margin_width_app"
+                            android:background="@drawable/bg_btn_point"
+                            android:gravity="center"
+                            android:text="@string/watch"
+                            android:textColor="@color/colorBgBlack"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clayVip"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        app:layout_constraintTop_toBottomOf="@+id/clayVideo"
+                        app:layout_goneMarginTop="12dp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgPointVip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_width_app"
+                            android:src="@drawable/img_point_vip"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtRank"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/tvHintVIP"
+                            app:layout_constraintStart_toEndOf="@+id/imgPointVip"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <TextView
+                            android:id="@+id/tvHintVIP"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/free_hash_points_every_day"
+                            android:textAppearance="@style/font_12"
+                            android:textColor="#B2B2B2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/tvBuy"
+                            app:layout_constraintStart_toEndOf="@+id/imgPointVip"
+                            app:layout_constraintTop_toBottomOf="@+id/txtRank"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            android:id="@+id/tvAddVipPoint"
+                            bindVisible="@{gvm.userInfo.vipLv>1}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textColor="@color/colorF4A42A"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/txtRank"
+                            app:layout_constraintStart_toEndOf="@+id/txtRank"
+                            app:layout_constraintTop_toTopOf="@+id/txtRank"
+                            tools:text="+1" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            bindVisible="@{gvm.userInfo.vipLv>1}"
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/img_point_hash"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvAddVipPoint"
+                            app:layout_constraintStart_toEndOf="@+id/tvAddVipPoint"
+                            app:layout_constraintTop_toTopOf="@+id/tvAddVipPoint" />
+
+                        <TextView
+                            android:id="@+id/tvBuy"
+                            bindSingleClick="@{()->handler.onReceive()}"
+                            bindVisible="@{!vm.isVipTalk}"
+                            android:layout_width="60dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="@dimen/margin_width_app"
+                            android:background="@drawable/bg_btn_point"
+                            android:gravity="center"
+                            android:text="@string/receive"
+                            android:textColor="@color/colorBgBlack"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <LinearLayout
+                            bindVisible="@{vm.isVipTalk}"
+                            android:layout_width="60dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="@dimen/margin_width_app"
+                            android:background="@drawable/bg_btn_point2"
+                            android:gravity="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/img_icon_xz"
+                                android:tint="#715A39" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/done"
+                                android:textColor="#715A39"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clayCheck"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        app:layout_constraintTop_toBottomOf="@+id/clayVip">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgPointCheck"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_width_app"
+                            android:src="@drawable/img_icon_checkin"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCheck"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/check_in_reward"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/tvHintCheck"
+                            app:layout_constraintStart_toEndOf="@+id/imgPointCheck"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <TextView
+                            android:id="@+id/tvHintCheck"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="96dp"
+                            android:text="@string/get_hash_points_every_day"
+                            android:textAppearance="@style/font_12"
+                            android:textColor="#B2B2B2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imgPointCheck"
+                            app:layout_constraintTop_toBottomOf="@+id/txtCheck"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            android:id="@+id/tvAddCheckPoint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textColor="@color/colorF4A42A"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/txtCheck"
+                            app:layout_constraintStart_toEndOf="@+id/txtCheck"
+                            app:layout_constraintTop_toTopOf="@+id/txtCheck"
+                            tools:text="+1" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/img_point_hash"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvAddCheckPoint"
+                            app:layout_constraintStart_toEndOf="@+id/tvAddCheckPoint"
+                            app:layout_constraintTop_toTopOf="@+id/tvAddCheckPoint" />
+
+                        <TextView
+                            android:id="@+id/checkB"
+                            bindSingleClick="@{()->handler.onCheck()}"
+                            bindVisible="@{!vm.isCheckShow}"
+                            android:layout_width="60dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="@dimen/margin_width_app"
+                            android:background="@drawable/bg_btn_point"
+                            android:gravity="center"
+                            android:text="@string/get"
+                            android:textColor="@color/colorBgBlack"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <LinearLayout
+                            bindVisible="@{vm.isCheckShow}"
+                            android:layout_width="60dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="@dimen/margin_width_app"
+                            android:background="@drawable/bg_btn_point2"
+                            android:gravity="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:visibility="gone">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/img_icon_xz"
+                                android:tint="#715A39" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/done"
+                                android:textColor="#715A39"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgMsg"
+                            bindVisible="@{!gvm.isTodayChecked()}"
+                            android:layout_width="9dp"
+                            android:layout_height="9dp"
+                            android:layout_marginTop="-5dp"
+                            android:background="@drawable/bg_btn1_rounded_corners100"
+                            app:layout_constraintEnd_toEndOf="@+id/checkB"
+                            app:layout_constraintTop_toTopOf="@+id/checkB" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/txtRate1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/margin_width_app"
+                        android:layout_marginTop="40dp"
+                        tools:visibility="gone"
+                        bindVisible="@{gvm.isShowTool()!=0}"
+                        android:text="@string/rate_sharezone"
+                        android:textAppearance="@style/font_20"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/clayCheck" />
+
+                    <TextView
+                        android:id="@+id/txtRate2"
+                        tools:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        bindVisible="@{gvm.isShowTool()!=0}"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/rate_complete_task"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="#B2B2B2"
+                        app:layout_constraintTop_toBottomOf="@+id/txtRate1"
+                        tools:textColor="#B2B2B2" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/conRateDaily"
+                        android:layout_width="match_parent"
+                        bindVisible="@{gvm.isShowTool()!=0}"
+                        tools:visibility="visible"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        app:layout_constraintTop_toBottomOf="@+id/txtRate2">
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineDaily1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.25" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="@string/daily"
+                            android:textAppearance="@style/font_12"
+                            android:textColor="@color/colorWhite"
+                            app:layout_constraintBottom_toTopOf="@+id/viewRateDaily1"
+                            app:layout_constraintStart_toStartOf="@+id/viewRateDaily1"
+                            tools:textColor="#B2B2B2" />
+
+                        <View
+                            android:id="@+id/viewRateDaily1"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="36dp"
+                            android:background="@drawable/bg_line_round1"
+                            app:layout_constraintTop_toBottomOf="@+id/linDaily2" />
+
+                        <View
+                            android:id="@+id/viewRateDailySelect1"
+                            bindInVisible="@{vm.taskDayNum&lt;1}"
+                            android:layout_width="0dp"
+                            android:layout_height="3dp"
+                            android:background="@drawable/bg_line_round2"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                            app:layout_constraintEnd_toStartOf="@+id/viewRateDailySelect2"
+                            app:layout_constraintStart_toStartOf="@+id/viewRateDaily1"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+                        <View
+                            android:id="@+id/viewRateDailySelect2"
+                            bindInVisible="@{vm.taskDayNum&lt;2}"
+                            android:layout_width="0dp"
+                            android:layout_height="3dp"
+                            android:background="@drawable/bg_line_round2"
+                            android:translationX="@{vm.isRtl ? 3f : -3f}"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck1"
+                            app:layout_constraintStart_toEndOf="@+id/viewRateDailySelect1"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+                        <View
+                            android:id="@+id/viewRateDailySelect3"
+                            bindInVisible="@{vm.taskDayNum&lt;3}"
+                            android:layout_width="0dp"
+                            android:layout_height="3dp"
+                            android:background="@drawable/bg_line_round2"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                            app:layout_constraintEnd_toStartOf="@+id/viewRateDailySelect4"
+                            app:layout_constraintStart_toEndOf="@+id/guidelineDaily1"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+                        <View
+                            android:id="@+id/viewRateDailySelect4"
+                            bindInVisible="@{vm.taskDayNum&lt;4}"
+                            android:layout_width="0dp"
+                            android:layout_height="3dp"
+                            android:background="@drawable/bg_line_round2"
+                             android:translationX="@{vm.isRtl ? 3f : -3f}"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck2"
+                            app:layout_constraintStart_toEndOf="@+id/viewRateDailySelect3"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+                        <View
+                            android:id="@+id/viewRateDailySelect5"
+                            bindInVisible="@{vm.taskDayNum&lt;5}"
+                            android:layout_width="0dp"
+                            android:layout_height="3dp"
+                            android:background="@drawable/bg_line_round2"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                            app:layout_constraintEnd_toStartOf="@+id/viewRateDailySelect6"
+                            app:layout_constraintStart_toStartOf="@+id/tvRateDailyCheck2"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+                        <View
+                            android:id="@+id/viewRateDailySelect6"
+                            bindInVisible="@{vm.taskDayNum&lt;6}"
+                            android:layout_width="0dp"
+                            android:layout_height="3dp"
+                            android:background="@drawable/bg_line_round2"
+                             android:translationX="@{vm.isRtl ? 3f : -3f}"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck3"
+                            app:layout_constraintStart_toEndOf="@+id/viewRateDailySelect5"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+                        <LinearLayout
+                            android:id="@+id/linDaily1"
+                            bindAlpha="@{vm.taskDay1==1}"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_signin_rate_round"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="@+id/guidelineDaily1"
+                            app:layout_constraintStart_toStartOf="@+id/guidelineDaily1"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/img_point_hash" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{'+'+String.valueOf(vm.rateInfoBean.pointsDaily1)}"
+                                android:textColor="#FBCB33"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                tools:text="+1" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linDaily2"
+                            bindAlpha="@{vm.taskDay2==1}"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_signin_rate_round"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toStartOf="@+id/linDaily3"
+                            app:layout_constraintStart_toEndOf="@+id/linDaily1"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/img_point_hash" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{'+'+String.valueOf(vm.rateInfoBean.pointsDaily2)}"
+                                android:textColor="#FBCB33"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                tools:text="+1" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linDaily3"
+                            bindAlpha="@{vm.taskDay3==1}"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginEnd="12dp"
+                            android:background="@drawable/bg_signin_rate_round"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/img_point_hash" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{'+'+String.valueOf(vm.rateInfoBean.pointsDaily3)}"
+                                android:textColor="#FBCB33"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                tools:text="+1" />
+                        </LinearLayout>
+
+                        <TextView
+                            bindVisible="@{vm.taskDayNum==1}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="@{String.valueOf(vm.ratingBean.dayRating)}"
+                            android:textAppearance="@style/font_14"
+                            android:textColor="#B2B2B2"
+                            app:layout_constraintEnd_toEndOf="@+id/viewRateDailySelect2"
+                            app:layout_constraintStart_toStartOf="@+id/viewRateDailySelect1"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck1"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            bindVisible="@{vm.taskDayNum==3}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="@{String.valueOf(vm.ratingBean.dayRating)}"
+                            android:textAppearance="@style/font_14"
+                            android:textColor="#B2B2B2"
+                            app:layout_constraintEnd_toEndOf="@+id/viewRateDailySelect4"
+                            app:layout_constraintStart_toStartOf="@+id/viewRateDailySelect3"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck2"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            bindVisible="@{vm.taskDayNum==5}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="@{String.valueOf(vm.ratingBean.dayRating)}"
+                            android:textAppearance="@style/font_14"
+                            android:textColor="#B2B2B2"
+                            app:layout_constraintEnd_toEndOf="@+id/viewRateDailySelect6"
+                            app:layout_constraintStart_toStartOf="@+id/viewRateDailySelect5"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck2"
+                            tools:textColor="#B2B2B2" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/tvRateDailyCheck1"
+                            bindSelected="@{vm.taskDay1==1}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/checkbox_rate"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                            app:layout_constraintEnd_toEndOf="@+id/linDaily1"
+                            app:layout_constraintStart_toStartOf="@+id/linDaily1"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+                        <TextView
+                            android:id="@+id/txtDailyClaimNum1"
+                            bindSelected="@{vm.taskDay1==1}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="@{String.valueOf(vm.rateInfoBean.rateDailyNum1)}"
+                            android:textAppearance="@style/font_16"
+                            android:textColor="@color/color_rate"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck1"
+                            app:layout_constraintStart_toStartOf="@+id/tvRateDailyCheck1"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck1"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            android:id="@+id/txtDailyClaim1"
+                            bindSingleClick="@{()->vm.onRating(0)}"
+                            bindVisible="@{vm.taskDay1==2}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="28dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@drawable/bg_btn_point"
+                            android:gravity="center"
+                            android:paddingHorizontal="8dp"
+                            android:maxWidth="65dp"
+                            android:minWidth="55dp"
+                            android:text="@string/claim"
+                            tools:visibility="visible"
+                            tools:text=">>>"
+                            android:maxLines="1"
+                            android:autoSizeTextType="uniform"
+                            android:autoSizeMinTextSize="8sp"
+                            android:autoSizeMaxTextSize="12sp"
+                            android:autoSizeStepGranularity="1sp"
+                            android:textColor="@color/colorBgBlack"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck1"
+                            app:layout_constraintStart_toStartOf="@+id/tvRateDailyCheck1"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck1" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/tvRateDailyCheck2"
+                            bindSelected="@{vm.taskDay2==1}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/checkbox_rate"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                            app:layout_constraintEnd_toEndOf="@+id/linDaily2"
+                            app:layout_constraintStart_toStartOf="@+id/linDaily2"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+                        <TextView
+                            android:id="@+id/txtDailyClaimNum2"
+                            bindSelected="@{vm.taskDay2==1}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="@{String.valueOf(vm.rateInfoBean.rateDailyNum2)}"
+                            android:textAppearance="@style/font_16"
+                            android:textColor="@color/color_rate"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck2"
+                            app:layout_constraintStart_toStartOf="@+id/tvRateDailyCheck2"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck2"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            android:id="@+id/txtDailyClaim2"
+                            bindSingleClick="@{()->vm.onRating(1)}"
+                            bindVisible="@{vm.taskDay2==2}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="28dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@drawable/bg_btn_point"
+                            android:gravity="center"
+                            android:paddingHorizontal="8dp"
+                            android:maxWidth="65dp"
+                            android:minWidth="55dp"
+                            android:text="@string/claim"
+                            tools:visibility="visible"
+                            android:maxLines="1"
+                            android:autoSizeTextType="uniform"
+                            android:autoSizeMinTextSize="8sp"
+                            android:autoSizeMaxTextSize="12sp"
+                            android:autoSizeStepGranularity="1sp"
+                            android:textColor="@color/colorBgBlack"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck2"
+                            app:layout_constraintStart_toStartOf="@+id/tvRateDailyCheck2"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck2" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/tvRateDailyCheck3"
+                            bindSelected="@{vm.taskDay3==1}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/checkbox_rate"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateDaily1"
+                            app:layout_constraintEnd_toEndOf="@+id/linDaily3"
+                            app:layout_constraintStart_toStartOf="@+id/linDaily3"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateDaily1" />
+
+                        <TextView
+                            android:id="@+id/txtDailyClaimNum3"
+                            bindSelected="@{vm.taskDay3==1}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="@{String.valueOf(vm.rateInfoBean.rateDailyNum3)}"
+                            android:textAppearance="@style/font_16"
+                            android:textColor="@color/color_rate"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck3"
+                            app:layout_constraintStart_toStartOf="@+id/tvRateDailyCheck3"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck3"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            android:id="@+id/txtDailyClaim3"
+                            bindSingleClick="@{()->vm.onRating(2)}"
+                            bindVisible="@{vm.taskDay3==2}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="28dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@drawable/bg_btn_point"
+                            android:gravity="center"
+                            android:paddingHorizontal="8dp"
+                            android:maxWidth="65dp"
+                            android:minWidth="55dp"
+                            android:text="@string/claim"
+                            tools:visibility="visible"
+                            tools:text=">>>>>>"
+                            android:maxLines="1"
+                            android:autoSizeTextType="uniform"
+                            android:autoSizeMinTextSize="8sp"
+                            android:autoSizeMaxTextSize="12sp"
+                            android:autoSizeStepGranularity="1sp"
+                            android:textColor="@color/colorBgBlack"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateDailyCheck3"
+                            app:layout_constraintStart_toStartOf="@+id/tvRateDailyCheck3"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateDailyCheck3" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/conRateWeekly"
+                        bindVisible="@{gvm.isShowTool()!=0}"
+                        tools:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintTop_toBottomOf="@+id/conRateDaily">
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineWeekly1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.25" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="@string/weekly"
+                            android:textAppearance="@style/font_12"
+                            android:textColor="@color/colorWhite"
+                            app:layout_constraintBottom_toTopOf="@+id/viewRateWeekly1"
+                            app:layout_constraintStart_toStartOf="@+id/viewRateWeekly1"
+                            tools:textColor="#B2B2B2" />
+
+                        <View
+                            android:id="@+id/viewRateWeekly1"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="36dp"
+                            android:background="@drawable/bg_line_round1"
+                            app:layout_constraintTop_toBottomOf="@+id/linWeekly2" />
+
+                        <View
+                            android:id="@+id/viewRateWeeklySelect1"
+                            bindInVisible="@{vm.taskWeekNum&lt;1}"
+                            android:layout_width="0dp"
+                            android:layout_height="3dp"
+                            android:background="@drawable/bg_line_round2"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                            app:layout_constraintEnd_toStartOf="@+id/viewRateWeeklySelect2"
+                            app:layout_constraintStart_toStartOf="@+id/viewRateWeekly1"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+                        <View
+                            android:id="@+id/viewRateWeeklySelect2"
+                            bindInVisible="@{vm.taskWeekNum&lt;2}"
+                            android:layout_width="0dp"
+                            android:layout_height="3dp"
+                            android:background="@drawable/bg_line_round2"
+                             android:translationX="@{vm.isRtl ? 3f : -3f}"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck1"
+                            app:layout_constraintStart_toEndOf="@+id/viewRateWeeklySelect1"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+                        <View
+                            android:id="@+id/viewRateWeeklySelect3"
+                            bindInVisible="@{vm.taskWeekNum&lt;3}"
+                            android:layout_width="0dp"
+                            android:layout_height="3dp"
+                            android:background="@drawable/bg_line_round2"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                            app:layout_constraintEnd_toStartOf="@+id/viewRateWeeklySelect4"
+                            app:layout_constraintStart_toEndOf="@+id/guidelineWeekly1"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+                        <View
+                            android:id="@+id/viewRateWeeklySelect4"
+                            bindInVisible="@{vm.taskWeekNum&lt;4}"
+                            android:layout_width="0dp"
+                            android:layout_height="3dp"
+                            android:background="@drawable/bg_line_round2"
+                             android:translationX="@{vm.isRtl ? 3f : -3f}"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck2"
+                            app:layout_constraintStart_toEndOf="@+id/viewRateWeeklySelect3"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+                        <View
+                            android:id="@+id/viewRateWeeklySelect5"
+                            bindInVisible="@{vm.taskWeekNum&lt;5}"
+                            android:layout_width="0dp"
+                            android:layout_height="3dp"
+                            android:background="@drawable/bg_line_round2"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                            app:layout_constraintEnd_toStartOf="@+id/viewRateWeeklySelect6"
+                            app:layout_constraintStart_toStartOf="@+id/tvRateWeeklyCheck2"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+                        <View
+                            android:id="@+id/viewRateWeeklySelect6"
+                            bindInVisible="@{vm.taskWeekNum&lt;6}"
+                            android:layout_width="0dp"
+                            android:layout_height="3dp"
+                            android:background="@drawable/bg_line_round2"
+                             android:translationX="@{vm.isRtl ? 3f : -3f}"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck3"
+                            app:layout_constraintStart_toEndOf="@+id/viewRateWeeklySelect5"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+                        <LinearLayout
+                            android:id="@+id/linWeekly1"
+                            bindAlpha="@{vm.taskWeek1==1}"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_signin_rate_round"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="@+id/guidelineWeekly1"
+                            app:layout_constraintStart_toStartOf="@+id/guidelineWeekly1"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/img_point_hash" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{'+'+String.valueOf(vm.rateInfoBean.pointsWeekly1)}"
+                                android:textColor="#FBCB33"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                tools:text="+1" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linWeekly2"
+                            bindAlpha="@{vm.taskWeek2==1}"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_signin_rate_round"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toStartOf="@+id/linWeekly3"
+                            app:layout_constraintStart_toEndOf="@+id/linWeekly1"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/img_point_hash" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{'+'+String.valueOf(vm.rateInfoBean.pointsWeekly2)}"
+                                android:textColor="#FBCB33"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                tools:text="+1" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linWeekly3"
+                            bindAlpha="@{vm.taskWeek3==1}"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginEnd="12dp"
+                            android:background="@drawable/bg_signin_rate_round"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/img_point_hash" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{'+'+String.valueOf(vm.rateInfoBean.pointsWeekly3)}"
+                                android:textColor="#FBCB33"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                tools:text="+1" />
+                        </LinearLayout>
+
+                        <TextView
+                            bindVisible="@{vm.taskWeekNum==1}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="@{String.valueOf(vm.ratingBean.weekRating)}"
+                            android:textAppearance="@style/font_14"
+                            android:textColor="#B2B2B2"
+                            app:layout_constraintEnd_toEndOf="@+id/viewRateWeeklySelect2"
+                            app:layout_constraintStart_toStartOf="@+id/viewRateWeeklySelect1"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck1"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            bindVisible="@{vm.taskWeekNum==3}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="@{String.valueOf(vm.ratingBean.weekRating)}"
+                            android:textAppearance="@style/font_14"
+                            android:textColor="#B2B2B2"
+                            app:layout_constraintEnd_toEndOf="@+id/viewRateWeeklySelect4"
+                            app:layout_constraintStart_toStartOf="@+id/viewRateWeeklySelect3"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck2"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            bindVisible="@{vm.taskWeekNum==5}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="@{String.valueOf(vm.ratingBean.weekRating)}"
+                            android:textAppearance="@style/font_14"
+                            android:textColor="#B2B2B2"
+                            app:layout_constraintEnd_toEndOf="@+id/viewRateWeeklySelect6"
+                            app:layout_constraintStart_toStartOf="@+id/viewRateWeeklySelect5"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck2"
+                            tools:textColor="#B2B2B2" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/tvRateWeeklyCheck1"
+                            bindSelected="@{vm.taskWeek1==1}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/checkbox_rate"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                            app:layout_constraintEnd_toEndOf="@+id/linWeekly1"
+                            app:layout_constraintStart_toStartOf="@+id/linWeekly1"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+                        <TextView
+                            android:id="@+id/txtWeeklyClaimNum1"
+                            bindSelected="@{vm.taskWeek1==1}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="@{String.valueOf(vm.rateInfoBean.rateWeeklyNum1)}"
+                            android:textAppearance="@style/font_16"
+                            android:textColor="@color/color_rate"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck1"
+                            app:layout_constraintStart_toStartOf="@+id/tvRateWeeklyCheck1"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck1"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            android:id="@+id/txtWeeklyClaim1"
+                            bindSingleClick="@{()->vm.onRating(3)}"
+                            bindVisible="@{vm.taskWeek1==2}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="28dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@drawable/bg_btn_point"
+                            android:gravity="center"
+                            android:paddingHorizontal="8dp"
+                            android:maxWidth="65dp"
+                            android:minWidth="55dp"
+                            android:text="@string/claim"
+                            tools:text=">>>>>>"
+                            android:maxLines="1"
+                            android:autoSizeTextType="uniform"
+                            android:autoSizeMinTextSize="8sp"
+                            android:autoSizeMaxTextSize="12sp"
+                            android:autoSizeStepGranularity="1sp"
+                            android:textColor="@color/colorBgBlack"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck1"
+                            app:layout_constraintStart_toStartOf="@+id/tvRateWeeklyCheck1"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck1"
+                            tools:visibility="invisible" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/tvRateWeeklyCheck2"
+                            bindSelected="@{vm.taskWeek2==1}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/checkbox_rate"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                            app:layout_constraintEnd_toEndOf="@+id/linWeekly2"
+                            app:layout_constraintStart_toStartOf="@+id/linWeekly2"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+                        <TextView
+                            android:id="@+id/txtWeeklyClaimNum2"
+                            bindSelected="@{vm.taskWeek2==1}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="@{String.valueOf(vm.rateInfoBean.rateWeeklyNum2)}"
+                            android:textAppearance="@style/font_16"
+                            android:textColor="@color/color_rate"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck2"
+                            app:layout_constraintStart_toStartOf="@+id/tvRateWeeklyCheck2"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck2"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            android:id="@+id/txtWeeklyClaim2"
+                            bindSingleClick="@{()->vm.onRating(4)}"
+                            bindVisible="@{vm.taskWeek2==2}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="28dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@drawable/bg_btn_point"
+                            android:gravity="center"
+                            android:paddingHorizontal="8dp"
+                            android:maxWidth="65dp"
+                            android:minWidth="55dp"
+                            android:text="@string/claim"
+                            tools:text=">>>>>>"
+                            android:maxLines="1"
+                            android:autoSizeTextType="uniform"
+                            android:autoSizeMinTextSize="8sp"
+                            android:autoSizeMaxTextSize="12sp"
+                            android:autoSizeStepGranularity="1sp"
+                            android:textColor="@color/colorBgBlack"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck2"
+                            app:layout_constraintStart_toStartOf="@+id/tvRateWeeklyCheck2"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck2"
+                            tools:visibility="invisible" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/tvRateWeeklyCheck3"
+                            bindSelected="@{vm.taskWeek3==1}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/checkbox_rate"
+                            app:layout_constraintBottom_toBottomOf="@+id/viewRateWeekly1"
+                            app:layout_constraintEnd_toEndOf="@+id/linWeekly3"
+                            app:layout_constraintStart_toStartOf="@+id/linWeekly3"
+                            app:layout_constraintTop_toTopOf="@+id/viewRateWeekly1" />
+
+
+                        <TextView
+                            android:id="@+id/txtWeeklyClaimNum3"
+                            bindSelected="@{vm.taskWeek3==1}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="@{String.valueOf(vm.rateInfoBean.rateWeeklyNum3)}"
+                            android:textAppearance="@style/font_16"
+                            android:textColor="@color/color_rate"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck3"
+                            app:layout_constraintStart_toStartOf="@+id/tvRateWeeklyCheck3"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck3"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            android:id="@+id/txtWeeklyClaim3"
+                            bindSingleClick="@{()->vm.onRating(5)}"
+                            bindVisible="@{vm.taskWeek3==2}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="28dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@drawable/bg_btn_point"
+                            android:gravity="center"
+                            android:paddingHorizontal="8dp"
+                            android:maxWidth="65dp"
+                            android:minWidth="55dp"
+                            android:text="@string/claim"
+                            tools:text=">>>>>>"
+                            android:maxLines="1"
+                            android:autoSizeTextType="uniform"
+                            android:autoSizeMinTextSize="8sp"
+                            android:autoSizeMaxTextSize="12sp"
+                            android:autoSizeStepGranularity="1sp"
+                            android:textColor="@color/colorBgBlack"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/tvRateWeeklyCheck3"
+                            app:layout_constraintStart_toStartOf="@+id/tvRateWeeklyCheck3"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRateWeeklyCheck3"
+                            tools:visibility="invisible" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_width_app"
+                        android:layout_marginTop="40dp"
+                        android:text="@string/cumulative_check_in_rewards"
+                        android:textAppearance="@style/font_20"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/conRateWeekly" />
+
+                    <TextView
+                        android:id="@+id/txt2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/in_a_single_calendar_month"
+                        android:textAppearance="@style/font_12"
+                        android:textColor="#B2B2B2"
+                        app:layout_constraintStart_toStartOf="@+id/txt"
+                        app:layout_constraintTop_toBottomOf="@+id/txt"
+                        tools:textColor="#B2B2B2" />
+
+                    <TextView
+                        android:id="@+id/txtBeen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:textColor="@color/colorF4A42A"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/txt2"
+                        app:layout_constraintTop_toTopOf="@+id/txt2"
+                        tools:text="(Been 14 days)" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/conCheck3"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintTop_toBottomOf="@+id/txt2">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgCheck3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_width_app"
+                            android:src="@drawable/img_point_check3"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCheck3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/check_in_for_3_days"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/tvHintCheck3"
+                            app:layout_constraintStart_toEndOf="@+id/imgCheck3"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <TextView
+                            android:id="@+id/tvHintCheck3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="100dp"
+                            android:text="@string/computing_points3"
+                            android:textAppearance="@style/font_12"
+                            android:textColor="#B2B2B2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imgCheck3"
+                            app:layout_constraintTop_toBottomOf="@+id/txtCheck3"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            android:id="@+id/tvAddCheckPoint3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textColor="@color/colorF4A42A"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/txtCheck3"
+                            app:layout_constraintStart_toEndOf="@+id/txtCheck3"
+                            app:layout_constraintTop_toTopOf="@+id/txtCheck3"
+                            tools:text="+1" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/img_point_hash"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvAddCheckPoint3"
+                            app:layout_constraintStart_toEndOf="@+id/tvAddCheckPoint3"
+                            app:layout_constraintTop_toTopOf="@+id/tvAddCheckPoint3" />
+
+                        <TextView
+                            android:id="@+id/tvCheck3"
+                            bindEnabled="@{vm.isSelected3}"
+                            bindSelected="@{vm.isSelected3}"
+                            bindSingleClick="@{()->handler.onSignTarget(0)}"
+                            bindVisible="@{!vm.isCheck3}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="@dimen/margin_width_app"
+                            android:background="@drawable/checkbox_point"
+                            android:gravity="center"
+                            android:maxWidth="80dp"
+                            android:minWidth="60dp"
+                            android:minHeight="28dp"
+                            android:text="@string/undone"
+                            android:textColor="@color/color_signin_txt"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <LinearLayout
+                            bindVisible="@{vm.isCheck3}"
+                            android:layout_width="60dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="@dimen/margin_width_app"
+                            android:background="@drawable/bg_btn_point2"
+                            android:gravity="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/img_icon_xz"
+                                android:tint="#715A39" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/done"
+                                android:textColor="#715A39"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/conCheck7"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        app:layout_constraintTop_toBottomOf="@+id/conCheck3">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgCheck7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_width_app"
+                            android:src="@drawable/img_point_check7"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCheck7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/check_in_for_7_days"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/tvHintCheck7"
+                            app:layout_constraintStart_toEndOf="@+id/imgCheck7"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <TextView
+                            android:id="@+id/tvHintCheck7"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="100dp"
+                            android:text="@string/computing_points7"
+                            android:textAppearance="@style/font_12"
+                            android:textColor="#B2B2B2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imgCheck7"
+                            app:layout_constraintTop_toBottomOf="@+id/txtCheck7"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            android:id="@+id/tvAddCheckPoint7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textColor="@color/colorF4A42A"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/txtCheck7"
+                            app:layout_constraintStart_toEndOf="@+id/txtCheck7"
+                            app:layout_constraintTop_toTopOf="@+id/txtCheck7"
+                            tools:text="+1" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/img_point_hash"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvAddCheckPoint7"
+                            app:layout_constraintStart_toEndOf="@+id/tvAddCheckPoint7"
+                            app:layout_constraintTop_toTopOf="@+id/tvAddCheckPoint7" />
+
+                        <TextView
+                            android:id="@+id/tvCheck7"
+                            bindEnabled="@{vm.isSelected7}"
+                            bindSelected="@{vm.isSelected7}"
+                            bindSingleClick="@{()->handler.onSignTarget(1)}"
+                            bindVisible="@{!vm.isCheck7}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="@dimen/margin_width_app"
+                            android:background="@drawable/checkbox_point"
+                            android:gravity="center"
+                            android:maxWidth="80dp"
+                            android:minWidth="60dp"
+                            android:minHeight="28dp"
+                            android:text="@string/undone"
+                            android:textColor="@color/color_signin_txt"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <LinearLayout
+                            bindVisible="@{vm.isCheck7}"
+                            android:layout_width="60dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="@dimen/margin_width_app"
+                            android:background="@drawable/bg_btn_point2"
+                            android:gravity="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/img_icon_xz"
+                                android:tint="#715A39" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/done"
+                                android:textColor="#715A39"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/conCheck14"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        app:layout_constraintTop_toBottomOf="@+id/conCheck7">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgCheck14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_width_app"
+                            android:src="@drawable/img_point_check14"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCheck14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/check_in_for_14_days"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/tvHintCheck14"
+                            app:layout_constraintStart_toEndOf="@+id/imgCheck14"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <TextView
+                            android:id="@+id/tvHintCheck14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="100dp"
+                            android:text="@string/computing_points14"
+                            android:textAppearance="@style/font_12"
+                            android:textColor="#B2B2B2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imgCheck14"
+                            app:layout_constraintTop_toBottomOf="@+id/txtCheck14"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            android:id="@+id/tvAddCheckPoint14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textColor="@color/colorF4A42A"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/txtCheck14"
+                            app:layout_constraintStart_toEndOf="@+id/txtCheck14"
+                            app:layout_constraintTop_toTopOf="@+id/txtCheck14"
+                            tools:text="+1" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/img_point_hash"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvAddCheckPoint14"
+                            app:layout_constraintStart_toEndOf="@+id/tvAddCheckPoint14"
+                            app:layout_constraintTop_toTopOf="@+id/tvAddCheckPoint14" />
+
+                        <TextView
+                            android:id="@+id/tvCheck14"
+                            bindEnabled="@{vm.isSelected14}"
+                            bindSelected="@{vm.isSelected14}"
+                            bindSingleClick="@{()->handler.onSignTarget(2)}"
+                            bindVisible="@{!vm.isCheck14}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="@dimen/margin_width_app"
+                            android:background="@drawable/checkbox_point"
+                            android:gravity="center"
+                            android:maxWidth="80dp"
+                            android:minWidth="60dp"
+                            android:minHeight="28dp"
+                            android:text="@string/undone"
+                            android:textColor="@color/color_signin_txt"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <LinearLayout
+                            bindVisible="@{vm.isCheck14}"
+                            android:layout_width="60dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="@dimen/margin_width_app"
+                            android:background="@drawable/bg_btn_point2"
+                            android:gravity="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/img_icon_xz"
+                                android:tint="#715A39" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/done"
+                                android:textColor="#715A39"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/conCheck30"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        app:layout_constraintTop_toBottomOf="@+id/conCheck14">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgCheck30"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_width_app"
+                            android:src="@drawable/img_point_check30"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCheck30"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/check_in_for_30_days"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/tvHintCheck30"
+                            app:layout_constraintStart_toEndOf="@+id/imgCheck30"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <TextView
+                            android:id="@+id/tvHintCheck30"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="100dp"
+                            android:text="@string/computing_points30"
+                            android:textAppearance="@style/font_12"
+                            android:textColor="#B2B2B2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imgCheck30"
+                            app:layout_constraintTop_toBottomOf="@+id/txtCheck30"
+                            tools:textColor="#B2B2B2" />
+
+                        <TextView
+                            android:id="@+id/tvAddCheckPoint30"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textColor="@color/colorF4A42A"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/txtCheck30"
+                            app:layout_constraintStart_toEndOf="@+id/txtCheck30"
+                            app:layout_constraintTop_toTopOf="@+id/txtCheck30"
+                            tools:text="+1" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/img_point_hash"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvAddCheckPoint30"
+                            app:layout_constraintStart_toEndOf="@+id/tvAddCheckPoint30"
+                            app:layout_constraintTop_toTopOf="@+id/tvAddCheckPoint30" />
+
+                        <TextView
+                            android:id="@+id/tvCheck30"
+                            bindEnabled="@{vm.isSelected30}"
+                            bindSelected="@{vm.isSelected30}"
+                            bindSingleClick="@{()->handler.onSignTarget(3)}"
+                            bindVisible="@{!vm.isCheck30}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="@dimen/margin_width_app"
+                            android:background="@drawable/checkbox_point"
+                            android:gravity="center"
+                            android:maxWidth="80dp"
+                            android:minWidth="60dp"
+                            android:minHeight="28dp"
+                            android:text="@string/undone"
+                            android:textColor="@color/color_signin_txt"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <LinearLayout
+                            bindVisible="@{vm.isCheck30}"
+                            android:layout_width="60dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="@dimen/margin_width_app"
+                            android:background="@drawable/bg_btn_point2"
+                            android:gravity="center"
+                            android:minWidth="60dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:visibility="gone">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/img_icon_xz"
+                                android:tint="#715A39" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/done"
+                                android:textColor="#715A39"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/shapeTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_marginHorizontal="@dimen/margin_width_app"
+                        android:layout_marginTop="28dp"
+                        android:background="#FFCB80"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/conCheck30"
+                        app:shapeAppearanceOverlay="@style/shape_round_top_6dp" />
+
+                    <TextView
+                        android:id="@+id/textView58"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="@{vm.showDate}"
+                        android:textColor="#633A00"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/shapeTitle"
+                        app:layout_constraintStart_toStartOf="@+id/shapeTitle"
+                        app:layout_constraintTop_toTopOf="@+id/shapeTitle"
+                        tools:text="June 2022" />
+
+                    <TextView
+                        android:id="@+id/textView60"
+                        bindSingleClick="@{()->handler.onSetReminderClick()}"
+                        bindTextUnderLine="@{true}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:drawablePadding="4dp"
+                        android:gravity="center"
+                        android:paddingHorizontal="12dp"
+                        android:text="@string/check_in_reminder"
+                        android:textColor="#633A00"
+                        android:textSize="12sp"
+                        app:drawableStartCompat="@drawable/img_check_in_time"
+                        app:layout_constraintBottom_toBottomOf="@+id/shapeTitle"
+                        app:layout_constraintEnd_toEndOf="@+id/shapeTitle"
+                        app:layout_constraintTop_toTopOf="@+id/shapeTitle" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvDate"
+                        bindAdapter="@{vm.pointDateAdapter}"
+                        bindData="@{vm.days}"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/margin_width_app"
+                        android:background="#1A1A1A"
+                        android:nestedScrollingEnabled="false"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/shapeTitle"
+                        app:spanCount="7"
+                        tools:itemCount="31"
+                        tools:listitem="@layout/item_check_in" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/shape1"
+                        android:layout_width="0dp"
+                        android:layout_height="72dp"
+                        android:layout_marginHorizontal="@dimen/margin_width_app"
+                        android:background="#1A1A1A"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/rvDate"
+                        app:shapeAppearanceOverlay="@style/shape_round_bottom_6dp" />
+
+                    <TextView
+                        android:id="@+id/tv3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="12dp"
+                        android:drawablePadding="4dp"
+                        android:gravity="center"
+                        android:text="@string/re_signing_card2"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:drawableStartCompat="@drawable/img_checkinre"
+                        app:layout_constraintBottom_toBottomOf="@+id/shape1"
+                        app:layout_constraintStart_toStartOf="@+id/shape1"
+                        app:layout_constraintTop_toTopOf="@+id/shape1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingHorizontal="4dp"
+                        android:text='@{vm.cardNum.toString()}'
+                        android:textColor="#F39828"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/shape1"
+                        app:layout_constraintStart_toEndOf="@+id/tv3"
+                        app:layout_constraintTop_toTopOf="@+id/shape1" />
+
+                    <TextView
+                        android:id="@+id/tvMc"
+                        bindSingleClick="@{()->handler.onUseMcClick()}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/bg_btn_point"
+                        android:gravity="center"
+                        android:maxWidth="100dp"
+                        android:paddingHorizontal="13dp"
+                        android:paddingVertical="2dp"
+                        android:text="@string/make_up_ncheck_in"
+                        android:textColor="@color/colorBgBlack"
+                        android:textSize="11sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/shape1"
+                        app:layout_constraintEnd_toEndOf="@+id/shape1"
+                        app:layout_constraintTop_toTopOf="@+id/shape1" />
+
+
+                    <TextView
+                        android:id="@+id/txtCash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_width_app"
+                        android:layout_marginTop="40dp"
+                        android:text="@string/for_cash"
+                        android:textAppearance="@style/font_20"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/shape1" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clayCash"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCash">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgCash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_width_app"
+                            android:src="@drawable/img_icon_cash"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtC"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/amazon_gift_card"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/tvHintCash"
+                            app:layout_constraintStart_toEndOf="@+id/imgCash"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <TextView
+                            android:id="@+id/tvHintCash"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="12dp"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/exchange_gift"
+                            android:textAppearance="@style/font_12"
+                            android:textColor="#B2B2B2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/btnCash"
+                            app:layout_constraintStart_toEndOf="@+id/imgCash"
+                            app:layout_constraintTop_toBottomOf="@+id/txtC"
+                            tools:textColor="#B2B2B2" />
+
+
+                        <TextView
+                            android:id="@+id/btnCash"
+                            bindSingleClick="@{()->handler.onCashAct()}"
+                            android:layout_width="60dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="@dimen/margin_width_app"
+                            android:background="@drawable/bg_btn_point"
+                            android:gravity="center"
+                            android:text="@string/cash_btn"
+                            android:textColor="@color/colorBgBlack"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/retry"
+                    bindSingleClick="@{()->vm.refreshDays()}"
+                    bindVisible="@{vm.loadFailed}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="160dp"
+                    android:background="@drawable/bg_btn1_rounded_corners8"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp"
+                    android:text="@string/retry"
+                    android:textAppearance="@style/font_16"
+                    android:textColor="@color/colorBlack"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

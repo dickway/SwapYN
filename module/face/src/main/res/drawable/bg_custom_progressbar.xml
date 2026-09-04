@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 设置进度条背景 -->
+    <item android:id="@android:id/background" >
+        <shape android:shape="ring">
+            <solid android:color="#7AFFFFFF" />
+        </shape>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape  android:shape="ring">
+                <solid android:color="#7AFFFFFF" />
+            </shape>
+        </clip>
+    </item>
+    <!-- 正常的进度设置 -->
+    <item android:id="@android:id/progress" >
+        <shape android:shape="ring" >
+            <solid android:color="#00FEFE" />
+        </shape>
+    </item>
+</layer-list>

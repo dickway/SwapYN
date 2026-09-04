@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ps_camera_roll">카메라롤</string>
+    <string name="ps_camera_roll_num">%1$s (%2$d)</string>
+    <string name="ps_cancel">취소</string>
+    <string name="ps_take_picture">카메라</string>
+    <string name="ps_rule">사진 또는 동영상이 아닙니다</string>
+    <string name="ps_min_video_num">동영상 선택은 %1$s개까지</string>
+    <string name="ps_message_max_num">최대 %1$s장 선택</string>
+    <string name="ps_message_audio_max_num">최대 %1$s개 오디오 선택</string>
+    <string name="ps_message_video_max_num">최대 %1$s개 동영상 선택</string>
+    <string name="ps_preview">미리보기</string>
+    <string name="ps_please">잠시 후…</string>
+    <string name="ps_done_front_num">%1$d/%2$d 완료</string>
+    <string name="ps_completed">다음</string>
+    <string name="ps_done">완료</string>
+    <string name="ps_please_select">선택하세요</string>
+    <string name="ps_empty_title">사진·동영상 없음\n</string>
+    <string name="ps_empty_audio_title">오디오 파일 없음\n</string>
+    <string name="ps_audio_empty">오디오가 표시되지 않으면 [저장소], [사진·동영상] 권한을 허용하세요.</string>
+    <string name="ps_empty">사진·동영상이 표시되지 않으면 [저장소], [사진·동영상] 권한을 허용하세요.</string>
+    <string name="ps_min_img_num">사진은 최소 %1$s장 선택</string>
+    <string name="ps_min_audio_num">오디오는 최소 %1$s개 선택</string>
+    <string name="ps_gif_tag">GIF</string>
+    <string name="ps_webp_tag">WebP</string>
+    <string name="ps_audio">녹음 권한 거부됨</string>
+    <string name="ps_jurisdiction">저장소 권한 획득 실패</string>
+    <string name="ps_camera">카메라 권한 거부됨</string>
+    <string name="ps_video_toast">동영상 미리보기 불가</string>
+    <string name="ps_record_video">동영상 촬영</string>
+    <string name="ps_photograph">사진 촬영</string>
+    <string name="ps_long_chart">장편</string>
+    <string name="ps_warning">미디어 파일 없음!</string>
+    <string name="ps_prompt">확인</string>
+    <string name="ps_prompt_image_content">사진을 저장하시겠습니까?</string>
+    <string name="ps_prompt_video_content">동영상을 저장하시겠습니까?</string>
+    <string name="ps_save_image_error">사진 저장 실패</string>
+    <string name="ps_save_video_error">동영상 저장 실패</string>
+    <string name="ps_save_success">저장 완료</string>
+    <string name="ps_all_audio">모든 오디오</string>
+    <string name="ps_tape">녹음</string>
+    <string name="ps_play_audio">재생</string>
+    <string name="ps_stop_audio">정지</string>
+    <string name="ps_quit_audio">종료</string>
+    <string name="ps_pause_audio">일시정지</string>
+    <string name="ps_error">사진 손상됨</string>
+    <string name="ps_video_error">동영상 손상됨</string>
+    <string name="ps_audio_error">오디오 손상됨</string>
+    <string name="ps_save_audio_error">오디오 저장 실패</string>
+    <string name="ps_prompt_audio_content">오디오를 저장하시겠습니까?</string>
+    <string name="ps_confirm">확인</string>
+    <string name="ps_preview_image_num">%1$d/%2$d</string>
+    <string name="ps_not_crop_data">자른 데이터 없음</string>
+    <string name="ps_original_image">원본 (%1$s)</string>
+    <string name="ps_default_original_image">원본</string>
+    <string name="ps_send">완료</string>
+    <string name="ps_send_num">완료(%1$d/%2$d)</string>
+    <string name="ps_preview_num">미리보기(%1$d)</string>
+    <string name="ps_select">선택</string>
+    <string name="ps_data_exception">앨범 데이터 오류…</string>
+    <string name="ps_choose_max_seconds">%1$ds 이내 동영상만 선택 가능</string>
+    <string name="ps_choose_min_seconds">%1$ds 미만 동영상 선택 불가</string>
+    <string name="ps_choose_limit_seconds">%1$ds~%2$ds 동영상만 선택 가능</string>
+
+    <string name="ps_go_setting">설정으로 이동</string>
+    <string name="ps_know">확인</string>
+    <string name="ps_data_null">데이터 없음…</string>
+    <string name="ps_editor">편집기</string>
+    <string name="ps_use_camera">카메라 사용 중</string>
+    <string name="ps_use_sound">녹음 기능 사용 중</string>
+    <string name="ps_current_week">이번 주</string>
+    <string name="ps_current_month">이번 달</string>
+    <string name="ps_select_max_size">파일이 %1$s 초과</string>
+    <string name="ps_select_min_size">파일이 %1$s 미만</string>
+
+    <string name="ps_select_video_max_second">%1$d초 이상 동영상 선택</string>
+    <string name="ps_select_video_min_second">%1$d초 이하 동영상 선택</string>
+    <string name="ps_select_audio_max_second">%1$d초 이상 오디오 선택</string>
+    <string name="ps_select_audio_min_second">%1$d초 이하 오디오 선택</string>
+    <string name="ps_select_no_support">지원되지 않는 유형</string>
+
+    <string name="ps_dialog_size_title">동영상이 너무 큽니다</string>
+    <string name="ps_dialog_size_content">동영상 크기는 %1$s MB/s 이하여야 합니다.\n\n현재 동영상: 크기 %2$s, 길이 %3$s.\n환산 %4$s MB/s.\n\n너무 큽니다. 다른 크기를 선택하세요.</string>
+
+</resources>
