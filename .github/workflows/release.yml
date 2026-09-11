@@ -1,0 +1,161 @@
+name: Pack
+run-name: Pack
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - 'pack'
+#    tags:
+#      - 'release_v*'
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.com/appleboy/telegram-action
+      - name: Telegram Notify Start
+        uses: appleboy/telegram-action@master
+        with:
+          #          to: -1001398076332
+          #          token: 6040546649:AAHVESVWCICb_PzluRIpmnM4oF32gteDRzU
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            ---------开始打包---------
+            ${{ github.event.repository.html_url }}
+
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: "pack"
+          token: ${{ secrets.TOKEN }}
+          submodules: "true"
+
+      # https://github.com/marketplace/actions/setup-java-jdk
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: "21"
+          distribution: "corretto"
+
+      # 解决报没有权限问题
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      # https://stackoverflow.com/questions/71089787/how-to-get-version-name-from-android-gradle-file-in-github-actions
+      # ${{ env.ANDROID_VERSION }}
+      - name: Android Version
+        id: androidVersion
+        run: |
+          password=`grep "storePassword" app/build.gradle | awk -F ''\''' '{print $2}'`
+          alias=`grep "keyAlias" app/build.gradle | awk -F ''\''' '{print $2}'`
+          base64=`base64 < app/alviora.jks | tr -d '\n'`
+          echo "$password"
+          echo "$alias"
+          echo "$base64"
+          versionCode=`grep "versionCode" build.gradle | awk -F " " '{print $3}'`
+          versionName=`grep "versionName" build.gradle | awk -F ''\"'' '{print $2}'`
+          echo "v$versionName($versionCode)"
+          echo "ANDROID_VERSION=v$versionName($versionCode)" >> $GITHUB_ENV
+          echo "SIGNING_BASE64=$base64" >> $GITHUB_ENV
+          echo "SIGNING_PASSWORD=$password" >> $GITHUB_ENV
+          echo "SIGNING_ALIAS=$alias" >> $GITHUB_ENV
+          echo "APP_NAME=${{github.event.repository.name}}" >> $GITHUB_ENV
+
+      - name: Start telegram-bot-api in background
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libc++1 libc++abi1
+          chmod +x module/main/workflows/telegram-bot-api
+          module/main/workflows/telegram-bot-api \
+            --api-id=94575 \
+            --api-hash=a3406de8d171bb422bb6ddf3bbd800e2 \
+            --local \
+            --http-ip-address=0.0.0.0 \
+            --http-port=8081 &
+
+      # 混淆，同时下载依赖
+      - name: xmlClassGuard
+        run: bash ./gradlew xmlClassGuardRelease
+
+      # 打印详情./gradlew bundleRelease --stacktrace --info --no-daemon
+      - name: bundleABRelease
+        run: ./gradlew bundleRelease
+
+      # https://github.com/google/bundletool/releases
+      - name: Convert AAB to APK
+        id: convert_aab
+        uses: mukeshsolanki/bundletool-action@v1.0.0
+        with:
+          aabFile: app/build/outputs/bundle/release/duplicated-app.aab
+          base64Keystore: ${{ env.SIGNING_BASE64 }}
+          keystorePassword: ${{ env.SIGNING_PASSWORD }}
+          keystoreAlias: ${{ env.SIGNING_ALIAS }}
+          keyPassword: ${{ env.SIGNING_PASSWORD }}
+          bundletoolVersion: '1.14.1'
+
+      - name: Rename File
+        run: |
+          echo ${{steps.convert_aab.outputs.apkPath}}
+          mv app/build/outputs/bundle/release/duplicated-app.aab "app/build/outputs/bundle/release/${{env.APP_NAME}}_混淆_release_${{env.ANDROID_VERSION}}.aab"
+          mv app/build/outputs/bundle/release/app-release.aab "app/build/outputs/bundle/release/${{env.APP_NAME}}_release_${{env.ANDROID_VERSION}}.aab"
+          mv duplicated-app.apk "${{env.APP_NAME}}_混淆_release_${{env.ANDROID_VERSION}}.apk"
+
+      - name: Telegram Notify AAB
+        run: |
+          curl -X POST \
+            http://127.0.0.1:8081/bot7634732810:AAHwdKozAljFMxLcL2v_dW5kbjhtiHOcha4/sendDocument \
+            -F chat_id=-1001398076332 \
+            -F document=@"app/build/outputs/bundle/release/${{env.APP_NAME}}_release_${{env.ANDROID_VERSION}}.aab"
+          curl -X POST \
+            http://127.0.0.1:8081/bot7634732810:AAHwdKozAljFMxLcL2v_dW5kbjhtiHOcha4/sendDocument \
+            -F chat_id=-1001398076332 \
+            -F document=@"app/build/outputs/bundle/release/${{env.APP_NAME}}_混淆_release_${{env.ANDROID_VERSION}}.aab"
+          curl -X POST \
+            http://127.0.0.1:8081/bot7634732810:AAHwdKozAljFMxLcL2v_dW5kbjhtiHOcha4/sendDocument \
+            -F chat_id=-1001398076332 \
+            -F document=@"${{env.APP_NAME}}_混淆_release_${{env.ANDROID_VERSION}}.apk"
+          curl -X POST \
+            http://127.0.0.1:8081/bot7634732810:AAHwdKozAljFMxLcL2v_dW5kbjhtiHOcha4/sendDocument \
+            -F chat_id=-1001398076332 \
+            -F document=@"app/xml-class-mapping.txt"
+
+      - name: Telegram Notify Success
+        uses: appleboy/telegram-action@master
+        with:
+          #          to: -1001398076332
+          #          token: 6040546649:AAHVESVWCICb_PzluRIpmnM4oF32gteDRzU
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            打包成功
+            Url: ${{ github.event.repository.html_url }}
+            Branch or TAG: ${{ github.ref }}
+            Commit SHA: ${{ github.sha }}
+            Version: ${{ env.ANDROID_VERSION }}
+
+      - name: Telegram Notify Fail
+        if: ${{ failure() }}
+        uses: appleboy/telegram-action@master
+        with:
+          #          to: -1001398076332
+          #          token: 6040546649:AAHVESVWCICb_PzluRIpmnM4oF32gteDRzU
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            打包失败
+            Url: ${{ github.event.repository.html_url }}
+            Branch or TAG: ${{ github.ref }}
+            Commit SHA: ${{ github.sha }}
+            Version: ${{ env.ANDROID_VERSION }}
+
+      - name: Telegram Notify Over
+        if: ${{ always() }}
+        uses: appleboy/telegram-action@master
+        with:
+          #          to: -1001398076332
+          #          token: 6040546649:AAHVESVWCICb_PzluRIpmnM4oF32gteDRzU
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: ---------打包结束---------
