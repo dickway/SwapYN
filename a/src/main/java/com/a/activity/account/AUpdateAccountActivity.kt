@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import com.a.R
 import com.a.databinding.ActivityAupdateAccountBinding
 import com.a.viewmodel.AUpdateAccountViewModel
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.a.BR
 import com.face.ui.BaseBindingActivity
 import com.face.util.EventUtil
@@ -83,7 +83,7 @@ class AUpdateAccountActivity :
             return
         }
         launchRequestWithLoadingOnIO({
-            Repository.updatePassword(
+            ARepository.updatePassword(
                 mModel.account.value ?: "",
                 mModel.pwd.value ?: ""
             )

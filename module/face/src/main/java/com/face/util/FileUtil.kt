@@ -26,7 +26,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
 import androidx.core.net.toUri
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.CustomTarget

@@ -1,5 +1,5 @@
 [versions]
-agp = "8.12.0-alpha05"
+agp = "8.12.3"
 kotlin = "2.0.21"
 coreKtx = "1.17.0"
 junit = "4.13.2"
@@ -8,7 +8,9 @@ espressoCore = "3.7.0"
 appcompat = "1.7.1"
 material = "1.13.0"
 activity = "1.12.2"
-constraintlayout = "2.2.1"
+constraintlayout = "2.2.2"
+utilcodex = "1.31.1"
+adjust = "5.8.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -19,6 +21,16 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+utilcodex = { group = "com.blankj", name = "utilcodex", version.ref = "utilcodex" }
+adjust = { group = "com.adjust.sdk", name = "adjust-android", version.ref = "adjust" }
+
+
+
+[bundles]
+thirdparty = [
+    "utilcodex"
+]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

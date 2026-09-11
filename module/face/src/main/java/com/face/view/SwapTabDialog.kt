@@ -6,7 +6,7 @@ import android.view.Gravity
 import android.view.WindowManager
 import androidx.core.view.postDelayed
 import androidx.lifecycle.Observer
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.BR
 import com.face.adapter.swap.SwapChooseAdapter
 import com.face.adapter.swap.SwapTabAdapter

@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.R
 import com.flyjingfish.openimagefulllib.GSYVideoOpenPlayer
 import com.flyjingfish.openimagefulllib.ScaleDrawable

@@ -2,7 +2,7 @@ package com.face.viewmodel.activity
 
 import android.graphics.BitmapFactory
 import androidx.lifecycle.MutableLiveData
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.net.Repository
 import com.face.key.AiTaskType
 import com.face.util.FileUtil

@@ -229,7 +229,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Formal"
+                        android:text="Business"
                         android:textAppearance="@style/font_12"
                         android:textColor="@color/color_b_b2"
                         app:layout_constraintEnd_toEndOf="@+id/linBusiness"
@@ -294,7 +294,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
-        <TextView
+        <LinearLayout
             android:id="@+id/tv1"
             bindEnabled='@{vm.postImgUrl!=""&amp;&amp;vm.postStyle!=""&amp;&amp;vm.postColor!=""&amp;&amp;vm.postSize!=""}'
             bindSingleClick="@{()->handler.postSend()}"
@@ -302,13 +302,26 @@
             android:layout_height="48dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/a_btn_jb_r100"
+            android:background="@drawable/a_bg_primary_gradient_pill"
             android:gravity="center"
-            android:text="Generate"
-            android:textAppearance="@style/font_14"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="6dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/a_ic_generate_spark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Generate"
+                android:textAppearance="@style/font_14"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/retry"

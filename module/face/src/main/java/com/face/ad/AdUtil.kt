@@ -1,7 +1,7 @@
 package com.face.ad
 
 import android.graphics.Color
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.applovin.mediation.MaxAd
 import com.applovin.mediation.MaxAdFormat
 import com.applovin.mediation.MaxAdListener
@@ -153,7 +153,7 @@ object AdUtil {
         AppLovinPrivacySettings.setHasUserConsent(true)
         AppLovinPrivacySettings.setDoNotSell(false)
         AppLovinSdk.getInstance(App.INSTANCE).initialize(initConfig) {
-            LogUtils.tag("AdUtil").i("ApplovinSdk initialize $it")
+            LogUtils.iTag("AdUtil", "ApplovinSdk initialize $it")
             initRewardedAd()
             initInterstitialAd()
             initBannerAd()

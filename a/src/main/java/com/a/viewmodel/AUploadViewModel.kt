@@ -6,7 +6,7 @@ import com.face.R
 import com.face.adapter.other.UploadTypeAdapter
 import com.face.bean.TaskBean
 import com.face.key.AiTaskType
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.util.EventUtil
 import com.face.util.FileUtil
 import com.face.util.SPUtils
@@ -56,7 +56,7 @@ class AUploadViewModel : BaseViewModel() {
                     )
                 repsBody1?.cancel()
                 val timer = Timer()
-                repsBody1 = launchRequestOnIO({ Repository.uploadFile(body) }) {
+                repsBody1 = launchRequestOnIO({ ARepository.uploadFile(body) }) {
                     onStart = {
                         dismissLoading()
                         uploadSate.postValue(1)
@@ -104,7 +104,7 @@ class AUploadViewModel : BaseViewModel() {
         val timer = Timer()
         repsBody2?.cancel()
         repsBody2 =
-            launchRequestOnIO({ Repository.sendAiTask(AiTaskType.DETECT_FACE, "", uploadImg) }) {
+            launchRequestOnIO({ ARepository.sendAiTask(AiTaskType.DETECT_FACE, "", uploadImg) }) {
                 onStart = {
                     timer.schedule(object : TimerTask() {
                         override fun run() {
@@ -132,7 +132,7 @@ class AUploadViewModel : BaseViewModel() {
             repsBody3?.cancel()
             repsBody3 = launchRequestOnIO({
                 //循环请求,延迟一秒请求
-                Repository.queryAiTask(taskBeanId)
+                ARepository.queryAiTask(taskBeanId)
             }) {
 
                 onStart = {
@@ -144,9 +144,13 @@ class AUploadViewModel : BaseViewModel() {
                     when (bean?.state) {
                         2 -> {//完成
                             EventUtil.clickCheck("success", taskBeanId)
-                            if (bean.result.faceUrl.isNotEmpty()) {//返回多张图片默认选择第一张，没有就处理为失败
-                                uploadImgPath.postValue(bean.result.faceUrl[0])
+                            val faceUrl = bean.result.faceUrl.firstOrNull()?.takeIf { it.isNotBlank() }
+                            if (faceUrl != null) {
+                                uploadImgPath.postValue(faceUrl)
                                 uploadSate.postValue(3)
+                            } else {
+                                tvFailure = getStringX(R.string.upload_check_failure)
+                                uploadSate.postValue(2)
                             }
                         }
 
@@ -165,7 +169,7 @@ class AUploadViewModel : BaseViewModel() {
                     launch(Dispatchers.IO) {
                         delay(1000)
                         //触发数据,重新请求
-                        taskBean.postValue(taskBean.value)
+                        if (uploadSate.value == 1) taskBean.postValue(taskBean.value)
                     }
                 }
             }

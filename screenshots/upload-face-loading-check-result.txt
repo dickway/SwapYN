@@ -1,0 +1,4 @@
+Failure state ready; switching to loading
+Loading state verified; capturing
+PASS: 5 loading state checks; focused screenshot captured.
+

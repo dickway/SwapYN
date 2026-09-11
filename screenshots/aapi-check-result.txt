@@ -1,0 +1,2 @@
+PASS: All 114 AApi methods and Moshi converters validated eagerly; no endpoint requests sent.
+

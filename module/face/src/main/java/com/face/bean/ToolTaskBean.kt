@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.room.Ignore
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.R
 import com.zzkj.structure.util.SPbaseUtils
 import com.zzkj.structure.util.TimeUtil

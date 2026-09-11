@@ -1,7 +1,7 @@
 package com.face.ui.thug
 
 import android.os.Bundle
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.util.GVM
 import com.face.R
 import com.face.BR

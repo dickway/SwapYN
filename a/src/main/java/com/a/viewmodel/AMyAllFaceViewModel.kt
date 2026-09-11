@@ -3,7 +3,7 @@ package com.a.viewmodel
 import androidx.lifecycle.MutableLiveData
 import com.face.R
 import com.face.bean.MyFaceImgBean
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.zzkj.structure.base.BaseViewModel
 import com.zzkj.structure.net.launchRequestOnIO
 import com.zzkj.structure.net.launchRequestWithLoadingOnIO
@@ -23,22 +23,17 @@ class AMyAllFaceViewModel : BaseViewModel() {
 
     val faceRefreshing = MutableLiveData<Boolean>()
 
-    var myFaceList = MutableLiveData<List<MyFaceImgBean>?>()
+    val myFaceList = MutableLiveData<List<MyFaceImgBean>>(emptyList())
 
     var faceList = mutableListOf<MyFaceImgBean>()
 
     fun getUserPics() {
-        launchRequestOnIO({ Repository.getUserPics() }) {
+        launchRequestOnIO({ ARepository.getUserPics() }) {
             onStart = { faceRefreshing.value = true }
             onSuccess = { listBean ->
                 loadFailed.postValue(false)
-                isNoData.setIfNot(listBean?.isEmpty())
                 faceList = listBean?.toMutableList() ?: mutableListOf()
-                if (faceList.size > 0) {
-                    myFaceList.postValue(listBean?.toMutableList()?.apply {
-                        add(0, MyFaceImgBean(isSelect = true))
-                    })
-                }
+                publishFaces()
             }
             onFailed = { _, _, errorMsg ->
                 loadFailed.postValue(true)
@@ -51,17 +46,24 @@ class AMyAllFaceViewModel : BaseViewModel() {
 
 
     fun deleteUserPic(bean: MyFaceImgBean?) {
-        launchRequestWithLoadingOnIO({ Repository.deleteUserPic(bean?.id) }) {
+        if (bean == null || bean.isSelect || bean.id.isBlank()) return
+        launchRequestWithLoadingOnIO({ ARepository.deleteUserPic(bean.id) }) {
             onSuccess = {
-                faceList.remove(bean)
-                myFaceList.value = myFaceList.value?.toMutableList()?.apply {
-                    remove(bean)
-                }
+                faceList.removeAll { it.id == bean.id }
+                publishFaces()
                 toast(getStringX(R.string.success))
             }
             onFailed = { _, _, errorMsg ->
                 toast(errorMsg)
             }
         }
+    }
+
+    private fun publishFaces() {
+        isNoData.setIfNot(faceList.isEmpty())
+        isSelect.value = faceList.isNotEmpty()
+        if (faceList.isEmpty()) isShowDete = false
+        myFaceList.value = if (faceList.isEmpty()) emptyList() else
+            listOf(MyFaceImgBean(isSelect = true)) + faceList
     }
 }

@@ -12,7 +12,7 @@ import com.face.bean.ConfigBean
 import com.face.bean.ConfigBean.Companion.toMap
 import com.face.bean.GooglePriceBean
 import com.face.bean.VipSchemeBean
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.util.GVM
 import com.face.util.GooglePayUtil
 import com.zzkj.structure.base.BaseViewModel
@@ -39,12 +39,12 @@ class AMainViewModel : BaseViewModel() {
     fun retryRefresh(isBtn: Boolean = false) {
         launch(Dispatchers.IO) {
             if (isBtn) showLoading()
-            val configSubscribe = async { Repository.getUserSetting("config_subscribe") }
-            val sysConfig = async { Repository.getSysConfig("common_config") }
-            val typeImg = async { Repository.getTags(1) }
-            val typeVideo = async { Repository.getTags(2) }
-            val type = async { Repository.getTags(3) }
-            val isDevice = async { Repository.getDeviceCampaign() }
+            val configSubscribe = async { ARepository.getUserSetting("config_subscribe") }
+            val sysConfig = async { ARepository.getSysConfig("common_config") }
+            val typeImg = async { ARepository.getTags(1) }
+            val typeVideo = async { ARepository.getTags(2) }
+            val type = async { ARepository.getTags(3) }
+            val isDevice = async { ARepository.getDeviceCampaign() }
 
             if (sysConfig.await().mIsSuccess &&
                 type.await().mIsSuccess &&
@@ -69,7 +69,7 @@ class AMainViewModel : BaseViewModel() {
     }
 
     fun refreshFeedback() {//通知
-        launchRequestOnIO({ Repository.getFeedback() }) {
+        launchRequestOnIO({ ARepository.getFeedback() }) {
             onSuccess = { beans ->
                 var hasNewMsg = false
                 beans?.forEach {
@@ -169,7 +169,7 @@ class AMainViewModel : BaseViewModel() {
 
     fun sendAiTask(taskId: String?) {
         if (taskId != null && taskId != "")
-            launchRequestWithLoadingOnIO({ Repository.queryAiTask(taskId) }) {
+            launchRequestWithLoadingOnIO({ ARepository.queryAiTask(taskId) }) {
                 onSuccess = { bean ->
                     taskBean.value = bean
                 }
@@ -188,7 +188,7 @@ class AMainViewModel : BaseViewModel() {
     }
 
     fun getDeviceRefresh() {//刷新工具界面
-        launchRequestOnIO({ Repository.getDeviceCampaign() }) {
+        launchRequestOnIO({ ARepository.getDeviceCampaign() }) {
             onSuccess = { bean ->
                 GVM.INSTANT.isShowTool.postValue(bean)
                 GVM.INSTANT.aIsAB.postValue(bean)
@@ -198,7 +198,7 @@ class AMainViewModel : BaseViewModel() {
 
     //缓存会员价格
     fun vipSchemes() {
-        launchRequestOnIO({ Repository.getVipScheme() }) {
+        launchRequestOnIO({ ARepository.getVipScheme() }) {
             onSuccess = {
                 if (!it.isNullOrEmpty()) {
                     val listGoogle = it.toMutableList()
@@ -281,7 +281,7 @@ class AMainViewModel : BaseViewModel() {
         }
 
         launchRequestOnIO({
-            Repository.saveUserSetting(
+            ARepository.saveUserSetting(
                 ConfigBean(
                     type = "config_subscribe",
                     key = "page",

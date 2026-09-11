@@ -4,7 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.R
 import com.face.bean.CollectAMBean
 import com.face.bean.TaskBean

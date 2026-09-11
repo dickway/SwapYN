@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.Gravity
 import androidx.lifecycle.MutableLiveData
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.BR
 import com.face.databinding.DialogDiscountBinding
 import com.face.util.GVM

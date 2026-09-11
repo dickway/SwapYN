@@ -6,8 +6,10 @@
         <item name="android:windowBackground">@drawable/bg_splash_bg</item>
         <item name="android:statusBarColor">#00000000</item>
         <item name="android:navigationBarColor">#00000000</item>
-        <item name="android:windowLightStatusBar" >false</item>
+        <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowSplashScreenAnimationDuration">0</item>
     </style>
 
     <style name="Theme.Bottom" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
@@ -16,7 +18,7 @@
         <item name="android:statusBarColor">#00000000</item>
         <item name="android:navigationBarColor">#00000000</item>
         <item name="android:colorBackground">@color/colorAppBg</item>
-        <item name="android:windowLightStatusBar" >false</item>
+        <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
         <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>
         <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
@@ -31,7 +33,7 @@
         <item name="colorAccent">@color/colorFont6</item>
         <item name="android:navigationBarColor">@color/colorAppBg</item>
         <item name="android:colorBackground">@color/colorAppBg</item>
-        <item name="android:windowLightStatusBar" >false</item>
+        <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
         <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>
         <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
@@ -42,7 +44,7 @@
     <style name="Theme.Zoom" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="openImage.background">@color/colorAppBg</item>
         <item name="openImage.statusBar.fontStyle">dark</item>
-        <item name="android:windowLightStatusBar" >false</item>
+        <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
     </style>
 

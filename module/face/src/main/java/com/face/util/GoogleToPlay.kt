@@ -3,7 +3,7 @@ package com.face.util
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.ui.App
 
 

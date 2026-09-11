@@ -17,7 +17,16 @@ class AReportAdapter : BaseAdapter<CollectBean, ItemAreportBinding>(
         position: Int
     ) {
         holder.binding.apply {
-            tvContent.text = data?.name
+            // Localize the visible label while retaining the existing report payload values.
+            val labelRes = when (data?.name) {
+                "Nudity or sexual" -> com.face.R.string.report1
+                "Hateful or abusive" -> R.string.a_report_hateful
+                "Violence scene" -> com.face.R.string.report3
+                "Political issue" -> com.face.R.string.report4
+                "Alleged CopyrightInfr ingement" -> com.face.R.string.report5
+                else -> null
+            }
+            tvContent.text = labelRes?.let(root.resources::getString) ?: data?.name
             isSelected=data?.isSelected
             root.setOnClickListener {
                 onItemClick?.invoke(it, data, position)

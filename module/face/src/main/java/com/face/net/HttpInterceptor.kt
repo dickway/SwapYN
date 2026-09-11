@@ -1,14 +1,13 @@
 package com.face.net
 
 import android.os.Build
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.BuildConfig
 import com.face.util.EventUtil
 import com.face.util.GVM
 import com.face.util.SPUtils
 import com.zzkj.structure.base.BaseApp
 import com.zzkj.structure.util.SPbaseUtils
-import com.zzkj.structure.util.TimeUtil
 import com.zzkj.structure.util.device.DeviceUtils
 import okhttp3.Interceptor
 import okhttp3.Request
@@ -89,7 +88,7 @@ object HttpInterceptor : Interceptor {
             } else {
                 response.headers["Content-Type"]
             }
-            LogUtils.v(
+            com.blankj.utilcode.util.LogUtils.v(
                 "请求地址：${response.request.url}" + "\nAPI：${request.tag(Invocation::class.java)}" + "\n请求方式：${request.method}" + "\n请求参数：${params}" + "\n请求耗时：${(t2 - t1)}ms" + "\n请求结果：$result"
             )
         } catch (e: Exception) {

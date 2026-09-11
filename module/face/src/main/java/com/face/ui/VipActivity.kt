@@ -7,7 +7,7 @@ import android.os.CountDownTimer
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import com.android.billingclient.api.BillingClient
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.BR
 import com.face.R
 import com.face.bean.VipSchemeBean

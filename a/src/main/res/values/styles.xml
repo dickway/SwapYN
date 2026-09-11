@@ -50,4 +50,93 @@
         <item name="cornerSizeTopLeft">6dp</item>
         <item name="cornerSizeTopRight">6dp</item>
     </style>
+    <style name="AWidgetGradientPill">
+        <item name="android:background">@drawable/a_bg_primary_gradient_pill</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+    <style name="AWidgetGradientPill.Text">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">#050708</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="AShapeAppearanceBanner">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="ASettingsRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">55dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:paddingVertical">10dp</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+    <style name="ASettingsIcon">
+        <item name="android:layout_width">28dp</item>
+        <item name="android:layout_height">28dp</item>
+        <item name="android:layout_marginEnd">12dp</item>
+        <item name="android:importantForAccessibility">no</item>
+    </style>
+    <style name="ASettingsLabel">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="ASettingsChevron">
+        <item name="android:layout_width">12dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:src">@drawable/a_ic_settings_chevron</item>
+        <item name="android:importantForAccessibility">no</item>
+    </style>
+    <style name="ASettingsDialogButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingHorizontal">4dp</item>
+        <item name="android:paddingVertical">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/a_bg_settings_dialog_button</item>
+    </style>
+
+    <style name="AVipBenefit">
+        <item name="android:background">@drawable/a_bg_vip_benefit</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingHorizontal">8dp</item>
+        <item name="android:paddingVertical">10dp</item>
+    </style>
+    <style name="AVipBenefitText">
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/a_vip_benefit_foreground</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AThemeSwapHint" parent="AppTheme.A">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/a_swaphint_background</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:statusBarColor">@color/a_swaphint_background</item>
+        <item name="android:navigationBarColor">@color/a_swaphint_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
 </resources>

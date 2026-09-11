@@ -1,7 +1,7 @@
 package com.a.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.util.EventUtil
 import com.zzkj.structure.base.BaseViewModel
 import com.zzkj.structure.net.launchRequestWithLoadingOnIO
@@ -13,7 +13,7 @@ class ADeleteuserViewModel : BaseViewModel() {
     val isDelete = MutableLiveData(false)
 
     fun deleteUserInfo() {
-        launchRequestWithLoadingOnIO({ Repository.deleteUserInfo() }) {
+        launchRequestWithLoadingOnIO({ ARepository.deleteUserInfo() }) {
             onSuccess = { bean ->
                 EventUtil.deleteUser()
                 isDelete.postValue(true)

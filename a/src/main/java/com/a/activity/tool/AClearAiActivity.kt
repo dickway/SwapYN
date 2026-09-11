@@ -1,5 +1,6 @@
 package com.a.activity.tool
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
@@ -7,12 +8,12 @@ import android.graphics.Matrix
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.MotionEvent
-import android.view.View
 import android.view.View.GONE
-import android.view.View.OnTouchListener
 import android.view.View.VISIBLE
 import android.widget.SeekBar
 import androidx.activity.addCallback
+import com.a.BR
+import com.a.R
 import com.a.activity.AToolCompletionActivity
 import com.a.databinding.ActivityAtoolAiclearBinding
 import com.a.dialog.ABaseContentDialog
@@ -21,17 +22,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import com.king.drawboard.draw.Draw
-import com.a.BR
-import com.a.R
+import com.face.ui.BaseBindingActivity
 import com.face.util.GVM
 import com.face.util.SPUtils
+import com.king.drawboard.draw.Draw
 import com.king.drawboard.view.DBV
-import com.face.ui.BaseBindingActivity
 import com.zzkj.structure.base.DataBindingArguments
 import com.zzkj.structure.util.TimeUtil
-import com.zzkj.structure.util.ktx.BarHelper.bar
-import com.zzkj.structure.util.ktx.getColorX
 import com.zzkj.structure.util.ktx.getScreenHeight
 import com.zzkj.structure.util.ktx.getScreenWidth
 import com.zzkj.structure.util.ktx.intentExtras
@@ -147,28 +144,24 @@ class AClearAiActivity : BaseBindingActivity<ActivityAtoolAiclearBinding, AClear
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
-                if (mBinding?.drawBoardView?.drawMode ==  DBV.DrawMode.DRAW_PATH) {
+                if (mBinding?.drawBoardView?.drawMode == DBV.DrawMode.DRAW_PATH) {
                     mBinding?.drawBoardView?.setLineStrokeWidth(seekBar.progress.toFloat())
                 }
             }
         })
 
-        mBinding?.imgOriginal?.setOnTouchListener(object : OnTouchListener {
-            override fun onTouch(v: View, event: MotionEvent): Boolean {
-                if (mModel.showOriginacl.value) {
-                    when (event.action) {
-                        MotionEvent.ACTION_DOWN -> {
-                            mBinding?.initImg?.visibility = VISIBLE
-                        }
+        @SuppressLint("ClickableViewAccessibility")
+        mBinding?.imgOriginal?.setOnTouchListener { _, event ->
+            if (mModel.showOriginacl.value) {
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> updateOriginalPressedState(true)
 
-                        MotionEvent.ACTION_UP -> {
-                            mBinding?.initImg?.visibility = GONE
-                        }
-                    }
+                    MotionEvent.ACTION_UP,
+                    MotionEvent.ACTION_CANCEL -> updateOriginalPressedState(false)
                 }
-                return true
             }
-        })
+            true
+        }
 
         mBinding?.imgUp?.singleClick {
             if (mModel.showUp.value) {
@@ -317,6 +310,21 @@ class AClearAiActivity : BaseBindingActivity<ActivityAtoolAiclearBinding, AClear
             }
         }
 
+    }
+
+    private fun updateOriginalPressedState(pressed: Boolean) {
+        val scale = if (pressed) 0.8f else 1f
+        val rotation = if (pressed) 180f else 0f
+
+        mBinding?.imgOriginal?.animate()?.apply {
+            cancel()
+            scaleX(scale)
+            scaleY(scale)
+            rotation(rotation)
+            setDuration(150L)
+            start()
+        }
+        mBinding?.initImg?.visibility = if (pressed) VISIBLE else GONE
     }
 
 

@@ -1,148 +1,132 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
-
-        <variable
-            name="handler"
-            type="com.a.dialog.AReportDialog" />
-
-        <variable
-            name="gvm"
-            type="com.face.util.GVM" />
+        <variable name="handler" type="com.a.dialog.AReportDialog" />
+        <variable name="gvm" type="com.face.util.GVM" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/a_bg_dialog"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="18dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="Report"
-            android:textColor="#ffffff"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvDis"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:text="Feel free to report this content if you think it'sinappropriate."
-            android:textColor="#B2B2B2"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+        android:background="@drawable/a_bg_report"
+        android:clipToOutline="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
         <LinearLayout
-            android:id="@+id/lin1"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="12dp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="24dp"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/tvDis">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imgBlock"
-                bindSelected="@{false}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:gravity="left"
-                android:textAppearance="@style/font_14"
-                android:textColor="#ffffff"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="14dp">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/report"
+                    android:textColor="@color/colorAwhite"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-        <View
-            android:id="@+id/view1"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="14dp"
-            android:background="#1AFFFFFF"
-            app:layout_constraintTop_toBottomOf="@+id/lin1" />
+                <TextView
+                    android:id="@+id/tvDis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/a_report_description"
+                    android:textColor="@color/colorAb2"
+                    android:textSize="14sp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@+id/view1"
-            tools:itemCount="5"
-            tools:listitem="@layout/item_areport" />
+                <LinearLayout
+                    android:id="@+id/lin1"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
-        <View
-            android:id="@+id/view2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#1AFFFFFF"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
-
-        <LinearLayout
-            android:id="@+id/linWelcome1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view2">
-
-            <TextView
-                android:id="@+id/btnCancel"
-                bindSingleClick="@{()->handler.dismissAllowingStateLoss()}"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Cancel"
-                android:textColor="#BCFF08"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnConfirm" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgBlock"
+                        bindSelected="@{false}"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp" />
+                </LinearLayout>
+            </LinearLayout>
 
             <View
-                android:layout_width="1dp"
-                android:layout_height="16dp"
-                android:background="#1AFFFFFF" />
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/a_report_divider" />
 
-            <TextView
-                android:id="@+id/btnConfirm"
-                bindSingleClick="@{()->handler.onConfirmClick()}"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_areport" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/a_report_divider" />
+
+            <LinearLayout
+                android:id="@+id/linWelcome1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Report"
-                android:textSize="16sp"
-                android:textColor="#5E5E5E"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvContent" />
+                android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/btnCancel"
+                    bindSingleClick="@{()->handler.dismissAllowingStateLoss()}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:minHeight="48dp"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="12dp"
+                    android:text="@string/cancel"
+                    android:textColor="@color/colorPrimaryA"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="16dp"
+                    android:background="@color/a_report_divider" />
+
+                <TextView
+                    android:id="@+id/btnConfirm"
+                    bindSingleClick="@{()->handler.onConfirmClick()}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="@{handler.selectedNum > 0}"
+                    android:gravity="center"
+                    android:minHeight="48dp"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="12dp"
+                    android:text="@string/report"
+                    android:textColor="@color/a_report_action_text"
+                    android:textSize="16sp" />
+            </LinearLayout>
         </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

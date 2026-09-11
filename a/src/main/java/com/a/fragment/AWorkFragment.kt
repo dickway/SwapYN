@@ -2,6 +2,7 @@ package com.a.fragment
 
 import android.os.Bundle
 import com.a.R
+import com.a.view.AMeGridItemDecoration
 import com.a.activity.ACompletionActivity
 import com.a.activity.AProductionActivity
 import com.a.activity.ASwapActivity
@@ -22,6 +23,7 @@ class AWorkFragment : BaseBindingFragment<FragmentMeWorkBinding, AWorkViewModel>
 ) {
 
     override fun init(savedInstanceState: Bundle?) {
+        mBinding?.recyclerView?.addItemDecoration(AMeGridItemDecoration())
         mModel.workAdapter.onItemClick = { view, taskBean, po ->
             if (taskBean?.media?.title == "owner") {
                 if (taskBean.state == 3) {//点击生成失败

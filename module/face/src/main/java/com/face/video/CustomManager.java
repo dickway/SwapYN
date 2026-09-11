@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
-import com.apkfuns.logutils.LogUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.face.R;
 import com.shuyu.gsyvideoplayer.GSYVideoBaseManager;
 import com.shuyu.gsyvideoplayer.player.IPlayerManager;

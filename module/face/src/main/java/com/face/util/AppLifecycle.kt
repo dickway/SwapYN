@@ -2,7 +2,7 @@ package com.face.util
 
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 
 /**
  * @author 再战科技
@@ -13,12 +13,12 @@ class AppLifecycle : DefaultLifecycleObserver {
     private val TAG = javaClass.simpleName
 
     override fun onStart(owner: LifecycleOwner) {
-        LogUtils.tag(TAG).d("App start")
+        LogUtils.dTag(TAG, "App start")
         GVM.INSTANT.isForeground.value = true
     }
 
     override fun onStop(owner: LifecycleOwner) {
-        LogUtils.tag(TAG).d("App stop")
+        LogUtils.dTag(TAG, "App stop")
         GVM.INSTANT.isForeground.value = false
     }
 }

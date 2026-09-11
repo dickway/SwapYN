@@ -40,7 +40,7 @@
                 android:layout_height="match_parent"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
-                android:src="@mipmap/a_icon_back3"
+                android:src="@mipmap/a_icon_back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -49,11 +49,12 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imgReport"
                 bindSingleClick="@{()->handler.onReport()}"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginEnd="8dp"
-                android:paddingHorizontal="8dp"
-                android:src="@mipmap/a_icon_report"
+                android:contentDescription="@string/report"
+                android:padding="12dp"
+                android:src="@drawable/a_ic_swap_report"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -87,7 +88,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/a_bg_b2_r100"
+                android:background="@drawable/a_bg_b2_r16"
                 android:drawableLeft="@mipmap/a_icon_delete2"
                 android:drawablePadding="4dp"
                 android:gravity="center_vertical"
@@ -106,7 +107,7 @@
                 android:layout_height="48dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/a_btn_jb_r100"
+                android:background="@drawable/a_bg_primary_gradient_pill"
                 android:drawableLeft="@mipmap/a_icon_download"
                 android:drawablePadding="4dp"
                 android:gravity="center_vertical"
@@ -119,12 +120,19 @@
                 tools:visibility="visible" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvVipBadge"
+                android:layout_width="40dp"
                 android:layout_height="20dp"
-                android:layout_marginTop="-10dp"
-                android:background="@mipmap/a_icon_completion_vip"
-                app:layout_constraintEnd_toEndOf="@+id/btnVipD"
-                app:layout_constraintTop_toTopOf="@+id/btnVipD" />
+                android:background="@drawable/a_bg_completion_vip"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="@string/a_completion_vip"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/btnVipD"
+                app:layout_constraintEnd_toEndOf="@id/btnVipD"
+                app:layout_constraintTop_toTopOf="@id/btnVipD" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

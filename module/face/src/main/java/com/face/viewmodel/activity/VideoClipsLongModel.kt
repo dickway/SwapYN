@@ -1,7 +1,7 @@
 package com.face.viewmodel.activity
 
 import android.util.Log
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.bean.ALinkBean
 import com.face.bean.Part
 import com.face.net.Repository

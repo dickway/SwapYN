@@ -29,16 +29,14 @@
             bindData="@{vm.workFaceList}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="4dp"
             android:clipToPadding="false"
-            android:paddingTop="4dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:spanCount="3"
             tools:itemCount="12"
             tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:listitem="@layout/item_me_history_item"
+            tools:listitem="@layout/item_me_work_item"
             tools:spanCount="3" />
 
         <LinearLayout

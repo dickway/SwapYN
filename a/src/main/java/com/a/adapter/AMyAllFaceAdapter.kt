@@ -33,7 +33,7 @@ class AMyAllFaceAdapter : BaseAdapter<MyFaceImgBean, ItemAmyallfaceItemBinding>(
     ) {
         holder.binding.apply {
             isAdd = data?.isSelect
-            isDelete = showDete
+            isDelete = showDete && data?.isSelect == false
             imgCover.loadImage(
                 data?.pic,
                 placeholderResId = com.key.R.drawable.img_default_m

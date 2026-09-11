@@ -1,6 +1,8 @@
 name: Pack
 run-name: Pack
 on:
+  workflow_dispatch:
+
   push:
     branches:
       - 'pack'
@@ -14,8 +16,10 @@ jobs:
       - name: Telegram Notify Start
         uses: appleboy/telegram-action@master
         with:
-          to: -1001398076332
-          token: 6040546649:AAHVESVWCICb_PzluRIpmnM4oF32gteDRzU
+          #          to: -1001398076332
+          #          token: 6040546649:AAHVESVWCICb_PzluRIpmnM4oF32gteDRzU
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
             ---------开始打包---------
             ${{ github.event.repository.html_url }}
@@ -100,28 +104,30 @@ jobs:
 
       - name: Telegram Notify AAB
         run: |
-            curl -X POST \
-              http://127.0.0.1:8081/bot7634732810:AAHwdKozAljFMxLcL2v_dW5kbjhtiHOcha4/sendDocument \
-              -F chat_id=-1001398076332 \
-              -F document=@"app/build/outputs/bundle/release/${{env.APP_NAME}}_release_${{env.ANDROID_VERSION}}.aab"
-            curl -X POST \
-              http://127.0.0.1:8081/bot7634732810:AAHwdKozAljFMxLcL2v_dW5kbjhtiHOcha4/sendDocument \
-              -F chat_id=-1001398076332 \
-              -F document=@"app/build/outputs/bundle/release/${{env.APP_NAME}}_混淆_release_${{env.ANDROID_VERSION}}.aab"
-            curl -X POST \
-              http://127.0.0.1:8081/bot7634732810:AAHwdKozAljFMxLcL2v_dW5kbjhtiHOcha4/sendDocument \
-              -F chat_id=-1001398076332 \
-              -F document=@"${{env.APP_NAME}}_混淆_release_${{env.ANDROID_VERSION}}.apk"
-            curl -X POST \
-              http://127.0.0.1:8081/bot7634732810:AAHwdKozAljFMxLcL2v_dW5kbjhtiHOcha4/sendDocument \
-              -F chat_id=-1001398076332 \
-              -F document=@"app/xml-class-mapping.txt"
+          curl -X POST \
+            http://127.0.0.1:8081/bot7634732810:AAHwdKozAljFMxLcL2v_dW5kbjhtiHOcha4/sendDocument \
+            -F chat_id=-1001398076332 \
+            -F document=@"app/build/outputs/bundle/release/${{env.APP_NAME}}_release_${{env.ANDROID_VERSION}}.aab"
+          curl -X POST \
+            http://127.0.0.1:8081/bot7634732810:AAHwdKozAljFMxLcL2v_dW5kbjhtiHOcha4/sendDocument \
+            -F chat_id=-1001398076332 \
+            -F document=@"app/build/outputs/bundle/release/${{env.APP_NAME}}_混淆_release_${{env.ANDROID_VERSION}}.aab"
+          curl -X POST \
+            http://127.0.0.1:8081/bot7634732810:AAHwdKozAljFMxLcL2v_dW5kbjhtiHOcha4/sendDocument \
+            -F chat_id=-1001398076332 \
+            -F document=@"${{env.APP_NAME}}_混淆_release_${{env.ANDROID_VERSION}}.apk"
+          curl -X POST \
+            http://127.0.0.1:8081/bot7634732810:AAHwdKozAljFMxLcL2v_dW5kbjhtiHOcha4/sendDocument \
+            -F chat_id=-1001398076332 \
+            -F document=@"app/xml-class-mapping.txt"
 
       - name: Telegram Notify Success
         uses: appleboy/telegram-action@master
         with:
-          to: -1001398076332
-          token: 6040546649:AAHVESVWCICb_PzluRIpmnM4oF32gteDRzU
+          #          to: -1001398076332
+          #          token: 6040546649:AAHVESVWCICb_PzluRIpmnM4oF32gteDRzU
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
             打包成功
             Url: ${{ github.event.repository.html_url }}
@@ -133,8 +139,10 @@ jobs:
         if: ${{ failure() }}
         uses: appleboy/telegram-action@master
         with:
-          to: -1001398076332
-          token: 6040546649:AAHVESVWCICb_PzluRIpmnM4oF32gteDRzU
+          #          to: -1001398076332
+          #          token: 6040546649:AAHVESVWCICb_PzluRIpmnM4oF32gteDRzU
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
             打包失败
             Url: ${{ github.event.repository.html_url }}
@@ -146,6 +154,8 @@ jobs:
         if: ${{ always() }}
         uses: appleboy/telegram-action@master
         with:
-          to: -1001398076332
-          token: 6040546649:AAHVESVWCICb_PzluRIpmnM4oF32gteDRzU
+          #          to: -1001398076332
+          #          token: 6040546649:AAHVESVWCICb_PzluRIpmnM4oF32gteDRzU
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: ---------打包结束---------

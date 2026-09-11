@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.arthenica.ffmpegkit.FFmpegKit
 import com.arthenica.ffmpegkit.FFprobeKit
 import com.arthenica.ffmpegkit.ReturnCode

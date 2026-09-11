@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a_settings_title">Inställningar</string>
+    <string name="a_settings_faces">Ansikten</string>
+    <string name="a_settings_language">Språk</string>
+    <string name="a_settings_policy">Integritetspolicy</string>
+    <string name="a_settings_delete_account">Radera konto (oåterkalleligt)</string>
+    <string name="a_settings_password">Ändra lösenord</string>
+    <string name="a_settings_logout">Logga ut</string>
+    <string name="a_settings_logout_message">Vill du logga ut från det aktuella kontot?</string>
+    <string name="a_settings_cancel">Avbryt</string>
+    <string name="a_settings_back">Tillbaka</string>
+    <string name="a_settings_edit">Redigera</string>
+    <string name="a_settings_done">Klart</string>
+    <string name="a_settings_add_face">Lägg till ansikte</string>
+    <string name="a_settings_face_hint">Titta rakt fram utan att täcka ansiktet, utan glasögon eller hatt</string>
+    <string name="a_settings_remove_title">Ta bort ansikte?</string>
+    <string name="a_settings_remove_message">Vill du ta bort det här ansiktet?</string>
+    <string name="a_settings_remove">Ta bort</string>
+    <string name="a_settings_remove_description">Ta bort ansikte</string>
+
+    <string name="a_upload_face_title">Ladda upp ansikte</string>
+    <string name="a_upload_face_analysing">AI analyserar ansiktsdata i fotot</string>
+    <string name="a_upload_check_failure">Kontrollen misslyckades</string>
+    <string name="a_upload_cancel_title">Avbryt uppladdning</string>
+</resources>

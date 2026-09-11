@@ -3,7 +3,7 @@ package com.face.util
 import com.android.installreferrer.api.InstallReferrerClient
 import com.android.installreferrer.api.InstallReferrerStateListener
 import com.android.installreferrer.api.ReferrerDetails
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.ui.App.Companion.INSTANCE
 
 /**
@@ -51,6 +51,7 @@ object InstallReferrerUtil {
          * utm_campaign: 广告系列名称，用于关键字分析，以标识具体的产品推广活动或战略广告系列
          * gclid:        Google Ads 自动标记参数，用于衡量广告。此值会动态生成，请勿修改
          */
+//            "tm_source=apps.facebook.com\u0026utm_campaign=fb4a\u0026utm_content={\"app\":717668791146281,\"t\":1775181053,\"source\":{\"data\":\"d761acfbb108c98717325746969655e72123c7ad3725b64a225b8b9778fec53e4ea2dc11ee5d482e4323826388f67d6afea6c004e888eb634209a737bc266af1a3283afac9f6"
         val installReferrer = details.installReferrer
         if (!installReferrer.isNullOrBlank()) {
             SPUtils.installReferrer = installReferrer
@@ -64,7 +65,7 @@ object InstallReferrerUtil {
             LogUtils.i("getInstallReferrer:%s", installReferrer)
             SPUtils.installReferrer = installReferrer
         }
-        if (!SPUtils.installPost){
+        if (!SPUtils.installPost) {
             EventUtil.installReferrer {
                 if (it) {
                     SPUtils.installPost = true

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a_settings_title">设置</string>
+    <string name="a_settings_faces">人脸</string>
+    <string name="a_settings_language">语言</string>
+    <string name="a_settings_policy">用户隐私政策</string>
+    <string name="a_settings_delete_account">删除账号（不可恢复）</string>
+    <string name="a_settings_password">修改密码</string>
+    <string name="a_settings_logout">退出登录</string>
+    <string name="a_settings_logout_message">是否退出当前账号？</string>
+    <string name="a_settings_cancel">取消</string>
+    <string name="a_settings_back">返回</string>
+    <string name="a_settings_edit">编辑</string>
+    <string name="a_settings_done">完成</string>
+    <string name="a_settings_add_face">点击添加人脸</string>
+    <string name="a_settings_face_hint">请正对镜头，不遮挡面部、不戴眼镜和帽子</string>
+    <string name="a_settings_remove_title">移除人脸？</string>
+    <string name="a_settings_remove_message">确定要移除这张人脸吗？</string>
+    <string name="a_settings_remove">移除</string>
+    <string name="a_settings_remove_description">移除人脸</string>
+
+    <string name="a_upload_face_title">上传人脸</string>
+    <string name="a_upload_face_analysing">AI 正在分析照片中的人脸数据</string>
+    <string name="a_upload_check_failure">检测失败</string>
+    <string name="a_upload_cancel_title">取消上传</string>
+</resources>

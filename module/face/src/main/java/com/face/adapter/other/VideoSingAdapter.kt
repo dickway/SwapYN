@@ -3,7 +3,7 @@ package com.face.adapter.other
 import android.graphics.Bitmap
 import android.os.Handler
 import android.os.Looper
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.R
 import com.face.bean.ClipsBean
 import com.face.databinding.ItemVideoThumbBinding

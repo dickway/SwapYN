@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.a.R
 import com.a.adapter.AHistoryAdapter
 import com.face.bean.TaskBean
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.zzkj.structure.base.BaseViewModel
 import com.zzkj.structure.net.launchRequestOnIO
 import com.zzkj.structure.net.launchRequestWithLoadingOnIO
@@ -22,7 +22,7 @@ class AGenerateViewModel : BaseViewModel() {
     var historyFaceList = MutableLiveData<List<TaskBean>>(listOf())
 
     fun sendAiTask() {//自动刷新不需要展示加载圈
-        launchRequestOnIO({ Repository.getUserMedia("All") }) {
+        launchRequestOnIO({ ARepository.getUserMedia("All") }) {
             onStart = {
                 loadFailed.setIfNot(false)
                 homeRefreshing.postValue(true)
@@ -43,7 +43,7 @@ class AGenerateViewModel : BaseViewModel() {
 
     fun deleteTask(bean: TaskBean?) {
         if (bean != null) {
-            launchRequestWithLoadingOnIO({ Repository.deleteUserMedia(bean.id) }) {
+            launchRequestWithLoadingOnIO({ ARepository.deleteUserMedia(bean.id) }) {
                 onSuccess = {
                     sendAiTask()
                     toast(getStringX(R.string.asuccess))

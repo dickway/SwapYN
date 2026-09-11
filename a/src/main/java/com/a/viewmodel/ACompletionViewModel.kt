@@ -3,7 +3,7 @@ package com.a.viewmodel
 import androidx.lifecycle.MutableLiveData
 import com.a.R
 import com.face.bean.TaskBean
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.net.download.DownloadProgressListener
 import com.face.net.download.DownloadUtil
 import com.face.util.EventUtil
@@ -35,7 +35,7 @@ class ACompletionViewModel : BaseViewModel() {
 
     fun getData() {
         if (taskBean.value?.id == "")
-            launchRequestOnIO({ Repository.queryAiTask(taskid.value) }) {
+            launchRequestOnIO({ ARepository.queryAiTask(taskid.value) }) {
                 onSuccess = { bean ->
                     taskBean.value = bean
                 }

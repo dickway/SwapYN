@@ -16,13 +16,12 @@
         <variable
             name="gvm"
             type="com.face.util.GVM" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#181818">
+        android:background="@color/a_me_background">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clTitle"
@@ -34,49 +33,71 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <FrameLayout
                 android:id="@+id/linPoints"
                 bindSingleClick="@{()->handler.onPoint()}"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingHorizontal="8dp"
-                android:src="@mipmap/a_img_hash"
+                android:layout_height="48dp"
+                android:layout_marginEnd="12dp"
+                android:contentDescription="@{@string/a_me_points_balance(gvm.userInfo.tflops)}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvFeed"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toStartOf="@id/tvFeed"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                bindVisible="@{gvm.hasNewFeedbackMsg}"
-                android:layout_width="9dp"
-                android:layout_height="9dp"
-                android:layout_marginTop="-2dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/bg_mine_history_msg"
-                app:layout_constraintEnd_toEndOf="@+id/tvFeed"
-                app:layout_constraintTop_toTopOf="@+id/tvFeed" />
+                <TextView
+                    android:id="@+id/tvPoints"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/a_bg_me_points"
+                    android:drawableStart="@drawable/a_ic_me_coin"
+                    android:drawablePadding="4dp"
+                    android:gravity="center"
+                    android:importantForAccessibility="no"
+                    android:minWidth="63dp"
+                    android:paddingHorizontal="12dp"
+                    android:singleLine="true"
+                    android:text="@{String.valueOf(gvm.userInfo.tflops)}"
+                    android:textColor="@color/colorAwhite"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:text="@tools:sample/us_zipcodes" />
+            </FrameLayout>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tvFeed"
                 bindSingleClick="@{()->handler.onFeedbackClick()}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="8dp"
-                android:src="@mipmap/a_img_feedback"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/a_me_feedback"
+                android:padding="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imgSet"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toStartOf="@id/imgSet"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/a_ic_me_feedback" />
+
+            <View
+                bindVisible="@{gvm.hasNewFeedbackMsg}"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="9dp"
+                android:background="@drawable/bg_mine_history_msg"
+                app:layout_constraintEnd_toEndOf="@id/tvFeed"
+                app:layout_constraintTop_toTopOf="@id/tvFeed" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imgSet"
                 bindSingleClick="@{()->handler.onSettingClick()}"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingStart="8dp"
-                android:paddingEnd="16dp"
-                android:src="@mipmap/a_icon_set"
-                app:layout_constraintEnd_toEndOf="parent" />
-
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="2dp"
+                android:contentDescription="@string/a_me_settings"
+                android:padding="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/a_ic_me_settings" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -84,276 +105,248 @@
             bindRefreshing="@{handler.refreshing}"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:clipToPadding="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/clTitle"
-            app:srlHeaderInsetStart="20dp">
+            app:layout_constraintTop_toBottomOf="@id/clTitle">
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:fillViewport="true"
-                app:layout_constraintBottom_toBottomOf="parent">
+                android:layout_height="match_parent"
+                android:fillViewport="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/imgHead"
-                        bindSingleClick="@{()->handler.onVipClick()}"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:gravity="center"
-                        android:padding="3dp"
-                        android:src="@mipmap/a_icon_avatar"
-                        android:textAppearance="@style/font_16"
-                        app:layout_constraintDimensionRatio="1:1"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clAccount"
+                        bindSingleClick="@{()->handler.onAccountClick()}"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:minHeight="70dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:shapeAppearanceOverlay="@style/shape_circle"
-                        app:strokeColor="#00D29E"
-                        app:strokeWidth="3dp"
-                        tools:text="M" />
+                        app:layout_constraintTop_toTopOf="parent">
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        bindVisible="@{gvm.isVip()}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="64dp"
-                        android:layout_marginTop="45dp"
-                        android:src="@mipmap/a_icon_vip2"
-                        app:layout_constraintBottom_toBottomOf="@+id/imgHead"
-                        app:layout_constraintEnd_toEndOf="@+id/imgHead" />
-
-                    <LinearLayout
-                        android:id="@+id/line"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="16dp"
-                        app:layout_constraintTop_toBottomOf="@+id/imgHead">
-
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/imgHead"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:importantForAccessibility="no"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/a_ic_me_avatar"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:shapeAppearanceOverlay="@style/shape_circle"
+                            app:strokeColor="@color/a_me_vip_gold"
+                            app:strokeWidth="0dp" />
 
                         <LinearLayout
-                            android:id="@+id/line1"
-                            bindSingleClick="@{()->handler.onVipClick()}"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
+                            android:layout_marginStart="16dp"
                             android:orientation="vertical"
-                            android:paddingHorizontal="16dp"
-                            tools:visibility="visible">
+                            android:paddingVertical="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/imgHead"
+                            app:layout_constraintTop_toTopOf="parent">
 
                             <TextView
                                 android:id="@+id/tvAccountName"
-                                bindSelected="@{gvm.isVip()}"
-                                bindTextUnderLine='@{gvm.userInfo.name==""}'
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:ellipsize="end"
-                                android:singleLine="true"
-                                android:layout_marginTop="14dp"
-                                android:textAppearance="@style/font_18"
-                                android:textColor="@color/color_vip"
+                                android:drawablePadding="6dp"
+                                android:gravity="center_vertical"
+                                android:maxLines="2"
+                                android:textColor="@color/colorAwhite"
+                                android:textSize="16sp"
                                 android:textStyle="bold"
-                                android:layout_gravity="center"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                tools:text="SdeSdebaftelSdebaftelSdebaftelbaftel.com"
-                                tools:visibility="visible" />
+                                tools:text="Tap to Link Google Account" />
+
+                            <TextView
+                                android:id="@+id/tvAccountId"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:drawableEnd="@drawable/a_ic_me_chevron"
+                                android:drawablePadding="6dp"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:textColor="@color/a_me_secondary_text"
+                                android:textSize="14sp"
+                                tools:text="ID: Guest5565" />
 
                             <TextView
                                 android:id="@+id/tvAccountTime"
+                                bindSingleClick="@{()->handler.onVipClick()}"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:layout_gravity="center"
-                                android:drawableEnd="@mipmap/a_icon_more_w2"
-                                android:drawablePadding="5dp"
-                                android:textColor="#B2B2B2"
-                                android:textSize="14sp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                tools:text="Expire date:11/22/2024" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/line2"
-                            bindSingleClick="@{()->handler.onVipClick()}"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            tools:visibility="gone">
-
-                            <TextView
-                                android:id="@+id/txtLink"
-                                bindSingleClick="@{()->handler.onLoginClick()}"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:gravity="center"
-                                android:layout_marginTop="6dp"
-                                android:layout_gravity="center"
-                                android:drawablePadding="7dp"
-                                android:drawableEnd="@mipmap/a_icon_me_m"
-                                android:drawableStart="@mipmap/a_icon_me_google"
-                                android:background="@drawable/a_bg_10_r100"
-                                android:paddingHorizontal="20dp"
-                                android:paddingVertical="7dp"
-                                android:singleLine="true"
-                                android:text="Link Google Account"
-                                android:textColor="#FFFFFF"
-                                android:textSize="14sp"
-                                android:textStyle="bold"
-                                tools:visibility="visible" />
-
-                            <TextView
-                                android:id="@+id/tvAccountName2"
-                                bindSelected="@{gvm.isVip()}"
-                                bindTextUnderLine='@{gvm.userInfo.name==""}'
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginHorizontal="16dp"
-                                android:layout_marginTop="8dp"
-                                android:ellipsize="end"
-                                android:layout_gravity="center"
+                                android:layout_marginTop="4dp"
+                                android:drawableEnd="@drawable/a_ic_me_chevron"
+                                android:drawablePadding="4dp"
                                 android:gravity="center_vertical"
-                                android:singleLine="true"
-                                android:textColor="@color/color_vip"
+                                android:textColor="@color/a_me_secondary_text"
                                 android:textSize="14sp"
-                                tools:text="SdeSdebaftelSdebaftelSdebaftelbaftel.com"
-                                tools:visibility="visible" />
-
-                            <TextView
-                                android:id="@+id/tvAccountTime2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginHorizontal="16dp"
-                                android:layout_marginTop="8dp"
-                                android:drawableEnd="@mipmap/a_icon_more_w2"
-                                android:drawablePadding="5dp"
-                                android:layout_gravity="center"
-                                android:textColor="#8E8E8E"
-                                android:textSize="14sp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                tools:text="Expire date:11/22/2024" />
+                                android:visibility="gone"
+                                tools:text="Expire date:12/31/2026" />
                         </LinearLayout>
-                    </LinearLayout>
-
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/conVip"
                         bindSingleClick="@{()->handler.onVipClick()}"
                         bindVisible="@{!gvm.isVip()}"
-                        android:layout_width="match_parent"
-                        android:layout_height="75dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
                         android:background="@drawable/a_bg_vip"
-                        app:layout_constraintDimensionRatio="972:180"
-                        app:layout_constraintTop_toBottomOf="@+id/line"
-                        tools:visibility="visible">
+                        android:minHeight="142dp"
+                        android:paddingVertical="12dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/clAccount">
 
-                        <TextView
-                            android:id="@+id/privileges"
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/vipGuideline"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="15dp"
-                            android:drawableStart="@mipmap/a_icon_me_vip"
-                            android:drawablePadding="6dp"
-                            android:gravity="center"
-                            android:text="PRO Privileges"
-                            android:textColor="#000000"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_chainStyle="packed" />
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.59" />
 
-                        <TextView
-                            android:id="@+id/tvContinue"
-                            bindSingleClick="@{()->handler.onVipClick()}"
-                            android:layout_width="wrap_content"
-                            android:layout_height="32dp"
-                            android:layout_marginEnd="16dp"
-                            android:background="@drawable/a_btn_r8"
-                            android:drawableEnd="@mipmap/a_icon_me_arrow"
-                            android:drawablePadding="4dp"
+                        <LinearLayout
+                            android:id="@+id/vipOffer"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:paddingHorizontal="12dp"
-                            android:paddingVertical="7dp"
-                            android:text="Get VIP"
-                            android:textColor="#FFFFFF"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/vipGuideline"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="38dp"
+                                android:layout_height="28dp"
+                                android:importantForAccessibility="no"
+                                app:srcCompat="@drawable/a_ic_me_crown" />
+
+                            <TextView
+                                android:id="@+id/privileges"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:gravity="center"
+                                android:text="@string/a_me_premium_perks"
+                                android:textColor="@color/colorAblack"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvVipPrice"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/a_me_unlock_premium"
+                                android:textColor="@color/a_me_vip_secondary_text"
+                                android:textSize="14sp"
+                                tools:text="Unlock for $0.32" />
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="48dp"
+                                android:layout_marginTop="1dp">
+
+                                <TextView
+                                    android:id="@+id/tvContinue"
+                                    android:layout_width="80dp"
+                                    android:layout_height="32dp"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/a_bg_me_get_vip"
+                                    android:gravity="center"
+                                    android:text="@string/a_me_get_vip"
+                                    android:textColor="@color/colorAwhite"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="12dp"
+                            android:orientation="vertical"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintStart_toEndOf="@id/vipGuideline"
+                            app:layout_constraintTop_toTopOf="parent">
 
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/a_ic_me_no_watermark"
+                                android:drawablePadding="5dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/a_me_no_watermark"
+                                android:textColor="@color/colorAblack"
+                                android:textSize="12sp" />
 
-                        <TextView
-                            android:id="@+id/tvSpeed"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginBottom="15dp"
-                            android:text="No Watermark, Speed Boost"
-                            android:textColor="#CC000000"
-                            android:textSize="14sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:drawableStart="@drawable/a_ic_me_speed"
+                                android:drawablePadding="5dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/a_me_speed_boost"
+                                android:textColor="@color/colorAblack"
+                                android:textSize="12sp" />
+                        </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/tabLayout"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="48dp"
-                        app:layout_collapseMode="pin"
-                        android:layout_marginTop="6dp"
-                        android:layout_marginHorizontal="8dp"
-                        app:layout_constrainedWidth="true"
+                        android:layout_marginTop="16dp"
+                        android:background="@android:color/transparent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/conVip"
+                        app:layout_constraintTop_toBottomOf="@id/conVip"
                         app:tabIndicator="@drawable/a_bg_me_indicator"
                         app:tabIndicatorAnimationMode="elastic"
-                        app:tabIndicatorColor="@color/colorTransparent"
-                        app:tabIndicatorFullWidth="false"
+                        app:tabIndicatorColor="@color/colorAwhite"
+                        app:tabIndicatorFullWidth="true"
                         app:tabIndicatorGravity="bottom"
-                        app:tabIndicatorHeight="3dp"
-                        app:tabMaxWidth="0dp"
-                        app:tabMinWidth="40dp"
+                        app:tabIndicatorHeight="2.5dp"
+                        app:tabMinWidth="0dp"
                         app:tabMode="fixed"
-                        app:tabRippleColor="@null"
-                        app:tabSelectedTextColor="#C4FA47"
-                        app:tabTextAppearance="@style/meTab"
-                        app:tabTextColor="#878787" />
+                        app:tabPaddingEnd="0dp"
+                        app:tabPaddingStart="0dp"
+                        app:tabRippleColor="@null" />
 
                     <View
                         android:id="@+id/view"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="0.5dp"
-                        android:background="@color/colorWhite20"
-                        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+                        android:background="@color/a_me_divider"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
                     <androidx.viewpager.widget.ViewPager
                         android:id="@+id/viewPager"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        tools:listitem="@layout/fragment_me_work"
-                        app:layout_constraintTop_toBottomOf="@+id/view" />
-
+                        app:layout_constraintTop_toBottomOf="@id/view"
+                        tools:listitem="@layout/fragment_me_work" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.core.widget.NestedScrollView>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

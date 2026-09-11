@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 import androidx.recyclerview.widget.DiffUtil
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.inmobi.media.r
 import com.zzkj.structure.util.TimeUtil
 import com.zzkj.structure.util.moshi.MoshiHelper

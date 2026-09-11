@@ -1,7 +1,7 @@
 package com.zzkj.structure.util
 
 import android.os.Process
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import kotlin.system.exitProcess
 
 object CrashHandler : Thread.UncaughtExceptionHandler {
@@ -15,8 +15,6 @@ object CrashHandler : Thread.UncaughtExceptionHandler {
     override fun uncaughtException(thread: Thread, t: Throwable) {
         t.printStackTrace()
         LogUtils.e(t)
-        //日志立即写入文件
-        LogUtils.getLog2FileConfig().flushAsync()
         if (mDefaultHandler != null) {
             mDefaultHandler!!.uncaughtException(thread, t)
         } else {

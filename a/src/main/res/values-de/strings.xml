@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a_settings_title">Einstellungen</string>
+    <string name="a_settings_faces">Gesichter</string>
+    <string name="a_settings_language">Sprache</string>
+    <string name="a_settings_policy">Datenschutzrichtlinie</string>
+    <string name="a_settings_delete_account">Konto unwiderruflich löschen</string>
+    <string name="a_settings_password">Passwort ändern</string>
+    <string name="a_settings_logout">Abmelden</string>
+    <string name="a_settings_logout_message">Möchtest du dich vom aktuellen Konto abmelden?</string>
+    <string name="a_settings_cancel">Abbrechen</string>
+    <string name="a_settings_back">Zurück</string>
+    <string name="a_settings_edit">Bearbeiten</string>
+    <string name="a_settings_done">Fertig</string>
+    <string name="a_settings_add_face">Gesicht hinzufügen</string>
+    <string name="a_settings_face_hint">Blicke geradeaus, ohne Gesichtsabdeckung, Brille oder Hut</string>
+    <string name="a_settings_remove_title">Gesicht entfernen?</string>
+    <string name="a_settings_remove_message">Möchtest du dieses Gesicht wirklich entfernen?</string>
+    <string name="a_settings_remove">Entfernen</string>
+    <string name="a_settings_remove_description">Gesicht entfernen</string>
+
+    <string name="a_upload_face_title">Gesicht hochladen</string>
+    <string name="a_upload_face_analysing">Die KI analysiert die Gesichtsdaten im Foto</string>
+    <string name="a_upload_check_failure">Prüfung fehlgeschlagen</string>
+    <string name="a_upload_cancel_title">Upload abbrechen</string>
+</resources>

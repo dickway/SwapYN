@@ -1,7 +1,7 @@
 package com.zzkj.structure.util
 
 import android.text.TextUtils
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.ZoneId

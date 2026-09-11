@@ -28,8 +28,8 @@ class ASwapTabAdapter : BaseAdapter<Face, ItemAswaptabItemBinding>(
             if (value != field) {
                 val origin = field
                 field = value
-                notifyItemChanged(origin)
-                notifyItemChanged(field)
+                if (origin in 0 until itemCount) notifyItemChanged(origin)
+                if (field in 0 until itemCount) notifyItemChanged(field)
             }
         }
 

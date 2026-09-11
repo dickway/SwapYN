@@ -1,7 +1,7 @@
 package com.face.adapter.tool
 
 import android.view.View
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.bumptech.glide.Glide
 import com.face.R
 import com.face.bean.ToolTaskBean

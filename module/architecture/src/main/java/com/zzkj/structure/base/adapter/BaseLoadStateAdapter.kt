@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 
 /**
  * @author lmk

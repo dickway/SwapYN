@@ -1,7 +1,7 @@
 package com.face.util
 
 import androidx.lifecycle.MutableLiveData
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.net.Repository
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessaging

@@ -1,7 +1,7 @@
 package com.face.viewmodel.fragment
 
 import androidx.lifecycle.MutableLiveData
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.adapter.other.FaceAdapter
 import com.face.net.Repository
 import com.face.bean.AiFaceBean

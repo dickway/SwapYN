@@ -17,7 +17,7 @@ import coil.decode.VideoFrameDecoder
 import coil.request.ImageRequest
 import coil.request.SuccessResult
 import coil.request.videoFrameMillis
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.luck.picture.lib.basic.PictureSelector
 import com.luck.picture.lib.config.FileSizeUnit
 import com.luck.picture.lib.config.SelectMimeType

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewOutlineProvider
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.DiffUtil
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.R
 import com.face.bean.SizeBean
 import com.face.databinding.ItemAipaperworkSizeBinding

@@ -18,7 +18,7 @@ import android.widget.TextView
 import android.widget.VideoView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.R
 import com.face.adapter.other.VideoClipsAdapter
 import com.face.util.EventUtil

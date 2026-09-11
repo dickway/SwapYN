@@ -21,7 +21,7 @@ import android.util.DisplayMetrics;
 
 import androidx.annotation.RequiresPermission;
 
-import com.apkfuns.logutils.LogUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.zzkj.structure.base.BaseApp;
 import com.zzkj.structure.util.StringUtils;
 import com.zzkj.structure.util.device.dv.Do0;

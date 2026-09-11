@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import coil.load
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.zzkj.structure.util.ktx.applyInserts
 import com.zzkj.structure.util.ktx.getColorX
 import com.zzkj.structure.util.ktx.singleClick

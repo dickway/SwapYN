@@ -2,7 +2,7 @@ package com.zzkj.structure.lifecycle
 
 import android.app.Activity
 import android.os.Bundle
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.zzkj.structure.util.AppManager
 
 /**
@@ -17,46 +17,48 @@ open class DefaultActivityLifecycle : ActivityLifecycleEmptyImp() {
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
         if (enablePrintLifecycle) {
-            LogUtils.tag(TAG).v("onActivityCreated:${activity.javaClass.simpleName}")
+            LogUtils.vTag(TAG, "onActivityCreated:${activity.javaClass.simpleName}")
         }
         AppManager.addActivity(activity)
     }
 
     override fun onActivityStarted(activity: Activity) {
         if (enablePrintLifecycle) {
-            LogUtils.tag(TAG).v("onActivityStarted:${activity.javaClass.simpleName}")
+            LogUtils.vTag(TAG, "onActivityStarted:${activity.javaClass.simpleName}")
         }
     }
 
     override fun onActivityResumed(activity: Activity) {
         if (enablePrintLifecycle) {
-            LogUtils.tag(TAG).v("onActivityResumed:${activity.javaClass.simpleName}")
+            LogUtils.vTag(TAG, "onActivityResumed:${activity.javaClass.simpleName}")
         }
         AppManager.setCurActivity(activity)
     }
 
     override fun onActivityPaused(activity: Activity) {
         if (enablePrintLifecycle) {
-            LogUtils.tag(TAG).v("onActivityPaused:${activity.javaClass.simpleName}")
+            LogUtils.vTag(TAG, "onActivityPaused:${activity.javaClass.simpleName}")
         }
     }
 
     override fun onActivityStopped(activity: Activity) {
         if (enablePrintLifecycle) {
-            LogUtils.tag(TAG).v("onActivityStopped:${activity.javaClass.simpleName}")
+            LogUtils.vTag(TAG, "onActivityStopped:${activity.javaClass.simpleName}")
         }
     }
 
     override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
         if (enablePrintLifecycle) {
-            LogUtils.tag(TAG)
-                .v("onActivitySaveInstanceState:${activity.javaClass.simpleName}\nbundle = $outState")
+            LogUtils.vTag(
+                TAG,
+                "onActivitySaveInstanceState:${activity.javaClass.simpleName}\nbundle = $outState"
+            )
         }
     }
 
     override fun onActivityDestroyed(activity: Activity) {
         if (enablePrintLifecycle) {
-            LogUtils.tag(TAG).v("onActivityDestroyed:${activity.javaClass.simpleName}")
+            LogUtils.vTag(TAG, "onActivityDestroyed:${activity.javaClass.simpleName}")
         }
         AppManager.removeActivity(activity)
     }

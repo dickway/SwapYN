@@ -1,8 +1,10 @@
 package com.zzkj.structure.net
 
+import com.zzkj.structure.BuildConfig
 import com.zzkj.structure.util.moshi.MoshiHelper
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -33,6 +35,15 @@ abstract class BaseRetrofitClient {
             .writeTimeout(Call_TIME_OUT.toLong(), TimeUnit.SECONDS)
             .connectTimeout(Connect_TIME_OUT.toLong(), TimeUnit.SECONDS)
         getHttpInterceptor()?.let { builder.addInterceptor(it) }
+        val logInterceptor = HttpLoggingInterceptor().apply {
+            setLevel(
+                if (BuildConfig.DEBUG)
+                    HttpLoggingInterceptor.Level.BODY
+                else
+                    HttpLoggingInterceptor.Level.NONE
+            )
+        }
+        builder.addInterceptor(logInterceptor)
         handleBuilder(builder)
         builder.build()
     }

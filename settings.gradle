@@ -50,7 +50,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Alviora"
+rootProject.name = "Swap-01-Qaviro"
 include ':app'
 include ':module:face'
 include ':module:main'

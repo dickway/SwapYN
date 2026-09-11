@@ -2,7 +2,7 @@ package com.face.ui
 
 import android.os.Bundle
 import com.android.billingclient.api.BillingClient
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.BR
 import com.face.R
 import com.face.databinding.ActivityBuypointBinding

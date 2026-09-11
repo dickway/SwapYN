@@ -1,6 +1,6 @@
 package com.face.net.update
 
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.bean.Part
 import com.face.net.Repository
 import com.zzkj.structure.net.launchRequestOnIO

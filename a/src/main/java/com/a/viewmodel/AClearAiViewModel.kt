@@ -2,7 +2,7 @@ package com.a.viewmodel
 
 import android.graphics.Bitmap
 import androidx.lifecycle.MutableLiveData
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.R
 import com.face.bean.ToolTaskBean
 import com.face.bean.TaskBean
@@ -67,7 +67,7 @@ class AClearAiViewModel : BaseViewModel() {
                     file.getName(),
                     file.asRequestBody(("application/otcet-stream").toMediaType())
                 )
-                launchRequestOnIO({ Repository.uploadFile(body) }) {
+                launchRequestOnIO({ ARepository.uploadFile(body) }) {
                     onStart = {
                         loadFailed.postValue(false)
                     }
@@ -94,7 +94,7 @@ class AClearAiViewModel : BaseViewModel() {
 
     fun sendAiTask(type: String, sources: String) {
         launchRequestOnIO({
-            Repository.sendAiTask(
+            ARepository.sendAiTask(
                 type, "", sources
             )
         }) {
@@ -120,7 +120,7 @@ class AClearAiViewModel : BaseViewModel() {
         if (taskId.isNotEmpty()) {
 
             launchRequestOnIO({
-                Repository.queryAiTask(taskId)
+                ARepository.queryAiTask(taskId)
             }) {
                 onSuccess = { bean ->
                     if (taskBean.value == null) {
@@ -142,7 +142,7 @@ class AClearAiViewModel : BaseViewModel() {
 
     fun saveUserGenerateRecords(url: String?, name: String?) {
         launchRequestWithLoadingOnIO({
-            Repository.saveUserGenerateRecords(url = url, AiTaskType.LAMA_CLEANER, name = name)
+            ARepository.saveUserGenerateRecords(url = url, AiTaskType.LAMA_CLEANER, name = name)
         }) {
             onSuccess = { bean ->
                 saveAiclearBean.postValue(bean)

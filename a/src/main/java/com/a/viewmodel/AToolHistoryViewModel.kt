@@ -2,8 +2,8 @@ package com.a.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.a.adapter.AToolHistoryAdapter
-import com.apkfuns.logutils.LogUtils
-import com.face.net.Repository
+import com.blankj.utilcode.util.LogUtils
+import com.a.net.ARepository
 import com.face.R
 import com.face.adapter.history.HistoryClearAdapter
 import com.face.bean.ToolTaskBean
@@ -29,7 +29,7 @@ class AToolHistoryViewModel : BaseViewModel() {
     fun getUserRecordPage() {
         homeRefreshing.postValue(true)
         launchRequestOnIO({
-            Repository.getUserRecordPage(aiType)
+            ARepository.getUserRecordPage(aiType)
         }) {
             onSuccess = { bean ->
                 isNoData.setIfNot(bean?.size == 0)
@@ -49,7 +49,7 @@ class AToolHistoryViewModel : BaseViewModel() {
     fun updataUserGenerateRecords(id: String?, name: String?) {
         if (id != "") {
             launchRequestWithLoadingOnIO({
-                Repository.updataUserGenerateRecords(id = id, aiType, name = name)
+                ARepository.updataUserGenerateRecords(id = id, aiType, name = name)
             }) {
                 onSuccess = { it ->
                     getUserRecordPage()

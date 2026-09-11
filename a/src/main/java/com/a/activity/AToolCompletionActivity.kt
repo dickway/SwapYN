@@ -20,13 +20,13 @@ import com.a.databinding.ActivityAtoolcompletionBinding
 import com.a.dialog.ABaseContentDialog
 import com.a.dialog.AReportDialog
 import com.a.viewmodel.AToolCompletionViewModel
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.face.bean.ToolTaskBean
 import com.face.key.Constants
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.util.FileUtil
 import com.face.util.GVM
 import com.face.util.SPUtils
@@ -148,7 +148,7 @@ class AToolCompletionActivity :
     }
 
     fun deleteTask() {
-        launchRequestWithLoadingOnIO({ Repository.deleteUserRecord(dataBean.id) }) {
+        launchRequestWithLoadingOnIO({ ARepository.deleteUserRecord(dataBean.id) }) {
             onSuccess = {
                 toast(getStringX(com.face.R.string.success))
                 finish()

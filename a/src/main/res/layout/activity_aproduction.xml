@@ -20,67 +20,98 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
         bindAddVerticalPadding="@{true}"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorAmainBg">
+        android:background="@color/a_production_background">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imgCompletion"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/img_default_m"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/a_settings_back"
+            android:onClick="@{() -> handler.onBackClick()}"
+            android:padding="12dp"
+            android:src="@mipmap/a_icon_back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="@null" />
-
-
-        <TextView
-            android:id="@+id/checkingNum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0%"
-            app:layout_constraintVertical_bias="0.48"
-            android:textAppearance="@style/font_14"
-            android:textColor="#ffffff"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ProgressBar
-            android:id="@+id/progress"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:layout_marginHorizontal="57dp"
-            android:max="100"
-            android:layout_marginTop="5dp"
-            android:progress="0"
-            android:progressDrawable="@drawable/a_bg_progress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkingNum"
-            tools:progress="100" />
-
-        <TextView
-            android:id="@+id/tv1"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conProgress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="Generating..."
-            android:textSize="14sp"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progress" />
+            app:layout_constraintTop_toTopOf="parent">
 
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgCompletion"
+                android:layout_width="104dp"
+                android:layout_height="148dp"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_default_m"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/shape_round_12dp"
+                app:strokeWidth="0dp"
+                app:tint="@color/a_production_preview_dim"
+                app:tintMode="src_atop"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <TextView
+                android:id="@+id/checkingNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:includeFontPadding="false"
+                android:text="0%"
+                android:textColor="@color/colorAwhite"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgCompletion"
+                tools:text="55%" />
+
+            <ProgressBar
+                android:id="@+id/progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="8dp"
+                android:layout_marginHorizontal="57dp"
+                android:layout_marginTop="6dp"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="0"
+                android:progressBackgroundTint="@null"
+                android:progressDrawable="@drawable/a_bg_production_progress"
+                android:progressTint="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/checkingNum"
+                tools:progress="55" />
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="@string/generating"
+                android:textColor="@color/colorAwhite"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/progress" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.face.ad.BannerAdView
             android:id="@+id/adView"

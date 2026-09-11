@@ -2,7 +2,7 @@ package com.a.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.a.R
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.a.adapter.AExploreListAdapter
 import com.face.bean.AiFaceBean
 import com.face.bean.AiFaceBean.Companion.ITEM_TYPE_FACE
@@ -10,7 +10,7 @@ import com.face.bean.RecommendBean
 import com.face.bean.RecommendBean.RecommendX
 import com.face.bean.VipBannerBean
 import com.face.key.Constants
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.util.GVM
 import com.face.util.SPUtils
 import com.zzkj.structure.base.BaseViewModel
@@ -87,34 +87,34 @@ class AExploreViewModel : BaseViewModel() {
     fun getData() {
         getDeviceRefresh()
         launch(Dispatchers.IO) {
-            val bannerData = async { Repository.getBanners() }
+            val bannerData = async { ARepository.getBanners() }
             val recommendData1 = async {
                 if (SPUtils.commonAuditTags.isNotEmpty()) {
-                    Repository.getMediaHomeATag(SPUtils.commonAuditTags[0])
+                    ARepository.getMediaHomeATag(SPUtils.commonAuditTags[0])
                 } else {
                     GlobalApiResponse<List<AiFaceBean>>().apply { mCode = 0 }
                 }
             }
             val recommendData2 = async {
                 if (SPUtils.commonAuditTags.size > 1)
-                    Repository.getMediaHomeATag(SPUtils.commonAuditTags[1])
+                    ARepository.getMediaHomeATag(SPUtils.commonAuditTags[1])
                 else
                     GlobalApiResponse<List<AiFaceBean>>().apply { mCode = 0 }
             }
             val recommendData3 = async {
                 if (SPUtils.commonAuditTags.size > 2)
-                    Repository.getMediaHomeATag(SPUtils.commonAuditTags[2])
+                    ARepository.getMediaHomeATag(SPUtils.commonAuditTags[2])
                 else
                     GlobalApiResponse<List<AiFaceBean>>().apply { mCode = 0 }
             }
             val recommendData4 = async {
                 if (SPUtils.commonAuditTags.size > 3)
-                    Repository.getMediaHomeATag(SPUtils.commonAuditTags[3])
+                    ARepository.getMediaHomeATag(SPUtils.commonAuditTags[3])
                 else
                     GlobalApiResponse<List<AiFaceBean>>().apply { mCode = 0 }
             }
 //            val aifaceData = async {
-//                Repository.getMediaByTagHome(
+//                ARepository.getMediaByTagHome(
 //                    selectedName1, selectedName2, selectedName3, 1
 //                )
 //            }
@@ -238,7 +238,7 @@ class AExploreViewModel : BaseViewModel() {
             homePage = 1
         }
         launchRequestOnIO({
-            Repository.getMediaByTagHome(
+            ARepository.getMediaByTagHome(
                 selectedName1, selectedName2, selectedName3, page
             )
         }) {
@@ -280,7 +280,7 @@ class AExploreViewModel : BaseViewModel() {
     }
 
     fun getDeviceRefresh() {//刷新工具界面
-        launchRequestOnIO({ Repository.getDeviceCampaign() }) {
+        launchRequestOnIO({ ARepository.getDeviceCampaign() }) {
             onSuccess = { bean ->
                 GVM.INSTANT.isShowTool.postValue(bean)
                 GVM.INSTANT.aIsAB.postValue(bean)

@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.view.Gravity
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.net.Repository
 import com.face.ui.App
 import com.face.BR

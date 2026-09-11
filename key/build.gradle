@@ -5,11 +5,10 @@ plugins {
 
 android {
     namespace 'com.key'
-    compileSdk 36
+    compileSdk rootProject.ext.targetSdkVersion
 
     defaultConfig {
         minSdk 24
-        targetSdk 36
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -21,10 +20,18 @@ android {
     kotlinOptions {
         jvmTarget = "21"
     }
+    lint {
+        targetSdk rootProject.ext.targetSdkVersion
+    }
+    testOptions {
+        targetSdk rootProject.ext.targetSdkVersion
+    }
 }
 
 dependencies {
     api('com.singular.sdk:singular_sdk:12.10.0') {
         exclude group: 'androidx.fragment', module: 'fragment'
     }
+
+    api(libs.adjust)
 }

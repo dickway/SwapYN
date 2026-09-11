@@ -8,7 +8,6 @@ import com.face.bean.AiFaceBean
 import com.face.ui.SwapFaceNewActivity
 import com.zzkj.structure.base.adapter.BaseAdapter
 import com.zzkj.structure.base.adapter.BaseHolder
-import com.zzkj.structure.util.ktx.dp
 import com.zzkj.structure.util.ktx.singleClick
 
 class AMeHistoryAdapter : BaseAdapter<AiFaceBean, ItemMeHistoryItemBinding>(
@@ -29,10 +28,7 @@ class AMeHistoryAdapter : BaseAdapter<AiFaceBean, ItemMeHistoryItemBinding>(
                     .load(url)
                     .placeholder(com.key.R.drawable.img_default_m)
                     .skipMemoryCache(false)
-                    .override(
-                        114.dp,
-                        114.dp
-                    )
+                    .centerCrop()
                     .into(imgCover)
 //                imgCover.loadImage(
 //                    imageUrl,

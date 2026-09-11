@@ -1,0 +1,16 @@
+<resources>
+    <!-- Matches the locales and language resources configured in module:face. -->
+    <string-array name="a_settings_language_codes" translatable="false">
+        <item>en</item><item>zh</item><item>es</item><item>de</item><item>fr</item><item>sv</item>
+        <item>ar</item><item>ko</item><item>ja</item><item>ku</item><item>iw</item><item>fa</item>
+        <item>tr</item><item>pt-br</item><item>pt-pt</item><item>zh-tw</item><item>it</item>
+    </string-array>
+    <string-array name="a_settings_language_names" translatable="false">
+        <item>@string/language_en</item><item>@string/language_zh</item><item>@string/language_es</item>
+        <item>@string/language_de</item><item>@string/language_fr</item><item>@string/language_sv</item>
+        <item>@string/language_ar</item><item>@string/language_ko</item><item>@string/language_ja</item>
+        <item>@string/language_ku</item><item>@string/language_iw</item><item>@string/language_fa</item>
+        <item>@string/language_tr</item><item>@string/language_ptbr</item><item>@string/language_pt</item>
+        <item>@string/language_zhtw</item><item>@string/language_it</item>
+    </string-array>
+</resources>

@@ -15,7 +15,7 @@ import android.widget.PopupWindow
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.BR
 import com.face.R
 import com.face.adapter.other.FaceTypeAdapter

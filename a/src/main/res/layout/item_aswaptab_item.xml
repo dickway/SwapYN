@@ -30,7 +30,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/shape_circle"
-            app:strokeColor="#ffffff"
+            app:strokeColor="@{isSelected ? @color/colorPrimaryA : @color/colorAwhite}"
             app:strokeWidth="2dp" />
 
         <com.google.android.material.imageview.ShapeableImageView

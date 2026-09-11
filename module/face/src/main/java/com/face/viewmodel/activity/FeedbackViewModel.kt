@@ -5,7 +5,7 @@ import android.provider.MediaStore
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.net.Repository
 import com.face.R
 import com.face.util.GVM

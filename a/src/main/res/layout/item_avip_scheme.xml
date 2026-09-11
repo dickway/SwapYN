@@ -2,105 +2,101 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
-
-        <variable
-            name="isSelected"
-            type="Boolean" />
-
-        <variable
-            name="isShow"
-            type="Boolean" />
-
-        <variable
-            name="bean"
-            type="com.face.bean.VipSchemeBean" />
-
+        <variable name="isSelected" type="Boolean" />
+        <variable name="isShow" type="Boolean" />
+        <variable name="bean" type="com.face.bean.VipSchemeBean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         bindSelected="@{isSelected}"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp">
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:minHeight="130dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/schemeCard"
             bindSelected="@{isSelected}"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:animateLayoutChanges="false"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@drawable/checkbox_avip_item"
+            android:minHeight="120dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:checked="true">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img"
-                bindSelected="@{isSelected}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/checkbox_avip"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/tvTitleSelect"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:gravity="center"
-                android:textColor="#ffffff"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="18dp"
+                android:includeFontPadding="false"
+                android:textColor="@color/colorAwhite"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed"
-                tools:text="Weekly" />
+                tools:text="3 Days" />
 
-            <TextView
-                android:id="@+id/tvUnitSelect"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{bean.showCode}"
-                android:textColor="#ffffff"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvPriceSelect"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="$" />
-
-            <TextView
-                android:id="@+id/tvPriceSelect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvT"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="1.9999" />
-
-            <TextView
-                android:id="@+id/tvT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:gravity="center"
-                android:textColor="#B7B7B7"
-                android:textSize="12sp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="bottom"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="/Weekly" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitleSelect">
 
+                <TextView
+                    android:id="@+id/tvUnitSelect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/colorAwhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:text="US$" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPriceSelect"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:textColor="@color/colorAwhite"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    app:autoSizeMaxTextSize="28sp"
+                    app:autoSizeMinTextSize="14sp"
+                    app:autoSizeStepGranularity="1sp"
+                    app:autoSizeTextType="uniform"
+                    tools:text="0.32" />
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <TextView
+            bindVisible="@{isShow}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/a_bg_vip_trial"
+            android:gravity="center"
+            android:minHeight="20dp"
+            android:paddingHorizontal="8dp"
+            android:text="@string/vip_most_popular"
+            android:textColor="@color/colorAwhite"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

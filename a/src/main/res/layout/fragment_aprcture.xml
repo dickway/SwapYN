@@ -32,7 +32,7 @@
             bindVisible="@{!vm.refreshError}"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,20 +44,16 @@
                 bindAddBottomHeight="@{true}"
                 bindAddBottomPadding="@{true}"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 android:background="@color/colorTransparent"
                 android:clipToPadding="false"
-                android:paddingHorizontal="10dp"
-                android:layout_marginTop="8dp"
-                android:paddingTop="2dp"
+                android:paddingHorizontal="12dp"
                 android:paddingBottom="48dp"
                 app:layoutManager="@{layoutManager}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:spanCount="2"
                 tools:itemCount="12"
-                tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                tools:listitem="@layout/item_aface_item" />
+                tools:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                tools:listitem="@layout/item_apicture_item" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <TextView
@@ -114,7 +110,7 @@
             android:id="@+id/recyclerType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
+            android:paddingHorizontal="16dp"
             android:layout_marginTop="8dp"
             android:clipToPadding="false"
             android:orientation="horizontal"

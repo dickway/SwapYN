@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="handler" type="com.a.dialog.AUploadFailedDialog" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/a_bg_upload_failure"
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/a_upload_check_failure"
+            android:textColor="@color/colorAwhite"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/myface_without_cover"
+            android:textColor="@color/colorAb2"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/btnConfirm"
+            bindSingleClick="@{()->handler.onConfirmClick()}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/a_bg_primary_gradient_pill"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:minHeight="44dp"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="10dp"
+            android:text="@string/ok"
+            android:textColor="@color/colorAblack"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</layout>

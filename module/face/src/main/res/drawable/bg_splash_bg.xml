@@ -2,11 +2,11 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <solid android:color="@color/colorAppBg" />
+            <solid android:color="#161A22" />
         </shape>
     </item>
     <item
         android:bottom="50dp"
-        android:drawable="@mipmap/img_logo_activate"
+        android:drawable="@mipmap/ic_launcher_round"
         android:gravity="center" />
 </layer-list>

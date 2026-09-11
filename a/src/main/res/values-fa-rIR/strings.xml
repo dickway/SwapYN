@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a_settings_title">@string/mine_settings</string>
+    <string name="a_settings_faces">@string/mine_my_face</string>
+    <string name="a_settings_language">@string/settings_language</string>
+    <string name="a_settings_policy">@string/mine_user_privacy_policy</string>
+    <string name="a_settings_delete_account">@string/delete_account_lrreversible</string>
+    <string name="a_settings_password">@string/change_password</string>
+    <string name="a_settings_logout">@string/setting_log_out</string>
+    <string name="a_settings_logout_message">@string/logout_txt</string>
+    <string name="a_settings_cancel">@string/cancel</string>
+    <string name="a_settings_back">@string/abc_action_bar_up_description</string>
+    <string name="a_settings_edit">@string/edit</string>
+    <string name="a_settings_done">@string/done</string>
+    <string name="a_settings_add_face">@string/myface_click_add_face</string>
+    <string name="a_settings_face_hint">@string/myface_without_cover</string>
+    <string name="a_settings_remove_title">@string/myface_remove_face</string>
+    <string name="a_settings_remove_message">@string/myface_remove_txt</string>
+    <string name="a_settings_remove">@string/myface_delete</string>
+    <string name="a_settings_remove_description">@string/myface_remove_face</string>
+
+    <string name="a_upload_face_title">بارگذاری چهره</string>
+    <string name="a_upload_face_analysing">هوش مصنوعی در حال تحلیل داده‌های چهره در عکس است</string>
+    <string name="a_upload_check_failure">بررسی ناموفق بود</string>
+    <string name="a_upload_cancel_title">لغو بارگذاری</string>
+</resources>

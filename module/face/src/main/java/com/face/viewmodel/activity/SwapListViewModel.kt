@@ -4,7 +4,7 @@ import android.R.attr.versionName
 import android.os.Build
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.BuildConfig
 import com.face.net.Repository
 import com.face.bean.AiFaceBean

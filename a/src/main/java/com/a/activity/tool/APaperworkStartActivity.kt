@@ -5,17 +5,16 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
+import com.a.BR
+import com.a.activity.AToolGeneratingActivity
 import com.a.activity.AToolTaskHistoryActivity
 import com.a.activity.AVipActivity
 import com.a.databinding.ActivityAtoolStartpaperworkBinding
 import com.a.dialog.ABaseContentDialog
 import com.a.viewmodel.APaperworkStartViewModel
-import com.face.util.GVM
-import com.a.BR
-import com.a.activity.AToolGeneratingActivity
-import com.face.ad.AdUtil
-import com.face.util.SPUtils
 import com.face.ui.BaseBindingActivity
+import com.face.util.GVM
+import com.face.util.SPUtils
 import com.zzkj.structure.base.DataBindingArguments
 import com.zzkj.structure.util.ktx.openActivity
 

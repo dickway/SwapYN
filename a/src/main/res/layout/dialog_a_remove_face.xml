@@ -1,0 +1,25 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data><variable name="handler" type="com.a.dialog.ARemoveFaceDialog" /></data>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:background="@drawable/a_bg_faces_dialog"
+        android:paddingTop="20dp" android:paddingBottom="20dp">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp" android:gravity="center"
+            android:text="@string/a_settings_remove_title"
+            android:textSize="16sp" android:textStyle="bold" android:textColor="@android:color/white" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginHorizontal="18dp" android:layout_marginTop="5dp"
+            android:gravity="center" android:text="@string/a_settings_remove_message"
+            android:textSize="14sp" android:textColor="@color/a_settings_secondary" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp" android:layout_marginTop="20dp" android:orientation="horizontal">
+            <TextView android:id="@+id/tvOk" style="@style/ASettingsDialogButton"
+                bindSingleClick="@{()->handler.onConfirmClick()}"
+                android:layout_marginEnd="8dp" android:text="@string/a_settings_remove"
+                android:background="@drawable/a_bg_primary_gradient_pill" android:textColor="@android:color/black" />
+            <TextView android:id="@+id/tvCancel" style="@style/ASettingsDialogButton"
+                bindSingleClick="@{()->handler.dismissAllowingStateLoss()}"
+                android:text="@string/a_settings_cancel" android:background="@drawable/a_bg_faces_cancel" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

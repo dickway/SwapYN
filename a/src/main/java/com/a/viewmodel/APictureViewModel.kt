@@ -3,9 +3,9 @@ package com.a.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
-import com.a.adapter.AFacePageAdapter
+import com.a.adapter.APictureAdapter
 import com.a.adapter.ATypeAdapter
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.util.GVM
 import com.face.util.SPUtils
 import com.zzkj.structure.base.BaseViewModel
@@ -18,7 +18,7 @@ class APictureViewModel : BaseViewModel() {
     val isNoData = MutableLiveData<Boolean?>()
     val refreshError = MutableLiveData<Boolean?>()
 
-    val faceAdapter = AFacePageAdapter()
+    val faceAdapter = APictureAdapter()
 
     val typeAdapter = ATypeAdapter()
 
@@ -35,7 +35,7 @@ class APictureViewModel : BaseViewModel() {
         isNoData.value = null
         val isHotStr = if (selectedName1.value == "Latest") "new" else "hot"
         launch {
-            Repository.getMediaByTag(isHotStr, "image", selectedName2.value)
+            ARepository.getMediaByTag(isHotStr, "image", selectedName2.value)
                 .cachedIn(viewModelScope)
                 .collectLatest {
                     getDeviceRefresh()
@@ -45,7 +45,7 @@ class APictureViewModel : BaseViewModel() {
     }
 
     fun getDeviceRefresh() {//刷新工具界面
-        launchRequestOnIO({ Repository.getDeviceCampaign() }) {
+        launchRequestOnIO({ ARepository.getDeviceCampaign() }) {
             onSuccess = { bean ->
                 GVM.INSTANT.aIsAB.postValue(bean)
                 GVM.INSTANT.isShowTool.postValue(bean)

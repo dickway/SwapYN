@@ -10,7 +10,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.R
 import com.flyjingfish.openimagefulllib.VideoFragmentCreateImpl
 import com.flyjingfish.openimagelib.OpenImage

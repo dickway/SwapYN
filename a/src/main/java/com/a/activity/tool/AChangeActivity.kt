@@ -20,7 +20,7 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.face.ad.AdUtil
 import com.face.bean.UseTypeBean
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.util.GVM
 import com.face.util.SPUtils
 import com.face.ui.BaseBindingActivity
@@ -202,7 +202,7 @@ class AChangeActivity : BaseBindingActivity<ActivityAtoolChangeBinding, AChangeV
     fun onNotAds() {
         showLoading()
         SPUtils.useType = UseTypeBean(type = "AgeAD")
-        launchRequestOnIO({ Repository.subUserTFLOPS(SPUtils.useAd,type = MoshiHelper.convertObjectToJson(SPUtils.useType)) }) {
+        launchRequestOnIO({ ARepository.subUserTFLOPS(SPUtils.useAd,type = MoshiHelper.convertObjectToJson(SPUtils.useType)) }) {
             onSuccess = {
                 GVM.INSTANT.refreshUserInfo {
                     dismissLoading()

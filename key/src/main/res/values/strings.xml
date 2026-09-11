@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_ai_name" translatable="false">Alviora</string>
+    <string name="app_ai_name" translatable="false">Qaviro</string>
     <string name="facebook_app_id" translatable="false">1722496852423786</string>
     <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
     <string name="facebook_client_token">13d9246b1f850b021b8c89ca0d547686</string>

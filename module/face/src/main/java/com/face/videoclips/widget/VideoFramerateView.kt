@@ -17,7 +17,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 
 import com.face.R
 import com.face.adapter.other.FramerateAdapter

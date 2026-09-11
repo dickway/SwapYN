@@ -10,7 +10,7 @@ import com.a.activity.tool.APaperworkStartActivity
 import com.a.databinding.ActivityAtoolGeneratingBinding
 import com.a.dialog.ABaseContentDialog
 import com.a.viewmodel.AToolGeneratingViewModel
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.util.GVM
 import com.face.ui.BaseBindingActivity
 import com.zzkj.structure.base.DataBindingArguments
@@ -177,7 +177,7 @@ class AToolGeneratingActivity :
     }
 
     fun onCancelData() {
-        launchRequestWithLoadingOnIO({ Repository.cancelTask(mModel.taskId) }) {
+        launchRequestWithLoadingOnIO({ ARepository.cancelTask(mModel.taskId) }) {
             onSuccess = {
                 finish()
             }

@@ -2,7 +2,7 @@ package com.face.ui
 
 import android.os.Bundle
 import android.view.View
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.net.Repository
 import com.face.BR
 import com.face.R

@@ -9,7 +9,7 @@ import com.face.bean.TaskBean
 import com.face.bean.UseTypeBean
 import com.face.bean.VideoAipointBean
 import com.face.key.AiTaskType
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.util.EventUtil
 import com.face.util.GVM
 import com.face.util.SPUtils
@@ -31,7 +31,7 @@ class ASwapViewModel : BaseViewModel() {
 
     val loadFailed = MutableLiveData(false)
     val isCollect = NotNullMutableLiveData(false)//是否收藏
-    var myFaceList = mutableListOf(MyFaceImgBean(isSelect = true))
+    var myFaceList = mutableListOf<MyFaceImgBean>()
     var mediaByBean = MutableLiveData<MediaByBean>()
     val taskBean = MutableLiveData<TaskBean?>()
     var swapList = MutableLiveData<List<Face>>(mutableListOf())//获取的图片能换头像
@@ -44,12 +44,63 @@ class ASwapViewModel : BaseViewModel() {
     var position = 0//记录点击的第几个要换的face图片
     var collectStr = ""//收藏collect_id
     val sources = NotNullMutableLiveData(false)//是否可点击按钮
+    val hasMultipleFaces = NotNullMutableLiveData(false)
 
+    fun setSwapFaces(faces: List<Face>) {
+        val previous = swapList.value.orEmpty()
+        swapList.value = faces.mapIndexed { index, face ->
+            face.copy().apply {
+                isSelectBean = previous.getOrNull(index)
+                    ?.takeIf { it.faceId == face.faceId }?.isSelectBean
+            }
+        }
+        position = position.coerceIn(0, (faces.size - 1).coerceAtLeast(0))
+        val multipleFaces = faces.size > 1
+        if (hasMultipleFaces.value != multipleFaces) isShow.value = false
+        hasMultipleFaces.value = multipleFaces
+        swapAdapter.canDisableFace = multipleFaces
+        submitFaceOptions()
+    }
+
+    fun selectTargetFace(index: Int) {
+        if (index !in swapList.value.orEmpty().indices) return
+        position = index
+        updateSelectionState()
+    }
+
+    fun selectFace(face: MyFaceImgBean?): Boolean {
+        val faces = swapList.value.orEmpty()
+        val target = faces.getOrNull(position) ?: return false
+        if (face == null || (face.isSelect && faces.size <= 1)) return false
+        if (!face.isSelect && face.pic.isBlank()) return false
+        target.isSelectBean = face.takeUnless { it.isSelect }
+        swapList.value = faces.toList()
+        updateSelectionState()
+        return true
+    }
+
+    private fun updateSelectionState() {
+        val faces = swapList.value.orEmpty()
+        sources.value = faces.any { !it.isSelectBean?.pic.isNullOrBlank() }
+        myFaceImgBean = faces.getOrNull(position)?.isSelectBean
+        swapAdapter.selectIndex = myFaceImgBean?.let { selected ->
+            myFaceList.indexOfFirst { !it.isSelect && it.pic == selected.pic }
+        } ?: -1
+    }
+
+
+    private fun submitFaceOptions() {
+        myFaceList = myFaceList.filterNot { it.isSelect }.toMutableList().apply {
+            if (hasMultipleFaces.value) add(0, MyFaceImgBean(isSelect = true))
+        }
+        updateSelectionState()
+        swapAdapter.submitList(myFaceList) { updateSelectionState() }
+    }
 
     fun getData() {
         loadFailed.postValue(false)
         launchRequestWithLoadingOnIO({
-            Repository.getMediaByID(mediaId)
+            ARepository.getMediaByID(mediaId)
         }) {
             onSuccess = {
                 if (it != null) {
@@ -78,7 +129,7 @@ class ASwapViewModel : BaseViewModel() {
 
     fun getReport(mediaId: String? = "", content: String = "", bolck: Int) {
         launchRequestOnIO({
-            Repository.mediaBlack(mediaId ?: "", content, bolck)
+            ARepository.mediaBlack(mediaId ?: "", content, bolck)
         }) {
             onSuccess = { bean ->
                 toast("Report successful, thank you for your feedback.")
@@ -91,16 +142,20 @@ class ASwapViewModel : BaseViewModel() {
 
     fun getUserPics() {
         launchRequestOnIO({
-            Repository.getUserPics("")
+            ARepository.getUserPics("")
         }) {
             onSuccess = { bean ->
                 if (bean != null) {
-                    myFaceList.clear()
-                    myFaceList = bean.toMutableList().apply {
-                        add(0, MyFaceImgBean(isSelect = true))
+                    myFaceList = bean.toMutableList()
+                    // Refresh assignments too, so a deleted face cannot leave the button enabled.
+                    swapList.value = swapList.value.orEmpty().map { face ->
+                        face.apply {
+                            isSelectBean = isSelectBean?.let { selected ->
+                                bean.firstOrNull { !it.isSelect && it.pic == selected.pic }
+                            }
+                        }
                     }
-                    swapAdapter.submitList(myFaceList)
-                    swapAdapter.selectIndex = myFaceList.indexOf(myFaceImgBean)
+                    submitFaceOptions()
                 }
             }
             onFailed = { _, _, errorMsg ->
@@ -113,7 +168,7 @@ class ASwapViewModel : BaseViewModel() {
 
     fun sendAiTask(type: String, sources: String) {
         launchRequestWithLoadingOnIO({
-            Repository.sendAiTask(
+            ARepository.sendAiTask(
                 type,
                 mediaByBean.value?.id,
                 sources
@@ -149,7 +204,7 @@ class ASwapViewModel : BaseViewModel() {
             SPUtils.useNum += usePinot.value
             SPUtils.useType = UseTypeBean(type = "SwapFace", task_id = taskB?.id ?: "")
             launchRequestOnIO({
-                Repository.subUserTFLOPS(
+                ARepository.subUserTFLOPS(
                     usePinot.value, type = MoshiHelper.convertObjectToJson(SPUtils.useType)
                 )
             }) {

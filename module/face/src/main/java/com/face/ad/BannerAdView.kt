@@ -3,12 +3,9 @@ package com.face.ad
 import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
-import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.FrameLayout
-import com.apkfuns.logutils.LogUtils
-import com.applovin.mediation.MaxAdFormat
 import com.applovin.mediation.ads.MaxAdView
 import com.face.R
 import com.face.util.GVM

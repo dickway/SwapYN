@@ -10,7 +10,9 @@ import android.provider.Settings
 import android.widget.ImageView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.doOnLayout
 import com.a.R
 import com.a.BR
 import com.a.databinding.ActivityAcompletionBinding
@@ -18,9 +20,8 @@ import com.a.dialog.ABaseContentDialog
 import com.a.dialog.ABaseHintDialog
 import com.a.dialog.AReportDialog
 import com.a.viewmodel.ACompletionViewModel
-import com.bumptech.glide.Glide
 import com.face.key.Constants
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.util.FileUtil
 import com.face.util.GVM
 import com.face.video.PauseVideo
@@ -31,10 +32,6 @@ import com.face.ui.BaseBindingActivity
 import com.zzkj.structure.base.DataBindingArguments
 import com.zzkj.structure.net.launchRequestWithLoadingOnIO
 import com.zzkj.structure.util.ImgLoader.loadImage
-import com.zzkj.structure.util.SPbaseUtils
-import com.zzkj.structure.util.ktx.dp
-import com.zzkj.structure.util.ktx.getScreenHeight
-import com.zzkj.structure.util.ktx.getScreenWidth
 import com.zzkj.structure.util.ktx.getStringX
 import com.zzkj.structure.util.ktx.intentExtras
 import com.zzkj.structure.util.ktx.openActivity
@@ -89,25 +86,17 @@ class ACompletionActivity :
                 mModel.downloadUrl.value = it.result.mData[0]
                 mModel.isShowVideo.value = it.media.mediaType == "video"
 
-                var widths = getScreenWidth() - 80.dp
-                var heights = widths * it.media.notZeroHeight() / it.media.notZeroWidth()
-                if (heights > (getScreenHeight() - 300.dp)) {
-                    heights = getScreenHeight() - 300.dp
-                    widths =
-                        (getScreenHeight() - 300.dp) * it.media.notZeroWidth() / it.media.notZeroHeight()
+                mBinding?.previewFrame?.apply {
+                    val params = layoutParams as ConstraintLayout.LayoutParams
+                    params.dimensionRatio = "${it.media.notZeroWidth()}:${it.media.notZeroHeight()}"
+                    layoutParams = params
                 }
 
-//                mBinding?.imgCompletion?.apply {
-//                    layoutParams.height = heights
-//                    layoutParams.width = widths
-//                }
-//                mBinding?.cardView?.apply {
-//                    layoutParams.height = heights
-//                    layoutParams.width = widths
-//                }
-
                 if (it.media.mediaType == "video") {
-                    onLoadViedo(it?.result?.dataWebp ?: "", widths, heights)
+                    val coverUrl = it.result.dataWebp
+                    mBinding?.previewFrame?.doOnLayout { preview ->
+                        onLoadViedo(coverUrl, preview.width, preview.height)
+                    }
                 } else {
                     mBinding?.imgCompletion?.loadImage(
                         mModel.showUrl.value,
@@ -162,7 +151,7 @@ class ACompletionActivity :
 
     fun deleteTask() {
         launchRequestWithLoadingOnIO({
-            Repository.deleteUserMedia(
+            ARepository.deleteUserMedia(
                 mModel.taskBean.value?.id ?: ""
             )
         }) {

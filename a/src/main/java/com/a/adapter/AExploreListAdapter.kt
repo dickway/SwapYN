@@ -25,16 +25,12 @@ import com.face.util.CepatSnapHelper
 import com.face.util.DisInterceptTouchListener
 import com.youth.banner.config.IndicatorConfig
 import com.youth.banner.indicator.RectangleIndicator
-import com.youth.banner.indicator.RoundLinesIndicator
-import com.youth.banner.listener.OnPageChangeListener
-import com.youth.banner.transformer.AlphaPageTransformer
 import com.zzkj.structure.base.adapter.BaseHolder
 import com.zzkj.structure.base.adapter.BaseMultipleAdapter
 import com.zzkj.structure.util.ImgLoader.loadImage
 import com.zzkj.structure.util.ktx.dp
 import com.zzkj.structure.util.ktx.getScreenWidth
 import com.zzkj.structure.util.ktx.openActivity
-import com.zzkj.structure.util.ktx.px2dp
 import com.zzkj.structure.util.ktx.singleClick
 
 
@@ -119,30 +115,15 @@ class AExploreListAdapter :
     ) {
 
         binding.banner.apply {
+            layoutParams = layoutParams.apply {
+                height = (getScreenWidth() - 32.dp) * 160 / 343
+            }
             if (adapter != bannerAdapter) {
                 adapter = bannerAdapter
+                setIndicator(RectangleIndicator(context))
             }
-//            indicator = RectangleIndicator(context)
-//            setScrollTime(4000)
-            // 核心：纯渐变，无位移
-//            setPageTransformer { page, position ->
-//                page.apply {
-//                    // 取消左右移动
-//                    translationX = -position * width
-//
-//                    // 透明渐变
-//                    alpha = when {
-//                        position <= -1f || position >= 1f -> 0f
-//                        position == 0f -> 1f
-//                        else -> 1 - kotlin.math.abs(position)
-//                    }
-//                }
-//            }
             setDatas(data?.subList)
-                .setIndicatorHeight(0)
-                .setIndicatorWidth(0, 0)
-//                .setBannerGalleryEffect(0, 10,0.8f)
-                .setBannerGalleryEffect(28.dp, 10, 0.9f)
+                .setBannerRound(16.dp.toFloat())
                 .setIndicatorGravity(IndicatorConfig.Direction.CENTER)
         }
     }

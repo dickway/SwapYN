@@ -2,7 +2,7 @@ package com.a.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.face.bean.TaskBean
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.zzkj.structure.base.BaseViewModel
 import com.zzkj.structure.net.launchRequestOnIO
 import com.zzkj.structure.util.NotNullMutableLiveData
@@ -20,7 +20,7 @@ class AProductionViewModel : BaseViewModel() {
         launch {
             delay(1500)
             repsAiTask = launchRequestOnIO({
-                Repository.queryAiTask(taskId.value)
+                ARepository.queryAiTask(taskId.value)
             }) {
                 onSuccess = { bean ->
                     if (taskBean.value == null || taskBean.value?.estimatedTime != bean?.estimatedTime) {

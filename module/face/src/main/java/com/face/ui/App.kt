@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import androidx.annotation.OptIn
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.media3.common.util.UnstableApi
-import com.apkfuns.logutils.LogUtils
 import com.face.BuildConfig
 import com.face.R
 import com.face.key.Constants.clipsPath
@@ -93,8 +92,12 @@ class App : BaseApp() {
 
     private fun initLog() {
         // release 日志用的空实现
-        LogUtils.getLogConfig()
-            .configAllowLog(BuildConfig.DEBUG)
+//        LogUtils.getLogConfig()
+//            .configAllowLog(BuildConfig.DEBUG)
+        com.blankj.utilcode.util.LogUtils.getConfig().run {
+            setLogSwitch(BuildConfig.DEBUG)
+            setConsoleSwitch(BuildConfig.DEBUG)
+        }
     }
 
     fun initFacebook() {

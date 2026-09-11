@@ -3,23 +3,22 @@ package com.face.util
 import android.content.Intent
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
-import com.apkfuns.logutils.LogUtils
-import com.face.net.Repository
-import com.google.firebase.Firebase
-import com.google.firebase.analytics.analytics
-import com.google.firebase.crashlytics.crashlytics
-import com.key.DiffKey
-import com.singular.sdk.Singular
-import com.face.ui.App
+import com.blankj.utilcode.util.LogUtils
 import com.face.bean.Face
 import com.face.bean.MyFaceImgBean
 import com.face.bean.TargetBean
 import com.face.bean.UserBean
 import com.face.bean.VipUserCountBean
 import com.face.bean.VipUserCountBean.Companion.toMap
+import com.face.net.Repository
+import com.face.ui.App
 import com.face.ui.LoginActivity
 import com.face.view.LoginDialog
 import com.facebook.appevents.AppEventsLogger
+import com.google.firebase.Firebase
+import com.google.firebase.analytics.analytics
+import com.google.firebase.crashlytics.crashlytics
+import com.singular.sdk.Singular
 import com.zzkj.structure.base.BaseApp
 import com.zzkj.structure.base.BaseViewModel
 import com.zzkj.structure.net.LoadingState
@@ -191,7 +190,7 @@ class GVM : BaseViewModel() {
                 if (from == 5 || from == 1) {
                     FirebaseMessageUtil.uploadPushToken()
                 }
-                if (from==1){//绑定邮箱需要再次刷新信息
+                if (from == 1) {//绑定邮箱需要再次刷新信息
                     launch {
                         delay(500)
                         refreshUserInfo()
@@ -232,8 +231,8 @@ class GVM : BaseViewModel() {
                         }
                     }
                     //开启会员不显示banner广告
-                    if (!SPUtils.enableVipBannerAd){
-                        enableAdAndNotVip.postIfNot( !isVip())
+                    if (!SPUtils.enableVipBannerAd) {
+                        enableAdAndNotVip.postIfNot(!isVip())
                     }
 
                     val t1 = System.currentTimeMillis()

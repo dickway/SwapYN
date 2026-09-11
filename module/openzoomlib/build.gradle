@@ -3,15 +3,14 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
     id "kotlin-kapt"
-    id("com.google.devtools.ksp").version("2.2.0-2.0.2")
+    id("com.google.devtools.ksp").version('2.3.6')
 }
 
 android {
-    compileSdk 36
+    compileSdk rootProject.ext.targetSdkVersion
     namespace 'com.flyjingfish.openimagelib'
     defaultConfig {
         minSdk 24
-        targetSdk 36
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_21
@@ -22,6 +21,12 @@ android {
     }
     buildFeatures {
         dataBinding true
+    }
+    lint {
+        targetSdk rootProject.ext.targetSdkVersion
+    }
+    testOptions {
+        targetSdk rootProject.ext.targetSdkVersion
     }
 }
 dependencies {

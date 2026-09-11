@@ -2,21 +2,25 @@ package com.a.activity
 
 import android.os.Bundle
 import android.view.View
-import com.a.R
-import com.a.databinding.ActivityAsettingsBinding
-import com.a.viewmodel.ASettingViewModel
-import com.face.util.GVM
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import com.a.BR
+import com.a.R
 import com.a.activity.account.AUpdateAccountActivity
-import com.a.dialog.ABaseContentDialog
+import com.a.databinding.ActivityAsettingsBinding
 import com.a.dialog.ALogoutDialog
+import com.a.view.ALanguagePopup
+import com.a.viewmodel.ASettingViewModel
 import com.face.bean.UserBean
+import com.face.ui.BaseBindingActivity
 import com.face.ui.SigninActivity
 import com.face.ui.WebActivity
+import com.face.util.EventUtil
+import com.face.util.GVM
 import com.face.util.GoogleLoginUtil
 import com.face.util.SPUtils
-import com.face.ui.BaseBindingActivity
 import com.zzkj.structure.base.DataBindingArguments
+import com.zzkj.structure.util.SPbaseUtils
 import com.zzkj.structure.util.ktx.openActivity
 import com.zzkj.structure.util.ktx.singleClick
 
@@ -25,7 +29,7 @@ class ASettingActivity : BaseBindingActivity<ActivityAsettingsBinding, ASettingV
     R.layout.activity_asettings,
     ASettingViewModel::class.java
 ) {
-
+    private var languagePopup: ALanguagePopup? = null
 
     override fun init(savedInstanceState: Bundle?) {
         mBinding?.linDelete?.singleClick {
@@ -34,6 +38,25 @@ class ASettingActivity : BaseBindingActivity<ActivityAsettingsBinding, ASettingV
         if (GVM.INSTANT.userInfo.value.loginType != "app") {
             mBinding?.linUpdate?.visibility = View.GONE
         }
+        mBinding?.tvLanguage?.text = ALanguagePopup.labelFor(this, SPbaseUtils.spLanguage)
+    }
+
+    fun onLanguageClick() {
+        val anchor = mBinding?.linc1 ?: return
+        languagePopup?.dismiss()
+        languagePopup = ALanguagePopup(this, SPbaseUtils.spLanguage) { language ->
+            if (language != SPbaseUtils.spLanguage) {
+                SPbaseUtils.spLanguage = language
+                SPbaseUtils.spCacheLanguage = language
+                EventUtil.languageChange(language)
+                AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(language))
+            }
+        }.also { it.show(anchor) }
+    }
+
+    override fun onDestroy() {
+        languagePopup?.dismiss()
+        super.onDestroy()
     }
 
     fun onUpdateClick() {

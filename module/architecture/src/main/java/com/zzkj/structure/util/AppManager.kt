@@ -1,7 +1,7 @@
 package com.zzkj.structure.util
 
 import android.app.Activity
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import java.lang.ref.WeakReference
 import kotlin.system.exitProcess
 

@@ -16,18 +16,19 @@
         <variable
             name="gvm"
             type="com.face.util.GVM" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        bindAddBottomMargin="@{true}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#111A00">
+        android:background="@color/a_vip_background">
 
         <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/vipScroll"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,176 +36,238 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
+                android:layout_height="wrap_content">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgBg"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:src="@mipmap/a_img_bj3"
-                    app:layout_constraintDimensionRatio="1125:1500"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/tv1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="180dp"
-                    android:src="@mipmap/a_icon_vip_pro"
+                    android:importantForAccessibility="no"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/a_bg_alogin_qaviro"
+                    app:layout_constraintDimensionRatio="852:1846"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="PRO Privileges"
-                    android:textColor="#BCFF08"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv1" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/a_bg_vip_hero_scrim"
+                    app:layout_constraintBottom_toBottomOf="@id/imgBg"
+                    app:layout_constraintEnd_toEndOf="@id/imgBg"
+                    app:layout_constraintStart_toStartOf="@id/imgBg"
+                    app:layout_constraintTop_toTopOf="@id/imgBg" />
 
                 <LinearLayout
-                    android:id="@+id/tv3"
-                    android:layout_width="match_parent"
+                    android:id="@+id/vipHeading"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="24dp"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_2">
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="128dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <com.face.view.DraLeftBtn
-                        android:layout_width="0dp"
-                        android:layout_height="55dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/a_bg_10_r10"
-                        android:drawableStart="@mipmap/a_icon_watermark1"
-                        android:drawablePadding="10dp"
-                        android:gravity="center_vertical"
-                        android:text="No watermark"
-                        android:textColor="#FFFFFF"
-                        android:textSize="12sp" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="84dp"
+                        android:layout_height="62dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/a_ic_vip_crown" />
 
-                    <com.face.view.DraLeftBtn
-                        android:layout_width="0dp"
-                        android:layout_height="55dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/a_bg_10_r10"
-                        android:drawableStart="@mipmap/a_iocn_faster"
-                        android:drawablePadding="10dp"
-                        android:gravity="center_vertical"
-                        android:text="Speed Boost"
-                        android:textColor="#FFFFFF"
-                        android:textSize="12sp" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="sans-serif"
+                        android:includeFontPadding="false"
+                        android:text="@string/a_vip_headline"
+                        android:textColor="@color/a_vip_headline"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        app:lineHeight="32sp" />
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:fontFamily="sans-serif"
+                        android:includeFontPadding="false"
+                        android:text="@string/a_vip_tagline"
+                        android:textColor="@color/colorAb2"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/a_vip_premium_plan"
+                        android:textColor="@color/colorAwhite"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/a_vip_unlock_features"
+                        android:textColor="@color/colorAwhite"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/vipBenefits"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="20dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vipHeading">
+
+                    <LinearLayout
+                        style="@style/AVipBenefit"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/a_ic_vip_no_watermark" />
+
+                        <TextView
+                            style="@style/AVipBenefitText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/a_vip_no_watermark" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/AVipBenefit"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/a_ic_vip_speed" />
+
+                        <TextView
+                            style="@style/AVipBenefitText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/a_me_speed_boost" />
+                    </LinearLayout>
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     bindAdapter="@{vm.vipSchemeAdapter}"
                     bindData="@{vm.schemes}"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="22dp"
                     android:clipToPadding="false"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="20dp"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="horizontal"
+                    android:overScrollMode="never"
+                    android:paddingHorizontal="16dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv3"
-                    app:spanCount="3"
+                    app:layout_constraintTop_toBottomOf="@id/vipBenefits"
                     tools:itemCount="3"
-                    tools:layoutManager="LinearLayoutManager"
-                    tools:listitem="@layout/item_avip_scheme"
-                    tools:orientation="vertical" />
-
+                    tools:listitem="@layout/item_avip_scheme" />
 
                 <TextView
                     android:id="@+id/atuoText2"
-                    android:layout_width="wrap_content"
+                    bindSingleClick="@{()->handler.onRenewalDetailsClick()}"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="24dp"
                     android:gravity="center"
-                    android:lineSpacingExtra="-2dp"
-                    android:paddingHorizontal="20dp"
-                    android:text="@string/vip_txt7"
-                    android:textColor="#8E8E8E"
-                    android:textSize="12sp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-                    tools:visibility="visible" />
+                    android:includeFontPadding="false"
+                    android:minHeight="48dp"
+                    android:textColor="@color/colorAb2"
+                    android:textSize="11sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerView"
+                    tools:text="Avoid unintended renewal. You can cancel your subscription at any time by going to Google Play…More" />
 
-                <LinearLayout
-                    android:id="@+id/line2"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tvRenewalAgreement"
+                    bindSingleClick="@{()->handler.onAutoSubClick()}"
+                    bindTextUnderLine="@{true}"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:orientation="vertical"
-                    android:paddingBottom="100dp"
-                    app:layout_constraintTop_toBottomOf="@+id/atuoText2">
+                    android:layout_marginHorizontal="24dp"
+                    android:gravity="center"
+                    android:minHeight="48dp"
+                    android:text="@string/vip_txt5"
+                    android:textColor="@color/colorAb2"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/atuoText2" />
 
-                    <TextView
-                        bindSingleClick="@{()->handler.onAutoSubClick()}"
-                        bindTextUnderLine="@{true}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:paddingVertical="12dp"
-                        android:text="Automatic renewal agreement"
-                        android:textColor="#8E8E8E"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:gravity="center"
-                        android:text="@string/avip_txt_atuo"
-                        android:textColor="#8E8E8E"
-                        android:textSize="12sp" />
-
-
-                </LinearLayout>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:paddingBottom="144dp"
+                    android:text="@string/avip_txt_atuo"
+                    android:textColor="@color/colorAb2"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvRenewalAgreement" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/vipFooter"
+            bindAddBottomPadding="@{true}"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#111A00"
-            android:paddingTop="10dp"
-            android:paddingBottom="12dp"
+            android:background="@drawable/a_bg_vip_footer"
+            android:orientation="vertical"
+            android:paddingTop="24dp"
+            android:paddingBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnLaunch2"
+                style="@style/AWidgetGradientPill.Text"
                 bindSingleClick="@{()->handler.onLaunchPayClick()}"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginHorizontal="20dp"
-                android:background="@drawable/a_btn_jb_r100"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:backgroundTint="@null"
+                android:minHeight="56dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="16dp"
                 android:stateListAnimator="@null"
-                android:text="Continue"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:text="@string/vip_continue"
+                android:textAllCaps="false"
+                app:backgroundTint="@null" />
+        </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clTitle"
@@ -216,19 +279,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgClose"
                 bindSingleClick="@{()->handler.finish()}"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingHorizontal="16dp"
-                android:src="@mipmap/a_icon_back2"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/a_bg_vip_close"
+                android:contentDescription="@string/a_vip_close"
+                android:padding="14dp"
+                android:src="@drawable/a_ic_vip_close"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

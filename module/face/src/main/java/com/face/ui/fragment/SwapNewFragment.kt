@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.core.view.postDelayed
 import androidx.lifecycle.Observer
 import coil.load
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.base.BlurTransformation
 import com.face.BR
 import com.face.R

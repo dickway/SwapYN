@@ -2,7 +2,7 @@ package com.face.ui.tcustom
 
 import android.content.Context
 import android.os.Bundle
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.BR
 import com.face.R
 import com.face.databinding.ActivityStartCustomBinding

@@ -2,7 +2,7 @@ package com.face.adapter.history
 
 import android.graphics.PorterDuff
 import androidx.recyclerview.widget.DiffUtil
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.bumptech.glide.Glide
 import com.face.R
 import com.face.bean.AiFaceBean

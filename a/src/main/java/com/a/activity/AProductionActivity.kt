@@ -9,14 +9,12 @@ import com.a.R
 import com.a.databinding.ActivityAproductionBinding
 import com.a.dialog.AFailYDialog
 import com.a.viewmodel.AProductionViewModel
-import com.base.BlurTransformation
 import com.face.util.EventUtil
 import com.face.util.GVM
 import com.face.ui.BaseBindingActivity
 import com.face.ui.SwapFaceNewActivity
 import com.zzkj.structure.base.DataBindingArguments
-import com.zzkj.structure.util.ImgLoader.loadImage
-import com.zzkj.structure.util.ktx.BarHelper.bar
+import com.zzkj.structure.util.ImgLoader
 import com.zzkj.structure.util.ktx.dp
 import com.zzkj.structure.util.ktx.getStringX
 import com.zzkj.structure.util.ktx.intentExtras
@@ -25,6 +23,7 @@ import com.zzkj.structure.util.toast
 import java.util.Date
 import java.util.Timer
 import java.util.TimerTask
+import kotlin.math.roundToInt
 
 
 class AProductionActivity : BaseBindingActivity<ActivityAproductionBinding, AProductionViewModel>(
@@ -58,15 +57,22 @@ class AProductionActivity : BaseBindingActivity<ActivityAproductionBinding, APro
         if (taskIdStr.isEmpty()) {
             toast(getStringX(R.string.afail))
             finish()
+            return
         }
         onBackPressedDispatcher.addCallback(this) {
-
+            onBackClick()
         }
         mBinding?.imgCompletion?.apply {
-//            layoutParams.height = 160.dp
-//            layoutParams.width = 160.dp * imgw / imgh
-            load(urlImg) {
-                transformations(BlurTransformation(radius = 8, scale = 0.2f))
+            val hasImageSize = imgw > 1 && imgh > 1
+            if (hasImageSize) updatePreviewSize(imgw, imgh)
+            load(urlImg, ImgLoader.imageLoader) {
+                placeholder(com.key.R.drawable.img_default_m)
+                error(com.key.R.drawable.img_default_m)
+                listener(onSuccess = { _, result ->
+                    if (!hasImageSize) {
+                        updatePreviewSize(result.drawable.intrinsicWidth, result.drawable.intrinsicHeight)
+                    }
+                })
             }
         }
 
@@ -75,15 +81,9 @@ class AProductionActivity : BaseBindingActivity<ActivityAproductionBinding, APro
         mModel.sendAiTask()
 
         mModel.progressNum.observe(this) {
-            if (it > 99) {
-                mBinding?.progress?.progress = 99
-            } else if (it <= 0) {
-                mBinding?.progress?.progress = it
-                mBinding?.checkingNum?.text = "-%"
-            } else {
-                mBinding?.progress?.progress = it
-                mBinding?.checkingNum?.text = "${it}%"
-            }
+            val displayedProgress = it.coerceIn(0, 99)
+            mBinding?.progress?.progress = displayedProgress
+            mBinding?.checkingNum?.text = "${displayedProgress}%"
         }
 
 
@@ -127,6 +127,21 @@ class AProductionActivity : BaseBindingActivity<ActivityAproductionBinding, APro
                 }
             }
         }
+    }
+
+    private fun updatePreviewSize(width: Int, height: Int) {
+        if (width <= 0 || height <= 0) return
+        val scale = minOf(200.dp.toFloat() / width, 148.dp.toFloat() / height)
+        mBinding?.imgCompletion?.apply {
+            layoutParams = layoutParams.apply {
+                this.width = (width * scale).roundToInt().coerceAtLeast(1)
+                this.height = (height * scale).roundToInt().coerceAtLeast(1)
+            }
+        }
+    }
+
+    fun onBackClick() {
+        finish()
     }
 
 

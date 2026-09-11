@@ -44,6 +44,7 @@ class AVipSchemeAdapter : BaseAdapter<VipSchemeBean, ItemAvipSchemeBinding>(
             binding.apply {
                 bean = it
                 tvTitleSelect.text = it.name
+                tvUnitSelect.text = it.showUnit.ifBlank { it.showCode }
                 isSelected = selectIndex == position
                 when (it.day) {//根据商品天数显示周期价格
                     1 -> {

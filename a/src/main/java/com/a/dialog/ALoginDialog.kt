@@ -9,7 +9,7 @@ import com.a.databinding.DialogAloginBinding
 import com.face.util.GVM
 import com.a.BR
 import com.a.R
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.ui.WebActivity
 import com.face.util.GoogleLoginUtil
 import com.face.util.SPUtils
@@ -46,7 +46,7 @@ class ALoginDialog : BaseBindingDF<DialogAloginBinding>(
     }
 
     private fun login(id: String, token: String) {
-        launchRequestWithLoadingOnIO({ Repository.bindGuestUser(id, token) }) {
+        launchRequestWithLoadingOnIO({ ARepository.bindGuestUser(id, token) }) {
             onSuccess = { bean ->
                 if (bean != null) {
                     GVM.INSTANT.updateUserInfo(bean, 1)

@@ -1,11 +1,10 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdk 36
+    compileSdk rootProject.ext.targetSdkVersion
     namespace 'com.luck.picture.lib'
     defaultConfig {
         minSdk 24
-        targetSdk 36
 
         vectorDrawables.useSupportLibrary = true
     }
@@ -29,6 +28,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             consumerProguardFiles 'proguard-rules.pro'
         }
+    }
+    lint {
+        targetSdk rootProject.ext.targetSdkVersion
+    }
+    testOptions {
+        targetSdk rootProject.ext.targetSdkVersion
     }
 }
 

@@ -14,7 +14,7 @@ import com.a.dialog.AAdsVipShowDialog
 import com.a.dialog.ABaseHintDialog
 import com.a.dialog.ASwapHintDialog
 import com.a.viewmodel.AToolPaperworkViewModel
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.luck.picture.lib.basic.PictureSelector
 import com.luck.picture.lib.config.SelectMimeType
 import com.luck.picture.lib.config.SelectModeConfig
@@ -196,7 +196,7 @@ class APaperworkActivity :
         showLoading()
         SPUtils.useType = UseTypeBean(type = "PaperworkAD")
         launchRequestOnIO({
-            Repository.subUserTFLOPS(
+            ARepository.subUserTFLOPS(
                 SPUtils.useAd,
                 type = MoshiHelper.convertObjectToJson(SPUtils.useType)
             )

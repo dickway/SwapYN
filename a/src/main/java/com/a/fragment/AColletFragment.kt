@@ -3,6 +3,7 @@ package com.a.fragment
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.a.R
+import com.a.view.AMeGridItemDecoration
 import com.a.databinding.FragmentMeColletBinding
 import com.a.databinding.FragmentMeWorkBinding
 import com.a.viewmodel.AColletViewModel
@@ -17,6 +18,7 @@ class AColletFragment : BaseBindingFragment<FragmentMeColletBinding, AColletView
 ) {
 
     override fun init(savedInstanceState: Bundle?) {
+        mBinding?.recyclerView?.addItemDecoration(AMeGridItemDecoration())
         GVM.INSTANT.aIsMeRefresh.observe(this) {
             if(it){
                 mModel.getCollect()

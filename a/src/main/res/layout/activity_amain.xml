@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -16,9 +15,9 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        bindAddBottomPadding="@{true}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        bindAddBottomPadding="@{true}"
         android:background="@color/colorAmainBg">
 
         <FrameLayout
@@ -27,8 +26,10 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/vLine"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <View
             android:id="@+id/vLine"
@@ -42,39 +43,101 @@
         <LinearLayout
             android:id="@+id/bottomNavView"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="64dp"
             android:gravity="center"
             android:orientation="horizontal"
+            android:paddingTop="6dp"
+            android:paddingBottom="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <LinearLayout
                 android:id="@+id/exploreView"
                 bindSelected="@{vm.selectIndex==0}"
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:scaleType="center"
                 android:layout_height="match_parent"
-                android:src="@drawable/a_bottom_explore" />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:duplicateParentState="true"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/a_bottom_explore" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:duplicateParentState="true"
+                    android:fontFamily="sans-serif-medium"
+                    android:includeFontPadding="false"
+                    android:text="@string/a_main_bottom_home"
+                    android:textColor="@color/a_bottom_nav_item_color"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/pictureView"
                 bindSelected="@{vm.selectIndex==1}"
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:scaleType="center"
                 android:layout_height="match_parent"
-                android:src="@drawable/a_bottom_picture" />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:duplicateParentState="true"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/a_bottom_picture" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:duplicateParentState="true"
+                    android:fontFamily="sans-serif-medium"
+                    android:includeFontPadding="false"
+                    android:text="@string/a_main_bottom_template"
+                    android:textColor="@color/a_bottom_nav_item_color"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/meView"
                 bindSelected="@{vm.selectIndex==2}"
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:scaleType="center"
                 android:layout_height="match_parent"
-                android:src="@drawable/a_bottom_me" />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:duplicateParentState="true"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/a_bottom_me" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:duplicateParentState="true"
+                    android:fontFamily="sans-serif-medium"
+                    android:includeFontPadding="false"
+                    android:text="@string/a_main_bottom_me"
+                    android:textColor="@color/a_bottom_nav_item_color"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -2,7 +2,7 @@ package com.face.main
 
 import android.content.Intent
 import android.os.Bundle
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.ui.MainActivity
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage

@@ -1,0 +1,3 @@
+Rendered production layout at 55%: 1080x2340, thumbnail 299x426, progress 752x23
+/storage/emulated/0/Android/data/com.alviora.generator/files/production-layout-preview.png
+

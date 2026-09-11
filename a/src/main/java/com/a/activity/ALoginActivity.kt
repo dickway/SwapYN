@@ -9,10 +9,10 @@ import com.a.R
 import com.a.activity.account.ALoginAccountActivity
 import com.a.databinding.ActivityAloginBinding
 import com.a.dialog.BaseYDialog
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.util.GVM
 import com.face.util.GoogleLoginUtil
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.ui.MainActivity
 import com.face.ui.WebActivity
 import com.face.util.EventUtil
@@ -79,12 +79,12 @@ class ALoginActivity : BaseBindingActivity<ActivityAloginBinding, InitViewModel>
     private fun login(type: String = "google", id: String, token: String) {
         showLoading()
         launch(Dispatchers.IO) {
-            val loginConfig = async { Repository.googleLogin(type, id, token) }
+            val loginConfig = async { ARepository.googleLogin(type, id, token) }
             if (loginConfig.await().mIsSuccess) {
                 GVM.INSTANT.updateUserInfo(loginConfig.await().mData!!, 5)
                 EventUtil.login(type)
                 //登录后获取渠道
-                launchRequestOnIO({ Repository.getDeviceCampaign() }) {
+                launchRequestOnIO({ ARepository.getDeviceCampaign() }) {
                     onSuccess = { it ->
                         SPbaseUtils.loadAB = it ?: 0
                         toast(getString(com.face.R.string.success))

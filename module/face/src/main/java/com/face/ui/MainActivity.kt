@@ -7,13 +7,9 @@ import android.os.Bundle
 import androidx.activity.addCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
-import com.apkfuns.logutils.LogUtils
 import com.face.R
 import com.face.ad.AdUtil
 import com.face.bean.TagConfigBean.Companion.toMap
@@ -38,20 +34,13 @@ import com.face.view.ExitSettingDialog
 import com.face.view.HomeNoticeDialog
 import com.face.view.VersionDialog
 import com.face.viewmodel.InitViewModel
-import com.zzkj.structure.net.NetworkUtils
 import com.zzkj.structure.util.AppManager
 import com.zzkj.structure.util.ktx.getColorX
-import com.zzkj.structure.util.ktx.getStringX
 import com.zzkj.structure.util.ktx.launch
 import com.zzkj.structure.util.ktx.openActivity
 import com.zzkj.structure.util.ktx.toIntOrZero
-import com.zzkj.structure.util.toast
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlin.let
-import kotlin.text.isNullOrBlank
 
 
 class MainActivity : BaseBindingActivity<ActivityMainBinding, InitViewModel>(
@@ -128,11 +117,11 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding, InitViewModel>(
 
         selectIndex = when {
             // ② FragmentManager 恢复出来的可见 Fragment
-            restoredIndex != null -> restoredIndex
+            restoredIndex != null                           -> restoredIndex
             // ① 业务强制：首页
             !SPUtils.isShare || mModel.isShowDownload.value -> 0
             // ③ 兜底默认
-            else -> selectIndex
+            else                                            -> selectIndex
         }
 
         setSelectIndex(selectIndex, true)
@@ -241,11 +230,11 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding, InitViewModel>(
                     mModel.refreshFeedback()
                     setSelectIndex(
                         when (it.itemId) {
-                            R.id.template -> 1
-                            R.id.tool -> 2
+                            R.id.template  -> 1
+                            R.id.tool      -> 2
                             R.id.shareZone -> 3
-                            R.id.me -> 4
-                            else -> 0
+                            R.id.me        -> 4
+                            else           -> 0
                         }
                     )
                     true
@@ -314,10 +303,10 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding, InitViewModel>(
 
     private fun getFragment(index: Int): Fragment {
         return fragments[index] ?: when (index) {
-            1 -> TemplateFragment()
-            2 -> ToolFragment()
-            3 -> ShareZoneFragment()
-            4 -> MeFragment()
+            1    -> TemplateFragment()
+            2    -> ToolFragment()
+            3    -> ShareZoneFragment()
+            4    -> MeFragment()
             else -> ExploreFragment()
         }.also {
             fragments[index] = it
@@ -385,7 +374,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding, InitViewModel>(
     private fun initNotice() {
         val map = SPUtils.noticeList.takeUnless { it.isEmpty() }?.toMap()
         val showPage = map?.get("show_page") ?: ""
-        if (!SPUtils.noticeLook&&showPage.contains("b")) {
+        if (!SPUtils.noticeLook && showPage.contains("b")) {
             val title = map?.get("title") ?: ""
             val content = map?.get("content") ?: ""
             val confirmText = map?.get("confirm_text") ?: ""

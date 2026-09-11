@@ -5,15 +5,14 @@ import android.app.Activity
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.net.toUri
 import coil.request.ImageRequest
-import com.apkfuns.logutils.LogUtils
 import com.face.bean.NotificationBean
 import com.face.ui.App
 import com.zzkj.structure.util.ImgLoader
@@ -111,7 +110,7 @@ object NotificationUtil {
         val intent = Intent(App.INSTANCE, cls).apply {
             putExtra("task_id", taskId)
             putExtra("msg_type", 100)//MSG_TYPE_NEW_TASK
-            data = Uri.parse("custom://notify/$taskId")
+            data = "custom://notify/$taskId".toUri()
         }
         val notigyIdNum = ++notifyId
         val pendingIntent = PendingIntent.getActivity(
@@ -131,11 +130,9 @@ object NotificationUtil {
         }
         val intent = Intent(App.INSTANCE, cls).apply {
             putExtra("msg_type", 201)
-            data = Uri.parse(
-                "custom://notify/${
-                    (System.currentTimeMillis() / 1000).toString().drop(4).toInt()
-                }"
-            )
+            data = "custom://notify/${
+                (System.currentTimeMillis() / 1000).toString().drop(4).toInt()
+            }".toUri()
         }
         val pendingIntent = PendingIntent.getActivity(
             App.INSTANCE, SIGN_ID,
@@ -186,7 +183,7 @@ object NotificationUtil {
         val intent = Intent(App.INSTANCE, cls).apply {
             putExtra("media_id", mediaId)
             putExtra("msg_type", 101)
-            data = Uri.parse("custom://notify/$mediaId")
+            data = "custom://notify/$mediaId".toUri()
         }
         val notigyIdNum = if (type != "new") HOT_ID else NEW_ID
         val pendingIntent = PendingIntent.getActivity(

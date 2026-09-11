@@ -84,9 +84,6 @@ class AMainActivity : BaseBindingActivity<ActivityAmainBinding, AMainViewModel>(
                 setSelectIndex(0)
             }
         }
-        //A固定为英语
-        SPbaseUtils.spLanguage = "en"
-
         SPUtils.openAppNum += 1
 
         FirebaseMessageUtil.subscribeApp()

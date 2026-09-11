@@ -1,7 +1,7 @@
 package com.face.video.cache;
 
 
-import com.apkfuns.logutils.LogUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.danikula.videocache.HttpProxyCacheServer;
 
 import java.io.BufferedInputStream;

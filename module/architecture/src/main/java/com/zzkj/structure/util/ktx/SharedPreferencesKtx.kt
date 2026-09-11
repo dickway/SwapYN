@@ -4,7 +4,7 @@ import com.zzkj.structure.base.BaseApp.Companion.INSTANCE as app
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.zzkj.structure.util.moshi.MoshiHelper
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty

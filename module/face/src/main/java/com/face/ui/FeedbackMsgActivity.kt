@@ -13,7 +13,7 @@ import androidx.lifecycle.map
 import androidx.lifecycle.repeatOnLifecycle
 import com.key.adapter.FeedbackMsgAdapter
 import com.face.bean.FeedbackMsgWrapBean
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.net.Repository
 import com.face.BR
 import com.face.R

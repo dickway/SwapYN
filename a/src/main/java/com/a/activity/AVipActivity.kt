@@ -1,7 +1,15 @@
 package com.a.activity
 
 import android.os.Bundle
+import android.graphics.Typeface
+import android.text.Layout
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.StaticLayout
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.View
+import androidx.core.view.doOnLayout
 import com.a.R
 import com.a.databinding.ActivityAvipBinding
 import com.a.viewmodel.AVipViewModel
@@ -15,11 +23,8 @@ import com.face.util.GVM
 import com.face.util.GooglePayUtil
 import com.face.util.SPUtils
 import com.face.view.PurchaseErrorDialog
-import com.youth.banner.listener.OnPageChangeListener
 import com.face.ui.BaseBindingActivity
 import com.zzkj.structure.base.DataBindingArguments
-import com.zzkj.structure.util.ktx.BarHelper.bar
-import com.zzkj.structure.util.ktx.dp
 import com.zzkj.structure.util.ktx.openActivity
 import com.zzkj.structure.util.toast
 
@@ -27,16 +32,26 @@ class AVipActivity : BaseBindingActivity<ActivityAvipBinding, AVipViewModel>(
     R.layout.activity_avip,
     AVipViewModel::class.java
 ) {
+    private var renewalTerms = ""
+    private var renewalTermsExpanded = false
+
     override fun init(savedInstanceState: Bundle?) {
         GVM.INSTANT.payPage.value = "Avip"
         EventUtil.inPage("vip")
-        mModel.vipSchemeAdapter.onItemClick = { _, bean, position ->
+        mModel.vipSchemeAdapter.onItemClick = onSchemeClick@{ _, bean, position ->
+            if (bean == null || position < 0) return@onSchemeClick
             mBinding?.recyclerView?.smoothScrollToPosition(position)
             mModel.vipSchemeAdapter.selectIndex = position
             mModel.selectedScheme.postValue(bean)
         }
 
         mModel.selectedScheme.observe(this) {
+            val selectedIndex = mModel.schemes.value.indexOfFirst { scheme ->
+                scheme.id == it.id && scheme.productId == it.productId
+            }
+            if (selectedIndex >= 0) {
+                mModel.vipSchemeAdapter.selectIndex = selectedIndex
+            }
             var riqi = ""
             when (it.day) {
                 1 -> {
@@ -65,7 +80,8 @@ class AVipActivity : BaseBindingActivity<ActivityAvipBinding, AVipViewModel>(
                 } else {
                     View.VISIBLE
                 }
-                mBinding?.atuoText2?.text = if (it.trialPriceTitle != "") {//如果是试用需要加上前缀
+                renewalTermsExpanded = false
+                renewalTerms = if (it.trialPriceTitle != "") {//如果是试用需要加上前缀
                     String.format(
                         resources.getString(R.string.avip_txt8),
                         parseTrialPeriod(it.trialPriceTitle),
@@ -77,9 +93,55 @@ class AVipActivity : BaseBindingActivity<ActivityAvipBinding, AVipViewModel>(
                         resources.getString(R.string.avip_txt7), it.showCode + " " + riqi
                     )
                 }
+                renderRenewalTerms()
             }
         }
         mModel.refresh()
+    }
+
+    fun onRenewalDetailsClick() {
+        renewalTermsExpanded = !renewalTermsExpanded
+        renderRenewalTerms()
+    }
+
+    private fun renderRenewalTerms() {
+        val textView = mBinding?.atuoText2 ?: return
+        textView.doOnLayout {
+            val availableWidth = textView.width - textView.paddingLeft - textView.paddingRight
+            if (availableWidth <= 0) return@doOnLayout
+
+            fun textLayout(text: CharSequence) = StaticLayout.Builder
+                .obtain(text, 0, text.length, textView.paint, availableWidth)
+                .setAlignment(Layout.Alignment.ALIGN_CENTER)
+                .setIncludePad(false)
+                .setBreakStrategy(textView.breakStrategy)
+                .setHyphenationFrequency(textView.hyphenationFrequency)
+                .build()
+
+            fun withLink(content: String, label: String) = SpannableStringBuilder(content).apply {
+                val linkStart = length
+                append(label)
+                setSpan(ForegroundColorSpan(getColor(R.color.a_vip_link)), linkStart, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                setSpan(StyleSpan(Typeface.BOLD), linkStart, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            }
+
+            val fullLayout = textLayout(renewalTerms)
+            textView.text = when {
+                fullLayout.lineCount <= 2 -> renewalTerms
+                renewalTermsExpanded -> withLink("$renewalTerms ", getString(R.string.a_vip_less))
+                else -> {
+                    // Reserve space for the action inside the second line, including its bold width.
+                    var end = fullLayout.getLineEnd(1)
+                    fun collapsed() = withLink(renewalTerms.take(end).trimEnd() + "…", getString(com.face.R.string.see_all))
+                    var preview = collapsed()
+                    while (end > 0 && textLayout(preview).lineCount > 2) {
+                        end = renewalTerms.offsetByCodePoints(end, -1)
+                        preview = collapsed()
+                    }
+                    preview
+                }
+            }
+        }
     }
 
 

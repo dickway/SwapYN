@@ -5,8 +5,11 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import coil.load
 import com.a.R
 import com.a.BR
 import com.a.adapter.ASwapTabAdapter
@@ -20,12 +23,12 @@ import com.a.dialog.ASwapHintDialog
 import com.a.dialog.BaseAHintDialog
 import com.a.dialog.BaseYDialog
 import com.a.viewmodel.ASwapViewModel
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.ad.AdUtil
 import com.face.bean.UseTypeBean
 import com.face.bean.VipUserCountBean.Companion.toMap
 import com.face.key.AiTaskType
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.util.EventUtil
 import com.face.util.GVM
 import com.face.util.GlideEngine
@@ -42,7 +45,7 @@ import com.face.ui.BaseBindingActivity
 import com.face.ui.BuyPointActivity
 import com.zzkj.structure.base.DataBindingArguments
 import com.zzkj.structure.net.launchRequestOnIO
-import com.zzkj.structure.util.ImgLoader.loadImage
+import com.zzkj.structure.util.ImgLoader
 import com.zzkj.structure.util.ktx.BarHelper.bar
 import com.zzkj.structure.util.ktx.dp
 import com.zzkj.structure.util.ktx.getScreenHeight
@@ -83,32 +86,61 @@ class ASwapActivity : BaseBindingActivity<ActivityAswapBinding, ASwapViewModel>(
         EventUtil.inPage("swap_face", mapOf("media_id" to mediaId))
         mModel.mediaId = mediaId
         mModel.getData()
-        mModel.mediaByBean.observe(this) {
-            it?.apply {
+        mModel.mediaByBean.observe(this) { media ->
+            if (media == null) return@observe
+            mModel.collectStr = media.collectId.orEmpty()
+            mModel.isCollect.value = !media.collectId.isNullOrEmpty()
+            GVM.INSTANT.hasAD.postValue(false)
+            mModel.setSwapFaces(media.faceList)
 
-                mModel.collectStr = collectId.toString()
-                mModel.isCollect.value = collectId != ""
-                GVM.INSTANT.hasAD.postValue(false)
-
-                mModel.swapList.postValue(faceList.toMutableList())
-                mBinding?.apply {
-//                    var imgH = getScreenHeight() - 112.dp - 72.dp - 116.dp
-//                    var imgW = imgH * notZeroWidth() / notZeroHeight()
-//                    if (imgW > (getScreenWidth() - 80.dp)) {
-//                        imgH = (getScreenWidth() - 80.dp) * notZeroHeight() / notZeroWidth()
-//                        imgW = getScreenWidth() - 80.dp
-//                    }
-                    imgCover.loadImage(
-                        if (mediaType == ("video")) webpUrl else imageUrl,
-                        placeholderResId = com.key.R.drawable.img_default_m
-                    )
+            val cover = mBinding?.imgCover ?: return@observe
+            val hasImageSize = media.width > 1 && media.height > 1
+            cover.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                dimensionRatio = if (hasImageSize) "${media.width}:${media.height}" else "3:4"
+            }
+            cover.load(if (media.mediaType == "video") media.webpUrl else media.imageUrl, ImgLoader.imageLoader) {
+                placeholder(com.key.R.drawable.img_default_m)
+                error(com.key.R.drawable.img_default_m)
+                if (!hasImageSize) {
+                    listener(onSuccess = { _, result ->
+                        val width = result.drawable.intrinsicWidth
+                        val height = result.drawable.intrinsicHeight
+                        if (mModel.mediaByBean.value === media && width > 0 && height > 0) {
+                            cover.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                                dimensionRatio = "$width:$height"
+                            }
+                        }
+                    })
                 }
             }
         }
 
         swapTabAdapter.onItemClick = { _, bean, position ->
             mModel.isShow.postValue(true)
-            mModel.position = position
+            mModel.selectTargetFace(position)
+        }
+
+        mModel.hasMultipleFaces.observe(this) { multipleFaces ->
+            mBinding?.apply {
+                conOperation.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                    height = if (multipleFaces) ConstraintLayout.LayoutParams.MATCH_PARENT
+                        else ConstraintLayout.LayoutParams.WRAP_CONTENT
+                }
+                conOperation.setPadding(0, if (multipleFaces) 0 else 12.dp, 0, 0)
+                conOperation.setBackgroundColor(if (multipleFaces) 0x4D000000 else Color.TRANSPARENT)
+                view.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                    topToTop = if (multipleFaces) ConstraintLayout.LayoutParams.UNSET
+                        else ConstraintLayout.LayoutParams.PARENT_ID
+                }
+                imgCover.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                    bottomToTop = if (multipleFaces) R.id.conList else R.id.conOperation
+                }
+            }
+        }
+
+        mModel.swapList.observe(this) {
+            // Face assignments are not part of Face.equals; refresh their preview badges explicitly.
+            swapTabAdapter.notifyDataSetChanged()
         }
 
         mModel.taskBean.observe(this) {
@@ -128,34 +160,11 @@ class ASwapActivity : BaseBindingActivity<ActivityAswapBinding, ASwapViewModel>(
             }
         }
 
-        mModel.swapAdapter.onItemClick = { _, data, position ->
-            LogUtils.e(">>>>>>>$position  ${data}")
-            swapTabAdapter.selectIndex = -1
-            if (data?.isSelect == true) {
-                mModel.swapAdapter.selectIndex=-1
-                mModel.myFaceImgBean=null
-                mModel.isShow.postValue(false)
-            } else {
-                mModel.myFaceImgBean=data
+        mModel.swapAdapter.onItemClick = { _, data, _ ->
+            if (mModel.selectFace(data)) {
+                swapTabAdapter.selectIndex = -1
+                if (data?.isSelect == true) mModel.isShow.value = false
             }
-            //记录点击后头像对应的值
-            mModel.swapList.value = mModel.swapList.value?.toMutableList()?.apply {
-                getOrNull(mModel.position)?.apply {
-                    isSelectBean = if (data?.isSelect == true) {
-                        null
-                    } else {
-                        data
-                    }
-                }
-            }
-            swapTabAdapter.notifyItemChanged(mModel.position)
-            //判断按钮是否可点击
-//            mModel.sources.value = false
-//            mModel.swapList.value?.forEach {
-//                if (it.isSelectBean != null) {
-//                    mModel.sources.value = true
-//                }
-//            }
         }
     }
 
@@ -267,7 +276,7 @@ class ASwapActivity : BaseBindingActivity<ActivityAswapBinding, ASwapViewModel>(
         showLoading()
         SPUtils.useType = UseTypeBean(type = "SwapFaceAD")
         launchRequestOnIO({
-            Repository.subUserTFLOPS(
+            ARepository.subUserTFLOPS(
                 SPUtils.useAd,
                 type = MoshiHelper.convertObjectToJson(SPUtils.useType)
             )
@@ -288,12 +297,13 @@ class ASwapActivity : BaseBindingActivity<ActivityAswapBinding, ASwapViewModel>(
 
 
     fun onCollectClick() {
+        val id = mModel.mediaByBean.value?.id?.takeIf { it.isNotBlank() } ?: return
         launchRequestOnIO({
             if (mModel.isCollect.value) {
                 EventUtil.clickDisCollectMedia(mModel.collectStr)
-                Repository.removeUserCollect(mModel.collectStr)
+                ARepository.removeUserCollect(mModel.collectStr)
             } else {
-                Repository.saveCollect(mModel.mediaByBean.value?.id!!, "media")
+                ARepository.saveCollect(id, "media")
             }
         }) {
             onSuccess = {

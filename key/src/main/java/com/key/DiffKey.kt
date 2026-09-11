@@ -1,6 +1,9 @@
 package com.key
 
 import android.content.Context
+import com.adjust.sdk.Adjust
+import com.adjust.sdk.AdjustConfig
+import com.adjust.sdk.LogLevel
 import com.singular.sdk.Singular
 import com.singular.sdk.SingularConfig
 
@@ -35,5 +38,13 @@ object DiffKey {
         }
         Singular.init(mContext, config)
         Singular.trackingOptIn()
+    }
+
+
+    fun initAdjust(context: Context, ajKey: String) {
+        val config = AdjustConfig(context, ajKey, AdjustConfig.ENVIRONMENT_PRODUCTION).apply {
+            setLogLevel(LogLevel.WARN)
+        }
+        Adjust.initSdk(config)
     }
 }

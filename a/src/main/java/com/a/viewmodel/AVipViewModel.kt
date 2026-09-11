@@ -8,7 +8,7 @@ import com.face.adapter.other.VipBannerAdapter
 import com.face.bean.GooglePriceBean
 import com.face.bean.VipBannerBean
 import com.face.bean.VipSchemeBean
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.util.GVM
 import com.face.util.GooglePayUtil
 import com.face.util.SPUtils
@@ -35,7 +35,7 @@ class AVipViewModel : BaseViewModel() {
         if (selectedScheme.value == null && schemes.value.isNotEmpty()) {
             selectedScheme.postValue(schemes.value[0])
         }
-        launchRequestOnIO({ Repository.getVipScheme() }) {
+        launchRequestOnIO({ ARepository.getVipScheme() }) {
             onSuccess = {
                 if (!it.isNullOrEmpty()) {
                     val listGoogle = it.toMutableList()

@@ -10,7 +10,7 @@ import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.SeekParameters
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.base.BlurTransformation
 import com.face.R
 import com.face.bean.AiFaceBean

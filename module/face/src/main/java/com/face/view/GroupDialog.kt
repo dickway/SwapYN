@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.util.GVM
 import com.face.BR
 import com.face.databinding.DialogExploreCustomBinding

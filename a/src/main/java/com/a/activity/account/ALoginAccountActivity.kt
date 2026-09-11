@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import com.a.R
 import com.a.databinding.ActivityAloginAccountBinding
 import com.a.viewmodel.ALoginAccountViewModel
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.a.BR
 import com.a.activity.AMainActivity
 import com.a.dialog.BaseYDialog
@@ -83,7 +83,7 @@ class ALoginAccountActivity :
         showLoading()
         launch(Dispatchers.IO) {
             val loginConfig = async {
-                Repository.accountLogin(
+                ARepository.accountLogin(
                     mModel.account.value ?: "",
                     mModel.pwd.value ?: ""
                 )
@@ -92,7 +92,7 @@ class ALoginAccountActivity :
                 GVM.INSTANT.updateUserInfo(loginConfig.await().mData!!, 5)
                 EventUtil.login("account")
                 //登录后获取渠道
-                launchRequestOnIO({ Repository.getDeviceCampaign() }) {
+                launchRequestOnIO({ ARepository.getDeviceCampaign() }) {
                     onSuccess = { it ->
                         if (GVM.INSTANT.isShowTool.value != it) {//切换账号后不一致就重启app
                             GVM.INSTANT.isEventA.postValue(-1)

@@ -6,7 +6,7 @@ import com.a.R
 import com.a.adapter.AColorAdapter
 import com.a.adapter.ASizeAdapter
 import com.a.adapter.AUserAdapter
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.bean.ColorBean
 import com.face.bean.SizeBean
 import com.face.key.AiTaskType
@@ -72,7 +72,7 @@ class AToolPaperworkViewModel : BaseViewModel() {
     fun getUserPics() {
         colorAdapter.submitList(colorList)
         launchRequestOnIO({
-            Repository.getUserPics("")
+            ARepository.getUserPics("")
         }) {
             onStart = {
                 loadFailed.postValue(false)
@@ -93,7 +93,7 @@ class AToolPaperworkViewModel : BaseViewModel() {
             "${postImgUrl.value}|${postStyle.value}|${postColor.value?.lowercase()}|${postSize.value}"
 
         launchRequestWithLoadingOnIO({
-            Repository.sendAiTask(
+            ARepository.sendAiTask(
                 AiTaskType.ID_CARD,
                 "",
                 sources

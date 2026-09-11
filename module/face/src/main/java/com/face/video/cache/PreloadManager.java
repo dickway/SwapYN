@@ -2,7 +2,7 @@ package com.face.video.cache;
 
 import android.content.Context;
 
-import com.apkfuns.logutils.LogUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.danikula.videocache.HttpProxyCacheServer;
 import com.danikula.videocache.StorageUtils;
 import com.danikula.videocache.file.FileNameGenerator;

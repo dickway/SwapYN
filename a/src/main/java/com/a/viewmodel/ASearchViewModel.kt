@@ -7,7 +7,7 @@ import com.a.adapter.AFacePageAdapter
 import com.a.adapter.ASearchHistoryAdapter
 import com.face.bean.SearchHistoryBean
 import com.face.database.AppDatabase
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.zzkj.structure.base.BaseViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -28,7 +28,7 @@ class ASearchViewModel : BaseViewModel() {
     fun getSeatch() {
         isNoData.value = null
         launch {
-            Repository.searchAi("image", getKeywords())
+            ARepository.searchAi("image", getKeywords())
                 .cachedIn(viewModelScope)
                 .collectLatest {
                     faceAdapter.submitData(it)

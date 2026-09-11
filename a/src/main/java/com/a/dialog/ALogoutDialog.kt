@@ -4,7 +4,6 @@ import android.view.Gravity
 import android.view.WindowManager
 import com.a.BR
 import com.a.databinding.DialogAlogoutBinding
-import com.face.util.GVM
 import com.zzkj.structure.base.DataBindingArguments
 import com.zzkj.structure.ui.dialog.BaseBindingDF
 import com.zzkj.structure.util.ktx.dp
@@ -15,15 +14,12 @@ class ALogoutDialog @JvmOverloads constructor(
 ) : BaseBindingDF<DialogAlogoutBinding>(
     width = WindowManager.LayoutParams.MATCH_PARENT,
     horizontalPadding = 48.dp,
+    maxWidth = 360.dp,
+    dimAmount = 0.6f,
     gravity = Gravity.CENTER,
     isBottomAnimation = false,
     cancelable = true
 ) {
-
-//    override fun init(savedInstanceState: Bundle?) {
-//        super.init(savedInstanceState)
-//        isCancelable = true
-//    }
 
     fun onConfirmClick() {
         onLogout?.invoke()
@@ -32,6 +28,5 @@ class ALogoutDialog @JvmOverloads constructor(
 
     override fun getDataBindingArguments(): DataBindingArguments? {
         return DataBindingArguments(BR.handler, this)
-            .addArgument(BR.gvm, GVM.INSTANT)
     }
 }

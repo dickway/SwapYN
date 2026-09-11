@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
     id "kotlin-kapt"
-    id("com.google.devtools.ksp").version("2.2.0-2.0.2")
+    id("com.google.devtools.ksp").version('2.3.6')
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
     // https://github.com/bytedance/AabResGuard/blob/develop/wiki/zh-cn/README.md
@@ -12,15 +12,21 @@ plugins {
     id "xml-class-guard"
 }
 
+static def releaseTime() { return new Date().format("yyMMddHHmm") }
+
 android {
     namespace 'com.alviora.generator'
-    compileSdk 36
+    compileSdk rootProject.ext.targetSdkVersion
+
+//    base {
+//        archivesName.set(rootProject.name.split("-").last().toString() + "-" + rootProject.ext.versionCode + "-" + releaseTime())
+//    }
 
     defaultConfig {
         applicationId "com.alviora.generator"
 
         minSdk 24
-        targetSdk 36
+        targetSdk rootProject.ext.targetSdkVersion
 
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
@@ -124,6 +130,7 @@ aabResGuard {
             "*.R.id.tp_*",
     ]
     // 混淆后的文件名称，必须以 `.aab` 结尾
+//    obfuscatedBundleFileName = "${rootProject.name.split("-").last()}-${rootProject.ext.versionName}-${releaseTime()}-duplicated-app.aab"
     obfuscatedBundleFileName = "duplicated-app.aab"
     // 是否允许去除重复资源
     mergeDuplicatedRes = false
@@ -137,7 +144,7 @@ aabResGuard {
     enableFilterStrings = false
 //    unusedStringPath = file("unused.txt").toPath() // 过滤文案列表路径 默认在mapping同目录查找
     // 保留语言
-    languageWhiteList = ["en","es","fr","sv","de","zh","ar","fa","it","iw","ja","ko","ku","pt","tr"]
+    languageWhiteList = ["en", "es", "fr", "sv", "de", "zh", "ar", "fa", "it", "iw", "ja", "ko", "ku", "pt", "tr"]
 }
 
 //以下均为非必须

@@ -10,7 +10,7 @@ import androidx.annotation.MainThread
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.zzkj.structure.BuildConfig
 import com.zzkj.structure.base.BaseApp
 import kotlinx.coroutines.DelicateCoroutinesApi

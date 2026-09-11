@@ -2,7 +2,7 @@ package com.a.viewmodel
 
 import android.graphics.Bitmap
 import androidx.lifecycle.MutableLiveData
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.bean.TaskBean
 import com.face.key.AiTaskType
 import com.face.util.FileUtil
@@ -43,7 +43,7 @@ class AToolRemovalViewModel : BaseViewModel() {
                     file.getName(),
                     file.asRequestBody(("application/otcet-stream").toMediaType())
                 )
-                launchRequestOnIO({ Repository.uploadFile(body) }) {
+                launchRequestOnIO({ ARepository.uploadFile(body) }) {
                     onStart = {
                         loadFailed.postValue(false)
                     }
@@ -63,7 +63,7 @@ class AToolRemovalViewModel : BaseViewModel() {
 
     fun sendAiTask(type: String, sources: String) {
         launchRequestOnIO({
-            Repository.sendAiTask(
+            ARepository.sendAiTask(
                 type, "", sources
             )
         }) {
@@ -88,7 +88,7 @@ class AToolRemovalViewModel : BaseViewModel() {
         if (taskId.isNotEmpty()) {
 
             launchRequestOnIO({
-                Repository.queryAiTask(taskId)
+                ARepository.queryAiTask(taskId)
             }) {
                 onSuccess = { bean ->
                     if (taskBean.value == null) {
@@ -110,7 +110,7 @@ class AToolRemovalViewModel : BaseViewModel() {
 
     fun onCancelData() {
         if (taskBean.value != null) {
-            launchRequestWithLoadingOnIO({ Repository.cancelTask(taskBean.value!!.id) }) {
+            launchRequestWithLoadingOnIO({ ARepository.cancelTask(taskBean.value!!.id) }) {
                 onSuccess = {
                     loadingView.postValue(4)
                 }

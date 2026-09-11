@@ -3,7 +3,7 @@ package com.face.util
 import android.os.Build
 import android.os.Bundle
 import com.android.billingclient.api.Purchase
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.net.Repository
 import com.face.ui.App
 import com.face.BuildConfig

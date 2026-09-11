@@ -1,7 +1,7 @@
 package com.a.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.bean.TaskBean
 import com.zzkj.structure.base.BaseViewModel
 import com.zzkj.structure.net.launchRequestOnIO
@@ -23,7 +23,7 @@ class AToolGeneratingViewModel : BaseViewModel() {
     fun queryAiTask() {
         if (taskId.isNotEmpty()) {
             launchRequestOnIO({
-                Repository.queryAiTask(taskId)
+                ARepository.queryAiTask(taskId)
             }) {
                 onSuccess = { bean ->
                     if (taskBean.value == null) {

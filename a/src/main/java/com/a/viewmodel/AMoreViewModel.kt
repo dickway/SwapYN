@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import com.a.adapter.AFacePageAdapter
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.zzkj.structure.base.BaseViewModel
 import kotlinx.coroutines.flow.collectLatest
 
@@ -15,7 +15,7 @@ class AMoreViewModel : BaseViewModel() {
 
     fun getType(tag: String) {
         launch {
-            Repository.getMediaByTag(
+            ARepository.getMediaByTag(
                 "",
                 "image",
                 tag
@@ -29,7 +29,7 @@ class AMoreViewModel : BaseViewModel() {
 
     fun getBanner() {
         launch {
-            Repository.getBannerDetails()
+            ARepository.getBannerDetails()
                 .cachedIn(viewModelScope)
                 .collectLatest {
                     faceAdapter.submitData(it)

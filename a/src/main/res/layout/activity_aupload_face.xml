@@ -4,25 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-        <variable
-            name="handler"
-            type="com.a.activity.AUploadFaceActivity" />
-
-        <variable
-            name="vm"
-            type="com.a.viewmodel.AUploadViewModel" />
-
-        <variable
-            name="gvm"
-            type="com.face.util.GVM" />
-
+        <variable name="handler" type="com.a.activity.AUploadFaceActivity" />
+        <variable name="vm" type="com.a.viewmodel.AUploadViewModel" />
+        <variable name="gvm" type="com.face.util.GVM" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         bindAddVerticalPadding="@{true}"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/a_upload_background">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clTitle"
@@ -33,244 +24,164 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgBack"
                 bindSingleClick="@{()->handler.backAct()}"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingHorizontal="10dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/a_settings_back"
+                android:padding="12dp"
                 android:src="@mipmap/a_icon_back"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="60dp"
                 android:gravity="center"
-                android:text="Upload face"
-                android:textAppearance="@style/font_18"
-                android:textColor="#EEF3FD"
+                android:includeFontPadding="false"
+                android:text="@string/a_upload_face_title"
+                android:textColor="@color/colorAwhite"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/imageStage"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="16dp"
-            app:cardCornerRadius="36dp"
-            app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/clTitle"
-            app:layout_constraintVertical_bias="0.25"
-            tools:visibility="visible">
+            app:layout_constraintTop_toBottomOf="@id/clTitle"
+            app:layout_constraintVertical_bias="0.25">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/uploadImg"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/img_default_m"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="@null"
-                tools:srcCompat="@tools:sample/avatars" />
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cardView2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginVertical="30dp"
-            android:background="#00000000"
-            android:visibility="gone"
-            app:cardElevation="0dp"
-            app:layout_constraintBottom_toBottomOf="@+id/cardView"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
-            app:layout_constraintStart_toStartOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="@+id/cardView"
-            tools:visibility="visible">
-
-            <View
-                android:id="@+id/viewLine2"
+            <FrameLayout
+                android:id="@+id/cardView"
                 android:layout_width="0dp"
-                android:layout_height="5dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginHorizontal="40dp"
-                android:background="@drawable/a_bg_06_r20"
+                android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/a_icon_smiao_l"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="#CCFFFFFF" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/uploadImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@null"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_default_m"
+                    app:strokeWidth="0dp"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/a_icon_smiao_l_x"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:tint="#CCFFFFFF" />
+                <View
+                    android:id="@+id/viewSuccessBorder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/a_bg_upload_success_border"
+                    android:visibility="gone" />
+            </FrameLayout>
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/a_icon_smiao_r"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="#CCFFFFFF" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/a_icon_smiao_r_x"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cardView2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="57dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:tint="#CCFFFFFF" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:importantForAccessibility="no"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/a_ic_upload_scan_frame"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
+                <View
+                    android:id="@+id/viewLine2"
+                    android:layout_width="0dp"
+                    android:layout_height="5dp"
+                    android:layout_marginHorizontal="26dp"
+                    android:alpha="0.8"
+                    android:background="@drawable/a_bg_upload_scan_line"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
-            android:id="@+id/linE"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/a_bg_f0_tr32"
-            android:gravity="center"
-            android:paddingVertical="8dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/cardView"
-            app:layout_constraintLeft_toLeftOf="@+id/cardView"
-            app:layout_constraintRight_toRightOf="@+id/cardView"
-            tools:visibility="visible">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:src="@mipmap/a_icon_fai" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:gravity="left"
-                android:text="Check failure !"
-                android:textAppearance="@style/font_14"
-                android:textColor="#EEF3FD" />
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/linUp"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/cardView">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageStage">
 
             <TextView
                 android:id="@+id/tvHint"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
+                android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="Face without cover, no glasses, no hat, try to face"
-                android:textColor="#B2B2B2"
-                android:textSize="16sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv1" />
-
-            <TextView
-                android:id="@+id/tvHint2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="58dp"
-                android:layout_marginTop="4dp"
-                android:drawableStart="@mipmap/a_icon_succ2"
-                android:drawablePadding="5dp"
-                android:drawableTint="#3EDC74"
-                android:gravity="center"
-                android:minLines="2"
-                android:text="Upload successfully !"
-                android:textAppearance="@style/font_14"
-                android:textColor="#EEF3FD"
-                android:visibility="gone"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv1" />
+                android:includeFontPadding="false"
+                android:text="@string/a_upload_face_analysing"
+                android:textColor="@color/colorAb2"
+                android:textSize="16sp" />
 
             <ProgressBar
                 android:id="@+id/progress"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="8dp"
-                android:layout_marginHorizontal="58dp"
+                android:layout_marginHorizontal="57dp"
                 android:layout_marginTop="20dp"
+                android:indeterminate="false"
                 android:max="100"
                 android:progress="0"
-                android:progressDrawable="@drawable/a_bg_progress"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkingNum"
-                tools:progress="50" />
-
+                android:progressBackgroundTint="@null"
+                android:progressDrawable="@drawable/a_bg_upload_progress"
+                android:progressTint="@null"
+                tools:progress="55" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/tvComplete"
             bindSingleClick="@{()->handler.onCompleteClick()}"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/a_btn_jb_r100"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/a_bg_primary_gradient_pill"
             android:gravity="center"
-            android:text="Continue"
-            android:textAppearance="@style/font_16"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/linUp"
-            tools:visibility="visible" />
-
-        <TextView
-            android:id="@+id/tvRetry"
-            bindSingleClick="@{()->handler.finish()}"
-            android:layout_width="200dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/a_btn_jb_r100"
-            android:gravity="center"
-            android:text="Retry"
-            android:textAppearance="@style/font_16"
-            android:textColor="#000000"
+            android:includeFontPadding="false"
+            android:minHeight="48dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:text="@string/vip_continue"
+            android:textColor="@color/colorAblack"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linUp"
-            tools:visibility="gone" />
+            app:layout_constraintTop_toBottomOf="@id/imageStage" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

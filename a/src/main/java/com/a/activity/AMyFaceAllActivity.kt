@@ -15,8 +15,7 @@ import com.luck.picture.lib.entity.LocalMedia
 import com.luck.picture.lib.interfaces.OnResultCallbackListener
 import com.luck.picture.lib.language.LanguageConfig
 import com.a.BR
-import com.a.dialog.ABaseContentDialog
-import com.face.bean.MyFaceImgBean
+import com.a.dialog.ARemoveFaceDialog
 import com.face.util.GVM
 import com.face.util.GlideEngine
 import com.face.util.SPUtils
@@ -33,27 +32,23 @@ class AMyFaceAllActivity : BaseBindingActivity<ActivityAmyfaceallBinding, AMyAll
     private var myAllFaceAdapter = AMyAllFaceAdapter()
 
     override fun init(savedInstanceState: Bundle?) {
+        mBinding?.apply {
+            refreshLayout.setOnChildScrollUpCallback { _, _ -> recyclerView.canScrollVertically(-1) }
+        }
         myAllFaceAdapter.onAddClick = {
             onAddClick()
         }
         myAllFaceAdapter.onDeleteClick = { data ->
 
-            ABaseContentDialog(
-                "Remove face?",
-                "Are you sure you want to remove face",
-                "Delete",
-                "Cancel",
-                onOkData = {
-                    mModel.deleteUserPic(data)
-                })
+            ARemoveFaceDialog { mModel.deleteUserPic(data) }
                 .showIgnoreState(this)
         }
         mModel.myFaceList.observe(this) { list ->
-            val isss = (list?.filter { !it.isSelect }?.size ?: 0) > 0
-            mModel.isSelect.value = isss
-            if (!isss) {
-                mBinding?.editTxt?.text = "Edit"
-                mModel.isShowDete=false
+            val hasFaces = list.any { !it.isSelect }
+            mModel.isSelect.value = hasFaces
+            if (!hasFaces) {
+                mBinding?.editTxt?.setText(R.string.a_settings_edit)
+                mModel.isShowDete = false
             }
             myAllFaceAdapter.showDelect(mModel.isShowDete)
         }
@@ -64,13 +59,9 @@ class AMyFaceAllActivity : BaseBindingActivity<ActivityAmyfaceallBinding, AMyAll
             mModel.isShowDete = !mModel.isShowDete
             myAllFaceAdapter.showDelect(mModel.isShowDete)
             if (mModel.isShowDete) {
-                mBinding?.editTxt?.text = "Done"
-                mModel.myFaceList.value = mModel.faceList.toMutableList()
+                mBinding?.editTxt?.setText(R.string.a_settings_done)
             } else {
-                mBinding?.editTxt?.text = "Edit"
-                mModel.myFaceList.value = mModel.faceList.toMutableList().apply {
-                    add(0, MyFaceImgBean(isSelect = true))
-                }
+                mBinding?.editTxt?.setText(R.string.a_settings_edit)
             }
         }
     }
@@ -129,7 +120,7 @@ class AMyFaceAllActivity : BaseBindingActivity<ActivityAmyfaceallBinding, AMyAll
 
     override fun onResume() {
         super.onResume()
-        mBinding?.editTxt?.text = "Edit"
+        mBinding?.editTxt?.setText(R.string.a_settings_edit)
         mModel.isShowDete = false
         mModel.getUserPics()
 

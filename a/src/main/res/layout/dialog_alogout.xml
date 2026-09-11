@@ -1,44 +1,39 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
         <variable
             name="handler"
             type="com.a.dialog.ALogoutDialog" />
-
-        <variable
-            name="gvm"
-            type="com.face.util.GVM" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/a_bg_dialog"
+        android:background="@drawable/a_bg_settings_dialog"
         android:orientation="vertical"
+        android:paddingTop="20dp"
         android:paddingBottom="20dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="12dp"
             android:gravity="center"
-            android:text="Log out"
-            android:textAppearance="@style/font_16"
-            android:textColor="#FFFFFF"
+            android:text="@string/a_settings_logout"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="26dp"
+            android:layout_marginHorizontal="18dp"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Do you want to log out of the current account?"
-            android:textAppearance="@style/font_14"
-            android:textColor="#B2B2B2" />
+            android:text="@string/a_settings_logout_message"
+            android:textColor="@color/a_settings_secondary"
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,29 +44,17 @@
 
             <TextView
                 android:id="@+id/tvOk"
+                style="@style/ASettingsDialogButton"
                 bindSingleClick="@{()->handler.onConfirmClick()}"
-                android:layout_width="0dp"
-                android:layout_height="44dp"
-                android:layout_marginHorizontal="4dp"
-                android:layout_weight="1"
-                android:background="@drawable/a_bg_line_r100"
-                android:gravity="center"
-                android:text="Log out"
-                android:textColor="#FF4646"
-                android:textSize="16sp" />
+                android:layout_marginEnd="8dp"
+                android:text="@string/a_settings_logout"
+                android:textColor="@color/a_settings_danger" />
 
             <TextView
+                android:id="@+id/tvCancel"
+                style="@style/ASettingsDialogButton"
                 bindSingleClick="@{()->handler.dismissAllowingStateLoss()}"
-                android:layout_width="0dp"
-                android:layout_height="44dp"
-                android:layout_marginHorizontal="4dp"
-                android:layout_weight="1"
-                android:background="@drawable/a_bg_line_r100"
-                android:gravity="center"
-                android:text="Cancel"
-                android:textColor="#EEF3FD"
-                android:textSize="16sp"  />
+                android:text="@string/a_settings_cancel" />
         </LinearLayout>
-
     </LinearLayout>
 </layout>

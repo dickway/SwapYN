@@ -7,23 +7,23 @@ import android.os.CountDownTimer
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import com.a.BR
 import com.a.R
 import com.a.activity.AToolHistoryActivity
 import com.a.activity.AVipActivity
 import com.a.databinding.ActivityAtoolStartclearBinding
+import com.face.key.AiTaskType
+import com.face.ui.BaseBindingActivity
+import com.face.util.GVM
+import com.face.util.GlideEngine
+import com.face.util.SPUtils
+import com.face.viewmodel.activity.NullViewModel
 import com.luck.picture.lib.basic.PictureSelector
 import com.luck.picture.lib.config.SelectMimeType
 import com.luck.picture.lib.config.SelectModeConfig
 import com.luck.picture.lib.entity.LocalMedia
 import com.luck.picture.lib.interfaces.OnResultCallbackListener
 import com.luck.picture.lib.language.LanguageConfig
-import com.face.util.GVM
-import com.a.BR
-import com.face.key.AiTaskType
-import com.face.util.GlideEngine
-import com.face.util.SPUtils
-import com.face.viewmodel.activity.NullViewModel
-import com.face.ui.BaseBindingActivity
 import com.zzkj.structure.base.DataBindingArguments
 import com.zzkj.structure.util.SPbaseUtils
 import com.zzkj.structure.util.ktx.openActivity
@@ -65,7 +65,7 @@ class AClearStartActivity : BaseBindingActivity<ActivityAtoolStartclearBinding, 
 
     fun selectorPhoto() {
         GVM.INSTANT.payPage.value = "AHome_tool_clear"
-        if (!GVM.INSTANT.isVip.value&& !SPUtils.toolUse) {
+        if (!GVM.INSTANT.isVip.value && !SPUtils.toolUse) {
             openActivity<AVipActivity>()
             return
         }
@@ -89,7 +89,7 @@ class AClearStartActivity : BaseBindingActivity<ActivityAtoolStartclearBinding, 
             .setSelectionMode(SelectModeConfig.SINGLE)
             .setImageEngine(GlideEngine.createGlideEngine())
             .forResult(object : OnResultCallbackListener<LocalMedia?> {
-                override fun onResult(result: ArrayList<LocalMedia?>,frament: Fragment) {
+                override fun onResult(result: ArrayList<LocalMedia?>, frament: Fragment) {
                     if (result.size > 0) {
                         result[0]?.apply {
                             if (availablePath.isNotEmpty()) {

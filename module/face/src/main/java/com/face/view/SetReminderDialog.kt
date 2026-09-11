@@ -3,7 +3,7 @@ package com.face.view
 import android.os.Bundle
 import android.view.Gravity
 import android.view.WindowManager
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.net.Repository
 import com.face.BR
 import com.face.R

@@ -1,7 +1,5 @@
 package com.face.ui
 
-import android.app.Activity
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
@@ -11,11 +9,9 @@ import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 import android.view.View
 import androidx.lifecycle.MutableLiveData
-import com.apkfuns.logutils.LogUtils
 import com.applovin.mediation.MaxAd
-import com.applovin.mediation.MaxError
 import com.applovin.mediation.MaxReward
-import com.applovin.mediation.ads.MaxRewardedAd
+import com.blankj.utilcode.util.LogUtils
 import com.face.BR
 import com.face.R
 import com.face.ad.AdUtil
@@ -133,28 +129,28 @@ class SigninActivity : BaseBindingActivity<ActivitySigninBinding, SigninViewMode
                 val numDay3 = mModel.rateInfoBean?.rateDailyNum3 ?: 0
                 LogUtils.e(">>>>>$dayRating $numDay2 ")
                 mModel.taskDayNum.value = when {
-                    dayRating == 0 -> 0
-                    dayRating < numDay1 -> 1
+                    dayRating == 0       -> 0
+                    dayRating < numDay1  -> 1
                     dayRating == numDay1 -> 2
-                    dayRating < numDay2 -> 3
+                    dayRating < numDay2  -> 3
                     dayRating == numDay2 -> 4
-                    dayRating < numDay3 -> 5
+                    dayRating < numDay3  -> 5
 //                    dayRating <= numDay3 -> 6
-                    else -> 6
+                    else                 -> 6
                 }
                 //对应获取week进度显示第几格
                 val numWeek1 = mModel.rateInfoBean?.rateWeeklyNum1 ?: 0
                 val numWeek2 = mModel.rateInfoBean?.rateWeeklyNum2 ?: 0
                 val numWeek3 = mModel.rateInfoBean?.rateWeeklyNum3 ?: 0
                 mModel.taskWeekNum.value = when {
-                    weekRating == 0 -> 0
-                    weekRating < numWeek1 -> 1
+                    weekRating == 0        -> 0
+                    weekRating < numWeek1  -> 1
                     weekRating == numWeek1 -> 2
-                    weekRating < numWeek2 -> 3
+                    weekRating < numWeek2  -> 3
                     weekRating == numWeek2 -> 4
-                    weekRating < numWeek3 -> 5
+                    weekRating < numWeek3  -> 5
 //                    weekRating <= numWeek3 -> 6
-                    else -> 6
+                    else                   -> 6
                 }
 
             }
@@ -243,12 +239,12 @@ class SigninActivity : BaseBindingActivity<ActivitySigninBinding, SigninViewMode
                 }
             }
             when (GVM.INSTANT.userInfo.value.vipLv) {
-                2 -> {//周
+                2    -> {//周
                     txtRank.text = getString(R.string.viplv7)
                     tvAddVipPoint.text = "+${mModel.pointBean.vip7}"
                 }
 
-                3 -> {//月
+                3    -> {//月
                     txtRank.text = getString(R.string.viplv30)
                     tvAddVipPoint.text = "+${mModel.pointBean.vip30}"
                 }
@@ -366,7 +362,7 @@ class SigninActivity : BaseBindingActivity<ActivitySigninBinding, SigninViewMode
             dismissLoading()
         }
 
-        override fun onAdReward(ad: MaxAd, reward: MaxReward?){
+        override fun onAdReward(ad: MaxAd, reward: MaxReward?) {
             LogUtils.e("onUserRewarded")
             if (mModel.numShowAds.value < mModel.pointBean.adsNum) {
                 val userRewardBean = UserRewardBean(
@@ -376,7 +372,7 @@ class SigninActivity : BaseBindingActivity<ActivitySigninBinding, SigninViewMode
                     dspId = ad.dspId,
                     dspName = ad.dspName,
                     revenue = ad.revenue,
-                    amount = reward?.amount?:0,
+                    amount = reward?.amount ?: 0,
                     revenuePrecision = ad.revenuePrecision,
                     placement = ad.placement,
                     networkPlacement = ad.networkPlacement,
@@ -401,12 +397,12 @@ class SigninActivity : BaseBindingActivity<ActivitySigninBinding, SigninViewMode
         mBinding?.apply {
             tvBuy.text = getString(R.string.receive)
             when (GVM.INSTANT.userInfo.value.vipLv) {
-                2 -> {//周
+                2    -> {//周
                     txtRank.text = getString(R.string.viplv7)
                     tvAddVipPoint.text = "+${mModel.pointBean.vip7}"
                 }
 
-                3 -> {//月
+                3    -> {//月
                     txtRank.text = getString(R.string.viplv30)
                     tvAddVipPoint.text = "+${mModel.pointBean.vip30}"
                 }

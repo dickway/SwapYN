@@ -26,13 +26,22 @@ class ASwapAdapter : BaseAdapter<MyFaceImgBean, ItemAswapItemBinding>(
 
     var onAddClick: ((MyFaceImgBean?) -> Unit)? = null
 
-    var selectIndex = 0
+    var canDisableFace = false
+        set(value) {
+            if (value == field) return
+            field = value
+            currentList.forEachIndexed { index, face ->
+                if (face.isSelect) notifyItemChanged(index)
+            }
+        }
+
+    var selectIndex = -1
         set(value) {
             if (value != field) {
                 val origin = field
                 field = value
-                notifyItemChanged(origin)
-                notifyItemChanged(field)
+                if (origin in 0 until itemCount) notifyItemChanged(origin)
+                if (field in 0 until itemCount) notifyItemChanged(field)
             }
         }
 
@@ -45,15 +54,16 @@ class ASwapAdapter : BaseAdapter<MyFaceImgBean, ItemAswapItemBinding>(
         holder.binding.apply {
             isAdd = data?.isSelect
             isSelected = selectIndex == position
+            isDisableEnabled = canDisableFace
+            root.isEnabled = data?.isSelect != true || canDisableFace
             imgCover.loadImage(
                 data?.pic
             )
             imgCover.setOnClickListener {
-                selectIndex = position
                 onItemClick?.invoke(it, data, position)
             }
             addImg.setOnClickListener {
-                onItemClick?.invoke(it, data, position)
+                if (canDisableFace) onItemClick?.invoke(it, data, position)
             }
         }
     }

@@ -9,28 +9,25 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="4dp"
-        android:layout_marginVertical="4dp">
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cardView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintDimensionRatio="114:152"
-            android:background="@drawable/a_bg_ff_r16"
+            app:layout_constraintDimensionRatio="3:4"
+            android:background="@color/a_me_grid_placeholder"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible">
 
-            <com.google.android.material.imageview.ShapeableImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imgCover"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/colorTransparent"
-                android:scaleType="centerCrop"
-                app:shapeAppearanceOverlay="@style/shape_round_16dp"
-                app:strokeColor="@null" />
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/txtBg"

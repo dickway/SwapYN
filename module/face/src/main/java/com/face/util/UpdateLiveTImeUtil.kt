@@ -1,7 +1,7 @@
 package com.face.util
 
 import androidx.lifecycle.Observer
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.zzkj.structure.util.ktx.md5
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay

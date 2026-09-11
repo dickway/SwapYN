@@ -3,7 +3,7 @@ package com.a.dialog
 import android.view.Gravity
 import android.view.WindowManager
 import com.a.databinding.DialogAcustomBinding
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.util.GVM
 import com.face.BR
 import com.face.databinding.DialogExploreCustomBinding

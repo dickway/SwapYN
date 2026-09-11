@@ -8,8 +8,6 @@ import com.face.bean.CollectAMBean
 import com.face.ui.SwapFaceNewActivity
 import com.zzkj.structure.base.adapter.BaseAdapter
 import com.zzkj.structure.base.adapter.BaseHolder
-import com.zzkj.structure.util.ImgLoader.loadImage
-import com.zzkj.structure.util.ktx.dp
 import com.zzkj.structure.util.ktx.singleClick
 
 class AMeCollectAdapter : BaseAdapter<CollectAMBean, ItemMeCollectItemBinding>(
@@ -39,10 +37,7 @@ class AMeCollectAdapter : BaseAdapter<CollectAMBean, ItemMeCollectItemBinding>(
                     .load(loadUrl)
                     .placeholder(com.key.R.drawable.img_default_m)
                     .skipMemoryCache(false)
-                    .override(
-                        114.dp,
-                        152.dp
-                    )
+                    .centerCrop()
                     .into(imgCover)
                 imgCover.singleClick {
                     if (contentBean.mediaType!="video"){

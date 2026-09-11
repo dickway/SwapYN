@@ -13,7 +13,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.R
 import com.face.videoclips.trim.VideoTrimmerUtil
 import com.zzkj.structure.util.TimeUtil.convertSecondsToTime

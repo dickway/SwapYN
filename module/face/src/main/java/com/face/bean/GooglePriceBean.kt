@@ -3,7 +3,7 @@ package com.face.bean
 import android.os.Parcelable
 import com.android.billingclient.api.BillingClient
 import com.android.billingclient.api.ProductDetails
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize

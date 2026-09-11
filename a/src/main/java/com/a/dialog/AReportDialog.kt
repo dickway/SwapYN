@@ -18,7 +18,9 @@ class AReportDialog @JvmOverloads constructor(
     private val onReport: ((Int, String) -> Unit)? = null
 ) : BaseBindingDF<DialogAreportBinding>(
     horizontalPadding = 48.dp,
+    maxWidth = 360.dp,
     gravity = Gravity.CENTER,
+    dimAmount = 0.5f,
     isBottomAnimation = false
 ) {
     var isSelect = false
@@ -29,9 +31,9 @@ class AReportDialog @JvmOverloads constructor(
 
     var liseReport = mutableListOf(
         CollectBean(name = "Nudity or sexual"),
-        CollectBean(name = "Political issue"),
         CollectBean(name = "Hateful or abusive"),
         CollectBean(name = "Violence scene"),
+        CollectBean(name = "Political issue"),
         CollectBean(name = "Alleged CopyrightInfr ingement")
     )
 
@@ -45,12 +47,13 @@ class AReportDialog @JvmOverloads constructor(
                 imgBlock.isSelected = isSelect
             }
         }
-        adapter.onItemClick = { _, bean, position ->
+        adapter.onItemClick = onReasonClick@{ _, bean, position ->
+            if (bean == null || position !in liseReport.indices) return@onReasonClick
             liseReport.find { it.name == bean?.name }?.apply {
                 isSelected = !isSelected
             }
             adapter.notifyItemChanged(position)
-            selectedNum.postValue(liseReport.filter { it.isSelected }.size)
+            selectedNum.value = liseReport.count { it.isSelected }
         }
         adapter.submitList(liseReport)
     }

@@ -1,7 +1,7 @@
 package com.face.util
 
 import com.face.ui.App
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.face.net.HttpInterceptor
 import com.zzkj.structure.util.device.AdvertisingIdHelper
 import com.zzkj.structure.util.device.DeviceUtils

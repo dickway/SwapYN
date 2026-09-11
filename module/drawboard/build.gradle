@@ -1,39 +1,42 @@
 plugins {
-	id "com.android.library"
+    id "com.android.library"
 }
 
 android {
-	compileSdk 36
-	namespace 'com.king.drawboard'
+    compileSdk rootProject.ext.targetSdkVersion
+    namespace 'com.king.drawboard'
 
-	defaultConfig {
-		minSdk = 24
-		targetSdk = 36
-	}
+    defaultConfig {
+        minSdk = 24
+    }
 
-	compileOptions {
-		sourceCompatibility JavaVersion.VERSION_21
-		targetCompatibility JavaVersion.VERSION_21
-	}
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
 
-	buildTypes {
-		release {
-			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-			consumerProguardFiles 'proguard-rules.pro'
-		}
-		debug {
-			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-			consumerProguardFiles 'proguard-rules.pro'
-		}
-	}
+    buildTypes {
+        release {
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+        debug {
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
 
-	lint {
-		abortOnError false
-		warning 'InvalidPackage'
-	}
+    lint {
+        abortOnError false
+        warning 'InvalidPackage'
+        targetSdk rootProject.ext.targetSdkVersion
+    }
+    testOptions {
+        targetSdk rootProject.ext.targetSdkVersion
+    }
 
 }
 
 dependencies {
-	implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
 }

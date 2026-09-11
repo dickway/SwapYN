@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.zzkj.structure.base.BaseViewModel
 import com.zzkj.structure.base.DataBindingArguments
 import com.zzkj.structure.base.IUiView
@@ -40,7 +40,7 @@ abstract class BaseBindingFragment<B : ViewDataBinding, M : BaseViewModel>(
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (enablePrintLifecycle()) {
-            LogUtils.tag(TAG_LIFECYCLE).d("$TAG onAttach")
+            LogUtils.dTag(TAG_LIFECYCLE, "$TAG onAttach")
         }
         mActivity = context as? com.face.ui.BaseBindingActivity<*, *>
     }
@@ -51,7 +51,7 @@ abstract class BaseBindingFragment<B : ViewDataBinding, M : BaseViewModel>(
         savedInstanceState: Bundle?
     ): View? {
         if (enablePrintLifecycle()) {
-            LogUtils.tag(TAG_LIFECYCLE).d("$TAG onCreateView")
+            LogUtils.dTag(TAG_LIFECYCLE, "$TAG onCreateView")
         }
         val binding: B = DataBindingUtil.inflate(
             inflater, layoutResId,
@@ -68,7 +68,7 @@ abstract class BaseBindingFragment<B : ViewDataBinding, M : BaseViewModel>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (enablePrintLifecycle()) {
-            LogUtils.tag(TAG_LIFECYCLE).d("$TAG onViewCreated")
+            LogUtils.dTag(TAG_LIFECYCLE, "$TAG onViewCreated")
         }
         init(savedInstanceState)
     }
@@ -120,49 +120,49 @@ abstract class BaseBindingFragment<B : ViewDataBinding, M : BaseViewModel>(
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         if (enablePrintLifecycle()) {
-            LogUtils.tag(TAG_LIFECYCLE).d("$TAG onActivityCreated")
+            LogUtils.dTag(TAG_LIFECYCLE, "$TAG onActivityCreated")
         }
     }
 
     override fun onStart() {
         super.onStart()
         if (enablePrintLifecycle()) {
-            LogUtils.tag(TAG_LIFECYCLE).d("$TAG onStart")
+            LogUtils.dTag(TAG_LIFECYCLE, "$TAG onStart")
         }
     }
 
     override fun onResume() {
         super.onResume()
         if (enablePrintLifecycle()) {
-            LogUtils.tag(TAG_LIFECYCLE).d("$TAG onResume")
+            LogUtils.dTag(TAG_LIFECYCLE, "$TAG onResume")
         }
     }
 
     override fun onPause() {
         super.onPause()
         if (enablePrintLifecycle()) {
-            LogUtils.tag(TAG_LIFECYCLE).d("$TAG onPause")
+            LogUtils.dTag(TAG_LIFECYCLE, "$TAG onPause")
         }
     }
 
     override fun onStop() {
         super.onStop()
         if (enablePrintLifecycle()) {
-            LogUtils.tag(TAG_LIFECYCLE).d("$TAG onStop")
+            LogUtils.dTag(TAG_LIFECYCLE, "$TAG onStop")
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         if (enablePrintLifecycle()) {
-            LogUtils.tag(TAG_LIFECYCLE).d("$TAG onSaveInstanceState")
+            LogUtils.dTag(TAG_LIFECYCLE, "$TAG onSaveInstanceState")
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         if (enablePrintLifecycle()) {
-            LogUtils.tag(TAG_LIFECYCLE).d("$TAG onDestroyView")
+            LogUtils.dTag(TAG_LIFECYCLE, "$TAG onDestroyView")
         }
         mBinding?.unbind()
         mBinding = null
@@ -171,7 +171,7 @@ abstract class BaseBindingFragment<B : ViewDataBinding, M : BaseViewModel>(
     override fun onDestroy() {
         super.onDestroy()
         if (enablePrintLifecycle()) {
-            LogUtils.tag(TAG_LIFECYCLE).d("$TAG onDestroy")
+            LogUtils.dTag(TAG_LIFECYCLE, "$TAG onDestroy")
         }
         mActivity = null
     }
@@ -179,7 +179,7 @@ abstract class BaseBindingFragment<B : ViewDataBinding, M : BaseViewModel>(
     override fun onDetach() {
         super.onDetach()
         if (enablePrintLifecycle()) {
-            LogUtils.tag(TAG_LIFECYCLE).d("$TAG onDetach")
+            LogUtils.dTag(TAG_LIFECYCLE, "$TAG onDetach")
         }
     }
 

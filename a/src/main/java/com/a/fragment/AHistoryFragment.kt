@@ -2,6 +2,7 @@ package com.a.fragment
 
 import android.os.Bundle
 import com.a.R
+import com.a.view.AMeGridItemDecoration
 import com.a.databinding.FragmentMeHistoryBinding
 import com.a.viewmodel.AHistoryViewModel
 import com.face.BR
@@ -14,6 +15,7 @@ class AHistoryFragment : BaseBindingFragment<FragmentMeHistoryBinding, AHistoryV
 ) {
 
     override fun init(savedInstanceState: Bundle?) {
+        mBinding?.recyclerView?.addItemDecoration(AMeGridItemDecoration())
 //        mModel.getUserViewHistory()
         GVM.INSTANT.aIsMeRefresh.observe(this) {
             if(it){

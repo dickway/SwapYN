@@ -2,7 +2,7 @@ package com.a.viewmodel
 
 import android.graphics.Bitmap
 import androidx.lifecycle.MutableLiveData
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.key.AiTaskType
 import com.face.util.EventUtil
 import com.face.util.FileUtil
@@ -33,7 +33,7 @@ class AChangeViewModel : BaseViewModel() {
                     file.getName(),
                     file.asRequestBody(("application/otcet-stream").toMediaType())
                 )
-                launchRequestOnIO({ Repository.uploadFile(body) }) {
+                launchRequestOnIO({ ARepository.uploadFile(body) }) {
                     onStart = {
                         loadFailed.postValue(false)
                     }
@@ -55,7 +55,7 @@ class AChangeViewModel : BaseViewModel() {
 
     fun sendAiTask(type: String, sources: String) {
         launchRequestOnIO({
-            Repository.sendAiTask(
+            ARepository.sendAiTask(
                 type, "", sources
             )
         }) {

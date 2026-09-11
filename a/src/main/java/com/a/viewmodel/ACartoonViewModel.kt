@@ -6,7 +6,7 @@ import com.a.adapter.ACartoonAdapter
 import com.face.adapter.other.StyleAdapter
 import com.face.bean.StyleBean
 import com.face.bean.TagConfigBean.Companion.toMap
-import com.face.net.Repository
+import com.a.net.ARepository
 import com.face.bean.TaskBean
 import com.face.key.AiTaskType
 import com.face.util.FileUtil
@@ -45,7 +45,7 @@ class ACartoonViewModel : BaseViewModel() {
     val taskBean = MutableLiveData<TaskBean?>()
 
     fun getStyle() {
-        launchRequestOnIO({ Repository.getStyle("common_style") }) {
+        launchRequestOnIO({ ARepository.getStyle("common_style") }) {
             onSuccess = {
                 val styleStr = it?.toMap()?.get("style") ?: ""
                 if (styleStr != "") {
@@ -82,7 +82,7 @@ class ACartoonViewModel : BaseViewModel() {
                     file.getName(),
                     file.asRequestBody(("application/otcet-stream").toMediaType())
                 )
-                launchRequestOnIO({ Repository.uploadFile(body) }) {
+                launchRequestOnIO({ ARepository.uploadFile(body) }) {
                     onStart = {
                         loadFailed.postValue(false)
                     }
@@ -107,7 +107,7 @@ class ACartoonViewModel : BaseViewModel() {
 
     fun sendAiTask(type: String, sources: String) {
         launchRequestOnIO({
-            Repository.sendAiTask(
+            ARepository.sendAiTask(
                 type, "", sources
             )
         }) {
@@ -132,7 +132,7 @@ class ACartoonViewModel : BaseViewModel() {
         if (taskId.isNotEmpty()) {
 
             launchRequestOnIO({
-                Repository.queryAiTask(taskId)
+                ARepository.queryAiTask(taskId)
             }) {
                 onSuccess = { bean ->
                     if (taskBean.value == null) {
@@ -154,7 +154,7 @@ class ACartoonViewModel : BaseViewModel() {
 
     fun onCancelData() {
         if (taskBean.value != null) {
-            launchRequestWithLoadingOnIO({ Repository.cancelTask(taskBean.value!!.id) }) {
+            launchRequestWithLoadingOnIO({ ARepository.cancelTask(taskBean.value!!.id) }) {
                 onSuccess = {
                     loadingView.postValue(4)
                 }

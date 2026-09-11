@@ -13,9 +13,14 @@
             name="isAdd"
             type="Boolean" />
 
+        <variable
+            name="isDisableEnabled"
+            type="Boolean" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        bindSelected="@{isSelected}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="6dp">
@@ -48,6 +53,9 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/addImg"
             bindVisible="@{isAdd}"
+            android:alpha="@{isDisableEnabled ? 1f : 0.35f}"
+            android:enabled="@{isDisableEnabled}"
+            android:contentDescription="@string/a_swap_disable_face"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:src="@mipmap/a_icon_quxiao"

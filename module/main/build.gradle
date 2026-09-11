@@ -2,16 +2,15 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id "kotlin-kapt"
-    id("com.google.devtools.ksp").version("2.2.0-2.0.2")
+    id("com.google.devtools.ksp").version('2.3.6')
 }
 
 android {
     namespace 'com.face.main'
-    compileSdk 36
+    compileSdk rootProject.ext.targetSdkVersion
 
     defaultConfig {
         minSdk 24
-        targetSdk 36
     }
 
 //    kapt {
@@ -43,6 +42,12 @@ android {
     buildFeatures {
         dataBinding = true
         buildConfig = true
+    }
+    lint {
+        targetSdk rootProject.ext.targetSdkVersion
+    }
+    testOptions {
+        targetSdk rootProject.ext.targetSdkVersion
     }
 }
 

@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.DiffUtil
 import coil.load
-import com.apkfuns.logutils.LogUtils
+import com.blankj.utilcode.util.LogUtils
 import com.base.BlurTransformation
 import com.face.R
 import com.face.bean.AiFaceBean

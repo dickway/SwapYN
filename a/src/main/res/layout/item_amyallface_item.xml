@@ -18,12 +18,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="3dp"
-        android:layout_marginVertical="3dp">
+        android:layout_marginHorizontal="2.5dp"
+        android:layout_marginVertical="2.5dp">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgCover"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
             app:layout_constraintDimensionRatio="1:1"
@@ -36,22 +36,27 @@
         <androidx.appcompat.widget.AppCompatImageView
             bindVisible="@{isDelete}"
             android:id="@+id/imgDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:src="@mipmap/a_icon_delete_m"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:paddingStart="21dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="21dp"
+            android:contentDescription="@string/a_settings_remove_description"
+            android:src="@drawable/a_ic_faces_remove"
             app:layout_constraintEnd_toEndOf="@+id/imgCover"
             app:layout_constraintTop_toTopOf="@+id/imgCover" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/addImg"
             bindVisible="@{isAdd}"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintDimensionRatio="1:1"
-            android:src="@mipmap/a_icon_add_m_w"
+            android:src="@drawable/a_ic_faces_add"
             android:scaleType="center"
-            android:background="@drawable/a_bg_10_r16"
+            android:contentDescription="@string/a_settings_add_face"
+            android:background="@drawable/a_bg_faces_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

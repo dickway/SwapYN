@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import com.apkfuns.logutils.LogUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.zzkj.structure.base.BaseApp;
 
 public class KeyboardUtil {

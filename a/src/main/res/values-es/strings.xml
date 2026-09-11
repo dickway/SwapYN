@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a_settings_title">Ajustes</string>
+    <string name="a_settings_faces">Rostros</string>
+    <string name="a_settings_language">Idioma</string>
+    <string name="a_settings_policy">Política de privacidad</string>
+    <string name="a_settings_delete_account">Eliminar cuenta (irreversible)</string>
+    <string name="a_settings_password">Cambiar contraseña</string>
+    <string name="a_settings_logout">Cerrar sesión</string>
+    <string name="a_settings_logout_message">¿Quieres cerrar la sesión de la cuenta actual?</string>
+    <string name="a_settings_cancel">Cancelar</string>
+    <string name="a_settings_back">Atrás</string>
+    <string name="a_settings_edit">Editar</string>
+    <string name="a_settings_done">Listo</string>
+    <string name="a_settings_add_face">Añadir rostro</string>
+    <string name="a_settings_face_hint">Mira al frente, sin cubrir el rostro, sin gafas ni sombrero</string>
+    <string name="a_settings_remove_title">¿Eliminar rostro?</string>
+    <string name="a_settings_remove_message">¿Seguro que quieres eliminar este rostro?</string>
+    <string name="a_settings_remove">Eliminar</string>
+    <string name="a_settings_remove_description">Eliminar rostro</string>
+
+    <string name="a_upload_face_title">Subir rostro</string>
+    <string name="a_upload_face_analysing">La IA está analizando los datos faciales de la foto</string>
+    <string name="a_upload_check_failure">Error en la detección</string>
+    <string name="a_upload_cancel_title">Cancelar carga</string>
+</resources>
