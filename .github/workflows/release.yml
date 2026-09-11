@@ -105,20 +105,20 @@ jobs:
       - name: Telegram Notify AAB
         run: |
           curl -X POST \
-            http://127.0.0.1:8081/bot7634732810:AAHwdKozAljFMxLcL2v_dW5kbjhtiHOcha4/sendDocument \
-            -F chat_id=-1001398076332 \
+            http://127.0.0.1:8081/bot8855798775:AAFQagw_KKLy2tNSO_TTanVIdtllAtQcqNo/sendDocument \
+            -F chat_id=6757376583 \
             -F document=@"app/build/outputs/bundle/release/${{env.APP_NAME}}_release_${{env.ANDROID_VERSION}}.aab"
           curl -X POST \
-            http://127.0.0.1:8081/bot7634732810:AAHwdKozAljFMxLcL2v_dW5kbjhtiHOcha4/sendDocument \
-            -F chat_id=-1001398076332 \
+            http://127.0.0.1:8081/bot8855798775:AAFQagw_KKLy2tNSO_TTanVIdtllAtQcqNo/sendDocument \
+            -F chat_id=6757376583 \
             -F document=@"app/build/outputs/bundle/release/${{env.APP_NAME}}_混淆_release_${{env.ANDROID_VERSION}}.aab"
           curl -X POST \
-            http://127.0.0.1:8081/bot7634732810:AAHwdKozAljFMxLcL2v_dW5kbjhtiHOcha4/sendDocument \
-            -F chat_id=-1001398076332 \
+            http://127.0.0.1:8081/bot8855798775:AAFQagw_KKLy2tNSO_TTanVIdtllAtQcqNo/sendDocument \
+            -F chat_id=6757376583 \
             -F document=@"${{env.APP_NAME}}_混淆_release_${{env.ANDROID_VERSION}}.apk"
           curl -X POST \
-            http://127.0.0.1:8081/bot7634732810:AAHwdKozAljFMxLcL2v_dW5kbjhtiHOcha4/sendDocument \
-            -F chat_id=-1001398076332 \
+            http://127.0.0.1:8081/bot8855798775:AAFQagw_KKLy2tNSO_TTanVIdtllAtQcqNo/sendDocument \
+            -F chat_id=6757376583 \
             -F document=@"app/xml-class-mapping.txt"
 
       - name: Telegram Notify Success
